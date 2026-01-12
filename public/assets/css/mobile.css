@@ -1,0 +1,8146 @@
+@media only screen and (max-width: 1900px) {
+    .conference-box figure img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .header-main-con.index2-header .navbar-nav {
+        margin-right: 200px;
+    }
+}
+
+@media only screen and (max-width: 1800px) {
+
+    /* header section */
+    .header-main-con .navbar-nav {
+        margin-right: 190px;
+    }
+
+    .header-main-con.index3-header .navbar-nav {
+        gap: 46px;
+        margin-right: 140px;
+    }
+
+    /* header section */
+    /* banner section */
+    .banner-main-section .owl-carousel .owl-nav button.owl-prev,
+    .banner-main-section .owl-carousel .owl-nav button.owl-next {
+        top: 50%;
+    }
+
+    .social-links {
+        bottom: 0;
+    }
+
+    .banner-main-section .owl-carousel .owl-nav button.owl-prev {
+        left: -150px;
+    }
+
+    .banner-main-section .owl-carousel .owl-nav button.owl-next {
+        right: -150px;
+    }
+
+    h1 {
+        font-size: 60px;
+        line-height: 76px;
+    }
+
+    .banner-inner-section {
+        grid-template-columns: 55% 45%;
+    }
+
+    .banner-left-section .generic-btn a {
+        padding: 25px 30px;
+    }
+
+    .banner-left-section>span,
+    .banner-right-section span {
+        margin-bottom: 30px;
+    }
+
+    .banner-left-section .generic-btn {
+        margin-bottom: 50px;
+    }
+
+    .banner-right-section span {
+        margin: 0 105px 0 0;
+    }
+
+    .padding-top {
+        padding-top: 140px;
+    }
+
+    .padding-bottom {
+        padding-bottom: 140px;
+    }
+
+    .banner-main-section,
+    .banner-main-section::after {
+        height: 910px;
+    }
+
+    .banner-main-section .owl-carousel .owl-dots {
+        bottom: -80px;
+    }
+
+    .small-text {
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: 3px;
+    }
+
+    .generic-title .small-text {
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 50px;
+        line-height: 60px;
+    }
+
+    .generic-btn a,
+    .generic-btn button {
+        font-size: 16px;
+        line-height: 18px;
+        padding: 25px 30px;
+    }
+
+    /* banner section */
+    /* about section */
+    .about-left-con p {
+        margin-bottom: 15px;
+        padding-right: 0;
+    }
+
+    .about-inner-con {
+        gap: 30px;
+        margin-bottom: 80px;
+        grid-template-columns: 48% 49%;
+    }
+
+    .about-right-con {
+        margin: 0;
+    }
+
+    .about-left-con::before {
+        background-size: contain;
+        width: 170px;
+        height: 170px;
+        left: -150px;
+        bottom: -30px;
+    }
+
+    .counter-sec ul li .count,
+    .counter-sec ul li .plus {
+        font-size: 60px;
+        line-height: 60px;
+        margin-bottom: 20px;
+    }
+
+    /* about section */
+    /* event section */
+    .event-left-con::before,
+    .conference-main-section .generic-title::after,
+    .blog-main-section .generic-title::before {
+        background-size: contain;
+        width: 60px;
+        height: 61px;
+        top: -64px;
+    }
+
+    .event-inner-section {
+        grid-template-columns: 52% 42%;
+    }
+
+    .generic-title {
+        margin-bottom: 20px;
+    }
+
+    .event-left-con p {
+        margin-bottom: 30px;
+        padding-right: 0;
+    }
+
+    .event-left-con .generic-btn a {
+        padding: 25px 30px;
+    }
+
+    .event-right-con .nav-tabs {
+        margin-bottom: 30px;
+    }
+
+    .education__content .year {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+        left: 0px;
+        top: 16px;
+    }
+
+    .education__content:not(:last-child):before {
+        left: calc(14px - -3px);
+    }
+
+    .education__content {
+        padding: 16px 55px 10px 64px;
+    }
+
+    .education__content h6 {
+        margin-bottom: 8px;
+    }
+
+    .education__content p {
+        line-height: 26px;
+    }
+
+    .event-left-con::after {
+        content: "";
+        background: url(../images/shape2.png) no-repeat center;
+        background-size: contain;
+        width: 170px;
+        height: 220px;
+        position: absolute;
+        bottom: 0;
+        left: -150px;
+    }
+
+    /* event section */
+    /* speaker section */
+    .speakers-main-section .generic-title {
+        margin-bottom: 60px;
+    }
+
+    .speakers-main-section .generic-title h2 {
+        margin-bottom: 10px;
+    }
+
+    .speakers-main-section .container-fluid {
+        padding: 0 4%;
+    }
+
+    .speakers-inner-sec {
+        gap: 39px;
+        grid-template-columns: 23% 23% 23% 23%;
+        max-width: 1470px;
+        margin: 0 auto 80px;
+    }
+
+    .speaker-box figure {
+        width: 100%;
+        height: 350px;
+    }
+
+    .speaker-box:hover {
+        scale: 1.05;
+    }
+
+    .speakers-main-section .generic-btn a {
+        padding: 25px 40px;
+    }
+
+    /* speaker section */
+    /* ticket section */
+    .ticket-inner-section::before {
+        background-size: contain;
+        width: 60px;
+        height: 60px;
+        left: -160px;
+    }
+
+    .ticket-left-section .generic-title h2 {
+        margin-bottom: 10px;
+    }
+
+    .ticket-left-section .generic-btn a {
+        padding: 25px 40px;
+    }
+
+    .ticket-left-section .generic-title p {
+        margin-bottom: 30px;
+    }
+
+    .ticket-inner-section {
+        grid-template-columns: 53% 42%;
+    }
+
+    .ticket-details .price {
+        font-size: 55px;
+        line-height: 55px;
+        margin-bottom: 0;
+    }
+
+    .ticket-details>span {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .ticket-details .generic-btn a {
+        padding: 18px 35px;
+    }
+
+    .ticket-details ul {
+        margin-bottom: 25px;
+    }
+
+    .mySwiper {
+        width: 350px;
+        height: auto;
+    }
+
+    .ticket-details {
+        padding: 45px 45px 55px;
+    }
+
+    /* ticket section */
+    /* conference section */
+    .conference-box figure img {
+        width: 100%;
+        height: 344px;
+        object-fit: cover;
+    }
+
+    .conference-main-section .generic-title {
+        margin-bottom: 50px;
+    }
+
+    .conference-main-section .container-fluid {
+        padding: 0 4%;
+    }
+
+    .conference-inner-con {
+        margin-bottom: 80px;
+    }
+
+    .conference-main-section .generic-btn a {
+        padding: 25px 60px;
+    }
+
+    /* conference section */
+    /* testimonial section */
+    .testimonial-inner-con {
+        gap: 40px;
+        grid-template-columns: 42% 54%;
+    }
+
+    .testimonial-right-con .generic-title h2::after {
+        bottom: -30px;
+    }
+
+    .testimonial-right-con .generic-title {
+        margin-bottom: 60px;
+    }
+
+    .testimonial-right-con p {
+        margin-bottom: 30px;
+        line-height: 32px;
+    }
+
+    .testimonial-main-section .owl-carousel .owl-nav {
+        bottom: 100px;
+    }
+
+    .testimonial-main-section {
+        height: 100%;
+    }
+
+    /* testimonial section */
+    /* sponsor section */
+    .sponsers-main-section {
+        height: 100%;
+        padding: 90px 0;
+    }
+
+    /* sponsor section */
+    /* blog section */
+    .blog-main-section .generic-title::before {
+        left: 0;
+    }
+
+    .blog-main-section .generic-title {
+        margin-bottom: 60px;
+    }
+
+    .blog-main-section {
+        padding-bottom: 220px;
+    }
+
+    .registration-main-section .registration-inner-con {
+        height: 470px;
+    }
+
+    /* blog section */
+    /* footer section */
+    .footer-schedule,
+    .footer-contact,
+    .footer-navigation {
+        margin-top: 0;
+    }
+
+    .footer-main-section {
+        padding-top: 363px;
+        padding-bottom: 67px;
+    }
+
+    /* footer section */
+    /* index2 page responsive start here */
+    .index2-banner-section {
+        height: 950px;
+        padding: 120px 0 0;
+    }
+
+    .index2-banner-section .two-girls-img figure img {
+        width: 350px;
+    }
+
+    .index2-banner-section .man-right-img figure img {
+        width: 300px;
+    }
+
+    .index2-banner-section .man-right-img {
+        left: -35px;
+    }
+
+    .index2-banner-section .owl-carousel .owl-dots .owl-dot {
+        width: 30px;
+    }
+
+    .index2-banner-right-con small {
+        left: -8px;
+        bottom: 427px;
+        letter-spacing: 0;
+    }
+
+    .green-triange-first-img figure img,
+    .green-triange-second-img figure img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .index2-banner-right-con span {
+        font-size: 40px;
+        right: -30px;
+    }
+
+    .line-second-img figure img,
+    .line-shape-img figure img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .index2-banner-section .man-right-img {
+        left: -45px;
+    }
+
+    .learning-conference-heading {
+        margin-bottom: 50px;
+    }
+
+    .biggest-conference-con {
+        gap: 50px;
+        grid-template-columns: 52% 41%;
+    }
+
+    .biggest-img-box figure img {
+        width: 657px;
+        height: 500px;
+        object-fit: cover;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-next {
+        right: -180px;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-prev {
+        left: -180px;
+    }
+
+    .index2-banner-section h1 {
+        font-size: 44px;
+        line-height: 52px;
+        margin-bottom: 30px;
+    }
+
+    .conference-registration {
+        padding: 40px 50px;
+        top: -285px;
+    }
+
+    .planned-events .generic-title {
+        margin-bottom: 50px;
+    }
+
+    .event-text-box h3 {
+        font-size: 28px;
+        line-height: 36px;
+        margin-bottom: 15px;
+    }
+
+    .event-text-box {
+        padding: 25px 30px 35px;
+    }
+
+    .event-text-box .generic-btn a {
+        padding: 16px 24px;
+    }
+
+    .planned-events::before {
+        width: 470px;
+        height: 604px;
+    }
+
+    .schedule-con {
+        gap: 250px;
+        grid-template-columns: 49% 26%;
+        padding: 50px 40px 50px 50px;
+    }
+
+    .ticket-pricing-section .generic-title {
+        margin-bottom: 50px;
+    }
+
+    .index2-speakers-section .generic-title {
+        margin-bottom: 80px;
+    }
+
+    .index2-best-speakers {
+        margin-bottom: 55px;
+    }
+
+    .index2-best-speaker-btn p {
+        margin-bottom: 35px;
+    }
+
+    .ticket-pricing-slider {
+        margin-bottom: 65px;
+    }
+
+    .biggest-text-section h2 {
+        font-size: 40px;
+        line-height: 50px;
+        margin-bottom: 15px;
+    }
+
+    .biggest-text-section p {
+        margin-bottom: 25px;
+    }
+
+    .generic-title2 {
+        margin-bottom: 50px;
+    }
+
+    .expert-images-con {
+        margin-bottom: 65px;
+    }
+
+    .top-experts-btn p {
+        margin-bottom: 25px;
+    }
+
+    .index2-footer {
+        padding-top: 100px;
+        margin-top: 0;
+    }
+
+    .header-main-con.index2-header .navbar-nav {
+        gap: 25px;
+        margin-right: 180px;
+    }
+
+    /* index2 page responsive end here */
+    /* index3 page responsive start here */
+    .index3-banner-section .owl-carousel .owl-nav button.owl-prev {
+        left: -170px;
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav button.owl-next {
+        right: -170px;
+    }
+
+    .index3-banner-img-con figure {
+        width: 770px;
+    }
+
+    .index3-banner-text-con {
+        padding: 70px 50px;
+        width: 480px;
+        height: 470px;
+    }
+
+    .index3-banner-text-con h1 {
+        font-size: 44px;
+        line-height: 54px;
+        margin-bottom: 15px;
+    }
+
+    .index3-banner-text-con span {
+        padding-left: 35px;
+        margin-bottom: 20px;
+        font-size: 15px;
+        line-height: 16px;
+    }
+
+    .index3-banner-text-con ul li {
+        font-size: 16px;
+    }
+
+    .index3-banner-text-con .generic-btn a {
+        font-size: 15px;
+        padding: 20px 36px 18px;
+    }
+
+    .index3-banner-section .owl-carousel .owl-dots {
+        bottom: -40px;
+    }
+
+    .index3-banner-section {
+        height: 840px;
+        padding: 180px 0 0;
+    }
+
+    .journey-inner-con {
+        gap: 60px;
+        grid-template-columns: 45% 49%;
+        margin-bottom: 90px;
+    }
+
+    .journey-text-con h2 {
+        font-size: 48px;
+        line-height: 54px;
+        margin-bottom: 20px;
+    }
+
+    .journey-text-con p {
+        margin-bottom: 30px;
+        margin-left: 0;
+    }
+
+    .journey-text-con .generic-btn a {
+        font-size: 15px;
+        padding: 20px 40px;
+    }
+
+    .digital-counter-con ul li .count,
+    .digital-counter-con ul li small {
+        font-size: 44px;
+        line-height: 70px;
+    }
+
+    .digital-counter-con ul li .plus span {
+        font-size: 28px;
+        line-height: 28px;
+        left: -8px;
+        top: 0px;
+    }
+
+    .digital-text-con h3 {
+        font-size: 28px;
+        line-height: 38px;
+        margin-bottom: 20px;
+    }
+
+    .digital-text-con .generic-btn a {
+        font-size: 15px;
+        padding: 16px 24px;
+    }
+
+    .index3-event-section .generic-title h2 {
+        font-size: 46px;
+        line-height: 54px;
+    }
+
+    .index3-event-section .generic-title {
+        margin-bottom: 60px;
+    }
+
+    .index3-event-tabs-con .nav-tabs .nav-link.active,
+    .index3-event-tabs-con .nav-tabs .nav-link {
+        font-size: 22px;
+        line-height: 24px;
+        padding: 18px 35px 12px 35px;
+    }
+
+    .index3-event-date {
+        font-size: 46px;
+        line-height: 46px;
+    }
+
+    .index3-event-month span {
+        font-size: 26px;
+        line-height: 30px;
+        margin-bottom: 6px;
+    }
+
+    .index3-event-tabs-con .nav-tabs {
+        margin-bottom: 60px;
+    }
+
+    .index3-event-organizer figure img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .index3-organizer-detail>span {
+        font-size: 26px;
+        line-height: 28px;
+        margin-bottom: 8px;
+    }
+
+    .index3-organizer-detail small {
+        font-size: 15px;
+    }
+
+    .index3-faqs .card {
+        margin-bottom: 30px;
+    }
+
+    .index3-faqs .card-body {
+        padding: 30px 50px 30px 70px;
+    }
+
+    .index3-faqs .card-body p {
+        margin-bottom: 15px;
+    }
+
+    .index3-faqs .card-body span {
+        font-size: 16px;
+        line-height: 28px;
+    }
+
+    .index3-faqs {
+        margin-bottom: 60px;
+    }
+
+    .index3-faq-btn-con .generic-btn a {
+        padding: 20px 40px;
+        font-size: 15px;
+    }
+
+    .generic-title2 h2 {
+        font-size: 46px;
+        line-height: 54px;
+    }
+
+    .index3-event-zone {
+        padding: 40px 32px 42px 40px;
+    }
+
+    .index3-event-zone figure::before {
+        width: 40px;
+        height: 40px;
+        right: 10px;
+        top: 10px;
+    }
+
+    .index3-event-zone figure {
+        margin-bottom: 25px;
+    }
+
+    .index3-event-zone p {
+        line-height: 28px;
+    }
+
+    .index3-speakers-section .generic-title2 {
+        margin-bottom: 60px;
+    }
+
+    .index3-speakers-section {
+        padding-bottom: 210px;
+    }
+
+    .index3-plan-inner-con .ticket-details {
+        height: 440px;
+        padding: 40px 40px;
+    }
+
+    .index3-plan-inner-con .gold-ticket-details {
+        height: 500px;
+        margin: 0;
+        padding: 70px 40px 70px;
+    }
+
+    .index3-plan-btn p {
+        margin-bottom: 30px;
+    }
+
+    .index3-plan-btn .generic-btn a {
+        font-size: 15px;
+        line-height: 16px;
+        padding: 20px 40px;
+    }
+
+    .generic-title2 span {
+        margin-bottom: 20px;
+    }
+
+    .index3-registration-left-con h2 {
+        font-size: 46px;
+        line-height: 56px;
+        margin-bottom: 20px;
+    }
+
+    .index3-registration-left-con .generic-btn a {
+        font-size: 15px;
+        line-height: 16px;
+        padding: 20px 40px;
+    }
+
+    .index3-top-experts-inner-section .container__img-holder img {
+        width: 100%;
+    }
+
+    .index3-top-experts-inner-section {
+        grid-template-columns: 48% 48%;
+        gap: 20px;
+    }
+
+    .index3-experts-left-con {
+        grid-template-columns: 48.6% 48.6%;
+        gap: 20px;
+    }
+
+    .index3-expert {
+        display: inline-flex;
+    }
+
+    .index3-experts-right-con {
+        grid-template-columns: 48.6% 48.6%;
+        gap: 20px;
+    }
+
+    .index3-expert-right-bottom-con {
+        gap: 20px;
+        grid-template-columns: 122% 78%;
+    }
+
+    .index3-top-experts-inner-section .search-icon-con {
+        width: 70px;
+        height: 70px;
+    }
+
+    .index3-top-experts-inner-section .search-icon-con::before {
+        width: 90px;
+        height: 90px;
+    }
+
+    .index3-testimonial-box {
+        padding: 30px 25px 30px;
+    }
+
+    .index3-testimonial-box p {
+        margin-bottom: 20px;
+    }
+
+    .index3-testimonial-box h6 {
+        margin-bottom: 10px;
+    }
+
+    .index3-testimonial-section {
+        padding-bottom: 210px;
+    }
+
+    .index3-footer-main-section {
+        padding-top: 95px;
+        padding-bottom: 77px;
+        margin-top: 0;
+    }
+
+    /* index3 page responsive end here */
+
+}
+
+@media only screen and (max-width: 1600px) {
+    body {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    h2 {
+        font-size: 44px;
+        line-height: 52px;
+    }
+
+    /* header section */
+    .header-main-con .navbar-light .navbar-nav .nav-link {
+        font-size: 14px;
+        line-height: 16px;
+        letter-spacing: 0;
+    }
+
+    .nav-btns a i {
+        font-size: 12px;
+        line-height: 12px;
+        margin-top: -4px;
+    }
+
+    .nav-btns a {
+        padding: 8px 12px 9px;
+    }
+
+    .lets-talk-btn a {
+        font-size: 14px;
+        line-height: 14px;
+        padding: 12px 16px;
+    }
+
+    .nav-btns {
+        right: 139px;
+    }
+
+    .header-main-con .navbar-nav {
+        gap: 30px;
+        margin-right: 160px;
+    }
+
+    .header-main-con.index2-header .navbar-nav {
+        gap: 45px;
+        margin-right: 210px;
+    }
+
+    /* header section */
+    /* banner section */
+    h1 {
+        font-size: 50px;
+        line-height: 66px;
+    }
+
+    .banner-inner-section h1 {
+        margin-bottom: 13px;
+    }
+
+    .banner-left-section .generic-btn a {
+        padding: 22px 30px;
+    }
+
+    .banner-left-section>span,
+    .banner-right-section span {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .banner-left-images {
+        gap: 20px;
+    }
+
+    .banner-main-section,
+    .banner-main-section::after {
+        height: 820px;
+    }
+
+    .banner-main-section .owl-carousel .owl-dots {
+        bottom: -70px;
+    }
+
+    .padding-top {
+        padding-top: 110px;
+    }
+
+    .padding-bottom {
+        padding-bottom: 110px;
+    }
+
+    /* banner section */
+    /* event section */
+    .event-inner-section {
+        grid-template-columns: 48% 46%;
+    }
+
+    .education__content p {
+        line-height: 26px;
+        margin-top: 0px;
+    }
+
+    .education__content h6 {
+        margin-bottom: 6px;
+    }
+
+    .education__content {
+        padding: 19px 60px 15px 60px;
+    }
+
+    .event-left-con::after {
+        width: 150px;
+        height: 150px;
+        left: -60px;
+    }
+
+    /* event section */
+    .small-text {
+        letter-spacing: 2px;
+    }
+
+    /* speaker section */
+    .speakers-main-section .generic-title {
+        margin-bottom: 50px;
+    }
+
+    .speakers-inner-sec {
+        gap: 34px;
+        margin: 0 auto 70px;
+    }
+
+    .speaker-status {
+        width: 85%;
+    }
+
+    .speaker-status button {
+        font-size: 18px;
+    }
+
+    .speaker-box a {
+        padding: 10px 14px;
+    }
+
+    .speaker-box figure img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+    }
+
+    .speaker-box figure {
+        width: 100%;
+        height: 320px;
+    }
+
+    .speakers-main-section .generic-btn a {
+        padding: 22px 30px;
+    }
+
+    /* speaker section */
+    /* ticket section */
+    .ticket-inner-section::before {
+        width: 50px;
+        height: 50px;
+        left: -90px;
+    }
+
+    .ticket-left-section .generic-btn a {
+        padding: 22px 35px;
+    }
+
+    /* ticket section */
+    /* conference section */
+    .event-left-con::before,
+    .conference-main-section .generic-title::after,
+    .blog-main-section .generic-title::before {
+        background-size: contain;
+        width: 50px;
+        height: 50px;
+        top: -64px;
+    }
+
+    .conference-txt span {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .conference-txt small {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .conference-inner-con {
+        max-width: 1288px;
+        margin: 0 auto 70px;
+    }
+
+    .conference-main-section .generic-btn a {
+        padding: 22px 50px;
+    }
+
+    /* conference section */
+    /* testimonial section */
+    .testimonial-img-outer-con figure {
+        top: 20px;
+        left: 20px;
+        width: 90%;
+    }
+
+    .testimonial-img-outer-con {
+        width: 364px;
+        height: 434px;
+    }
+
+    .testimonial-img-outer-con figure {
+        top: 20px;
+        left: 20px;
+        width: 100%;
+        height: 90%;
+    }
+
+    .testimonial-inner-con {
+        gap: 40px;
+        grid-template-columns: 35% 61%;
+    }
+
+    .testimonial-main-section .owl-carousel .owl-nav {
+        bottom: 50px;
+    }
+
+    /* testimonial section */
+    /* sponsor section */
+    .sponsers-main-section {
+        padding: 70px 0;
+    }
+
+    /* sponsor section */
+    /* conference section */
+    .event-left-con::before,
+    .conference-main-section .generic-title::after,
+    .blog-main-section .generic-title::before {
+        height: 50px;
+        top: -34px;
+    }
+
+    .blog-main-section .generic-title {
+        margin-bottom: 50px;
+    }
+
+    .blog-main-section {
+        padding-bottom: 190px;
+    }
+
+    /* conference section */
+    /* registration section */
+    .registration-main-section .registration-inner-con {
+        height: 100%;
+        text-align: center;
+        padding: 95px 240px;
+    }
+
+    .registration-main-section .generic-title .generic-btn a {
+        padding: 22px 30px;
+    }
+
+    .registration-main-section .generic-title h2 {
+        margin-bottom: 30px;
+    }
+
+    /* registration section */
+    /* footer section */
+    .footer-main-section {
+        padding-top: 310px;
+        padding-bottom: 55px;
+        margin-top: -220px;
+    }
+
+    .footer-box>p {
+        line-height: 24px;
+        padding-left: 0;
+        margin-bottom: 25px;
+    }
+
+    .footer-call-btn span {
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    .footer-call-btn {
+        gap: 20px;
+    }
+
+    .footer-box ul li {
+        margin-bottom: 20px;
+    }
+
+    .footer-navigation ul li {
+        margin-bottom: 6px;
+        padding-left: 20px;
+    }
+
+    .footer-social-links ul li a {
+        width: 40px;
+        height: 40px;
+    }
+
+    .footer-social-links ul li a i {
+        font-size: 14px;
+    }
+
+    .footer-box.footer-contact ul li:nth-child(2) {
+        margin-bottom: 15px;
+    }
+
+    .footer-box.footer-contact .footer-social-links ul li {
+        margin-bottom: 0;
+    }
+
+    .copyright p {
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    .copyright-content {
+        padding: 25px 20px;
+    }
+
+    /* footer section end here*/
+    /* 404 page styling start here*/
+    .error-con h2 {
+        font-size: 120px;
+        line-height: 125px;
+        margin-bottom: 30px;
+        color: var(--primary-color);
+    }
+
+    .error-con p {
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 30px;
+    }
+
+    /* 404 page styling end here */
+    /* coming soon page styling start here */
+    .coming-soon-con h2 {
+        font-size: 80px;
+        line-height: 80px;
+        margin-bottom: 30px;
+    }
+
+    .coming-soon-social-links ul li a {
+        width: 55px;
+        height: 55px;
+    }
+
+    /* coming soon page styling end here */
+    /* index2 page styling start here */
+    .index2-header .container-fluid {
+        padding: 0 8%;
+    }
+
+    .index2-banner-section .container-fluid {
+        padding: 0 12%;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-prev {
+        left: -100px;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-next {
+        right: -100px;
+    }
+
+    .index2-banner-left-con {
+        padding-top: 100px;
+    }
+
+    .index2-banner-section .owl-carousel {
+        padding-top: 20px;
+    }
+
+    .index2-banner-section {
+        height: 910px;
+    }
+
+    .learning-conference-sec #light {
+        top: 48%;
+    }
+
+    .learning-conference-sec .owl-carousel {
+        margin-bottom: 70px;
+    }
+
+    .conference-registration {
+        top: -275px;
+        grid-template-columns: 62% 19.1%;
+    }
+
+    .planned-events {
+        padding-top: 190px;
+    }
+
+    .planned-events .generic-title h2 {
+        font-size: 40px;
+        line-height: 46px;
+    }
+
+    .planned-events .generic-title .small-text {
+        margin-bottom: 15px;
+    }
+
+    .planned-events .generic-title {
+        margin-bottom: 45px;
+    }
+
+    .schedule-con {
+        padding: 40px 30px 40px 50px;
+    }
+
+    .ticket-pricing-section .generic-title span {
+        margin-bottom: 15px;
+    }
+
+    .ticket-pricing-section .generic-title h2 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .index2-speakers-section .generic-title span {
+        margin-bottom: 15px;
+    }
+
+    .index2-speakers-section .generic-title {
+        margin-bottom: 60px;
+    }
+
+    .index2-best-speakers {
+        margin-bottom: 50px;
+    }
+
+    .index2-best-speaker-btn p {
+        margin-bottom: 30px;
+    }
+
+    .biggest-conference-con {
+        grid-template-columns: 42% 53%;
+    }
+
+    .generic-title2 span {
+        margin-bottom: 15px;
+    }
+
+    .generic-title2 h2 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .expert-images-con {
+        margin-bottom: 50px;
+    }
+
+    .top-experts-btn p {
+        margin-bottom: 20px;
+    }
+
+    .index2-faqs .card:last-child,
+    .index2-faqs .card:nth-child(5) {
+        margin-bottom: 0;
+    }
+
+    .index2-blog-section::before,
+    .index2-blog-section::after {
+        background-size: contain;
+        width: 281px;
+    }
+
+    .index2-testimonial-inner-sec {
+        gap: 70px;
+        grid-template-columns: 23% 65%;
+        padding: 30px 28px;
+    }
+
+    .index2-testimonial-text-con p {
+        line-height: 30px;
+        margin-bottom: 25px;
+    }
+
+    .index2-footer {
+        padding-top: 90px;
+        margin-top: 0;
+    }
+
+    /* index2 page styling end here */
+    /* index3 page styling start here */
+    .index3-banner-section .container-fluid,
+    .header-main-con.index3-header .container-fluid {
+        padding: 0 8%;
+    }
+
+    .header-main-con.index3-header .navbar-light .navbar-nav .nav-link {
+        font-size: 15px;
+        line-height: 16px;
+    }
+
+    .header-main-con.index3-header .nav-btns a i {
+        font-size: 16px;
+        line-height: 16px;
+        margin-top: 0;
+    }
+
+    .index3-banner-section::before {
+        width: 100px;
+        background-size: contain;
+        top: 52%;
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav button.owl-prev {
+        left: -70px;
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav button.owl-next {
+        right: -70px;
+    }
+
+    .index3-banner-text-con h1 {
+        font-size: 40px;
+        line-height: 50px;
+        margin-bottom: 15px;
+    }
+
+    .index3-banner-text-con {
+        padding: 50px 40px;
+        width: 450px;
+        height: 420px;
+    }
+
+    .journey-text-con h2 {
+        font-size: 44px;
+        line-height: 50px;
+        margin-bottom: 18px;
+    }
+
+    .journey-text-con h2 br {
+        display: none;
+    }
+
+    .journey-text-con p {
+        margin-bottom: 25px;
+    }
+
+    .journey-section .learning-conference-video-box>figure::before {
+        width: 40px;
+        height: 40px;
+        right: 10px;
+        top: 10px;
+    }
+
+    .journey-inner-con {
+        margin-bottom: 80px;
+    }
+
+    .digital-counter-con ul li {
+        padding: 14px 30px 14px 45px;
+    }
+
+    .digital-counter-con ul li:nth-child(3),
+    .digital-counter-con ul li:nth-child(4) {
+        padding: 14px 30px 14px 45px;
+    }
+
+    .digital-text-con {
+        padding: 50px 45px 60px 45px;
+    }
+
+    .index3-event-section .generic-title h2 {
+        font-size: 44px;
+        line-height: 52px;
+    }
+
+    .index3-event-section .generic-title {
+        margin-bottom: 50px;
+    }
+
+    .index3-event-tabs-con .nav-tabs .nav-link.active,
+    .index3-event-tabs-con .nav-tabs .nav-link {
+        font-size: 20px;
+        line-height: 22px;
+        padding: 16px 32px 12px 32px;
+    }
+
+    .index3-event-tabs-con .nav-tabs {
+        margin-bottom: 50px;
+        padding-left: 40px;
+    }
+
+    .index3-event-date {
+        font-size: 44px;
+        line-height: 44px;
+    }
+
+    .index3-event-month span {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+
+    .index3-organizer-detail>span {
+        font-size: 24px;
+        line-height: 28px;
+        margin-bottom: 10px;
+    }
+
+    .index3-event-organizer {
+        gap: 30px;
+    }
+
+    .index3-faqs .card-body {
+        padding: 30px 50px 30px 60px;
+    }
+
+    .index3-faqs .card-body span {
+        font-size: 15px;
+        line-height: 26px;
+    }
+
+    .index3-faqs {
+        margin-bottom: 50px;
+    }
+
+    .index3-faq-btn-con p {
+        margin-bottom: 30px;
+    }
+
+    .index3-event-zone {
+        padding: 35px 50px 35px 50px;
+    }
+
+    .index3-event-zone figure img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .index3-event-zone h3 {
+        font-size: 26px;
+        line-height: 28px;
+        margin-bottom: 12px;
+    }
+
+    .index3-speakers-section .generic-title2 {
+        margin-bottom: 50px;
+    }
+
+    .index3-speaker-box::before {
+        width: 190px;
+        height: 190px;
+    }
+
+    .index3-speaker-outer-con .owl-carousel .owl-item .index3-speaker-box figure img {
+        width: 315px;
+        height: 350px;
+    }
+
+    .index3-speaker-box {
+        height: 400px;
+        padding: 0;
+        margin-bottom: 50px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .index3-speaker-box figure {
+        display: inline-block;
+    }
+
+    .index3-speaker-detail-con {
+        padding: 20px 20px;
+        width: 320px;
+    }
+
+    .index3-speakers-section .owl-carousel .owl-dots {
+        bottom: -50px;
+    }
+
+    .index3-speakers-section {
+        padding-bottom: 160px;
+    }
+
+    .ticket-details .price {
+        font-size: 48px;
+        line-height: 48px;
+        margin-bottom: 0;
+    }
+
+    .index3-plan-inner-con {
+        margin-bottom: 50px;
+    }
+
+    .index3-plan-inner-con .ticket-details {
+        height: 415px;
+    }
+
+    .index3-plan-inner-con .gold-ticket-details {
+        height: 475px;
+        margin: 0;
+        padding: 70px 40px 70px;
+    }
+
+    .index3-registration-right-con figure {
+        margin-top: -32px;
+    }
+
+    .index3-registration-section {
+        height: 504px;
+    }
+
+    .index3-registration-right-con figure img {
+        width: 100%;
+    }
+
+    .index3-registration-left-con h2 {
+        font-size: 44px;
+        line-height: 56px;
+        margin-bottom: 15px;
+    }
+
+    .index3-registration-left-con p {
+        margin-bottom: 25px;
+    }
+
+    .index3-testimonial-section {
+        padding-bottom: 180px;
+    }
+
+    .index3-event-zone figure::before {
+        width: 30px;
+        height: 30px;
+    }
+
+    .index3-footer-main-section {
+        padding-top: 90px;
+        padding-bottom: 60px;
+        margin-top: 0;
+    }
+
+    /* index3 page styling end here */
+
+}
+
+@media only screen and (max-width: 1400px) {
+    .container-fluid {
+        padding: 0 14.3%;
+    }
+
+    h1 {
+        font-size: 45px;
+        line-height: 55px;
+    }
+
+    /* header section */
+    .header-main-con .navbar-nav {
+        gap: 20px;
+    }
+
+    .header-main-con .navbar-light .navbar-brand figure img {
+        width: 110px;
+    }
+
+    .nav-btns {
+        right: 130px;
+    }
+
+    /* header section */
+    /* banner section */
+    .banner-left-section>span,
+    .banner-right-section span {
+        margin-bottom: 25px;
+    }
+
+    .banner-right-section figure {
+        margin: 0 0 11px;
+    }
+
+    .banner-left-section .generic-btn {
+        margin-bottom: 40px;
+    }
+
+    .banner-right-section span {
+        margin: 0 75px 0 0;
+    }
+
+    .banner-main-section .owl-carousel .owl-nav button.owl-prev {
+        left: -110px;
+    }
+
+    .banner-main-section .owl-carousel .owl-nav button.owl-next {
+        right: -110px;
+    }
+
+    .banner-main-section .owl-carousel .owl-dots {
+        bottom: -60px;
+    }
+
+    .banner-main-section,
+    .banner-main-section::after {
+        height: 740px;
+    }
+
+    /* banner section */
+    /* about section */
+    .padding-top {
+        padding-top: 100px;
+    }
+
+    .padding-bottom {
+        padding-bottom: 100px;
+    }
+
+    h2 {
+        font-size: 38px;
+        line-height: 44px;
+    }
+
+    body {
+        font-size: 17px;
+        line-height: 24px;
+    }
+
+    .generic-title .small-text {
+        margin-bottom: 10px;
+    }
+
+    .about-left-con p {
+        margin-bottom: 10px;
+    }
+
+    .about-left-con p:nth-child(3) {
+        margin-bottom: 30px;
+    }
+
+    .generic-title {
+        margin-bottom: 15px;
+    }
+
+    .generic-btn a,
+    .generic-btn button {
+        font-size: 16px;
+        line-height: 18px;
+        padding: 22px 25px;
+    }
+
+    .investment span {
+        font-size: 30px;
+        line-height: 30px;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .ceo-image-box {
+        height: 366px;
+    }
+
+    .co-image-box {
+        height: 344px;
+    }
+
+    .co-image-box figure {
+        width: 225px;
+        height: 294px;
+    }
+
+    .ceo-image-box figure {
+        width: 225px;
+        height: 326px;
+    }
+
+    .co-image-box,
+    .ceo-image-box {
+        width: 265px;
+    }
+
+    .status {
+        font-size: 12px;
+        line-height: 12px;
+        padding: 10px 26px;
+        bottom: 12px;
+    }
+
+    .investment,
+    .attendees {
+        width: 272px;
+        height: 110px;
+    }
+
+    .attendents {
+        margin-left: -20px;
+    }
+
+    .attendents,
+    .numbers {
+        margin-top: 0;
+    }
+
+    .about-left-con::before {
+        width: 150px;
+        height: 120px;
+        left: 0;
+        bottom: -20px;
+    }
+
+    .counter-sec ul li .count,
+    .counter-sec ul li .plus {
+        font-size: 50px;
+        line-height: 50px;
+        margin-bottom: 15px;
+    }
+
+    /* about section */
+    /* event section */
+    .education {
+        width: 100%;
+    }
+
+    .event-inner-section {
+        grid-template-columns: 40% 54%;
+    }
+
+    .education__content {
+        padding: 15px 20px 15px 60px;
+    }
+
+    .education__content .year {
+        font-size: 12px;
+        top: 13px;
+    }
+
+    .education__content:not(:last-child):before {
+        top: 47px;
+    }
+
+    .event-left-con::after {
+        width: 150px;
+        height: 130px;
+        left: 0;
+    }
+
+    /* event section */
+    /* speaker section */
+    .speakers-main-section .generic-title {
+        margin-bottom: 40px;
+    }
+
+    .speaker-box .staus-con {
+        line-height: 18px;
+        margin-top: 4px;
+    }
+
+    .speaker-status span {
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    .speaker-status button {
+        font-size: 16px;
+    }
+
+    .speaker-status {
+        padding: 10px 20px;
+    }
+
+    /* speaker section */
+    /* ticket section */
+    .ticket-inner-section::before {
+        width: 50px;
+        height: 50px;
+        left: 0;
+        top: -70px;
+    }
+
+    .ticket-inner-section {
+        gap: 30px;
+        grid-template-columns: 37% 43%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ticket-left-section .generic-title {
+        margin-bottom: 0;
+    }
+
+    /* ticket section */
+    /* conference section */
+    .conference-box figure img {
+        height: 274px;
+    }
+
+    .conference-main-section .generic-title {
+        margin-bottom: 40px;
+    }
+
+    .conference-inner-con {
+        max-width: 1105px;
+        margin: 0 auto 60px;
+    }
+
+    /* conference section */
+    /* testimonial section */
+    .testimonial-right-con .generic-title h2::after {
+        bottom: -20px;
+    }
+
+    .testimonial-right-con .generic-title {
+        margin-bottom: 40px;
+    }
+
+    .testimonial-right-con p {
+        margin-bottom: 25px;
+        line-height: 26px;
+    }
+
+    .testimonial-main-section .owl-carousel .owl-nav {
+        bottom: 85px;
+    }
+
+    .testimonial-main-section .owl-carousel .owl-nav button {
+        height: 42px;
+        width: 42px;
+    }
+
+    /* testimonial section */
+    /* sponsers section */
+    .sponsers-main-section {
+        padding: 50px 0;
+    }
+
+    .sponsers-companies ul {
+        display: grid;
+        gap: 30px;
+        grid-template-columns: 15% 15% 15% 15% 9%;
+        justify-content: center;
+    }
+
+    .sponsers-companies ul li figure img {
+        width: 90px;
+        height: 50px;
+        object-fit: contain;
+    }
+
+    /* sponsers section */
+    /* blog section  */
+    .blog-main-section {
+        padding-bottom: 180px;
+    }
+
+    /* blog section  */
+    .registration-main-section .registration-inner-con {
+        height: 100%;
+        text-align: center;
+        padding: 70px 240px;
+    }
+
+    .registration-inner-con .generic-title h2 {
+        font-size: 42px;
+        line-height: 52px;
+    }
+
+    /* footer section */
+    .footer-main-section {
+        padding-top: 280px;
+        margin-top: -190px;
+    }
+
+    .footer-box>p br {
+        display: none;
+    }
+
+    .footer-box>a {
+        margin-bottom: 15px;
+    }
+
+    .footer-box>p {
+        line-height: 24px;
+        padding-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .footer-inner-con {
+        grid-template-columns: 29% 18% 14% 20%;
+        justify-content: center;
+    }
+
+    /* footer section styling end here*/
+    /* about us page start here*/
+    /* sub banner styling start here*/
+    .sub-banner-main-section {
+        height: 460px;
+    }
+
+    .sub-banner-inner-con {
+        padding-top: 45px;
+    }
+
+    /* sub banner styling end here*/
+    /* faq section styling start here */
+    .faq-main-section .generic-title .small-text {
+        font-size: 18px;
+        line-height: 28px;
+        margin-bottom: 15px;
+    }
+
+    .faq-main-section .generic-title {
+        margin-bottom: 50px;
+    }
+
+    .faq-main-section .generic-title h2 {
+        font-size: 38px;
+        line-height: 50px;
+        letter-spacing: 1px;
+    }
+
+    .faq-inner-section .card-header h5 .btn {
+        font-size: 22px;
+        line-height: 20px;
+    }
+
+    .faq-inner-section .btn-link {
+        padding: 30px 25px;
+    }
+
+    .faq-inner-section .card-header h5 .btn::after,
+    .faq-inner-section .card-header h5 .btn.collapsed::after {
+        width: 40px;
+        height: 40px;
+    }
+
+    .faq-inner-section .card-body {
+        font-size: 18px;
+        line-height: 28px;
+        padding: 20px 30px 10px;
+    }
+
+    /* faq section styling end here */
+    /* about us page end here*/
+    /* contact page */
+    .conatct-information-section .generic-title {
+        margin-bottom: 50px;
+    }
+
+    .contact-box {
+        width: 350px;
+        padding: 45px 28px;
+    }
+
+    .contact-box figure {
+        width: 110px;
+        height: 110px;
+        margin-bottom: 20px;
+    }
+
+    .contact-box h6 {
+        margin-bottom: 10px;
+    }
+
+    .contact-box ul {
+        margin-bottom: 15px;
+    }
+
+    .contact-box p {
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 20px;
+    }
+
+    .contact-box figure img {
+        width: 36px;
+    }
+
+    .contact-form-section .generic-title .small-text {
+        margin-bottom: 10px;
+    }
+
+    .contact-form-section .generic-title {
+        margin-bottom: 40px;
+    }
+
+    .contact-form-section form ul {
+        gap: 20px;
+    }
+
+    .contact-form-section form ul li input,
+    .contact-form-section form ul li textarea {
+        padding: 25px 16px;
+    }
+
+    .contact-form-section form ul li textarea {
+        min-height: 170px;
+    }
+
+    .contact-form-section form .generic-btn button {
+        width: 300px;
+        padding: 25px 20px;
+    }
+
+    .responsive-map iframe {
+        height: 470px;
+        margin-top: -230px;
+    }
+
+    .contact-form-section {
+        padding-bottom: 335px;
+    }
+
+    .footer-main-section.contact-footer-section {
+        padding-top: 90px;
+        margin-top: 0;
+    }
+
+    /* contact page */
+    /* index2 page responsive start here */
+    .index2-header .container-fluid {
+        padding: 0 4%;
+    }
+
+    .index2-banner-section .container-fluid {
+        padding: 0 8%;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-prev {
+        left: -70px;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-next {
+        right: -70px;
+    }
+
+    .index2-banner-left-con .generic-btn a {
+        padding: 20px 30px;
+    }
+
+    .index2-banner-section .two-girls-img figure img {
+        width: 300px;
+    }
+
+    .index2-banner-section .man-right-img figure img {
+        width: 240px;
+    }
+
+    .index2-banner-section .man-right-img {
+        left: -35px;
+    }
+
+    .index2-banner-right-con span {
+        font-size: 30px;
+        right: -30px;
+    }
+
+    .index2-header .nav-btns a {
+        width: 40px;
+        height: 40px;
+        padding: 10px 12px 9px;
+    }
+
+    .index2-header .lets-talk-btn a {
+        padding: 13px 20px;
+    }
+
+    .index2-header .nav-btns a i {
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    .index2-banner-left-con {
+        padding-top: 65px;
+    }
+
+    .green-triange-first-img figure img,
+    .green-triange-second-img figure img {
+        height: 40px;
+    }
+
+    .index2-banner-section h1 {
+        font-size: 40px;
+        line-height: 50px;
+        margin-bottom: 20px;
+    }
+
+    .index2-banner-section {
+        height: 770px;
+    }
+
+    .index2-banner-outer-section {
+        height: 630px;
+    }
+
+    .index2-banner-right-con small {
+        left: -50px;
+        bottom: 247px;
+        font-size: 12px;
+    }
+
+    .line-second-img {
+        left: 126px;
+        top: 150px;
+    }
+
+    .index2-banner-right-con span {
+        font-size: 30px;
+        right: 0;
+        top: 120px;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-item .video-inner-con .video-play-icon figure img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-item .learning-conf-con figure img {
+        width: 600px;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-item .learning-conference-video-box>figure img {
+        width: 360px;
+        height: 300px;
+    }
+
+    .learning-conference-heading h2 {
+        font-size: 40px;
+        line-height: 46px;
+    }
+
+    .learning-conference-heading {
+        margin-bottom: 40px;
+        gap: 50px;
+        grid-template-columns: 41% 54%;
+    }
+
+    .learning-counter-box ul li .count {
+        margin-bottom: 0;
+    }
+
+    .learning-counter-box ul {
+        grid-template-columns: 24% 24% 23% 13%;
+    }
+
+    .learning-conference-sec .owl-carousel {
+        margin-bottom: 60px;
+    }
+
+    .learning-counter-box ul li .count,
+    .learning-counter-box ul li .plus,
+    .learning-counter-box ul li .counter-box small {
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .learning-counter-box ul li .plus span {
+        right: -18px;
+        bottom: 10px;
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    .learning-conference-sec {
+        padding-bottom: 160px;
+    }
+
+    .conference-registration h3 {
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 0;
+    }
+
+    .conference-registration {
+        top: -225px;
+        padding: 35px 50px;
+        grid-template-columns: 63% 18.1%;
+        align-items: center;
+    }
+
+    .conference-registration .generic-btn a {
+        padding: 18px 20px;
+    }
+
+    .conference-registration::before,
+    .conference-registration::after {
+        width: 40px;
+        height: 40px;
+    }
+
+    .planned-events {
+        padding-top: 160px;
+    }
+
+    .event-text-box h3 {
+        font-size: 28px;
+        line-height: 36px;
+        margin-bottom: 10px;
+    }
+
+    .event-text-box p {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 20px;
+    }
+
+    .planned-events-inner-section .nav.nav-pills {
+        gap: 35px;
+    }
+
+    .planned-events-inner-section .nav-pills .nav-link {
+        left: 0;
+        top: 80px;
+        margin: 0px 0 140px;
+    }
+
+    .event-profiles-box {
+        gap: 35px;
+        margin-top: 0;
+    }
+
+    .planned-events::before {
+        width: 190px;
+        height: 330px;
+    }
+
+    .event-text-box ul {
+        margin-bottom: 10px;
+    }
+
+    .planned-events-inner-section {
+        grid-template-columns: 20% 77%;
+    }
+
+    .schedule-con {
+        padding: 30px 10px 30px 40px;
+        gap: 195px;
+        grid-template-columns: 55% 24%;
+    }
+
+    .schedule-con .generic-btn a {
+        padding: 20px 23px 20px 24px;
+    }
+
+    .ticket-pricing-slider .owl-carousel .owl-nav button.owl-next {
+        right: -10px;
+    }
+
+    .ticket-pricing-slider .owl-carousel .owl-nav button.owl-prev {
+        left: -10px;
+    }
+
+    .ticket-pricing-slider {
+        margin-bottom: 55px;
+    }
+
+    .ticket-pricing-btn p {
+        margin-bottom: 25px;
+    }
+
+    .index2-best-speakers {
+        margin-bottom: 45px;
+        gap: 40px 30px;
+    }
+
+    .index2-best-speaker-btn p {
+        margin-bottom: 25px;
+    }
+
+    .biggest-img-box figure img {
+        width: 517px;
+        height: 390px;
+        object-fit: cover;
+    }
+
+    .biggest-conference-con {
+        grid-template-columns: 50% 46%;
+    }
+
+    .top-experts-section .expert-images-con ul li img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .expert-images-con {
+        margin-bottom: 45px;
+    }
+
+    .index2-faqs .card {
+        margin: 0 20px 20px 0;
+    }
+
+    .index2-testimonial-inner-sec {
+        grid-template-columns: 23% 70%;
+    }
+
+    .index2-testimonial-section .owl-carousel .owl-nav button.owl-prev {
+        left: -20px;
+    }
+
+    .index2-testimonial-section .owl-carousel .owl-nav button.owl-next {
+        right: -20px;
+    }
+
+    .index2-testimonial-section .owl-carousel .owl-nav button.owl-prev,
+    .index2-testimonial-section .owl-carousel .owl-nav button.owl-next {
+        top: 50%;
+    }
+
+    .index2-testimonial-text-con p {
+        line-height: 26px;
+        margin-bottom: 20px;
+    }
+
+    .index2-footer {
+        padding-top: 90px;
+        margin-top: 0;
+    }
+
+    /* index2 page responsive end here */
+    /* index3 page responsive start here */
+    .index3-banner-img-con figure {
+        width: 670px;
+    }
+
+    .index3-banner-text-con {
+        padding: 50px 30px;
+        width: 420px;
+        height: auto;
+    }
+
+    .index3-banner-text-con h1 {
+        font-size: 35px;
+        line-height: 45px;
+        margin-bottom: 10px;
+    }
+
+    .index3-banner-text-con span::before {
+        width: 20px;
+        height: 4px;
+    }
+
+    .index3-banner-text-con ul {
+        margin-bottom: 25px;
+    }
+
+    .index3-banner-text-con span {
+        padding-left: 30px;
+        margin-bottom: 15px;
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    .index3-banner-text-con .generic-btn a {
+        font-size: 15px;
+        padding: 18px 30px 16px;
+    }
+
+    .index3-banner-section::before {
+        width: 80px;
+        top: 55%;
+    }
+
+    .index3-banner-section {
+        height: 760px;
+        padding: 160px 0 0;
+    }
+
+    .index3-banner-section .owl-carousel .owl-dots .owl-dot {
+        width: 30px;
+        height: 2px;
+        margin: 0 4px;
+    }
+
+    .journey-section .learning-conference-video-box>figure::before {
+        width: 30px;
+        height: 30px;
+    }
+
+    .journey-text-con h2 {
+        font-size: 40px;
+        line-height: 48px;
+        margin-bottom: 15px;
+    }
+
+    #boxclose {
+        width: 40px;
+        height: 40px;
+        right: -17px;
+        top: -17px;
+    }
+
+    .journey-text-con p {
+        margin-bottom: 20px;
+    }
+
+    .journey-section .learning-conference-video-box>figure img {
+        width: 420px;
+    }
+
+    .video-inner-con .video-play-icon figure img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .journey-text-con .generic-btn a {
+        font-size: 15px;
+        padding: 18px 34px;
+    }
+
+    .journey-inner-con {
+        margin-bottom: 70px;
+        gap: 50px;
+        grid-template-columns: 56.5% 39%;
+    }
+
+    .digital-counter-con ul li .count,
+    .digital-counter-con ul li small {
+        font-size: 36px;
+        line-height: 50px;
+    }
+
+    .digital-counter-con ul li .plus span {
+        font-size: 24px;
+        line-height: 24px;
+        left: -6px;
+        top: 0;
+    }
+
+    .digital-counter-con .client-status {
+        font-size: 16px;
+        line-height: 22px;
+        margin-top: 0;
+    }
+
+    .digital-counter-con ul li:nth-child(3),
+    .digital-counter-con ul li:nth-child(4),
+    .digital-counter-con ul li {
+        padding: 18px 30px 18px 45px;
+    }
+
+    .digital-text-con h3 {
+        font-size: 26px;
+        line-height: 36px;
+        margin-bottom: 15px;
+    }
+
+    .digital-text-con .generic-btn a {
+        font-size: 14px;
+        padding: 14px 22px;
+    }
+
+    .index3-event-section .generic-title h2 {
+        font-size: 40px;
+        line-height: 50px;
+    }
+
+    .index3-event-section .generic-title {
+        margin-bottom: 40px;
+    }
+
+    .index3-event-tabs-con .nav-tabs .nav-link.active,
+    .index3-event-tabs-con .nav-tabs .nav-link {
+        font-size: 18px;
+        line-height: 20px;
+        padding: 16px 32px 12px 32px;
+    }
+
+    .index3-event-tabs-con .nav-tabs {
+        margin-bottom: 40px;
+        padding-left: 30px;
+    }
+
+    .index3-faqs .card {
+        margin-bottom: 25px;
+    }
+
+    .index3-faqs {
+        margin-bottom: 40px;
+    }
+
+    .index3-faq-btn-con .generic-btn a {
+        padding: 18px 30px;
+        font-size: 14px;
+    }
+
+    .generic-title2 {
+        margin-bottom: 40px;
+    }
+
+    .index3-event-zone {
+        padding: 30px 40px 30px 40px;
+    }
+
+    .index3-event-zone figure img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .index3-speakers-section .owl-carousel .owl-nav button.owl-prev {
+        left: -20px;
+    }
+
+    .index3-speakers-section .owl-carousel .owl-nav button.owl-next {
+        right: -20px;
+    }
+
+    .index3-speaker-outer-con .owl-carousel .owl-item .index3-speaker-box figure img {
+        width: 255px;
+        height: 320px;
+        object-fit: contain;
+    }
+
+    .index3-speaker-detail-con {
+        padding: 20px 20px;
+        width: 260px;
+    }
+
+    .index3-speaker-detail-con h5 {
+        margin-bottom: 10px;
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .index3-speaker-detail-con ul li a i {
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .index3-speaker-box::before {
+        width: 160px;
+        height: 160px;
+    }
+
+    .index3-speaker-box {
+        height: 340px;
+        margin-bottom: 45px;
+    }
+
+    .index3-speakers-section {
+        padding-bottom: 150px;
+    }
+
+    .index3-plan-inner-con .ticket-details .generic-btn a {
+        padding: 16px 34px;
+        font-size: 14px;
+    }
+
+    .index3-plan-inner-con .ticket-details {
+        height: 405px;
+    }
+
+    .index3-plan-inner-con .gold-ticket-details {
+        height: 465px;
+    }
+
+    .index3-plan-inner-con {
+        margin-bottom: 40px;
+    }
+
+    .index3-plan-btn p {
+        margin-bottom: 25px;
+    }
+
+    .index3-registration-left-con h2 {
+        font-size: 40px;
+        line-height: 50px;
+        margin-bottom: 15px;
+    }
+
+    .index3-registration-right-con figure img {
+        width: 85%;
+    }
+
+    .index3-registration-section {
+        height: 424px;
+    }
+
+    .index3-top-experts-inner-section {
+        grid-template-columns: 49% 49%;
+    }
+
+    .index3-experts-left-con {
+        grid-template-columns: 48.2% 48.2%;
+    }
+
+    .index3-experts-right-con {
+        grid-template-columns: 49% 47.5%;
+    }
+
+    .index3-expert-right-bottom-con {
+        grid-template-columns: 119% 78%;
+    }
+
+    .index3-top-experts-inner-section .search-icon-con {
+        width: 60px;
+        height: 60px;
+    }
+
+    .index3-top-experts-inner-section .search-icon-con::before {
+        width: 80px;
+        height: 80px;
+    }
+
+    .index3-testimonial-inner-con .owl-carousel .owl-item .index3-quote-con figure img {
+        width: 50px;
+    }
+
+    .index3-quote-con {
+        top: -16px;
+    }
+
+    .index3-testimonial-box>figure {
+        margin-left: 0;
+    }
+
+    .index3-testimonial-box p {
+        margin-bottom: 15px;
+    }
+
+    .index3-testimonial-section {
+        padding-bottom: 170px;
+    }
+
+    .index3-testimonial-section .owl-carousel .owl-nav button.owl-prev {
+        left: -20px;
+    }
+
+    .index3-testimonial-section .owl-carousel .owl-nav button.owl-next {
+        right: -20px;
+    }
+
+    .index3-footer-main-section {
+        padding-top: 80px;
+        padding-bottom: 60px;
+        margin-top: 0;
+    }
+
+    /* index3 page responsive end here */
+}
+
+@media only screen and (max-width: 1199px) {
+
+    /* navbar section */
+    .header-main-con .container-fluid {
+        padding: 0 5%;
+    }
+
+    .lets-talk-btn a {
+        padding: 10px 16px;
+    }
+
+    .navbar-expand-lg .navbar-nav .dropdown-menu {
+        top: 15px;
+    }
+    /* navbar section */
+    /* banner section */
+    h1 {
+        font-size: 42px;
+        line-height: 52px;
+    }
+
+    .banner-left-section>span,
+    .banner-right-section span {
+        font-size: 15px;
+        line-height: 18px;
+    }
+
+    .banner-main-section .owl-carousel .owl-dots button {
+        width: 14px;
+        height: 14px;
+        margin: 0 4px;
+    }
+
+    .banner-main-section .owl-carousel .owl-dots {
+        bottom: -50px;
+    }
+
+    .banner-right-section span {
+        margin: 0 65px 0 0;
+    }
+
+    .banner-main-section .owl-carousel .owl-nav button.owl-prev i,
+    .banner-main-section .owl-carousel .owl-nav button.owl-next i {
+        font-size: 14px;
+    }
+
+    .banner-inner-section h1 {
+        margin-bottom: 5px;
+    }
+
+    .banner-main-section,
+    .banner-main-section::after {
+        height: 650px;
+    }
+
+    .banner-inner-section {
+        grid-template-columns: 56% 44%;
+    }
+
+    .banner-outer-con {
+        width: 712px;
+        margin: 0 auto;
+    }
+
+    .banner-left-section .generic-btn a {
+        padding: 20px 25px;
+    }
+
+    /* banner section */
+    /* about section */
+    .small-text {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    h2 {
+        font-size: 34px;
+        line-height: 40px;
+    }
+
+    .padding-top {
+        padding-top: 80px;
+    }
+
+    .padding-bottom {
+        padding-bottom: 80px;
+    }
+
+    .about-left-con p {
+        margin-bottom: 7px;
+    }
+
+    .generic-btn a,
+    .generic-btn button {
+        font-size: 15px;
+        line-height: 16px;
+        padding: 18px 30px;
+    }
+
+    .about-left-con::before {
+        width: 120px;
+        height: 100px;
+        left: 0;
+        bottom: 0;
+    }
+
+    .co-image-box,
+    .ceo-image-box {
+        width: 220px;
+    }
+
+    .co-image-box {
+        height: 270px;
+    }
+
+    .co-image-box figure img,
+    .ceo-image-box figure img {
+        width: 100%;
+    }
+
+    .ceo-image-box figure {
+        width: 185px;
+        height: 258px;
+    }
+
+    .co-image-box figure {
+        width: 185px;
+        height: 234px;
+    }
+
+    .investment,
+    .attendees {
+        width: 233px;
+        height: 90px;
+    }
+
+    .ceo-image-box {
+        height: 286px;
+    }
+
+    .investment span {
+        margin-left: -40px;
+    }
+
+    .attendents figure img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .attendents {
+        margin-left: -20px;
+    }
+
+    .about-left-con::before {
+        width: 90px;
+        height: 70px;
+        left: 0;
+        bottom: -40px;
+    }
+
+    .counter-sec ul li .count,
+    .counter-sec ul li .plus {
+        font-size: 40px;
+        line-height: 40px;
+        margin-bottom: 10px;
+    }
+
+    .client-status {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    /* about section */
+    /* event section */
+    .event-right-con .nav-link {
+        padding: 0 20px 0 20px;
+        position: relative;
+    }
+
+    .event-inner-section {
+        grid-template-columns: 44% 49%;
+    }
+
+    .event-left-con::before {
+        right: -30px;
+    }
+
+    .event-left-con p {
+        margin-bottom: 20px;
+        padding-right: 0;
+    }
+
+    .event-left-con .generic-btn a {
+        padding: 20px 22px;
+    }
+
+    .event-right-con .nav-tabs {
+        width: 410px;
+        margin-bottom: 20px;
+    }
+
+    .event-left-con::after {
+        width: 130px;
+        height: 110px;
+        left: 0;
+    }
+
+    /* event section */
+    /* speaker section */
+    .speakers-main-section .container-fluid {
+        padding: 0 2%;
+    }
+
+    .speakers-main-section .generic-title p br {
+        display: none;
+    }
+
+    .speakers-inner-sec {
+        gap: 20px;
+        margin: 0 auto 50px;
+        max-width: 952px;
+        grid-template-columns: 23.5% 23.5% 23.5% 23.5%;
+    }
+
+    .speaker-box figure {
+        width: 100%;
+        height: 100%;
+    }
+
+    .speaker-box figure img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .speaker-status {
+        width: 91%;
+        padding: 10px 10px;
+    }
+
+    .speaker-box .staus-con {
+        line-height: 18px;
+        margin-top: 0;
+    }
+
+    .speaker-status button {
+        font-size: 14px;
+    }
+
+    .speaker-box a {
+        width: 35px;
+        height: 35px;
+        padding: 6px 11px;
+    }
+
+    /* speaker section */
+    /* ticket section */
+    .ticket-inner-section::before {
+        width: 40px;
+        height: 40px;
+        top: -30px;
+    }
+
+    .ticket-left-section .generic-title p br {
+        display: none;
+    }
+
+    h3 {
+        font-size: 30px;
+        line-height: 34px;
+    }
+
+    .ticket-details p {
+        font-size: 17px;
+        line-height: 18px;
+    }
+
+    .ticket-details .price {
+        font-size: 45px;
+        line-height: 50px;
+    }
+
+    .ticket-details .price small {
+        font-size: 20px;
+        top: -17px;
+    }
+
+    .ticket-details .generic-btn a {
+        padding: 16px 25px;
+    }
+
+    /* ticket section */
+    /* conference section */
+    .conference-main-section .generic-title {
+        margin-bottom: 30px;
+    }
+
+    .conference-main-section .container-fluid {
+        padding: 0 2%;
+    }
+
+    .conference-inner-con {
+        max-width: 953px;
+        margin: 0 auto 40px;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .conference-txt span {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .conference-txt small {
+        font-size: 13px;
+        line-height: 13px;
+        margin-bottom: 2px;
+    }
+
+    .conference-txt {
+        padding: 12px 15px;
+    }
+
+    .conference-main-section .generic-btn a {
+        padding: 20px 40px;
+    }
+
+    .conference-box figure img {
+        height: 204px;
+    }
+
+    /* conference section */
+    /* ticket section */
+    .mySwiper {
+        width: 320px;
+    }
+
+    /* ticket section */
+    /* testimonial section */
+    .testimonial-inner-con {
+        gap: 70px;
+        grid-template-columns: 41% 51%;
+    }
+
+    .testimonial-main-section .owl-carousel .owl-nav {
+        bottom: 57px;
+    }
+
+    /* testimonial section */
+    /* sponsor section */
+    .sponsers-main-section {
+        padding: 40px 0;
+    }
+
+    /* sponsor section */
+    /* event section */
+    .event-left-con::before,
+    .conference-main-section .generic-title::after,
+    .blog-main-section .generic-title::before {
+        height: 40px;
+        top: -24px;
+    }
+
+    /* event section */
+    /* blog section */
+    .blog-main-section .generic-title {
+        margin-bottom: 40px;
+    }
+
+    .blog-img figure img {
+        width: 100%;
+    }
+
+    .blog-img figure {
+        width: 295px;
+        height: 100%;
+    }
+
+    .blog-img,
+    .blog-box {
+        width: 100%;
+    }
+
+    .blogs-inner-con {
+        gap: 20px;
+        grid-template-columns: 31.9% 31.9% 31.9%;
+    }
+
+    .blog-text span {
+        font-size: 13px;
+        line-height: 14px;
+        margin-bottom: 8px;
+    }
+
+    h6 {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .blog-text {
+        bottom: -60px;
+        padding: 20px 20px;
+    }
+
+    .blog-text h6 {
+        padding-left: 15px;
+    }
+
+    .blog-main-section {
+        padding-bottom: 140px;
+    }
+
+    /* blog section */
+    /* registration section */
+    .registration-main-section .registration-inner-con {
+        height: 100%;
+        text-align: center;
+        padding: 60px 200px;
+    }
+
+    .registration-inner-con .generic-title h2 {
+        font-size: 41px;
+        line-height: 50px;
+    }
+
+    .registration-main-section .generic-title .generic-btn a {
+        padding: 20px 25px;
+    }
+
+    /* registration section */
+    /* footer section */
+    .footer-main-section {
+        padding-top: 240px;
+        margin-top: -170px;
+    }
+
+    .footer-inner-con {
+        grid-template-columns: 29% 18% 14% 22%;
+    }
+
+    .footer-box>p {
+        line-height: 22px;
+        margin-bottom: 15px;
+    }
+
+    .footer-call-btn small {
+        font-size: 12px;
+        line-height: 12px;
+        margin-bottom: 7px;
+    }
+
+    .footer-call-btn span {
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .footer-box>a {
+        margin-bottom: 10px;
+    }
+
+    .footer-box ul li span {
+        font-size: 16px;
+        line-height: 16px;
+        margin-bottom: 10px;
+    }
+
+    .footer-box ul li {
+        margin-bottom: 15px;
+    }
+
+    .footer-navigation ul li {
+        margin-bottom: 4px;
+    }
+
+    .footer-box h6,
+    .footer-navigation h6 {
+        margin-bottom: 15px;
+    }
+
+    .footer-box.footer-contact ul li p {
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .footer-box.footer-contact ul li a {
+        font-size: 15px;
+    }
+
+    .footer-box.footer-contact ul li span {
+        margin-bottom: 5px;
+    }
+
+    .footer-social-links ul {
+        gap: 5px;
+    }
+
+    .footer-social-links ul li a {
+        width: 35px;
+        height: 35px;
+    }
+
+    .footer-box.footer-contact ul li:nth-child(2) {
+        margin-bottom: 10px;
+    }
+
+    .copyright-content {
+        padding: 20px 20px;
+    }
+
+    /* footer section */
+    /* 404 page */
+    .error-con {
+        padding: 0;
+    }
+
+    .error-con h2 {
+        font-size: 90px;
+        line-height: 90px;
+        margin-bottom: 20px;
+    }
+
+    .error-con .generic-btn a {
+        padding: 25px 25px;
+    }
+
+    /* 404 page */
+    /* contact page start */
+    .contact-box {
+        width: 100%;
+        padding: 45px 28px;
+    }
+
+    .contact-info-inner-con {
+        display: grid;
+        gap: 30px;
+        grid-template-columns: 31.1% 31.1% 31.1%;
+    }
+
+    .contact-box figure {
+        width: 100px;
+        height: 100px;
+    }
+
+    .contact-form-section .generic-title {
+        margin-bottom: 30px;
+    }
+
+    .contact-form-section form ul li input,
+    .contact-form-section form ul li textarea {
+        padding: 22px 16px;
+    }
+
+    .responsive-map iframe {
+        height: 370px;
+        margin-top: -180px;
+    }
+
+    .contact-form-section {
+        padding-bottom: 265px;
+    }
+
+    /* contact page start */
+    /* index2 page responsive start here */
+    .header-main-con.index2-header .container-fluid {
+        padding: 0 2%;
+    }
+
+    .header-main-con.index2-header .navbar-nav {
+        gap: 25px;
+        margin-right: 160px;
+    }
+
+    .green-triange-first-img figure img,
+    .green-triange-second-img figure img {
+        height: 30px;
+    }
+
+    .green-triange-first-img {
+        left: 25px;
+    }
+
+    .index2-banner-section .owl-carousel {
+        padding-top: 0;
+    }
+
+    .index2-banner-left-con {
+        padding-top: 65px;
+    }
+
+    .index2-banner-section h1 {
+        font-size: 36px;
+        line-height: 44px;
+        margin-bottom: 20px;
+    }
+
+    .index2-banner-section .two-girls-img figure img {
+        width: 250px;
+    }
+
+    .index2-banner-section .man-right-img figure img {
+        width: 200px;
+    }
+
+    .index2-banner-section .man-right-img {
+        left: -25px;
+    }
+
+    .index2-banner-section {
+        height: 700px;
+    }
+
+    .index2-banner-outer-section {
+        height: 580px;
+    }
+
+    .index2-banner-left-con .generic-btn a {
+        font-size: 14px;
+        padding: 18px 20px;
+    }
+
+    .line-second-img figure img,
+    .line-shape-img figure img {
+        height: 70px;
+    }
+
+    .line-second-img {
+        left: 105px;
+        top: 150px;
+    }
+
+    .line-shape-img {
+        left: 70px;
+        bottom: 140px;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-prev {
+        left: -55px;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-next {
+        right: -55px;
+    }
+
+    .index2-banner-right-con span {
+        font-size: 25px;
+        right: 0;
+        top: 110px;
+    }
+
+    .index2-banner-section .owl-carousel .owl-dots .owl-dot {
+        height: 3px;
+        background: rgb(255 255 255 / 40%);
+    }
+
+    .index2-banner-right-con small {
+        left: -50px;
+        bottom: 205px;
+        font-size: 11px;
+    }
+
+    .learning-conference-heading h2 {
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .learning-conference-heading {
+        margin-bottom: 25px;
+        gap: 45px;
+        grid-template-columns: 41% 54%;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-item .learning-conference-video-box>figure img {
+        width: 340px;
+        height: 280px;
+        object-fit: cover;
+    }
+
+    .learning-conference-sec .owl-nav {
+        gap: 10px;
+    }
+
+    .learning-conference-sec {
+        padding-bottom: 150px;
+    }
+
+    .conference-registration {
+        gap: 120px;
+        top: -215px;
+        grid-template-columns: 63% 22.2%;
+    }
+
+    .planned-events {
+        padding-top: 150px;
+    }
+
+    .planned-events .generic-title h2 {
+        font-size: 34px;
+        line-height: 40px;
+    }
+
+    .planned-events-inner-section {
+        grid-template-columns: 14% 82.7%;
+    }
+
+    .planned-events-inner-section .nav-pills .nav-link {
+        left: -75px;
+    }
+
+    .organizer-profile figure {
+        margin-bottom: 15px;
+    }
+
+    .organizer-profile h6 {
+        margin-bottom: 2px;
+    }
+
+    .organizer-profile span {
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+
+    .organizer-profile span::after {
+        bottom: -12px;
+    }
+
+    .organizer-profile ul li {
+        padding-left: 16px;
+        font-size: 15px;
+        line-height: 15px;
+        margin-bottom: 8px;
+    }
+
+    .event-text-box h3 {
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+
+    .event-text-box {
+        padding: 20px 25px 30px;
+    }
+
+    .planned-events .generic-title .small-text {
+        margin-bottom: 10px;
+    }
+
+    .ticket-pricing-section .generic-title {
+        margin-bottom: 45px;
+    }
+
+    .schedule-con {
+        padding: 30px 30px 30px 40px;
+        gap: 115px;
+        grid-template-columns: 57% 29.5%;
+    }
+
+    .ticket-pricing-section .generic-title h2 {
+        font-size: 34px;
+        line-height: 44px;
+    }
+
+    .ticket-pricing-section .generic-title span {
+        margin-bottom: 10px;
+    }
+
+    .ticket-pricing-slider .ticket-details {
+        width: 100%;
+        padding: 25px 15px 38px 30px;
+    }
+
+    .ticket-pricing-slider .ticket-details h3 {
+        font-size: 26px;
+        line-height: 30px;
+        margin-bottom: 10px;
+    }
+
+    .ticket-details p {
+        font-size: 16px;
+        line-height: 16px;
+        margin-bottom: 10px;
+    }
+
+    .ticket-details .price {
+        font-size: 40px;
+        line-height: 40px;
+        padding-left: 0;
+    }
+
+    .ticket-details .price small {
+        font-size: 18px;
+        top: -14px;
+    }
+
+    .ticket-pricing-slider .owl-carousel .owl-nav button.owl-prev {
+        left: -20px;
+    }
+
+    .ticket-pricing-slider .owl-carousel .owl-nav button.owl-next {
+        right: -20px;
+    }
+
+    .ticket-details ul {
+        margin-bottom: 20px;
+    }
+
+    .ticket-pricing-slider .ticket-details .generic-btn a {
+        font-size: 14px;
+        padding: 16px 24px;
+    }
+
+    .ticket-pricing-slider {
+        margin-bottom: 45px;
+    }
+
+    .index2-speakers-section .generic-title span {
+        margin-bottom: 10px;
+    }
+
+    .index2-speakers-section .generic-title h2 {
+        font-size: 34px;
+        line-height: 44px;
+    }
+
+    .index2-speakers-section .generic-title {
+        margin-bottom: 45px;
+    }
+
+    .index2-speaker-box figure::before {
+        width: 214px;
+        height: 218px;
+        bottom: 0;
+    }
+
+    .index2-speaker-box figure img {
+        width: 100%;
+    }
+
+    .index2-speaker-detail ul {
+        padding: 7px 14px 6px;
+    }
+
+    .index2-speaker-detail ul li {
+        margin: 0 3px;
+    }
+
+    .index2-speaker-detail {
+        margin-top: -45px;
+    }
+
+    .index2-best-speakers {
+        gap: 30px 24px;
+    }
+
+    .index2-best-speaker-btn .generic-btn a {
+        font-size: 15px;
+        padding: 18px 24px;
+    }
+
+    .index2-best-speaker-btn p {
+        margin-bottom: 20px;
+    }
+
+    .biggest-text-section h2 {
+        font-size: 34px;
+        line-height: 44px;
+        margin-bottom: 10px;
+    }
+
+    .biggest-text-section p {
+        margin-bottom: 20px;
+    }
+
+    .biggest-img-box figure img {
+        width: 437px;
+        height: 333px;
+        object-fit: cover;
+    }
+
+    .biggest-conference-con {
+        grid-template-columns: 50% 45%;
+    }
+
+    .biggest-text-section .generic-btn a {
+        font-size: 14px;
+        padding: 16px 20px;
+    }
+
+    .generic-title2 h2 {
+        font-size: 34px;
+        line-height: 44px;
+    }
+
+    .generic-title2 span {
+        margin-bottom: 10px;
+    }
+
+    .generic-title2 {
+        margin-bottom: 35px;
+    }
+
+    .top-experts-section .expert-images-con ul li img {
+        height: 250px;
+    }
+
+    .expert-images-con ul {
+        gap: 20px;
+        margin-bottom: 20px;
+    }
+
+    .expert-images-con {
+        margin-bottom: 35px;
+    }
+
+    .top-experts-btn .generic-btn a {
+        font-size: 15px;
+        padding: 18px 37px;
+    }
+
+    .index2-faqs .card {
+        margin: 0 15px 15px 0;
+    }
+
+    .index2-faqs .card .card-header h6 button {
+        font-size: 18px;
+        line-height: 24px;
+        padding: 22px 65px 21px 20px;
+    }
+
+    .index2-faqs .card .card-body {
+        padding: 0px 20px 20px;
+    }
+
+    .index2-faqs .card-header h6 .btn.collapsed::after,
+    .index2-faqs .card-header h6 .btn.btn-link::after {
+        font-size: 14px;
+        line-height: 14px;
+        right: 13px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .index2-footer {
+        padding-top: 80px;
+        margin-top: 0;
+    }
+
+    .index2-sponsers-companies.sponsers-companies ul {
+        gap: 20px;
+        grid-template-columns: 15% 15% 16% 15% 13%;
+    }
+
+    .ticket-details ul li {
+        display: block;
+        padding-left: 27px;
+        margin-bottom: 5px;
+    }
+
+    /* index2 page responsive end here */
+    /* index3 page responsive start here */
+    .index3-banner-section .container-fluid,
+    .header-main-con.index3-header .container-fluid {
+        padding: 0 5%;
+    }
+
+    .header-main-con.index3-header .navbar-nav {
+        gap: 25px;
+        margin-right: 130px;
+    }
+
+    .index3-header .nav-btns {
+        right: 145px;
+    }
+
+    .index3-header .lets-talk-btn a {
+        border-radius: 25px;
+        padding: 10px 20px;
+    }
+
+    .index3-banner-img-con figure {
+        width: 600px;
+    }
+
+    .index3-banner-section {
+        height: 670px;
+        padding: 130px 0 0;
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav button.owl-prev {
+        left: -45px;
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav button.owl-next {
+        right: -45px;
+    }
+
+    .index3-banner-text-con {
+        padding: 40px 30px;
+        width: 370px;
+        height: auto;
+    }
+
+    .index3-banner-text-con span {
+        padding-left: 25px;
+        margin-bottom: 10px;
+    }
+
+    .index3-banner-text-con h1 {
+        font-size: 30px;
+        line-height: 40px;
+        margin-bottom: 8px;
+    }
+
+    .index3-banner-text-con ul {
+        margin-bottom: 20px;
+    }
+
+    .index3-banner-section .owl-carousel .owl-dots .owl-dot {
+        width: 25px;
+    }
+
+    .journey-section .learning-conference-video-box>figure img {
+        width: 100%;
+    }
+
+    .journey-text-con h2 {
+        font-size: 36px;
+        line-height: 42px;
+        margin-bottom: 12px;
+    }
+
+    .journey-text-con p {
+        margin-bottom: 15px;
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .journey-inner-con {
+        margin-bottom: 60px;
+        gap: 30px;
+        grid-template-columns: 57.5% 39%;
+    }
+
+    .digital-conference-img-con figure img {
+        width: 100%;
+    }
+
+    .digital-counter-con ul li:nth-child(3),
+    .digital-counter-con ul li:nth-child(4),
+    .digital-counter-con ul li {
+        padding: 14px 30px 14px 30px;
+    }
+
+    .digital-text-con h3 {
+        font-size: 24px;
+        line-height: 34px;
+    }
+
+    .digital-text-con {
+        padding: 47px 30px;
+    }
+
+    .index3-event-section .generic-title h2 {
+        font-size: 36px;
+        line-height: 46px;
+    }
+
+    .index3-event-tabs-con .nav-tabs .nav-link.active,
+    .index3-event-tabs-con .nav-tabs .nav-link {
+        font-size: 16px;
+        line-height: 18px;
+        padding: 15px 30px 13px 30px;
+    }
+
+    .index3-event-section .generic-title {
+        margin-bottom: 30px;
+    }
+
+    .index3-event-date {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .index3-event-month span {
+        font-size: 20px;
+        margin-bottom: 4px;
+    }
+
+    .index3-event-detail {
+        gap: 40px;
+        grid-template-columns: 28.7% 66%;
+    }
+
+    .index3-organizer-detail>span {
+        font-size: 22px;
+        line-height: 26px;
+        margin-bottom: 8px;
+    }
+
+    .index3-event-organizer figure img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .index3-faqs h6 button {
+        padding: 14px 90px 14px 30px;
+    }
+
+    .index3-faqs .card-body {
+        padding: 20px 40px 20px 60px;
+    }
+
+    .index3-faqs .card-body p {
+        font-size: 16px;
+        line-height: 26px;
+        margin-bottom: 10px;
+    }
+
+    .index3-faqs .card-body span {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .index3-faq-btn-con p {
+        margin-bottom: 20px;
+    }
+
+    .index3-faq-btn-con .generic-btn a {
+        padding: 16px 28px;
+        font-size: 14px;
+    }
+
+    .index3-event-zone {
+        padding: 40px 30px;
+    }
+
+    .index3-event-zone figure img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .index3-event-zone figure {
+        margin-bottom: 20px;
+    }
+
+    .index3-event-zone h3 {
+        font-size: 24px;
+        line-height: 26px;
+        margin-bottom: 10px;
+    }
+
+    .index3-event-zone p {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .index3-speakers-section .generic-title2 {
+        margin-bottom: 40px;
+    }
+
+    .index3-speaker-box::before {
+        width: 140px;
+        height: 140px;
+    }
+
+    .index3-speakers-section {
+        padding-bottom: 130px;
+    }
+
+    .index3-speaker-outer-con .owl-carousel .owl-item .index3-speaker-box figure img {
+        width: 215px;
+        height: 240px;
+    }
+
+    .index3-speaker-detail-con {
+        padding: 15px 20px;
+        width: 230px;
+        bottom: -34px;
+    }
+
+    .index3-speaker-box {
+        height: 280px;
+        margin-bottom: 35px;
+    }
+
+    .index3-speaker-detail-con h5 {
+        margin-bottom: 8px;
+        font-size: 18px;
+        line-height: 18px;
+    }
+
+    .index3-speaker-detail-con ul li a i {
+        font-size: 15px;
+        line-height: 15px;
+    }
+
+    .index3-plan-inner-con .ticket-details {
+        height: 370px;
+        width: 100%;
+        padding: 30px 25px;
+    }
+
+    .index3-plan-inner-con .ticket-details h3 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .index3-plan-inner-con .gold-ticket-details {
+        height: 430px;
+        padding: 60px 25px;
+    }
+
+    .index3-plan-inner-con .ticket-details .price {
+        margin-bottom: 8px;
+    }
+
+    .index3-plan-inner-con .ticket-details ul li {
+        margin-bottom: 8px;
+    }
+
+    .index3-plan-inner-con .ticket-details ul {
+        margin-bottom: 22px;
+    }
+
+    .recomended-box {
+        font-size: 12px;
+    }
+
+    .index3-plan-btn p {
+        margin-bottom: 20px;
+    }
+
+    .index3-plan-btn .generic-btn a {
+        font-size: 14px;
+        line-height: 14px;
+        padding: 18px 34px;
+    }
+
+    .index3-registration-left-con h2 {
+        font-size: 34px;
+        line-height: 44px;
+        margin-bottom: 12px;
+    }
+
+    .index3-registration-left-con p {
+        margin-bottom: 20px;
+    }
+
+    .index3-registration-left-con .generic-btn a {
+        font-size: 14px;
+        line-height: 14px;
+        padding: 18px 35px;
+    }
+
+    .index3-registration-section {
+        height: 350px;
+    }
+
+    .generic-title2 {
+        margin-bottom: 30px;
+    }
+
+    .index3-experts-left-con {
+        grid-template-columns: 47.8% 47.8%;
+    }
+
+    .index3-experts-right-con {
+        grid-template-columns: 47.8% 47.8%;
+    }
+
+    .index3-expert-right-bottom-con {
+        grid-template-columns: 115% 85%;
+    }
+
+    .index3-top-experts-section .img-popup img {
+        width: auto;
+    }
+
+    .index3-top-experts-inner-section .search-icon-con i {
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .index3-top-experts-inner-section .search-icon-con::before {
+        width: 60px;
+        height: 60px;
+        border: 2px solid var(--primary-color);
+    }
+
+    .index3-top-experts-inner-section .search-icon-con {
+        width: 50px;
+        height: 50px;
+    }
+
+    .index3-testimonial-inner-con .owl-carousel.owl-drag .owl-item .item {
+        padding: 20px 0 0;
+    }
+
+    .index3-testimonial-box {
+        padding: 30px 35px 30px;
+    }
+
+    .index3-testimonial-section {
+        padding-bottom: 140px;
+    }
+
+    .index3-testimonial-section .owl-carousel .owl-dots {
+        bottom: -51px;
+    }
+
+    .index3-footer-main-section {
+        padding-top: 60px;
+        padding-bottom: 50px;
+        margin-top: 0;
+    }
+
+    .index3-testimonial-section .owl-carousel .owl-nav button.owl-prev,
+    .index3-testimonial-section .owl-carousel .owl-nav button.owl-next {
+        top: 53%;
+    }
+
+    /* index3 page responsive end here */
+    #button {
+        bottom: 30px;
+        right: 30px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+
+    /*cross-button*/
+    .navbar-toggler {
+        right: 0px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 0px;
+        width: 40px;
+        position: absolute;
+    }
+
+    .navbar-collapse {
+        background: var(--button-color);
+        border-radius: 10px;
+        position: absolute;
+        z-index: 2;
+        right: 0;
+        top: 58px;
+        width: 320px;
+    }
+
+    .navbar-toggler:focus {
+        outline: none;
+    }
+
+    .navbar-toggler .navbar-toggler-icon:nth-child(1),
+    .navbar-toggler .navbar-toggler-icon:nth-child(3) {
+        -webkit-transition: transform .35s ease-in-out;
+        -moz-transition: transform .35s ease-in-out;
+        -o-transition: transform .35s ease-in-out;
+        transition: transform .35s ease-in-out;
+    }
+
+    .navbar-toggler:not(.collapsed) .navbar-toggler-icon:nth-child(1) {
+        position: absolute;
+        top: 8px;
+        -webkit-transform: rotate(135deg);
+        -moz-transform: rotate(135deg);
+        -o-transform: rotate(135deg);
+        transform: rotate(135deg);
+        left: 0px;
+    }
+
+    .navbar-toggler:not(.collapsed) .navbar-toggler-icon:nth-child(2) {
+        height: 12px;
+        visibility: hidden;
+        background-color: transparent;
+    }
+
+    .navbar-toggler:not(.collapsed) .navbar-toggler-icon:nth-child(3) {
+        position: absolute;
+        top: 8px;
+        -webkit-transform: rotate(-135deg);
+        -moz-transform: rotate(-135deg);
+        -o-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+        left: 0px;
+    }
+
+    .navbar-toggler-icon {
+        float: left;
+        width: 90%;
+        height: 3px;
+        margin: 3px 0px;
+        background: #fff;
+    }
+
+    .navbar-light .navbar-toggler {
+        border: none;
+    }
+
+    .navbar-nav {
+        padding: 0;
+        margin: 0;
+    }
+
+    .navbar-collapse .show .navbar-nav:last-child {
+        padding-right: 10px !important;
+    }
+
+    .navbar-btn {
+        clip-path: none;
+        padding: 15px 20px 15px 20px;
+        text-align: center;
+        border-radius: 0;
+        left: 0;
+    }
+
+    /* cross button */
+    /* navbar styling start here */
+    .nav-btns {
+        right: 60px;
+    }
+
+    .navbar-expand-lg .navbar-nav .dropdown-menu .dropdown-item {
+        padding: 2px 15px;
+    }
+
+    .index2-header .navbar-expand-lg .navbar-nav .dropdown-menu .dropdown-item:hover,
+    .header-main-con.index2-header .dropdown-item.active,
+    .header-main-con.index2-header .dropdown-item:active {
+        background: transparent;
+        color: var(--accent);
+    }
+
+    .header-main-con .navbar-nav {
+        gap: 15px;
+        margin-right: 0;
+        padding: 25px 30px 0;
+        margin-bottom: 20px;
+    }
+
+    .lets-talk-btn a {
+        padding: 10px 16px;
+        display: inline-block;
+    }
+
+    .header-contact {
+        padding: 0 30px 30px 30px;
+    }
+
+    .navbar-expand-lg .navbar-nav .dropdown-menu {
+        position: unset;
+        padding: 10px 20px;
+        overflow: hidden;
+        border: none;
+        margin: 10px 0 0;
+    }
+
+    .header-main-con .navbar-light .navbar-nav .nav-link {
+        font-size: 16px;
+        line-height: 18px;
+        letter-spacing: 0;
+    }
+
+    .header-main-con .dropdown-item.active,
+    .header-main-con .dropdown-item:active {
+        color: var(--yellow-color);
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+    .index3-header .navbar-expand-lg .navbar-nav .dropdown-menu .dropdown-item:hover,
+    .header-main-con.index3-header .dropdown-item.active,
+    .header-main-con.index3-header .dropdown-item:active {
+        background: transparent;
+        color: var(--pink-color);
+    }
+
+    /* navbar styling end here */
+    /* banner styling start here */
+    body {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    h1 {
+        font-size: 32px;
+        line-height: 42px;
+    }
+
+    .banner-main-section,
+    .banner-main-section::after {
+        height: 570px;
+    }
+
+    .banner-inner-section {
+        grid-template-columns: 53% 47%;
+    }
+
+    .banner-main-section .owl-carousel .owl-nav button.owl-next {
+        right: -55px;
+    }
+
+    .banner-main-section .owl-carousel .owl-nav button.owl-prev {
+        left: -55px;
+    }
+
+    .padding-top {
+        padding-top: 70px;
+    }
+
+    .padding-bottom {
+        padding-bottom: 70px;
+    }
+
+    .banner-outer-con {
+        width: 100%;
+    }
+
+    .container-fluid {
+        padding: 0 9%;
+    }
+
+    /* banner styling end here */
+    /* about section styling start here */
+    .about-inner-con {
+        gap: 30px;
+        margin-bottom: 80px;
+        grid-template-columns: 100%;
+    }
+
+    .about-left-con {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .about-right-con {
+        justify-content: center;
+    }
+
+    .counter-sec ul li .count,
+    .counter-sec ul li .plus {
+        font-size: 34px;
+        line-height: 36px;
+        margin-bottom: 5px;
+    }
+
+    /* about section styling end here */
+    /* event section styling start here */
+    .event-inner-section {
+        gap: 40px;
+        grid-template-columns: 100%;
+    }
+
+    .event-left-con::after {
+        width: 80px;
+        height: 80px;
+        right: 0;
+        left: unset;
+        top: 160px;
+    }
+
+    .event-left-con::before {
+        right: 0;
+    }
+
+    .event-left-con::before,
+    .conference-main-section .generic-title::after,
+    .blog-main-section .generic-title::before {
+        height: 40px;
+        top: -34px;
+    }
+
+    .education__content {
+        padding: 15px 20px 10px 60px;
+    }
+
+    /* event section styling end here */
+    /* speaker section styling start here */
+    .speakers-inner-sec {
+        gap: 23px;
+        max-width: 600px;
+        grid-template-columns: 48% 48%;
+    }
+
+    .speakers-main-section .generic-title {
+        padding: 0 30px;
+    }
+
+    /* speaker section styling end here */
+    /* ticket section styling start here */
+    .ticket-inner-section {
+        gap: 50px;
+        grid-template-columns: 100%;
+    }
+
+    .ticket-left-section .generic-title p {
+        margin-bottom: 20px;
+    }
+
+    .ticket-details>span {
+        margin-bottom: 10px;
+        font-size: 15px;
+        line-height: 16px;
+    }
+
+    .ticket-details {
+        padding: 35px 45px 45px;
+    }
+
+    .ticket-details .price {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    .ticket-details .price small {
+        top: -14px;
+    }
+
+    .ticket-details ul {
+        margin-bottom: 20px;
+    }
+
+    .ticket-left-section .generic-btn a {
+        padding: 20px 25px;
+    }
+
+    .ticket-left-section {
+        text-align: center;
+    }
+
+    .education__content p {
+        line-height: 24px;
+    }
+
+    /* ticket section styling end here */
+    /* conference section styling start here */
+    .conference-main-section .generic-title::after {
+        right: 0px;
+    }
+
+    .conference-box {
+        width: 100%;
+    }
+
+    .conference-box figure img {
+        height: 350px;
+    }
+
+    .conference-inner-con {
+        max-width: 740px;
+        grid-template-columns: 49% 49%;
+    }
+
+    .conference-txt small {
+        font-size: 15px;
+        line-height: 15px;
+        margin-bottom: 5px;
+    }
+
+    .conference-txt span {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .conference-txt {
+        padding: 15px 20px;
+    }
+
+    /* conference section styling end here */
+    /* testimonial section styling start here */
+    .testimonial-inner-con {
+        gap: 30px;
+        grid-template-columns: 45% 50%;
+    }
+
+    .testimonial-img-outer-con {
+        width: 294px;
+        height: 304px;
+    }
+
+    .testimonial-img-outer-con figure {
+        height: 304px;
+        top: 10px;
+        left: 10px;
+    }
+
+    .testimonial-img-outer-con figure img {
+        width: 100%;
+    }
+
+    .testimonial-right-con .generic-title {
+        margin-bottom: 25px;
+    }
+
+    .testimonial-right-con .generic-title h2::after {
+        bottom: -12px;
+        height: 3px;
+    }
+
+    .testimonial-right-con p {
+        margin-bottom: 15px;
+        line-height: 24px;
+    }
+
+    .testimonial-main-section .owl-carousel .owl-nav button {
+        height: 35px;
+        width: 35px;
+    }
+
+    .testimonial-main-section .owl-carousel .owl-nav {
+        bottom: 12px;
+    }
+
+    /* testimonial section styling end here */
+    /* sponsors section styling start here*/
+    .sponsers-companies ul li figure img {
+        width: 80px;
+        height: 40px;
+    }
+
+    .sponsers-companies ul {
+        grid-template-columns: 15% 15% 15% 15% 12%;
+    }
+
+    /* sponsors section styling end here*/
+    /* blog section styling start here */
+    .blog-img figure {
+        width: 100%;
+        height: 100%;
+    }
+
+    .blog-text {
+        bottom: -80px;
+        padding: 15px 15px;
+    }
+
+    .blogs-inner-con {
+        grid-template-columns: 31.3% 31.3% 31.3%;
+    }
+
+    h6 {
+        font-size: 17px;
+        line-height: 21px;
+    }
+
+    .blog-img span {
+        font-size: 13px;
+        line-height: 16px;
+        padding: 3px 7px;
+    }
+
+    /* blog section styling end here */
+    /* registration section styling start here */
+    .registration-main-section .registration-inner-con {
+        padding: 50px 60px;
+    }
+
+    .registration-inner-con .generic-title h2 {
+        font-size: 34px;
+        line-height: 44px;
+        margin-bottom: 20px;
+    }
+
+    /* registration section styling end here */
+    /* footer section styling start here */
+    .footer-inner-con {
+        gap: 20px;
+        grid-template-columns: 25% 22% 16% 28%;
+    }
+
+    .footer-box>p {
+        font-size: 14px;
+    }
+
+    .footer-call-btn {
+        gap: 10px;
+    }
+
+    .footer-call-btn span {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    .footer-box ul li span {
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    .footer-navigation ul li {
+        margin-bottom: 3px;
+    }
+
+    .footer-call-btn i {
+        font-size: 24px;
+    }
+
+    .footer-box.footer-navigation ul li a {
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    .footer-call-btn small {
+        margin-bottom: 5px;
+    }
+
+    .footer-box.footer-contact ul li p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .footer-box.footer-contact ul li a {
+        font-size: 14px;
+    }
+
+    /* footer section styling end here */
+    /* about page styling start here */
+    .header-main-con .navbar-light .navbar-brand figure img {
+        width: 95px;
+    }
+
+    .header-main-con.index2-header .navbar-light .navbar-brand figure img {
+        width: 105px;
+    }
+
+    .sub-banner-main-section {
+        height: 400px;
+    }
+
+    .about-another-con .about-left-con {
+        margin-bottom: 20px;
+    }
+
+    .faq-main-section .generic-title .small-text {
+        margin-bottom: 10px;
+    }
+
+    .faq-main-section .generic-title {
+        margin-bottom: 40px;
+    }
+
+    .faq-inner-section .card-header h5 .btn {
+        font-size: 20px;
+        line-height: 20px;
+        padding: 25px 25px;
+    }
+
+    .faq-inner-section .card-header h5 .btn::after,
+    .faq-inner-section .card-header h5 .btn.collapsed::after {
+        width: 35px;
+        height: 35px;
+    }
+
+    .faq-inner-section .card-body {
+        font-size: 17px;
+        line-height: 26px;
+        padding: 15px 25px 0px;
+    }
+
+    .faq-inner-section .card {
+        margin-bottom: 20px;
+    }
+
+    /* about page styling end here */
+    /* coming soon page  */
+    .coming-soon-con h2 {
+        font-size: 70px;
+        line-height: 70px;
+        margin-bottom: 20px;
+    }
+
+    /* coming soon page  */
+    /* contact page */
+    .contact-box {
+        padding: 35px 15px;
+    }
+
+    .contact-box figure {
+        width: 80px;
+        height: 80px;
+    }
+
+    .contact-box figure img {
+        width: 30px;
+        height: 36px;
+        object-fit: contain;
+    }
+
+    .contact-box p {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 10px;
+    }
+
+    .contact-info-inner-con {
+        gap: 15px;
+        grid-template-columns: 32% 32% 32%;
+    }
+
+    .contact-box ul li a {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .footer-main-section.contact-footer-section {
+        padding-top: 70px;
+        margin-top: 0;
+    }
+
+    /* contact page */
+    /* index2 page responsive start here */
+    .index2-header .navbar-toggler {
+        right: 15px;
+        width: 35px;
+    }
+
+    .index2-header .navbar-collapse {
+        right: 20px;
+        top: 60px;
+    }
+
+    .index2-header .nav-btns {
+        right: 70px;
+    }
+
+    .index2-header .nav-btns a i {
+        font-size: 10px;
+        line-height: 10px;
+    }
+
+    .header-main-con.index2-header .navbar-nav {
+        gap: 20px;
+        margin-right: 0;
+    }
+
+    .index2-header .nav-btns a {
+        width: 35px;
+        height: 35px;
+        padding: 10px 12px 9px;
+    }
+
+    .index2-header .nav-btns .shopping-cart::after {
+        right: -6px;
+        top: -8px;
+    }
+
+    .index2-header .navbar-light .navbar-brand {
+        padding: 0;
+        margin: 0;
+    }
+
+    .index2-header .navbar {
+        padding: 20px 10px 20px 20px;
+    }
+
+    .index2-banner-section h1 {
+        font-size: 28px;
+        line-height: 38px;
+        margin-bottom: 15px;
+    }
+
+    .index2-banner-left-con .generic-btn {
+        padding-left: 0;
+    }
+
+    .index2-banner-section .two-girls-img figure img {
+        width: 200px;
+    }
+
+    .index2-banner-section .man-right-img figure img {
+        width: 170px;
+    }
+
+    .index2-banner-right-con small {
+        bottom: 175px;
+        font-size: 10px;
+    }
+
+    .index2-banner-left-con .generic-btn a {
+        padding: 16px 16px;
+    }
+
+    .index2-banner-outer-section {
+        height: 500px;
+    }
+
+    .line-shape-img {
+        left: 60px;
+        bottom: 120px;
+    }
+
+    .line-second-img figure img,
+    .line-shape-img figure img {
+        height: 60px;
+    }
+
+    .line-second-img {
+        left: 75px;
+        top: 170px;
+    }
+
+    .index2-banner-right-con span {
+        font-size: 22px;
+        right: 10px;
+        top: 110px;
+    }
+
+    .index2-banner-section .container-fluid {
+        padding: 0 6.1%;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-prev {
+        left: -30px;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-next {
+        right: -30px;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-prev,
+    .index2-banner-section .owl-carousel .owl-nav button.owl-next {
+        top: 50%;
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .index2-banner-section {
+        height: 620px;
+    }
+
+    .index2-banner-left-con {
+        padding-top: 55px;
+    }
+
+    .learning-conference-heading {
+        margin-bottom: 20px;
+        gap: 20px;
+        grid-template-columns: 46% 51%;
+    }
+
+    .learning-conference-heading p {
+        font-size: 16px;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-item .learning-conf-con figure img {
+        width: 500px;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-item .learning-conference-video-box>figure img {
+        width: 275px;
+        height: 230px;
+        object-fit: contain;
+    }
+
+    .learning-conference-sec .owl-carousel {
+        margin-bottom: 50px;
+    }
+
+    .learning-counter-box ul li .count,
+    .learning-counter-box ul li .plus,
+    .learning-counter-box ul li .counter-box small {
+        font-size: 36px;
+        line-height: 44px;
+    }
+
+    .learning-counter-box ul {
+        grid-template-columns: 26% 26% 26% 15%;
+    }
+
+    .learning-conference-sec {
+        padding-bottom: 130px;
+    }
+
+    .conference-registration::before,
+    .conference-registration::after {
+        width: 20px;
+        height: 20px;
+    }
+
+    .conference-registration h3 {
+        font-size: 22px;
+        line-height: 30px;
+        margin-bottom: 0;
+    }
+
+    .conference-registration {
+        gap: 120px;
+        top: -190px;
+        grid-template-columns: 52% 29.2%;
+        padding: 25px 30px;
+    }
+
+    .planned-events {
+        padding-top: 130px;
+    }
+
+    .conference-registration::after {
+        right: 7px;
+        top: 7px;
+    }
+
+    .conference-registration::before {
+        bottom: 7px;
+        left: 7px;
+    }
+
+    .planned-events .generic-title h2 {
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .planned-events .generic-title {
+        margin-bottom: 30px;
+    }
+
+    .event-days {
+        padding: 12px 18px;
+        gap: 10px;
+    }
+
+    .planned-events::before {
+        width: 130px;
+        height: 250px;
+    }
+
+    .planned-events-inner-section .nav.nav-pills {
+        gap: 25px;
+    }
+
+    .event-profiles-box .organizer-profile figure img {
+        width: 80px;
+        height: 80px;
+    }
+
+    .planned-events-inner-section {
+        grid-template-columns: 12% 83.7%;
+    }
+
+    .event-text-box ul li {
+        font-size: 14px;
+        line-height: 22px;
+        margin-right: 0;
+        display: block;
+    }
+
+    .event-text-box h3 {
+        font-size: 20px;
+        line-height: 26px;
+        margin-bottom: 8px;
+    }
+
+    .event-text-box .generic-btn a {
+        padding: 14px 18px;
+    }
+
+    .schedule-con h6 {
+        line-height: 24px;
+    }
+
+    .schedule-con .generic-btn a {
+        padding: 18px 20px;
+    }
+
+    .schedule-con {
+        padding: 30px 35px;
+        gap: 24px;
+        grid-template-columns: 58% 38%;
+    }
+
+    .schedule-con .generic-btn a {
+        padding: 18px 20px;
+        font-size: 15px;
+    }
+
+    .ticket-pricing-section .generic-title {
+        margin-bottom: 30px;
+    }
+
+    .ticket-pricing-slider .ticket-details {
+        width: 100%;
+        padding: 25px 40px 35px 40px;
+    }
+
+    .ticket-pricing-slider {
+        margin-bottom: 35px;
+    }
+
+    .index2-best-speakers {
+        gap: 30px;
+        margin-bottom: 30px;
+        grid-template-columns: 31% 31%;
+        justify-content: center;
+    }
+
+    .biggest-img-box figure img {
+        width: 408px;
+        height: 310px;
+        object-fit: contain;
+    }
+
+    .biggest-conference-con {
+        gap: 30px;
+        grid-template-columns: 40% 55%;
+    }
+
+    .biggest-text-section h2 {
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 7px;
+    }
+
+    .biggest-text-section p {
+        margin-bottom: 13px;
+    }
+
+    .biggest-text-section .generic-btn a {
+        font-size: 14px;
+        padding: 14px 20px;
+    }
+
+    .generic-title2 h2 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .index2-speakers-section .generic-title {
+        margin-bottom: 30px;
+    }
+
+    .ticket-pricing-section .generic-title h2 {
+        font-size: 30px;
+        line-height: 38px;
+    }
+
+    .generic-title2 {
+        margin-bottom: 30px;
+    }
+
+    .top-experts-section .container .container__img-holder:nth-child(3n+1) {
+        margin-left: 0;
+    }
+
+    .top-experts-section .expert-images-con ul li img {
+        height: 200px;
+    }
+
+    .expert-images-con {
+        margin-bottom: 30px;
+    }
+
+    .index2-faqs .card {
+        width: 100%;
+        margin: 0 0 15px;
+    }
+
+    .index2-faqs .col-lg-6 .card:last-child {
+        margin-bottom: 15px;
+    }
+
+    .index2-faqs .card:nth-child(5) {
+        margin-bottom: 15px;
+    }
+
+    .index2-blog-section::before,
+    .index2-blog-section::after {
+        width: 110px;
+    }
+
+    .blog-main-section {
+        padding-bottom: 150px;
+    }
+
+    .index2-testimonial-inner-sec {
+        gap: 55px;
+        grid-template-columns: 23% 68%;
+    }
+
+    .index2-testimonial-text-con span {
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    .index2-testimonial-text-con p {
+        line-height: 24px;
+        margin-bottom: 10px;
+    }
+
+    .index2-testimonial-outer-sec {
+        margin-bottom: 60px;
+        box-shadow: 20px 20px 60px rgb(98 46 239 / 20%);
+    }
+
+    .index2-sponsers-companies.sponsers-companies ul {
+        grid-template-columns: 18% 18% 18% 18% 15%;
+    }
+
+    .index2-footer {
+        padding-top: 70px;
+    }
+
+    /* index2 page responsive end here */
+    /* index3 page responsive start here */
+    .header-main-con.index3-header .navbar-nav {
+        gap: 17px;
+        margin-right: 0;
+    }
+
+    .header-main-con.index3-header .navbar-light .navbar-nav .nav-link {
+        font-size: 16px;
+    }
+
+    .index3-header {
+        top: 13px;
+        padding: 12px 10px 12px;
+    }
+
+    .index3-header .navbar-light .navbar-brand {
+        margin-left: 0;
+    }
+
+    .index3-header .navbar-toggler-icon {
+        width: 30px;
+    }
+
+    .index3-header .nav-btns {
+        right: 60px;
+    }
+
+    .index3-header .navbar-collapse {
+        top: 46px;
+    }
+
+    .index3-banner-section {
+        height: 540px;
+        padding: 120px 0 0;
+    }
+
+    .index3-banner-img-con figure {
+        width: 470px;
+    }
+
+    .index3-banner-text-con h1 {
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 6px;
+    }
+
+    .index3-banner-text-con {
+        padding: 25px 25px;
+        width: 300px;
+        height: auto;
+    }
+
+    .index3-banner-text-con ul li {
+        font-size: 14px;
+    }
+
+    .index3-banner-text-con span {
+        margin-bottom: 15px;
+    }
+
+    .index3-banner-text-con .generic-btn a {
+        font-size: 14px;
+        padding: 16px 22px 14px;
+    }
+
+    .index3-banner-inner-con {
+        padding-bottom: 25px;
+    }
+
+    .index3-banner-section .owl-carousel .owl-dots {
+        bottom: -20px;
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav button.owl-prev {
+        left: -34px;
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav button.owl-next {
+        right: -34px;
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav button.owl-prev,
+    .index3-banner-section .owl-carousel .owl-nav button.owl-next {
+        top: 50%;
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .index3-banner-section::before {
+        width: 60px;
+        top: 55%;
+    }
+
+    .journey-text-con h2 {
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .journey-text-con .generic-btn a {
+        font-size: 14px;
+        padding: 16px 30px;
+    }
+
+    .journey-inner-con {
+        margin-bottom: 40px;
+        gap: 20px;
+        grid-template-columns: 58.5% 38%;
+    }
+
+    .journey-inner-con .video-inner-con .video-play-icon figure img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .journey-section .learning-conference-video-box>figure::before {
+        width: 25px;
+        height: 25px;
+    }
+
+    .digital-counter-con .client-status {
+        font-size: 15px;
+        line-height: 20px;
+        margin-top: 0;
+    }
+
+    .digital-text-con {
+        padding: 16px 20px;
+    }
+
+    .digital-text-con h3 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .digital-text-con .generic-btn a {
+        font-size: 14px;
+        padding: 12px 20px;
+    }
+
+    .digital-text-con {
+        padding: 15px 20px;
+    }
+
+    .digital-counter-con ul li:nth-child(3),
+    .digital-counter-con ul li:nth-child(4),
+    .digital-counter-con ul li {
+        padding: 12px 14px;
+    }
+
+    .digital-counter-con ul li .count,
+    .digital-counter-con ul li small {
+        font-size: 30px;
+        line-height: 38px;
+    }
+
+    .index3-event-section .generic-title h2 {
+        font-size: 30px;
+        line-height: 38px;
+    }
+
+    .index3-event-tabs-con .nav-tabs .nav-link.active,
+    .index3-event-tabs-con .nav-tabs .nav-link {
+        font-size: 16px;
+        line-height: 18px;
+        padding: 13px 28px;
+    }
+
+    .index3-event-date {
+        font-size: 36px;
+        line-height: 36px;
+    }
+
+    .index3-event-date-con,
+    .index3-event-organizer {
+        gap: 15px;
+    }
+
+    .index3-faqs h6 button {
+        padding: 14px 60px 14px 20px;
+    }
+
+    .index3-event-month span {
+        font-size: 18px;
+        margin-bottom: 0;
+    }
+
+    .index3-event-organizer figure img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .index3-organizer-detail>span {
+        font-size: 20px;
+        line-height: 24px;
+        margin-bottom: 4px;
+    }
+
+    .index3-faqs .card-body {
+        padding: 20px 30px 20px 40px;
+    }
+
+    .index3-faqs .card {
+        margin-bottom: 20px;
+    }
+
+    .index3-faqs {
+        margin-bottom: 30px;
+    }
+
+    .index3-event-info-inner-con {
+        gap: 20px;
+        grid-template-columns: 31.4% 31.4% 31.4%;
+    }
+
+    .index3-event-zone {
+        padding: 30px 20px;
+    }
+
+    .index3-event-zone figure {
+        margin-bottom: 18px;
+    }
+
+    .index3-event-zone p {
+        line-height: 24px;
+    }
+
+    .index3-speakers-section {
+        padding-bottom: 130px;
+    }
+
+    .index3-speaker-box::before {
+        width: 120px;
+        height: 120px;
+    }
+
+    .index3-speaker-detail-con {
+        padding: 10px 20px;
+        width: 208px;
+        bottom: -24px;
+    }
+
+    .index3-speaker-outer-con .owl-carousel .owl-item .index3-speaker-box figure img {
+        width: 195px;
+        height: 214px;
+    }
+
+    .index3-speaker-box {
+        height: 248px;
+        margin-bottom: 35px;
+    }
+
+    .index3-speakers-section .owl-carousel .owl-nav button.owl-prev {
+        left: -30px;
+    }
+
+    .index3-speakers-section .owl-carousel .owl-nav button.owl-next {
+        right: -30px;
+    }
+
+    .index3-speaker-detail-con span {
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    .index3-speaker-detail-con h5 {
+        margin-bottom: 8px;
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .index3-speaker-detail-con ul li {
+        margin: 0 3px;
+    }
+
+    .index3-speaker-detail-con ul {
+        margin-bottom: 3px;
+    }
+
+    .index3-plan-inner-con .ticket-details h3 {
+        font-size: 22px;
+        line-height: 24px;
+    }
+
+    .index3-plan-inner-con .ticket-details p {
+        font-size: 15px;
+        line-height: 15px;
+        margin-bottom: 8px;
+    }
+
+    .index3-plan-inner-con .ticket-details .price {
+        font-size: 32px;
+        line-height: 32px;
+    }
+
+    .index3-plan-inner-con .ticket-details .price {
+        margin-bottom: 10px;
+    }
+
+    .index3-plan-inner-con .ticket-details>span {
+        margin-bottom: 18px;
+        font-size: 15px;
+        line-height: 16px;
+    }
+
+    .index3-plan-inner-con .ticket-details .price small {
+        top: -10px;
+        font-size: 16px;
+    }
+
+    .index3-plan-inner-con {
+        margin-bottom: 30px;
+        grid-template-columns: 33.3% 33.3% 33.3%;
+    }
+
+    .index3-plan-inner-con .ticket-details ul li {
+        margin-bottom: 5px;
+        font-size: 13px;
+        line-height: 20px;
+    }
+
+    .index3-plan-inner-con .ticket-details ul {
+        margin-bottom: 20px;
+    }
+
+    .index3-plan-inner-con .ticket-details .generic-btn a {
+        padding: 14px 24px;
+    }
+
+    .index3-plan-inner-con .ticket-details {
+        height: 340px;
+        margin-top: 25px;
+        padding: 25px 19px;
+    }
+
+    .index3-plan-inner-con .gold-ticket-details {
+        height: 390px;
+        margin-top: 0;
+        padding: 55px 19px;
+    }
+
+    .recomended-box {
+        right: 10px;
+        top: 10px;
+    }
+
+    .index3-registration-inner-con {
+        grid-template-columns: 54% 46%;
+    }
+
+    .index3-registration-right-con figure img {
+        width: 100%;
+    }
+
+    .index3-registration-left-con h2 {
+        font-size: 28px;
+        line-height: 38px;
+        margin-bottom: 10px;
+    }
+
+    .index3-registration-left-con .generic-btn a {
+        font-size: 14px;
+        line-height: 14px;
+        padding: 16px 25px;
+    }
+
+    .index3-registration-section {
+        height: auto;
+    }
+
+    .index3-experts-left-con {
+        gap: 15px;
+        grid-template-columns: 48% 48%;
+    }
+
+    .index3-top-experts-inner-section {
+        gap: 15px;
+        grid-template-columns: 49% 48%;
+    }
+
+    .index3-experts-right-con {
+        grid-template-columns: 48% 48%;
+        gap: 15px;
+    }
+
+    .index3-expert-right-bottom-con {
+        gap: 15px;
+        grid-template-columns: 115% 85%;
+    }
+
+    .index3-top-experts-section .img-popup img {
+        width: 400px;
+    }
+
+    .index3-testimonial-box p {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 10px;
+    }
+
+    .index3-testimonial-section {
+        padding-bottom: 130px;
+    }
+
+    .index3-testimonial-box h6 {
+        margin-bottom: 6px;
+    }
+
+    .index3-testimonial-box small {
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    /* index3 page responsive end here */
+    #button::after {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    #button {
+        width: 62px;
+        height: 62px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .nav-btns a {
+        font-size: 12px;
+    }
+
+    .navbar-collapse {
+        top: 40px;
+    }
+
+    .header-main-con .navbar-light .navbar-nav .nav-link {
+        font-size: 15px;
+        line-height: 15px;
+    }
+
+    .navbar-light .navbar-brand {
+        padding: 0;
+    }
+
+    .nav-btns a {
+        padding: 8px 10px 8px;
+    }
+
+    /* banner section styling start here */
+    h1 {
+        font-size: 24px;
+        line-height: 34px;
+    }
+
+    .banner-left-section .generic-btn a {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .banner-left-section>span,
+    .banner-right-section span {
+        font-size: 13px;
+        line-height: 16px;
+    }
+
+    .banner-left-section>span,
+    .banner-right-section span {
+        margin-bottom: 20px;
+    }
+
+    .banner-right-section span {
+        margin: 0 35px 0 0;
+    }
+
+    .banner-main-section .owl-carousel .owl-nav button.owl-prev,
+    .banner-main-section .owl-carousel .owl-nav button.owl-next {
+        top: 50%;
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+
+    .banner-main-section .owl-carousel .owl-nav button.owl-prev {
+        left: -40px;
+    }
+
+    .banner-main-section .owl-carousel .owl-nav button.owl-next {
+        right: -40px;
+    }
+
+    .banner-main-section,
+    .banner-main-section::after {
+        height: 470px;
+    }
+
+    .banner-left-section .generic-btn {
+        margin-bottom: 25px;
+    }
+
+    .banner-left-images {
+        gap: 10px;
+    }
+
+    /* banner section styling end here */
+    /* about section styling start here */
+    .about-left-con p:nth-child(3) {
+        margin-bottom: 20px;
+    }
+
+    .generic-title {
+        margin-bottom: 10px;
+    }
+
+    .generic-btn a,
+    .generic-btn button {
+        font-size: 14px;
+        line-height: 16px;
+        padding: 16px 20px;
+    }
+
+    .about-left-con::before {
+        width: 70px;
+        height: 50px;
+        left: 0;
+    }
+
+    .ceo-image-box {
+        height: 266px;
+        margin-left: 0;
+    }
+
+    .about-left-con {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .about-inner-con {
+        margin-bottom: 60px;
+    }
+
+    .counter-sec ul li::before {
+        width: 3px;
+        left: -3px;
+    }
+
+    .counter-sec ul li {
+        padding: 0 10px;
+        border-left: 3px solid #cccccc;
+    }
+
+    .counter-sec ul li .count,
+    .counter-sec ul li .plus {
+        font-size: 30px;
+        line-height: 30px;
+        margin-bottom: 5px;
+    }
+
+    .client-status {
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    /* about section styling end here */
+    /* event section styling start here */
+    .event-left-con .generic-btn a {
+        padding: 18px;
+    }
+
+    .event-inner-section {
+        gap: 30px;
+    }
+
+    .event-left-con::after {
+        width: 70px;
+        height: 70px;
+        top: 170px;
+    }
+
+    h2 {
+        font-size: 30px;
+        line-height: 34px;
+    }
+
+    .event-right-con .nav-link span {
+        font-size: 18px;
+        line-height: 18px;
+    }
+
+    .event-right-con .nav-tabs {
+        margin-bottom: 15px;
+    }
+
+    .event-main-section {
+        padding-bottom: 60px;
+    }
+
+    .education__content small {
+        font-size: 15px;
+        line-height: 18px;
+        margin-bottom: 12px;
+    }
+
+    /* event section styling end here */
+    /* speaker section styling start here */
+    .speakers-main-section .container-fluid {
+        padding: 0 6%;
+    }
+
+    .speakers-inner-sec {
+        max-width: 510px;
+        margin: 0 auto 40px;
+    }
+
+    .speakers-main-section .generic-title {
+        margin-bottom: 25px;
+    }
+
+    .speakers-main-section .generic-btn a {
+        padding: 18px 20px;
+    }
+
+    .ticket-left-section .generic-btn a {
+        padding: 18px 20px;
+    }
+
+    /* speaker section styling end here */
+    /* conference section styling start here */
+    .conference-inner-con {
+        max-width: 500px;
+        grid-template-columns: 48% 48%;
+    }
+
+    .conference-main-section .container-fluid {
+        padding: 0 6%;
+    }
+
+    .conference-box figure img {
+        height: 260px;
+    }
+
+    .conference-main-section .generic-btn a {
+        padding: 18px 30px;
+    }
+
+    /* conference section styling end here */
+    /* testimonial section styling start here */
+    .testimonial-img-outer-con {
+        width: 204px;
+        height: 245px;
+    }
+
+    .testimonial-img-outer-con figure {
+        height: 244px;
+        top: 10px;
+        left: 10px;
+    }
+
+    .testimonial-inner-con {
+        gap: 20px;
+        grid-template-columns: 42% 52%;
+    }
+
+    .reviewer-con figure img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .reviewer-con {
+        gap: 10px;
+    }
+
+    .reviewer-details small {
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    .testimonial-main-section .owl-carousel .owl-nav {
+        bottom: 2px;
+    }
+
+    .sponsers-companies ul {
+        gap: 22px;
+        grid-template-columns: 16% 16% 16% 16% 16%;
+    }
+
+    .sponsers-companies ul li figure img {
+        width: 70px;
+        height: 40px;
+    }
+
+    .testimonial-right-con p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    /* testimonial section styling end here */
+    /* blog section styling start here */
+    .blogs-inner-con {
+        grid-template-columns: 100%;
+        gap: 0;
+    }
+
+    .blog-box {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .blog-text {
+        position: relative;
+        bottom: 40px;
+        padding: 25px 25px;
+    }
+
+    .blog-main-section {
+        padding-bottom: 20px;
+    }
+
+    .blog-main-section .generic-title {
+        margin-bottom: 30px;
+    }
+
+    /* blog section styling end here */
+    /* registration section styling start here */
+    .registration-main-section .registration-inner-con {
+        padding: 30px 80px;
+    }
+
+    .registration-main-section .generic-title .generic-btn a {
+        padding: 18px 20px;
+    }
+
+    .registration-inner-con .generic-title h2 {
+        font-size: 28px;
+        line-height: 36px;
+        margin-bottom: 15px;
+    }
+
+    /* registration section styling end here */
+    /* footer section styling start here */
+    .footer-main-section {
+        padding-top: 190px;
+        margin-top: -130px;
+        padding-bottom: 45px;
+    }
+
+    .footer-inner-con {
+        gap: 20px 30px;
+        grid-template-columns: 47% 47%;
+    }
+
+    .footer-box>p {
+        font-size: 16px;
+    }
+
+    /* footer section styling end here */
+    /* about page styling start here */
+    .sub-banner-inner-con h1 {
+        margin-bottom: 10px;
+        font-size: 34px;
+        line-height: 34px;
+    }
+
+    .sub-banner-inner-con p {
+        margin-bottom: 20px;
+    }
+
+    .sub-banner-main-section {
+        height: 370px;
+    }
+
+    .sub-banner-inner-con {
+        padding-top: 35px;
+    }
+
+    .about-another-con .about-left-con {
+        margin-bottom: 0;
+    }
+
+    .faq-main-section .generic-title h2 {
+        font-size: 34px;
+        line-height: 40px;
+        letter-spacing: 0;
+    }
+
+    .faq-main-section .generic-title .small-text {
+        margin-bottom: 5px;
+    }
+
+    .faq-main-section .generic-title {
+        margin-bottom: 30px;
+    }
+
+    .faq-inner-section .card-header h5 .btn {
+        font-size: 18px;
+        line-height: 18px;
+        padding: 20px 20px;
+    }
+
+    .faq-inner-section .card-header h5 .btn::after,
+    .faq-inner-section .card-header h5 .btn.collapsed::after {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+        line-height: 14px;
+        right: 20px;
+    }
+
+    .faq-inner-section .card-body {
+        font-size: 16px;
+        line-height: 24px;
+        padding: 13px 22px 0px;
+    }
+
+    .faq-inner-section .card {
+        margin-bottom: 15px;
+    }
+
+    /* about page styling end here */
+    /* coming soon page  */
+    .coming-soon-con h2 {
+        font-size: 50px;
+        line-height: 50px;
+        margin-bottom: 20px;
+    }
+
+    .coming-soon-social-links ul li a {
+        width: 45px;
+        height: 45px;
+    }
+
+    /* coming soon page  */
+    /* contact page */
+    .contact-info-inner-con {
+        grid-template-columns: 100%;
+    }
+
+    .contact-box {
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    .contact-form-section form ul li input,
+    .contact-form-section form ul li textarea {
+        padding: 20px 16px;
+    }
+
+    .contact-form-section form ul {
+        gap: 15px;
+        grid-template-columns: 48% 48%;
+    }
+
+    .contact-form-section form ul li textarea {
+        min-height: 150px;
+    }
+
+    .contact-form-section form .generic-btn button {
+        width: auto;
+        padding: 20px 50px;
+    }
+
+    .responsive-map iframe {
+        height: 300px;
+        margin-top: -140px;
+    }
+
+    .contact-form-section {
+        padding-bottom: 210px;
+    }
+
+    .conatct-information-section .generic-title {
+        margin-bottom: 30px;
+    }
+
+    /* contact page */
+    /* index2 page responsive start here */
+    .index2-banner-section h1 {
+        font-size: 22px;
+        line-height: 32px;
+        margin-bottom: 15px;
+    }
+
+    .index2-banner-left-con {
+        padding-top: 45px;
+    }
+
+    .index2-banner-section .two-girls-img figure img {
+        width: 170px;
+    }
+
+    .index2-banner-section .man-right-img figure img {
+        width: 140px;
+    }
+
+    .index2-banner-right-con small {
+        bottom: 145px;
+        left: -60px;
+    }
+
+    .index2-banner-right-con span {
+        font-size: 20px;
+        right: 0;
+        top: 70px;
+    }
+
+    .line-second-img {
+        left: 50px;
+        top: 130px;
+    }
+
+    .line-second-img figure img,
+    .line-shape-img figure img {
+        height: 50px;
+    }
+
+    .line-shape-img {
+        left: 40px;
+        bottom: 150px;
+    }
+
+    .index2-banner-outer-section {
+        height: 450px;
+    }
+
+    .index2-banner-section {
+        height: 570px;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-prev {
+        left: -10px;
+    }
+
+    .green-triange-first-img figure img,
+    .green-triange-second-img figure img {
+        height: 25px;
+    }
+
+    .green-triange-second-img {
+        top: 37%;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-next {
+        right: -10px;
+    }
+
+    .learning-conference-heading {
+        margin-bottom: 20px;
+        gap: 10px;
+        grid-template-columns: 100%;
+        text-align: center;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-item .learning-conf-con figure img {
+        width: 390px;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-item .learning-conference-video-box>figure img {
+        width: 240px;
+        height: 200px;
+        object-fit: contain;
+    }
+
+    .learning-conference-sec iframe {
+        width: 400px;
+        height: 300px;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-nav button.owl-prev,
+    .learning-conference-sec .owl-carousel .owl-nav button.owl-next {
+        width: 35px;
+        height: 35px;
+        font-size: 12px;
+    }
+
+    .learning-counter-box ul li .count,
+    .learning-counter-box ul li .plus,
+    .learning-counter-box ul li .counter-box small {
+        font-size: 30px;
+        line-height: 38px;
+    }
+
+    .learning-counter-box ul li .plus span {
+        right: -13px;
+        bottom: 7px;
+        font-size: 24px;
+        line-height: 20px;
+    }
+
+    .learning-counter-box ul {
+        grid-template-columns: 31% 29% 24% 15%;
+    }
+
+    .conference-registration .generic-btn a {
+        padding: 16px 14px;
+        font-size: 14px;
+    }
+
+    .conference-registration {
+        gap: 20px;
+        top: -156px;
+        grid-template-columns: 63% 33%;
+        padding: 20px 20px;
+    }
+
+    .planned-events {
+        padding-top: 110px;
+    }
+
+    .biggest-img-box {
+        display: none;
+    }
+
+    .conference-registration h3 {
+        font-size: 20px;
+        line-height: 26px;
+        margin-bottom: 0;
+    }
+
+    .conference-registration::before,
+    .conference-registration::after {
+        width: 12px;
+        height: 12px;
+    }
+
+    .planned-events .generic-title h2 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .planned-events-inner-section .nav-pills .nav-link {
+        left: unset;
+        top: unset;
+        margin: 0;
+        transform: unset;
+        padding: 8px 6px 10px;
+        gap: 7px;
+    }
+
+    .planned-events-inner-section {
+        margin-bottom: 30px;
+        grid-template-columns: 100%;
+    }
+
+    .day-details h6 {
+        line-height: 26px;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+
+    .planned-events-inner-section .nav-pills .nav-link figure img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .day-details span {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .planned-events-inner-section .nav.nav-pills {
+        gap: 3px;
+        display: grid;
+        grid-template-columns: 33% 33% 33%;
+    }
+
+    .planned-events-inner-section .nav-pills .nav-link:first-child {
+        order: 3;
+    }
+
+    .planned-events-inner-section .nav-pills .nav-link:nth-child(2) {
+        order: 2;
+    }
+
+    .planned-events-inner-section .nav-pills .nav-link:nth-child(3) {
+        order: 1;
+    }
+
+    .learning-conference-sec {
+        padding-bottom: 110px;
+    }
+
+    .learning-conference-heading h2 {
+        font-size: 26px;
+        line-height: 28px;
+        margin-bottom: 0;
+    }
+
+    .learning-conference-heading p {
+        font-size: 15px;
+        margin-top: 0;
+    }
+
+    .event-profiles-box .organizer-profile figure img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .organizer-profile figure {
+        margin-bottom: 12px;
+    }
+
+    .organizer-profile h6 {
+        margin-bottom: 3px;
+    }
+
+    .organizer-profile span {
+        font-size: 12px;
+        margin-bottom: 22px;
+    }
+
+    .organizer-profile span::after {
+        bottom: -8px;
+    }
+
+    .organizer-profile ul li {
+        padding-left: 14px;
+        font-size: 14px;
+        line-height: 15px;
+        margin-bottom: 6px;
+    }
+
+    .event-profiles-box {
+        gap: 30px;
+        margin-top: 0;
+    }
+
+    .event-text-right-con {
+        padding: 3px;
+    }
+
+    .event-text-box ul li {
+        font-size: 12px;
+        line-height: 22px;
+    }
+
+    .event-text-box h3 {
+        font-size: 18px;
+        line-height: 24px;
+    }
+
+    .event-text-box p {
+        font-size: 15px;
+        line-height: 22px;
+        margin-bottom: 15px;
+    }
+
+    .event-text-box .generic-btn a {
+        padding: 14px 18px;
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    .event-text-box .generic-btn a::after {
+        top: 3px;
+        right: 3px;
+        width: 7px;
+        height: 7px;
+    }
+
+    .event-text-box a {
+        font-size: 12px;
+        line-height: 12px;
+    }
+
+    .event-text-box {
+        padding: 20px 15px 30px;
+    }
+
+    .event-text-box .generic-btn {
+        margin-right: 10px;
+    }
+
+    .schedule-con h6 {
+        line-height: 24px;
+        font-size: 16px;
+    }
+
+    .schedule-con .generic-btn a {
+        padding: 15px 10px;
+        font-size: 12px;
+    }
+
+    .schedule-con {
+        padding: 20px 17px;
+        gap: 15px;
+        grid-template-columns: 60% 37%;
+        align-items: center;
+    }
+
+    .ticket-pricing-section .generic-title h2 {
+        font-size: 26px;
+        line-height: 34px;
+    }
+
+    .ticket-pricing-slider {
+        margin-bottom: 30px;
+    }
+
+    .ticket-pricing-btn p {
+        margin-bottom: 20px;
+    }
+
+    .index2-speaker-box figure::before {
+        width: 158px;
+        height: 160px;
+        bottom: 0;
+    }
+
+    .index2-speakers-section .generic-title h2 {
+        font-size: 26px;
+        line-height: 34px;
+    }
+
+    .index2-speaker-detail ul li i {
+        font-size: 14px;
+    }
+
+    .index2-best-speaker-btn .generic-btn a {
+        font-size: 14px;
+        padding: 16px 20px;
+    }
+
+    .biggest-conference-con {
+        gap: 0;
+        grid-template-columns: 100%;
+        text-align: center;
+    }
+
+    .biggest-conference-section {
+        padding: 70px 0;
+    }
+
+    .biggest-text-section h2 {
+        font-size: 26px;
+        line-height: 34px;
+        margin-bottom: 7px;
+    }
+
+    .biggest-text-section p {
+        margin-bottom: 15px;
+    }
+
+    .generic-title2 h2 {
+        font-size: 26px;
+        line-height: 34px;
+    }
+
+    .expert-images-con ul {
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .search-icon-con {
+        width: 50px;
+        height: 50px;
+    }
+
+    .search-icon-con i {
+        font-size: 14px;
+    }
+
+    .top-experts-btn .generic-btn a {
+        font-size: 15px;
+        padding: 16px 26px;
+    }
+
+    .index2-faqs .card-header h6 .btn.collapsed::after,
+    .index2-faqs .card-header h6 .btn.btn-link::after {
+        font-size: 14px;
+        line-height: 14px;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .index2-faqs .card .card-header h6 button {
+        font-size: 16px;
+        line-height: 24px;
+        padding: 15px 70px 15px 15px;
+    }
+
+    .index2-faqs .card .card-body {
+        padding: 0px 15px 15px;
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .index2-testimonial-outer-sec .owl-carousel .owl-item .index2-client-img>figure img {
+        width: 200px;
+        width: 212px;
+        object-fit: cover;
+    }
+
+    .index2-testimonial-inner-sec {
+        gap: 20px;
+        grid-template-columns: 100%;
+        text-align: center;
+    }
+
+    .index2-testimonial-outer-sec .owl-carousel .owl-item .index2-client-img>figure {
+        display: inline-block;
+    }
+
+    .quote-icon {
+        right: 19.5%;
+    }
+
+    .index2-testimonial-text-con p {
+        line-height: 22px;
+        font-size: 15px;
+        margin-bottom: 15px;
+    }
+
+    .index2-testimonial-text-con h6 {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .index2-testimonial-section .owl-carousel .owl-nav button.owl-prev,
+    .index2-testimonial-section .owl-carousel .owl-nav button.owl-next {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .index2-testimonial-section .quote-icon figure img {
+        width: 28px;
+        object-fit: contain;
+    }
+
+    .quote-icon figure {
+        width: 62px;
+        height: 62px;
+        border: 3px solid var(--primary-color);
+    }
+
+    .index2-sponsers-companies.sponsers-companies ul {
+        grid-template-columns: 17% 17% 17% 17% 15%;
+    }
+
+    .index2-footer {
+        padding-top: 60px;
+        margin-top: 0;
+    }
+
+    /* index2 page responsive end here */
+    /* index3 page responsive start here */
+    .index3-banner-img-con figure {
+        width: 350px;
+        border: 3px solid var(--primary-color);
+    }
+
+    .index3-banner-text-con span {
+        font-size: 13px;
+        line-height: 13px;
+        margin-bottom: 12px;
+    }
+
+    .index3-banner-text-con h1 {
+        font-size: 20px;
+        line-height: 26px;
+        margin-bottom: 4px;
+    }
+
+    .index3-banner-text-con .generic-btn a {
+        font-size: 13px;
+        padding: 13px 18px 11px;
+    }
+
+    .index3-banner-text-con ul li {
+        font-size: 12px;
+    }
+
+    .index3-banner-text-con ul {
+        margin-bottom: 10px;
+    }
+
+    .index3-banner-text-con .generic-btn a {
+        font-size: 12px;
+        padding: 12px 16px 10px;
+    }
+
+    .index3-banner-text-con {
+        padding: 25px 25px;
+        width: 255px;
+        height: auto;
+    }
+
+    .index3-banner-section .owl-carousel .owl-dots {
+        bottom: -35px;
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav button.owl-next {
+        right: 44%;
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav button.owl-prev {
+        left: 44%;
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav button.owl-prev,
+    .index3-banner-section .owl-carousel .owl-nav button.owl-next {
+        top: unset;
+        bottom: -100px;
+    }
+
+    .index3-banner-section {
+        height: 490px;
+        padding: 110px 0 0;
+    }
+
+    .index3-banner-section .owl-carousel .owl-dots .owl-dot {
+        width: 20px;
+        margin: 0 3px;
+    }
+
+    .index3-header {
+        top: 10px;
+        padding: 10px 0;
+    }
+
+    .index3-header .navbar-toggler-icon {
+        width: 25px;
+        margin: 2px 0px;
+    }
+
+    .index3-banner-section::before {
+        width: 50px;
+        top: 55%;
+    }
+
+    .journey-text-con h2 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .journey-text-con p {
+        line-height: 24px;
+        font-size: 15px;
+    }
+
+    .padding-top {
+        padding-top: 60px;
+    }
+
+    .padding-bottom {
+        padding-bottom: 60px;
+    }
+
+    .journey-inner-con {
+        grid-template-columns: 49% 47%;
+    }
+
+    .digital-conference-section {
+        grid-template-columns: 100%;
+    }
+
+    .digital-conference-img-con figure img {
+        height: 300px;
+        object-fit: cover;
+    }
+
+    .digital-counter-con ul li:nth-child(3),
+    .digital-counter-con ul li:nth-child(4),
+    .digital-counter-con ul li {
+        padding: 14px 25px;
+    }
+
+    .digital-text-con {
+        padding: 18px 25px 28px;
+    }
+
+    .digital-text-con .generic-btn a {
+        font-size: 14px;
+        padding: 14px 20px;
+        border: 1px solid var(--pink-color);
+    }
+
+    .digital-counter-con ul li {
+        gap: 13px;
+    }
+
+    .index3-event-section .generic-title h2 {
+        font-size: 28px;
+        line-height: 34px;
+    }
+
+    .index3-event-section .generic-title {
+        margin-bottom: 25px;
+    }
+
+    .index3-event-tabs-con .nav-tabs .nav-link.active,
+    .index3-event-tabs-con .nav-tabs .nav-link {
+        font-size: 15px;
+        line-height: 16px;
+        padding: 13px 26px;
+    }
+
+    .index3-event-tabs-con .nav-tabs {
+        margin-bottom: 30px;
+        padding-left: 20px;
+    }
+
+    .index3-event-date {
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    .index3-faqs .card-body p {
+        font-size: 15px;
+        line-height: 23px;
+        margin-bottom: 8px;
+    }
+
+    .index3-faqs .card-body {
+        padding: 15px 20px 15px 25px;
+    }
+
+    .index3-faqs .card-body span {
+        font-size: 12px;
+        line-height: 22px;
+    }
+
+    .index3-event-month span {
+        font-size: 14px;
+    }
+
+    .index3-faqs h6 button {
+        padding: 14px 30px 14px 15px;
+    }
+
+    .index3-event-date-con,
+    .index3-event-organizer {
+        gap: 10px;
+    }
+
+    .index3-event-month small {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .index3-event-detail {
+        gap: 10px;
+        grid-template-columns: 35% 53%;
+    }
+
+    .index3-event-organizer figure img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .index3-organizer-detail>span {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .index3-organizer-detail small {
+        font-size: 13px;
+    }
+
+    .index3-faqs h6 button.btn.collapsed::after,
+    .index3-faqs h6 button.btn::after {
+        font-size: 18px;
+        right: 15px;
+    }
+
+    .index3-faqs {
+        margin-bottom: 25px;
+    }
+
+    .generic-title2 {
+        margin-bottom: 25px;
+    }
+
+    .index3-event-info-inner-con {
+        gap: 20px;
+        grid-template-columns: 100%;
+        text-align: center;
+    }
+
+    .index3-speakers-section .generic-title2 {
+        margin-bottom: 30px;
+    }
+
+    .index3-speakers-section .owl-carousel .owl-nav button.owl-prev {
+        left: 0;
+    }
+
+    .index3-speakers-section .owl-carousel .owl-nav button.owl-next {
+        right: 0;
+    }
+
+    .index3-speakers-section .owl-carousel .owl-dots {
+        bottom: -30px;
+    }
+
+    .index3-speakers-section {
+        padding-bottom: 90px;
+    }
+
+    .index3-speakers-section .owl-carousel .owl-dots .owl-dot {
+        width: 10px;
+        height: 10px;
+        margin: 0 2px;
+    }
+
+    .index3-plan-inner-con {
+        gap: 20px;
+        margin-bottom: 25px;
+        grid-template-columns: 100%;
+    }
+
+    .index3-plan-inner-con .ticket-details {
+        height: auto;
+        padding: 30px 30px;
+        border-radius: 10px;
+        width: 300px;
+        margin: 0 auto;
+    }
+
+    .index3-plan-btn .generic-btn a {
+        font-size: 14px;
+        line-height: 14px;
+        padding: 16px 30px;
+    }
+
+    .index3-registration-left-con p {
+        font-size: 15px;
+        line-height: 22px;
+        margin-bottom: 15px;
+    }
+
+    .index3-registration-left-con h2 {
+        font-size: 22px;
+        line-height: 30px;
+        margin-bottom: 6px;
+    }
+
+    .index3-registration-left-con .generic-btn a {
+        font-size: 13px;
+        line-height: 14px;
+        padding: 14px 22px;
+    }
+
+    .index3-registration-inner-con {
+        grid-template-columns: 49% 55%;
+    }
+
+    .index3-top-experts-inner-section {
+        grid-template-columns: 100%;
+    }
+
+    .index3-experts-left-con {
+        grid-template-columns: 48.3% 48.3%;
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .index3-experts-right-con {
+        grid-template-columns: 48.3% 48.3%;
+    }
+
+    .index3-experts-right-con {
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .index3-top-experts-section .img-popup img {
+        width: 370px;
+    }
+
+    .index3-top-experts-inner-section .search-icon-con::before {
+        width: 50px;
+        height: 50px;
+    }
+
+    .index3-top-experts-inner-section .search-icon-con {
+        width: 40px;
+        height: 40px;
+    }
+
+    .index3-top-experts-inner-section .search-icon-con i {
+        font-size: 13px;
+        line-height: 13px;
+    }
+
+    .index3-testimonial-box {
+        padding: 20px 30px 25px;
+    }
+
+    .index3-testimonial-inner-con .owl-carousel .owl-item .index3-quote-con figure img {
+        width: 40px;
+    }
+
+    .index3-testimonial-inner-con .owl-carousel .owl-item .index3-testimonial-box>figure img {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+    }
+
+    .index3-testimonial-box {
+        padding: 20px 40px 25px;
+    }
+
+    .index3-testimonial-section .owl-carousel .owl-dots .owl-dot {
+        width: 10px;
+        height: 10px;
+        margin: 0 2px;
+    }
+
+    .index3-testimonial-section .owl-carousel .owl-dots {
+        bottom: -40px;
+    }
+
+    .index3-testimonial-section {
+        padding-bottom: 100px;
+    }
+
+    .index3-footer-main-section {
+        padding-top: 50px;
+        padding-bottom: 40px;
+        margin-top: 0;
+    }
+
+    /* index3 page responsive end here */
+}
+
+@media only screen and (max-width: 575px) {
+
+    /* banner section styling start here */
+    .banner-main-section,
+    .banner-main-section::after {
+        height: 740px;
+    }
+
+    body {
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    .banner-right-section {
+        display: none;
+    }
+
+    .banner-left-section {
+        text-align: center;
+    }
+
+    .banner-inner-section {
+        gap: 20px;
+        grid-template-columns: 100%;
+    }
+
+    .banner-main-section .owl-carousel .owl-nav button.owl-prev,
+    .banner-main-section .owl-carousel .owl-nav button.owl-next {
+        top: unset;
+        bottom: -70px;
+    }
+
+    .banner-main-section,
+    .banner-main-section::after {
+        height: 490px;
+    }
+
+    .banner-main-section .owl-carousel .owl-nav button.owl-next {
+        right: 0;
+    }
+
+    .banner-main-section .owl-carousel .owl-nav button.owl-prev {
+        left: 0;
+    }
+
+    .padding-bottom {
+        padding-bottom: 50px;
+    }
+
+    .padding-top {
+        padding-top: 50px;
+    }
+
+    /* banner section styling end here */
+    /* about section styling start here */
+    .about-left-con p:nth-child(3) {
+        margin-bottom: 15px;
+    }
+
+    .about-inner-con {
+        gap: 10px;
+    }
+
+    .about-left-con p {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .generic-btn a,
+    .generic-btn button {
+        padding: 14px 18px;
+    }
+
+    .about-right-con {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .investment,
+    .attendees {
+        width: 100%;
+        height: 90px;
+    }
+
+    .about-right-con {
+        gap: 30px;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .co-image-box,
+    .ceo-image-box {
+        width: 100%;
+    }
+
+    .co-box,
+    .ceo-box {
+        width: 230px;
+        margin: 0 auto;
+    }
+
+    .ceo-image-box {
+        height: 296px;
+    }
+
+    .counter-sec ul {
+        display: grid;
+        gap: 20px;
+        grid-template-columns: 48% 46%;
+    }
+
+    .about-inner-con {
+        margin-bottom: 30px;
+    }
+
+    /* about section styling end here */
+    /* event section styling start here */
+    .small-text {
+        letter-spacing: 1px;
+    }
+
+    .event-right-con .nav-tabs {
+        width: 320px;
+        padding: 15px 6px 10px;
+        margin-bottom: 10px;
+    }
+
+    .event-right-con .nav-item {
+        margin-bottom: 0;
+    }
+
+    .event-right-con .nav-link {
+        padding: 0 12px;
+    }
+
+    .event-right-con .nav-link small {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .event-right-con .nav-link span {
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .event-right-con .nav-link.active::after {
+        width: 70%;
+        bottom: -10px;
+    }
+
+    .event-left-con .generic-btn a {
+        padding: 16px;
+    }
+
+    .event-left-con::before,
+    .conference-main-section .generic-title::after,
+    .blog-main-section .generic-title::before {
+        height: 25px;
+        top: -30px;
+    }
+
+    .event-left-con::after {
+        width: 50px;
+        height: 50px;
+        top: 165px;
+    }
+
+    .education__content {
+        padding: 17px 20px 2px 50px;
+    }
+
+    .education__content p {
+        line-height: 22px;
+        font-size: 14px;
+    }
+
+    /* event section styling end here */
+    /* speaker section styling start here */
+    .speakers-inner-sec {
+        max-width: 300px;
+        margin: 0 auto 30px;
+        grid-template-columns: 100%;
+    }
+
+    .speakers-main-section .generic-btn a {
+        padding: 16px 18px;
+    }
+
+    .speakers-main-section .generic-title {
+        padding: 0 9px;
+    }
+
+    .speakers-main-section .generic-title p {
+        font-size: 15px;
+    }
+
+    /* speaker section styling end here */
+    /* ticket section styling start here */
+    .ticket-left-section .generic-btn a {
+        padding: 16px 18px;
+    }
+
+    .mySwiper {
+        width: 260px;
+    }
+
+    .ticket-details {
+        padding: 25px 25px 35px;
+    }
+
+    h3 {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .ticket-details h3 {
+        letter-spacing: 0px;
+        margin-bottom: 10px;
+    }
+
+    .ticket-details p {
+        font-size: 16px;
+        line-height: 16px;
+        margin-bottom: 10px;
+    }
+
+    .ticket-details>span {
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    .ticket-details .price {
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    .ticket-details .price small {
+        top: -8px;
+        font-size: 18px;
+    }
+
+    .ticket-details ul li {
+        font-size: 14px;
+        padding-left: 22px;
+    }
+
+    .ticket-details .generic-btn a {
+        padding: 12px 15px;
+    }
+
+    .ticket-details ul {
+        margin-bottom: 15px;
+    }
+
+    .ticket-details {
+        width: 100%;
+    }
+
+    /* ticket section styling end here */
+    /* conference section styling start here */
+    .generic-title h2 br {
+        display: none;
+    }
+
+    .conference-box figure img {
+        height: 200px;
+    }
+
+    .conference-inner-con {
+        max-width: 270px;
+        grid-template-columns: 100%;
+        margin: 0 auto 30px;
+    }
+
+    .conference-main-section .generic-title {
+        margin-bottom: 25px;
+    }
+
+    .conference-main-section .generic-btn a {
+        padding: 16px 28px;
+    }
+
+    /* conference section styling end here */
+    /* testimonial section styling start here */
+    .testimonial-inner-con {
+        gap: 40px;
+        grid-template-columns: 100%;
+    }
+
+    .testimonial-img-outer-con {
+        width: 204px;
+        height: 245px;
+        margin: 0 auto;
+    }
+
+    .testimonial-right-con {
+        text-align: center;
+    }
+
+    .testimonial-right-con .generic-title h2::after {
+        bottom: -12px;
+        height: 2px;
+        width: 70px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .testimonial-right-con .generic-title h2 {
+        display: inline-block;
+    }
+
+    .reviewer-con {
+        justify-content: center;
+    }
+
+    .testimonial-main-section {
+        padding-bottom: 110px;
+    }
+
+    .testimonial-main-section .owl-carousel .owl-nav {
+        bottom: -60px;
+        right: unset;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* testimonial section styling end here */
+    .sponsers-companies ul {
+        gap: 22px;
+        grid-template-columns: 32% 32%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .sponsers-companies ul li:last-child {
+        grid-column: 1/-1;
+    }
+
+    .sponsers-main-section {
+        padding: 30px 0;
+    }
+
+    /* blog section styling start here */
+    h6 {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .blog-text {
+        bottom: 33px;
+        padding: 15px 20px;
+    }
+
+    .registration-inner-con .generic-title h2 {
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 15px;
+    }
+
+    .registration-main-section .registration-inner-con {
+        padding: 30px 20px;
+    }
+
+    .registration-main-section .generic-title .generic-btn a {
+        padding: 16px 18px;
+    }
+
+    .blog-box {
+        width: 310px;
+        margin: 0 auto;
+    }
+
+    /* blog section styling end here */
+    /* footer section styling start here */
+    .footer-inner-con {
+        gap: 18px;
+        grid-template-columns: 100%;
+    }
+
+    .footer-main-section {
+        padding-top: 150px;
+        margin-top: -110px;
+        padding-bottom: 30px;
+        text-align: center;
+    }
+
+    .footer-social-links ul {
+        justify-content: center;
+    }
+
+    .footer-box.footer-navigation {
+        width: 115px;
+        text-align: left;
+        margin: 0 auto;
+    }
+
+    .footer-box ul li {
+        margin-bottom: 12px;
+    }
+
+    .footer-box>p {
+        font-size: 14px;
+    }
+
+    .footer-box>p {
+        line-height: 22px;
+        margin-bottom: 10px;
+    }
+
+    .footer-box h6,
+    .footer-navigation h6 {
+        margin-bottom: 10px;
+    }
+
+    .footer-schedule ul li:last-child,
+    .footer-navigation ul li:last-child {
+        margin-bottom: 0;
+    }
+
+    .copyright-content {
+        padding: 15px 10px;
+    }
+
+    /* footer section styling end here */
+    /* about page styling start here */
+    .sub-banner-main-section {
+        height: 340px;
+    }
+
+    .faq-inner-section .card-header h5 .btn {
+        font-size: 16px;
+        line-height: 20px;
+        padding: 20px 70px 20px 15px;
+        white-space: normal;
+    }
+
+    .sub-banner-inner-con h1 {
+        margin-bottom: 10px;
+        font-size: 28px;
+        line-height: 32px;
+    }
+
+    .about-another-con .about-left-con {
+        margin-bottom: 20px;
+    }
+
+    /* about page styling end here */
+    /* 404 page */
+    .error-con h2 {
+        font-size: 70px;
+        line-height: 70px;
+        margin-bottom: 15px;
+    }
+
+    .error-con p {
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 15px;
+    }
+
+    .error-con .generic-btn a {
+        padding: 18px 18px;
+    }
+
+    /* 404 page */
+    /* coming soon page */
+    .coming-soon-con h2 {
+        font-size: 40px;
+        line-height: 40px;
+        margin-bottom: 20px;
+    }
+
+    /* coming soon page */
+    /* contact page */
+    .contact-box {
+        width: 300px;
+        margin: 0 auto;
+        padding: 25px 15px;
+    }
+
+    .small-text {
+        font-size: 14px;
+        line-height: 14px;
+    }
+
+    .contact-box figure {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 12px;
+    }
+
+    .contact-box figure img {
+        width: 26px;
+        height: 32px;
+    }
+
+    .contact-box>a {
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    .conatct-information-section .generic-title {
+        margin-bottom: 20px;
+    }
+
+    .contact-form-section form ul {
+        grid-template-columns: 100%;
+    }
+
+    .contact-form-section form ul li input,
+    .contact-form-section form ul li textarea {
+        padding: 16px 16px;
+    }
+
+    .contact-form-section .generic-title {
+        margin-bottom: 20px;
+    }
+
+    .contact-form-section form .generic-btn button {
+        padding: 18px 30px;
+    }
+
+    .contact-form-section {
+        padding-bottom: 190px;
+    }
+
+    .footer-main-section.contact-footer-section {
+        padding-top: 60px;
+        margin-top: 0;
+    }
+
+    .breadcrumb li a,
+    .breadcrumb-item.active {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    /* contact page */
+    /* index2 page styling start here */
+    .index2-banner-section .man-right-img figure img {
+        width: 100px;
+    }
+
+    .index2-banner-section .two-girls-img figure img {
+        width: 110px;
+    }
+
+    .line-second-img {
+        display: none;
+    }
+
+    .two-girls-img {
+        right: 30%;
+        bottom: -118px;
+        transform: translateX(-50%);
+    }
+
+    .index2-banner-section .man-right-img {
+        right: 18%;
+        left: unset;
+    }
+
+    .index2-banner-outer-section {
+        grid-template-columns: 100%;
+    }
+
+    .index2-banner-right-con span {
+        font-size: 14px;
+        right: 20px;
+        top: -20px;
+        transform: none;
+    }
+
+    .line-shape-img {
+        display: none;
+    }
+
+    .index2-banner-left-con {
+        padding-top: 45px;
+        text-align: center;
+    }
+
+    .index2-banner-outer-section {
+        height: 400px;
+    }
+
+    .index2-banner-section .owl-carousel .owl-dots {
+        bottom: 20px;
+    }
+
+    .index2-banner-section {
+        height: 510px;
+        padding: 110px 0 0;
+    }
+
+    .index2-banner-section .owl-carousel .owl-nav button.owl-prev,
+    .index2-banner-section .owl-carousel .owl-nav button.owl-next {
+        top: 50%;
+    }
+
+    .index2-banner-left-con .generic-btn a {
+        padding: 14px 16px;
+        font-size: 13px;
+    }
+
+    .index2-banner-section h1 {
+        font-size: 22px;
+        line-height: 30px;
+        margin-bottom: 15px;
+    }
+
+    .green-triange-first-img {
+        left: 15px;
+    }
+
+    .index2-banner-right-con small {
+        bottom: unset;
+        left: 37%;
+        right: unset;
+        transform: translateX(-30%);
+        top: -90px;
+        font-size: 12px;
+    }
+
+    .green-triange-second-img {
+        top: 40%;
+        right: 5px;
+    }
+
+    .index2-banner-section .owl-carousel .owl-dots .owl-dot {
+        width: 20px;
+        margin: 0 3px;
+    }
+
+    .index2-header .nav-btns {
+        right: 63px;
+    }
+
+    .index2-header .navbar-collapse {
+        right: 12px;
+    }
+
+    .header-main-con.index2-header .navbar-light .navbar-brand figure img {
+        width: 95px;
+    }
+
+    .learning-conference-heading h2 {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-item .learning-conf-con>figure img {
+        display: none;
+    }
+
+    .learning-conference-sec iframe {
+        width: 300px;
+        height: 190px;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-item .learning-conference-video-box>figure img {
+        width: 290px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .learning-conference-video-box {
+        position: relative;
+        top: unset;
+        left: unset;
+        transform: unset;
+        display: inline-flex;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-item .learning-conference-video-box>figure {
+        position: relative;
+    }
+
+    .learning-conference-video-box>figure::after {
+        height: 200px;
+    }
+
+    .learning-conf-con {
+        width: 100% !important;
+        text-align: center;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-nav button.owl-prev {
+        left: 2px;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-nav button.owl-next {
+        right: 2px;
+    }
+
+    .learning-conference-sec .owl-carousel .owl-nav button.owl-prev,
+    .learning-conference-sec .owl-carousel .owl-nav button.owl-next {
+        position: absolute;
+        top: -15px;
+    }
+
+    .learning-conference-sec .owl-nav {
+        position: absolute;
+        right: unset;
+        display: unset;
+        width: 100%;
+    }
+
+    #boxclose {
+        width: 35px;
+        height: 35px;
+    }
+
+    .learning-counter-box ul {
+        gap: 20px;
+        grid-template-columns: 47% 47%;
+        text-align: center;
+    }
+
+    .learning-conference-sec .owl-carousel {
+        margin-bottom: 30px;
+    }
+
+    .learning-conference-heading {
+        margin-bottom: 10px;
+    }
+
+    .learning-conference-sec {
+        padding-bottom: 50px;
+    }
+
+    .planned-events {
+        padding-top: 50px;
+    }
+
+    .conference-registration {
+        gap: 15px;
+        grid-template-columns: 100%;
+        padding: 30px 20px;
+        text-align: center;
+        top: unset;
+        position: relative;
+        margin-bottom: 50px;
+    }
+
+    .conference-registration::before,
+    .conference-registration::after {
+        width: 22px;
+        height: 22px;
+    }
+
+    .planned-events .generic-title h2 {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
+    .planned-events .generic-title {
+        margin-bottom: 20px;
+    }
+
+    .day-details span {
+        font-size: 11px;
+        line-height: 11px;
+        display: none;
+    }
+
+    .planned-events-inner-section .nav-pills .nav-link figure img {
+        width: 14px;
+        height: 14px;
+    }
+
+    .day-details h6 {
+        line-height: 12px;
+        font-size: 12px;
+    }
+
+    .planned-events-inner-section .nav.nav-pills {
+        gap: 7px;
+        display: grid;
+        grid-template-columns: 30% 35% 30%;
+        max-width: 330px;
+        margin: 0 auto;
+    }
+
+    .organizer-profile ul li {
+        margin-bottom: 0;
+        display: inline-block;
+    }
+
+    .event-text-right-con {
+        padding: 10px;
+        width: 100%;
+        float: left;
+    }
+
+    .event-profiles-box {
+        gap: 20px;
+        margin-top: 0;
+        grid-template-columns: 100%;
+        width: 100%;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .planned-events-inner-section .nav-pills .nav-link {
+        gap: 3px;
+        padding: 6px 8px 10px;
+        align-items: baseline;
+    }
+
+    .organizer-profile span {
+        display: inline-block;
+    }
+
+    .organizer-profile span::after {
+        bottom: -10px;
+    }
+
+    .organizer-profile {
+        width: 150px;
+        margin: 0 auto;
+    }
+
+    .schedule-con {
+        padding: 25px 20px 30px;
+        gap: 15px;
+        grid-template-columns: 100%;
+        text-align: center;
+    }
+
+    .schedule-con h6 {
+        line-height: 26px;
+        font-size: 18px;
+    }
+
+    .schedule-con .generic-btn a {
+        padding: 14px 20px;
+        font-size: 12px;
+    }
+
+    .ticket-pricing-slider .owl-carousel .owl-nav button.owl-prev {
+        left: -10px;
+    }
+
+    .ticket-pricing-slider .owl-carousel .owl-nav button.owl-next {
+        right: -10px;
+    }
+
+    .ticket-pricing-slider .owl-carousel .owl-nav button.owl-prev,
+    .ticket-pricing-slider .owl-carousel .owl-nav button.owl-next {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .ticket-pricing-section .generic-title h2 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .ticket-pricing-btn p {
+        margin-bottom: 15px;
+    }
+
+    .ticket-pricing-slider .ticket-details .generic-btn a {
+        font-size: 14px;
+        padding: 14px 18px;
+    }
+
+    .index2-speakers-section .generic-title h2 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .index2-best-speakers {
+        gap: 20px;
+        grid-template-columns: 44% 44%;
+        width: 330px;
+        margin: 0 auto 20px;
+    }
+
+    .index2-speaker-box figure::before {
+        width: 145px;
+        height: 145px;
+        bottom: 0;
+    }
+
+    .index2-speaker-detail ul {
+        margin-bottom: 10px;
+    }
+
+    .biggest-conference-section {
+        padding: 50px 0;
+    }
+
+    .biggest-text-section h2 {
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 10px;
+    }
+
+    .biggest-text-section p {
+        margin-bottom: 20px;
+    }
+
+    .top-experts-section .generic-title2 h2 br {
+        display: none;
+    }
+
+    .top-experts-section .generic-title2 h2 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .generic-title2 {
+        margin-bottom: 20px;
+    }
+
+    .expert-images-con ul {
+        gap: 15px;
+        margin-bottom: 15px;
+        grid-template-columns: 100%;
+    }
+
+    .top-experts-section .expert-images-con ul li img {
+        height: 220px;
+        width: 330px;
+        object-fit: cover;
+    }
+
+    .top-experts-section .expert-images-con ul {
+        width: 330px;
+        margin: 0 auto 15px;
+    }
+
+    .top-experts-section .expert-images-con {
+        margin-bottom: 20px;
+    }
+
+    .top-experts-btn .generic-btn a {
+        font-size: 14px;
+        padding: 16px 26px;
+    }
+
+    .generic-title2 h2 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .index2-faqs .card .card-header h6 button {
+        white-space: inherit;
+    }
+
+    .index2-testimonial-section .owl-carousel .owl-nav button.owl-prev,
+    .index2-testimonial-section .owl-carousel .owl-nav button.owl-next {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .index2-testimonial-section .owl-carousel .owl-nav button.owl-next {
+        right: -10px;
+    }
+
+    .index2-testimonial-section .owl-carousel .owl-nav button.owl-prev {
+        left: -10px;
+    }
+
+    .index2-testimonial-inner-sec {
+        padding: 20px 25px;
+    }
+
+    .index2-footer {
+        padding-top: 50px;
+        margin-top: 0;
+    }
+
+    .index2-sponsers-companies.sponsers-companies ul {
+        grid-template-columns: 33% 33%;
+    }
+
+    .index2-testimonial-outer-sec {
+        margin-bottom: 40px;
+    }
+
+    .ticket-pricing-slider {
+        width: 300px;
+        margin: 0 auto 30px;
+    }
+
+    .img-popup img {
+        width: 300px;
+    }
+
+    /* index2 page styling end here */
+    /* index3 page styling start here */
+    .index3-experts-left-con {
+        grid-template-columns: 100%;
+        width: 320px;
+    }
+
+    .index3-top-experts-inner-section .container__img-holder img {
+        width: 320px;
+        height: 200px;
+        object-fit: cover;
+    }
+
+    .index3-experts-right-con {
+        width: 320px;
+        grid-template-columns: 100%;
+    }
+
+    .index3-expert-right-bottom-con {
+        gap: 15px;
+        grid-template-columns: 100%;
+    }
+
+    .index3-top-experts-section .img-popup img {
+        width: 280px;
+    }
+
+    .index3-banner-img-con figure {
+        width: 320px;
+    }
+
+    .index3-banner-text-con {
+        padding: 25px 25px;
+        width: 320px;
+        position: relative;
+    }
+
+    .index3-banner-section {
+        height: 640px;
+        padding: 90px 0 0;
+    }
+
+    .index3-banner-inner-con {
+        padding-bottom: 0;
+        gap: 20px;
+        width: 325px;
+        margin: 0 auto;
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav button.owl-prev {
+        left: unset;
+        margin: 0 5px;
+        position: relative;
+    }
+
+    .index3-banner-section .owl-carousel .owl-nav button.owl-next {
+        right: unset;
+        position: relative;
+        margin: 0 5px;
+    }
+
+    .index3-banner-section .owl-carousel .owl-dots {
+        bottom: -30px;
+    }
+
+    .journey-inner-con {
+        grid-template-columns: 100%;
+        text-align: center;
+    }
+
+    .journey-section .learning-conference-video-box>figure::after {
+        height: 100%;
+    }
+
+    .journey-section .learning-conference-video-box {
+        width: 320px;
+        margin: 0 auto;
+    }
+
+    .journey-text-con .generic-btn a {
+        font-size: 13px;
+        padding: 14px 25px;
+    }
+
+    .journey-text-con h2 {
+        margin-bottom: 10px;
+    }
+
+    iframe {
+        width: 320px;
+        height: 220px;
+    }
+
+    .digital-conference-img-con figure img {
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .digital-counter-con ul li {
+        gap: 10px;
+    }
+
+    .digital-counter-con ul li:nth-child(3),
+    .digital-counter-con ul li:nth-child(4),
+    .digital-counter-con ul li {
+        padding: 14px 20px;
+    }
+
+    .digital-counter-con ul li .count,
+    .digital-counter-con ul li small {
+        font-size: 26px;
+        line-height: 28px;
+    }
+
+    .digital-counter-con ul li .plus span {
+        font-size: 20px;
+        line-height: 20px;
+        left: -7px;
+        top: 3px;
+    }
+
+    .digital-text-con h3 {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .digital-text-con .generic-btn a {
+        font-size: 13px;
+        padding: 12px 18px;
+        border: 1px solid var(--pink-color);
+    }
+
+    .index3-event-section .generic-title h2 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .index3-event-tabs-con .nav-tabs .nav-link.active,
+    .index3-event-tabs-con .nav-tabs .nav-link {
+        font-size: 14px;
+        line-height: 14px;
+        padding: 10px 24px;
+    }
+
+    .index3-event-section .generic-title {
+        margin-bottom: 20px;
+    }
+
+    .index3-event-tabs-con .nav-tabs {
+        margin-bottom: 25px;
+        padding-left: 15px;
+    }
+
+    .index3-event-date {
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    .index3-event-date-con,
+    .index3-event-organizer {
+        gap: 15px;
+    }
+
+    .index3-event-detail {
+        gap: 10px;
+        grid-template-columns: 100%;
+    }
+
+    .index3-faqs h6 button {
+        padding: 16px 35px 18px 20px;
+    }
+
+    .faq-inner-section .card-body {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .index3-faqs h6 button.btn.collapsed::after,
+    .index3-faqs h6 button.btn::after {
+        font-size: 18px;
+        right: 15px;
+        top: 30px;
+    }
+
+    .index3-faqs .card-body {
+        padding: 15px 19px 20px 24px;
+    }
+
+    .index3-organizer-detail small {
+        font-size: 12px;
+    }
+
+    .index3-faq-btn-con .generic-btn a {
+        padding: 14px 25px;
+        font-size: 13px;
+    }
+
+    .generic-title2 span {
+        margin-bottom: 7px;
+    }
+
+    .index3-event-zone h3 {
+        font-size: 22px;
+        line-height: 24px;
+        margin-bottom: 8px;
+    }
+
+    .index3-event-zone {
+        padding: 25px 20px;
+    }
+
+    .index3-speaker-box::before {
+        width: 110px;
+        height: 110px;
+    }
+
+    .index3-speaker-box {
+        height: 238px;
+        margin-bottom: 25px;
+    }
+
+    .index3-speakers-section .generic-title2 {
+        margin-bottom: 20px;
+    }
+
+    .index3-speakers-section .owl-carousel .owl-nav button.owl-prev,
+    .index3-speakers-section .owl-carousel .owl-nav button.owl-next {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .index3-speakers-section {
+        padding-bottom: 80px;
+    }
+
+    .index3-plan-inner-con .ticket-details {
+        padding: 25px 25px;
+    }
+
+    .index3-plan-inner-con .ticket-details>span {
+        margin-bottom: 12px;
+    }
+
+    .index3-plan-inner-con .ticket-details .price {
+        margin-bottom: 5px;
+    }
+
+    .index3-plan-inner-con .ticket-details ul li {
+        margin-bottom: 4px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .index3-plan-inner-con .ticket-details ul {
+        margin-bottom: 15px;
+    }
+
+    .index3-plan-inner-con .ticket-details .generic-btn a {
+        padding: 12px 20px;
+        font-size: 13px;
+    }
+
+    .index3-plan-inner-con {
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .index3-plan-btn .generic-btn a {
+        font-size: 13px;
+        line-height: 13px;
+        padding: 14px 24px;
+    }
+
+    .index3-plan-btn p {
+        margin-bottom: 15px;
+    }
+
+    .index3-registration-section {
+        padding-top: 50px;
+        text-align: center;
+    }
+
+    .index3-registration-right-con figure {
+        margin-top: 0;
+    }
+
+    .index3-registration-right-con {
+        width: 230px;
+        margin: 0 auto;
+    }
+
+    .index3-registration-left-con h2 {
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 6px;
+    }
+
+    .index3-registration-inner-con {
+        grid-template-columns: 100%;
+        gap: 30px;
+    }
+
+    .index3-top-experts-section .generic-title2 h2 br {
+        display: none;
+    }
+
+    .index3-testimonial-section .generic-title2 {
+        margin-bottom: 15px;
+    }
+
+    .index3-testimonial-box p {
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .index3-testimonial-section .owl-carousel .owl-nav button.owl-prev,
+    .index3-testimonial-section .owl-carousel .owl-nav button.owl-next {
+        position: relative;
+        top: unset;
+        transform: unset;
+        width: 35px;
+        height: 35px;
+        margin: 0 5px;
+        left: unset;
+        right: unset;
+        font-size: 12px;
+    }
+
+    .index3-testimonial-section .owl-carousel .owl-dots {
+        bottom: -35px;
+    }
+
+    .index3-testimonial-section .owl-carousel .owl-nav {
+        text-align: center;
+        position: absolute;
+        bottom: -90px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .index3-testimonial-section {
+        padding-bottom: 140px;
+    }
+
+    .index3-testimonial-box {
+        padding: 20px 25px 25px;
+    }
+
+    .index3-testimonial-box p {
+        margin-top: 5px;
+    }
+
+    .index3-footer-main-section {
+        padding-top: 40px;
+        padding-bottom: 30px;
+        margin-top: 0;
+    }
+
+    .footer-main-section h6 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .footer-box.footer-navigation ul li a {
+        font-size: 15px;
+        line-height: 15px;
+    }
+
+    .footer-box ul li span {
+        font-size: 15px;
+        line-height: 15px;
+        margin-bottom: 8px;
+    }
+
+    .footer-inner-con {
+        gap: 25px;
+    }
+
+    .footer-box.footer-navigation ul li {
+        margin-bottom: 5px;
+    }
+
+    .footer-box.footer-contact ul li.footer-social-links,
+    .footer-box.footer-contact ul li.footer-social-links ul li {
+        margin-bottom: 0;
+    }
+
+    .footer-box ul li small {
+        font-size: 13px;
+        line-height: 13px;
+    }
+
+    /* index3 page styling end here */
+    #button {
+        width: 50px;
+        height: 50px;
+    }
+
+    #button::after {
+        font-size: 16px;
+        line-height: 16px;
+    }
+
+    .quote-icon {
+        right: 0.5%;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+    .ticket-right-section {
+        max-width: 330px;
+        overflow: hidden;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
