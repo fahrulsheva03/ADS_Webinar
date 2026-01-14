@@ -18,12 +18,12 @@ function getUrlParams(dParam){
 }
 
 (function($) {
-	
+
 	"use strict"
-	
+
 	var body = $('body');
 	var direction =  getUrlParams('dir');
-	
+
 	dezSettingsOptions = {
 		language: "en_GB",
 		typography: "poppins",
@@ -38,23 +38,23 @@ function getUrlParams(dParam){
 		containerLayout: "full",
 		direction: direction
 	};
-	
+
 	new dezSettings(dezSettingsOptions);
 
 	jQuery(window).on('resize',function(){
         /*Check container layout on resize */
         dezSettingsOptions.containerLayout = $('#container_layout').val();
         /*Check container layout on resize END */
-        
-		new dezSettings(dezSettingsOptions); 
+
+		new dezSettings(dezSettingsOptions);
 	});
 
 	if(direction == 'rtl' || body.attr('direction') == 'rtl'){
         direction = 'rtl';
-		jQuery('.main-css').attr('href','assets/css/style-rtl.css');
+		jQuery('.main-css').attr('href','assetsAdmin/css/style-rtl.css');
     }else{
         direction = 'ltr';
-		jQuery('.main-css').attr('href','assets/css/style.css');
+		jQuery('.main-css').attr('href','assetsAdmin/css/style.css');
 	}
-	
+
 })(jQuery);

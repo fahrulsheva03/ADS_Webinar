@@ -17,7 +17,7 @@ var themeOptionArr = {
 };
 
 /* Cookies Function */
-function setCookie(cname, cvalue, exhours) 
+function setCookie(cname, cvalue, exhours)
 	{
 		var d = new Date();
 		d.setTime(d.getTime() + (30*60*1000)); /* 30 Minutes */
@@ -25,7 +25,7 @@ function setCookie(cname, cvalue, exhours)
 		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 	}
 
-function getCookie(cname) 
+function getCookie(cname)
 	{
 		var name = cname + "=";
 		var decodedCookie = decodeURIComponent(document.cookie);
@@ -42,7 +42,7 @@ function getCookie(cname)
 		return "";
 	}
 
-function deleteCookie(cname) 
+function deleteCookie(cname)
 	{
 		var d = new Date();
 		d.setTime(d.getTime() + (1)); // 1/1000 second
@@ -60,17 +60,17 @@ function deleteAllCookie(reload = true)
 			location.reload();
 		}
 	}
- 	
-/* Cookies Function END */	
+
+/* Cookies Function END */
 
 
 (function($) {
-	
+
 	"use strict"
-	
+
 	var direction =  getUrlParams('dir');
 	var theme =  getUrlParams('theme');
-	
+
 	var dezThemeSet0 = { /* Default Theme */
 		language: "en_GB",
 		typography: "poppins",
@@ -85,7 +85,7 @@ function deleteAllCookie(reload = true)
 		headerPosition: "fixed",
 		containerLayout: "full",
 	};
-	var dezThemeSet1 = { 
+	var dezThemeSet1 = {
 		language: "en_GB",
 		typography: "poppins",
 		version: "light",
@@ -99,7 +99,7 @@ function deleteAllCookie(reload = true)
 		headerPosition: "fixed",
 		containerLayout: "full",
 	};
-	var dezThemeSet2 = { 
+	var dezThemeSet2 = {
 		language: "en_GB",
 		typography: "poppins",
 		version: "light",
@@ -114,7 +114,7 @@ function deleteAllCookie(reload = true)
 		containerLayout: "full",
 	};
 	var dezThemeSet3 = {
-		language: "en_GB", 
+		language: "en_GB",
 		typography: "poppins",
 		version: "light",
 		layout: "horizontal",
@@ -155,9 +155,9 @@ function deleteAllCookie(reload = true)
 		headerPosition: "fixed",
 		containerLayout: "full",
 	};
-	
-	
-	
+
+
+
 	function themeChange(theme, direction){
 		var themeSettings = {};
 		themeSettings = eval('dezThemeSet'+theme);
@@ -166,26 +166,26 @@ function deleteAllCookie(reload = true)
 		new dezSettings(themeSettings);
 		setThemeInCookie(themeSettings);
 	}
-	
+
 	function setThemeInCookie(themeSettings){
 		jQuery.each(themeSettings, function(optionKey, optionValue) {
 			setCookie(optionKey,optionValue);
 		});
 	}
-	
+
 	function setThemeLogo() {
 		var logo = getCookie('logo_src');
 		var logo2 = getCookie('logo_src2');
-		
+
 		if(logo != ''){
 			jQuery('.nav-header .logo-abbr').attr("src", logo);
 		}
-		
+
 		if(logo2 != ''){
 			jQuery('.nav-header .logo-compact, .nav-header .brand-title').attr("src", logo2);
 		}
 	}
-	
+
 	function setThemeOptionOnPage(){
 		if(getCookie('version') != ''){
 			jQuery.each(themeOptionArr, function(optionKey, optionValue) {
@@ -194,11 +194,11 @@ function deleteAllCookie(reload = true)
 			});
 			dezSettingsOptions = themeOptionArr;
 			new dezSettings(dezSettingsOptions);
-			
+
 			setThemeLogo();
 		}
 	}
-	
+
 	/*  set switcher option start  */
 	function getElementAttrs(el) {
 		return [].slice.call(el.attributes).map((attr) => {
@@ -208,11 +208,11 @@ function deleteAllCookie(reload = true)
 			}
 		});
 	}
-	
+
 	function handleSetThemeOption(item, index, arr) {
-		
+
 		var attrName = item.name.replace('data-','').replace('-','_');
-		
+
 		if(attrName === "sidebarbg" || attrName === "primary" || attrName === "headerbg" || attrName === "nav_headerbg" ){
 			if(item.value === "color_1"){
 				return false;
@@ -224,23 +224,23 @@ function deleteAllCookie(reload = true)
 		}else if(attrName === "sidebartext"){
 			document.getElementById("sidebar_text_"+item.value).checked = true;
 		}else if(attrName === "direction" || attrName === "nav_headerbg" || attrName === "headerbg"){
-			document.getElementById("theme_direction").value = item.value;	
+			document.getElementById("theme_direction").value = item.value;
 		}else if(attrName === "sidebar_style" || attrName === "sidebar_position" || attrName === "header_position" || attrName === "typography" || attrName === "theme_version" ){
 			if(item.value === "cairo" || item.value === "full" || item.value === "fixed"|| item.value === "light"){return false}
-			document.getElementById(attrName).value = item.value;				
+			document.getElementById(attrName).value = item.value;
 		}else if(attrName === "layout"){
 			if(item.value === "vertical"){return false}
-			document.getElementById("theme_layout").value = item.value;		
+			document.getElementById("theme_layout").value = item.value;
 		}
 		else if(attrName === "container"){
 			if(item.value === "wide"){return false}
 			document.getElementById("container_layout").value = item.value;
 		}
-		
+
 		$('.default-select').selectpicker('refresh');
 	}
 	/* / set switcher option end / */
-	
+
 	jQuery(document).on('click', '.dz_theme_demo', function(){
 		setTimeout(() => {
 			var allAttrs = getElementAttrs(document.querySelector('body'));
@@ -249,38 +249,38 @@ function deleteAllCookie(reload = true)
 		var demoTheme = jQuery(this).data('theme');
 		themeChange(demoTheme, 'ltr');
 		setCookie('demo_theme',demoTheme);
-		jQuery('.main-css').attr('href','assets/css/style.css');
+		jQuery('.main-css').attr('href','assetsAdmin/css/style.css');
 	});
-	
+
 	jQuery(document).on('click', '.dz_theme_demo_rtl', function(){
 		var demoTheme = jQuery(this).data('theme');
 		themeChange(demoTheme, 'rtl');
 		setCookie('demo_theme',demoTheme);
-		jQuery('.main-css').attr('href','assets/css/style-rtl.css');
+		jQuery('.main-css').attr('href','assetsAdmin/css/style-rtl.css');
 	});
-	
+
 	jQuery(window).on('load', function(){
 		direction = (direction != undefined) ? direction : 'ltr';
-		
-		
+
+
 		if(getCookie('direction') == 'rtl'){
-			jQuery('.main-css').attr('href','assets/css/style-rtl.css');
+			jQuery('.main-css').attr('href','assetsAdmin/css/style-rtl.css');
 		}
-		
+
 		if(getCookie('demo_theme') != ''){
 			$('.dz_theme_demo[data-theme="'+getCookie('demo_theme')+'"]').closest('.dz-demo-bx').addClass('demo-active');
 		}
-		
+
 		if(theme != undefined){
 			if(theme == 'rtl'){
 				themeChange(0, 'rtl');
-				jQuery('.main-css').attr('href','assets/css/style-rtl.css');
+				jQuery('.main-css').attr('href','assetsAdmin/css/style-rtl.css');
 			}else {
 				themeChange(theme, direction);
 			}
 		}
 		else if(direction != undefined){
-			if(getCookie('version') == ''){	
+			if(getCookie('version') == ''){
 				themeChange(0, direction);
 			}
 		}
@@ -288,15 +288,15 @@ function deleteAllCookie(reload = true)
 			var allAttrs = getElementAttrs(document.querySelector('body'));
 			allAttrs.forEach(handleSetThemeOption);
 		},1500);
-		
+
 		/* Set Theme On Page From Cookie */
 		setThemeOptionOnPage();
-		
+
 	});
-	
+
 	jQuery(window).on('resize', function(){
 		setThemeOptionOnPage();
 	});
-	
+
 
 })(jQuery);

@@ -20,19 +20,20 @@
 
 	<!-- Mobile Specific -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="{{ url('/') }}/">
 
 	<!-- Favicon icon -->
-	<link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png">
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assetsAdmin/images/favicon.png') }}">
 
-	<link href="assets/vendor/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="{{ asset('assetsAdmin/vendor/bootstrap-select/css/bootstrap-select.min.css') }}" rel="stylesheet">
 
-	<link rel="stylesheet" href="assets/vendor/chartist/css/chartist.min.css">
-	<link href="assets/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="{{ asset('assetsAdmin/vendor/chartist/css/chartist.min.css') }}">
+	<link href="{{ asset('assetsAdmin/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
 
 	<!-- Localization Tool -->
-	<link href="assets/css/jquery.localizationTool.css" rel="stylesheet">
+	<link href="{{ asset('assetsAdmin/css/jquery.localizationTool.css') }}" rel="stylesheet">
 
 	<!-- Style Css -->
-	<link class="main-css" href="assets/css/style.css" rel="stylesheet">
+	<link class="main-css" href="{{ asset('assetsAdmin/css/style.css') }}" rel="stylesheet">
 
 </head>
