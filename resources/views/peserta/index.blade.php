@@ -16,16 +16,16 @@
                                 </div>
                                 <div class="banner-left-images d-flex">
                                     <figure class="mb-0">
-                                        <img src="assets/images/banner-left-img1.jpg" alt="banner-left-img1">
+                                        <img src="{{ asset('assets/images/banner-left-img1.jpg') }}" alt="banner-left-img1">
                                     </figure>
                                     <figure class="mb-0">
-                                        <img src="assets/images/banner-left-img2.jpg" alt="banner-left-img2">
+                                        <img src="{{ asset('assets/images/banner-left-img2.jpg') }}" alt="banner-left-img2">
                                     </figure>
                                 </div>
                             </div>
                             <div class="banner-right-section">
                                 <figure>
-                                    <img src="assets/images/banner-right-img.png" alt="banner-right-img">
+                                    <img src="{{ asset('assets/images/banner-right-img.png') }}" alt="banner-right-img">
                                 </figure>
                                 <span>21 King Street, 1175 Australia</span>
                                 <div class="social-links d-flex">
@@ -49,16 +49,16 @@
                                 </div>
                                 <div class="banner-left-images d-flex">
                                     <figure class="mb-0">
-                                        <img src="assets/images/banner-left-img3.jpg" alt="banner-left-img1">
+                                        <img src="{{ asset('assets/images/banner-left-img3.jpg') }}" alt="banner-left-img1">
                                     </figure>
                                     <figure class="mb-0">
-                                        <img src="assets/images/banner-left-img2.jpg" alt="banner-left-img2">
+                                        <img src="{{ asset('assets/images/banner-left-img2.jpg') }}" alt="banner-left-img2">
                                     </figure>
                                 </div>
                             </div>
                             <div class="banner-right-section">
                                 <figure>
-                                    <img src="assets/images/banner-right-img2.png" alt="banner-right-img2">
+                                    <img src="{{ asset('assets/images/banner-right-img2.png') }}" alt="banner-right-img2">
                                 </figure>
                                 <span>21 King Street, 1175 Australia</span>
                                 <div class="social-links d-flex">
@@ -82,16 +82,16 @@
                                 </div>
                                 <div class="banner-left-images d-flex">
                                     <figure class="mb-0">
-                                        <img src="assets/images/banner-left-img3.jpg" alt="banner-left-img3">
+                                        <img src="{{ asset('assets/images/banner-left-img3.jpg') }}" alt="banner-left-img3">
                                     </figure>
                                     <figure class="mb-0">
-                                        <img src="assets/images/banner-left-img4.jpg" alt="banner-left-img2">
+                                        <img src="{{ asset('assets/images/banner-left-img4.jpg') }}" alt="banner-left-img2">
                                     </figure>
                                 </div>
                             </div>
                             <div class="banner-right-section">
                                 <figure>
-                                    <img src="assets/images/banner-right-img3.png" alt="banner-right-img">
+                                    <img src="{{ asset('assets/images/banner-right-img3.png') }}" alt="banner-right-img">
                                 </figure>
                                 <span>21 King Street, 1175 Australia</span>
                                 <div class="social-links d-flex">
@@ -136,7 +136,7 @@
                         </div>
                         <div class="co-image-box">
                             <figure class="mb-0">
-                                <img src="assets/images/co-image.jpg" alt="co-image">
+                                <img src="{{ asset('assets/images/co-image.jpg') }}" alt="co-image">
                             </figure>
                             <div class="status">
                                 EVE OWENS - <span class="d-inline-block">CO</span>
@@ -146,7 +146,7 @@
                     <div class="ceo-box" data-aos="fade-up" data-aos-duration="700">
                         <div class="ceo-image-box">
                             <figure class="mb-0">
-                                <img src="assets/images/ceo-image.jpg" alt="ceo-image">
+                                <img src="{{ asset('assets/images/ceo-image.jpg') }}" alt="ceo-image">
                             </figure>
                             <div class="status">
                                 JHON SMITH - <span class="d-inline-block">CEO</span>
@@ -155,16 +155,16 @@
                         <div class="attendees align-items-center justify-content-center">
                             <div class="attendents">
                                 <figure class="mb-0">
-                                    <img src="assets/images/attendents-img.png" alt="attendents-img">
+                                    <img src="{{ asset('assets/images/attendents-img.png') }}" alt="attendents-img">
                                 </figure>
                                 <figure class="mb-0">
-                                    <img src="assets/images/attendents-img.png" alt="attendents-img">
+                                    <img src="{{ asset('assets/images/attendents-img.png') }}" alt="attendents-img">
                                 </figure>
                                 <figure class="mb-0">
-                                    <img src="assets/images/attendents-img.png" alt="attendents-img">
+                                    <img src="{{ asset('assets/images/attendents-img.png') }}" alt="attendents-img">
                                 </figure>
                                 <figure class="mb-0">
-                                    <img src="assets/images/attendents-img.png" alt="attendents-img">
+                                    <img src="{{ asset('assets/images/attendents-img.png') }}" alt="attendents-img">
                                 </figure>
                             </div>
                             <div class="numbers">
@@ -354,7 +354,7 @@
                 <div class="speaker-box position-relative">
                     <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
                     <figure class="mb-0">
-                        <img src="assets/images/speakers-img1.jpg" alt="speakers-img1">
+                        <img src="{{ asset('assets/images/speakers-img1.jpg') }}" alt="speakers-img1">
                     </figure>
                     <div class="speaker-status">
                         <button class="showBtn1">Declan Heyes <i class="fas fa-angle-up"></i></button>
@@ -366,7 +366,7 @@
                 <div class="speaker-box position-relative">
                     <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
                     <figure class="mb-0">
-                        <img src="assets/images/speakers-img2.jpg" alt="speakers-img2">
+                        <img src="{{ asset('assets/images/speakers-img2.jpg') }}" alt="speakers-img2">
                     </figure>
                     <div class="speaker-status">
                         <button class="showBtn2">Stella Hindley <i class="fas fa-angle-up"></i></button>
@@ -378,7 +378,7 @@
                 <div class="speaker-box position-relative">
                     <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
                     <figure class="mb-0">
-                        <img src="assets/images/speakers-img3.jpg" alt="speakers-img3">
+                        <img src="{{ asset('assets/images/speakers-img3.jpg') }}" alt="speakers-img3">
                     </figure>
                     <div class="speaker-status">
                         <button class="showBtn3">Jackson Allardyce <i class="fas fa-angle-up"></i></button>
@@ -390,7 +390,7 @@
                 <div class="speaker-box position-relative">
                     <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
                     <figure class="mb-0">
-                        <img src="assets/images/speakers-img4.jpg" alt="speakers-img4">
+                        <img src="{{ asset('assets/images/speakers-img4.jpg') }}" alt="speakers-img4">
                     </figure>
                     <div class="speaker-status">
                         <button class="showBtn4">Kiara Simons <i class="fas fa-angle-up"></i></button>
@@ -402,7 +402,7 @@
                 <div class="speaker-box position-relative">
                     <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
                     <figure class="mb-0">
-                        <img src="assets/images/speakers-img5.jpg" alt="speakers-img5">
+                        <img src="{{ asset('assets/images/speakers-img5.jpg') }}" alt="speakers-img5">
                     </figure>
                     <div class="speaker-status">
                         <button class="showBtn5">Eden Hoff <i class="fas fa-angle-up"></i></button>
@@ -414,7 +414,7 @@
                 <div class="speaker-box position-relative">
                     <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
                     <figure class="mb-0">
-                        <img src="assets/images/speakers-img6.jpg" alt="speakers-img6">
+                        <img src="{{ asset('assets/images/speakers-img6.jpg') }}" alt="speakers-img6">
                     </figure>
                     <div class="speaker-status">
                         <button class="showBtn6">Jesse Beeby <i class="fas fa-angle-up"></i></button>
@@ -426,7 +426,7 @@
                 <div class="speaker-box position-relative">
                     <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
                     <figure class="mb-0">
-                        <img src="assets/images/speakers-img7.jpg" alt="speakers-img7">
+                        <img src="{{ asset('assets/images/speakers-img7.jpg') }}" alt="speakers-img7">
                     </figure>
                     <div class="speaker-status">
                         <button class="showBtn7">Matthew Grey-Smith <i class="fas fa-angle-up"></i></button>
@@ -438,7 +438,7 @@
                 <div class="speaker-box position-relative">
                     <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
                     <figure class="mb-0">
-                        <img src="assets/images/speakers-img1.jpg" alt="speakers-img1">
+                        <img src="{{ asset('assets/images/speakers-img1.jpg') }}" alt="speakers-img1">
                     </figure>
                     <div class="speaker-status">
                         <button class="showBtn8">Declan Heyes <i class="fas fa-angle-up"></i></button>
@@ -573,7 +573,7 @@
             <div class="conference-inner-con">
                 <div class="conference-box position-relative" data-aos="fade-up" data-aos-duration="700">
                     <figure class="mb-0">
-                        <img src="assets/images/conference-img1.jpg" alt="conference-img1">
+                        <img src="{{ asset('assets/images/conference-img1.jpg') }}" alt="conference-img1">
                     </figure>
                     <div class="conference-txt">
                         <small class="d-block">business - workshop</small>
@@ -582,7 +582,7 @@
                 </div>
                 <div class="conference-box position-relative" data-aos="fade-up" data-aos-duration="700">
                     <figure class="mb-0">
-                        <img src="assets/images/conference-img2.jpg" alt="conference-img2">
+                        <img src="{{ asset('assets/images/conference-img2.jpg') }}" alt="conference-img2">
                     </figure>
                     <div class="conference-txt">
                         <small class="d-block">business - workshop</small>
@@ -591,7 +591,7 @@
                 </div>
                 <div class="conference-box position-relative" data-aos="fade-up" data-aos-duration="700">
                     <figure class="mb-0">
-                        <img src="assets/images/conference-img3.jpg" alt="conference-img3">
+                        <img src="{{ asset('assets/images/conference-img3.jpg') }}" alt="conference-img3">
                     </figure>
                     <div class="conference-txt">
                         <small class="d-block">business - workshop</small>
@@ -600,7 +600,7 @@
                 </div>
                 <div class="conference-box position-relative" data-aos="fade-up" data-aos-duration="700">
                     <figure class="mb-0">
-                        <img src="assets/images/conference-img4.jpg" alt="conference-img4">
+                        <img src="{{ asset('assets/images/conference-img4.jpg') }}" alt="conference-img4">
                     </figure>
                     <div class="conference-txt">
                         <small class="d-block">business - workshop</small>
@@ -623,7 +623,7 @@
                         <div class="testimonial-img-con">
                             <div class="testimonial-img-outer-con">
                                 <figure class="mb-0">
-                                    <img src="assets/images/testimonial-left-img.jpg" alt="testimonial-left-img">
+                                    <img src="{{ asset('assets/images/testimonial-left-img.jpg') }}" alt="testimonial-left-img">
                                 </figure>
                             </div>
                         </div>
@@ -637,7 +637,7 @@
                                 viverra maecenas accumsan lacus vel facilisis. </p>
                             <div class="reviewer-con">
                                 <figure class="mb-0">
-                                    <img src="assets/images/reviewer-img.png" alt="reviewer-img">
+                                    <img src="{{ asset('assets/images/reviewer-img.png') }}" alt="reviewer-img">
                                 </figure>
                                 <div class="reviewer-details">
                                     <span class="d-block">Leon Drescher</span>
@@ -652,7 +652,7 @@
                         <div class="testimonial-img-con">
                             <div class="testimonial-img-outer-con">
                                 <figure class="mb-0">
-                                    <img src="assets/images/testimonial-left-img.jpg" alt="testimonial-left-img">
+                                    <img src="{{ asset('assets/images/testimonial-left-img.jpg') }}" alt="testimonial-left-img">
                                 </figure>
                             </div>
                         </div>
@@ -666,7 +666,7 @@
                                 aliqua. Quis ipsum suspendisse ultrices gravida. </p>
                             <div class="reviewer-con">
                                 <figure class="mb-0">
-                                    <img src="assets/images/reviewer-img2.png" alt="reviewer-img">
+                                    <img src="{{ asset('assets/images/reviewer-img2.png') }}" alt="reviewer-img">
                                 </figure>
                                 <div class="reviewer-details">
                                     <span class="d-block">Declan Heyes</span>
@@ -681,7 +681,7 @@
                         <div class="testimonial-img-con">
                             <div class="testimonial-img-outer-con">
                                 <figure class="mb-0">
-                                    <img src="assets/images/testimonial-left-img.jpg" alt="testimonial-left-img">
+                                    <img src="{{ asset('assets/images/testimonial-left-img.jpg') }}" alt="testimonial-left-img">
                                 </figure>
                             </div>
                         </div>
@@ -695,7 +695,7 @@
                                 incididunt ut labore et dolorem agna aliqua. </p>
                             <div class="reviewer-con">
                                 <figure class="mb-0">
-                                    <img src="assets/images/reviewer-img3.png" alt="reviewer-img">
+                                    <img src="{{ asset('assets/images/reviewer-img3.png') }}" alt="reviewer-img">
                                 </figure>
                                 <div class="reviewer-details">
                                     <span class="d-block">Eden Hoff </span>
@@ -716,27 +716,27 @@
                 <ul class="list-unstyled mb-0" data-aos="fade-up" data-aos-duration="700">
                     <li>
                         <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo1.png" alt="sponsers-logo1">
+                            <img src="{{ asset('assets/images/sponsers-logo1.png') }}" alt="sponsers-logo1">
                         </figure>
                     </li>
                     <li>
                         <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo2.png" alt="sponsers-logo2">
+                            <img src="{{ asset('assets/images/sponsers-logo2.png') }}" alt="sponsers-logo2">
                         </figure>
                     </li>
                     <li>
                         <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo3.png" alt="sponsers-logo3">
+                            <img src="{{ asset('assets/images/sponsers-logo3.png') }}" alt="sponsers-logo3">
                         </figure>
                     </li>
                     <li>
                         <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo4.png" alt="sponsers-logo4">
+                            <img src="{{ asset('assets/images/sponsers-logo4.png') }}" alt="sponsers-logo4">
                         </figure>
                     </li>
                     <li>
                         <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo5.png" alt="sponsers-logo5">
+                            <img src="{{ asset('assets/images/sponsers-logo5.png') }}" alt="sponsers-logo5">
                         </figure>
                     </li>
                 </ul>
@@ -757,7 +757,7 @@
                     <div class="blog-img position-relative">
                         <span class="d-inline-block">Illustration, Art</span>
                         <figure class="mb-0">
-                            <img src="assets/images/blog-img1.jpg" alt="blog-img1">
+                            <img src="{{ asset('assets/images/blog-img1.jpg') }}" alt="blog-img1">
                         </figure>
                     </div>
                     <div class="blog-text">
@@ -770,7 +770,7 @@
                     <div class="blog-img position-relative">
                         <span class="d-inline-block">Vintage, Design</span>
                         <figure class="mb-0">
-                            <img src="assets/images/blog-img2.jpg" alt="blog-img3">
+                            <img src="{{ asset('assets/images/blog-img2.jpg') }}" alt="blog-img3">
                         </figure>
                     </div>
                     <div class="blog-text">
@@ -783,7 +783,7 @@
                     <div class="blog-img position-relative">
                         <span class="d-inline-block">Questions, Answers</span>
                         <figure class="mb-0">
-                            <img src="assets/images/blog-img1.jpg" alt="blog-img1">
+                            <img src="{{ asset('assets/images/blog-img1.jpg') }}" alt="blog-img1">
                         </figure>
                     </div>
                     <div class="blog-text">

@@ -3,7 +3,7 @@
             <nav class="navbar navbar-expand-lg navbar-light p-0">
                 <a class="navbar-brand" href="index.html">
                     <figure class="mb-0">
-                        <img src="assets/images/logo.png" alt="logo">
+                        <img src="{{ asset('assets/images/logo.png') }}" alt="logo">
                     </figure>
                 </a>
                 <button class="navbar-toggler collapsed" type="button" data-toggle="collapse"

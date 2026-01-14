@@ -4,7 +4,7 @@
                 <div class="footer-box">
                     <a href="index.html">
                         <figure>
-                            <img src="assets/images/footer-logo.png" alt="footer-logo">
+                            <img src="{{ asset('assets/images/footer-logo.png') }}" alt="footer-logo">
                         </figure>
                     </a>
                     <p>Tristirue nulla aliquet enim tortor <br>
