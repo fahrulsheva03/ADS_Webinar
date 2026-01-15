@@ -1,679 +1,1598 @@
 @extends('admin.partials.app')
 
 @section('content')
-    <div class="form-head mb-4 d-flex flex-wrap align-items-center">
-					<div class="me-auto">
-						<h2 class="font-w600 mb-0">Dashboard</h2>
-						<p>Lorem ipsum  dolor sit amet </p>
-					</div>
-					<div class="input-group search-area2 d-xl-inline-flex mb-2 me-lg-4 me-md-2">
-						<button class="input-group-text"><i class="flaticon-381-search-2 text-primary"></i></button>
-						<input type="text" class="form-control" placeholder="Search here...">
-					</div>
-					<div class="dropdown custom-dropdown mb-2 period-btn">
-						<div class="btn btn-sm  d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false" role="button">
-							<svg class="primary-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<path d="M22.167 5.83362H21.0003V3.50028C21.0003 3.19087 20.8774 2.89412 20.6586 2.67533C20.4398 2.45653 20.143 2.33362 19.8336 2.33362C19.5242 2.33362 19.2275 2.45653 19.0087 2.67533C18.7899 2.89412 18.667 3.19087 18.667 3.50028V5.83362H9.33362V3.50028C9.33362 3.19087 9.2107 2.89412 8.99191 2.67533C8.77312 2.45653 8.47637 2.33362 8.16695 2.33362C7.85753 2.33362 7.56079 2.45653 7.34199 2.67533C7.1232 2.89412 7.00028 3.19087 7.00028 3.50028V5.83362H5.83362C4.90536 5.83362 4.01512 6.20237 3.35874 6.85874C2.70237 7.51512 2.33362 8.40536 2.33362 9.33362V10.5003H25.667V9.33362C25.667 8.40536 25.2982 7.51512 24.6418 6.85874C23.9854 6.20237 23.0952 5.83362 22.167 5.83362Z" fill="#0E8A74"/>
-								<path d="M2.33362 22.1669C2.33362 23.0952 2.70237 23.9854 3.35874 24.6418C4.01512 25.2982 4.90536 25.6669 5.83362 25.6669H22.167C23.0952 25.6669 23.9854 25.2982 24.6418 24.6418C25.2982 23.9854 25.667 23.0952 25.667 22.1669V12.8336H2.33362V22.1669Z" fill="#0E8A74"/>
-							</svg>
-							<div class="text-start ms-3 flex-1">
-								<span class="d-block text-black">Change Periode</span>
-								<small class="d-block text-muted">August 28th - October 28th, 2021</small>
-							</div>
-							<i class="fa fa-caret-down text-light scale5 ms-3"></i>
-						</div>
-						<div class="dropdown-menu dropdown-menu-end">
-							<a class="dropdown-item" href="javascript:void(0);">October 29th - November 29th, 2021</a>
-							<a class="dropdown-item" href="javascript:void(0);">July 27th - Auguts 27th, 2021</a>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xl-12">
-						<div class="row">
-							<div class="col-xl-3 col-xxl-3 col-sm-6 ">
-								<div class="card chart-bx">
-									<div class="card-header border-0 pb-0">
-										<div class="d-flex align-items-center">
-											<h2 class="chart-num font-w600 mb-0">215</h2>
-											<svg class="ms-2 primary-icon" width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M2.00401 11.1924C0.222201 11.1924 -0.670134 9.0381 0.589795 7.77817L7.78218 0.585786C8.56323 -0.195262 9.82956 -0.195262 10.6106 0.585786L17.803 7.77817C19.0629 9.0381 18.1706 11.1924 16.3888 11.1924H2.00401Z" fill="#0E8A74"/>
-											</svg>
-										</div>
-										<div>
-											<h5 class="text-black font-w500 mb-0">Tickets</h5>
-										</div>
-									</div>
-									<div class="card-body pt-0 chart-body-wrapper">
-										<div id="widgetChart1" class="chart-primary"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-xxl-3 col-sm-6 ">
-								<div class="card chart-bx">
-									<div class="card-header border-0 pb-0">
-										<div class="d-flex align-items-center">
-											<h2 class="chart-num font-w600 mb-0">$536k</h2>
-											<svg class="ms-2" width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M2.00401 -4.76837e-06C0.222201 -4.76837e-06 -0.670134 2.15428 0.589795 3.41421L7.78218 10.6066C8.56323 11.3876 9.82956 11.3876 10.6106 10.6066L17.803 3.41421C19.0629 2.15428 18.1706 -4.76837e-06 16.3888 -4.76837e-06H2.00401Z" fill="#FF3131"/>
-											</svg>
-										</div>
-										<div>
-											<h5 class="text-black font-w500 mb-0">Revenue</h5>
-										</div>
-									</div>
-									<div class="card-body pt-0 chart-body-wrapper">
-										<div id="widgetChart2">
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-xxl-3 col-sm-6 ">
-								<div class="card chart-bx">
-									<div class="card-header border-0 pb-0">
-										<div class="d-flex align-items-center">
-											<h2 class="chart-num font-w600 mb-0">652</h2>
-											<svg class="ms-2 primary-icon" width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M2.00401 11.1924C0.222201 11.1924 -0.670134 9.0381 0.589795 7.77817L7.78218 0.585786C8.56323 -0.195262 9.82956 -0.195262 10.6106 0.585786L17.803 7.77817C19.0629 9.0381 18.1706 11.1924 16.3888 11.1924H2.00401Z" fill="#0E8A74"/>
-											</svg>
-										</div>
-										<div>
-											<h5 class="text-black font-w500 mb-0">Sales</h5>
-										</div>
-									</div>
-									<div class="card-body pt-0">
-										<canvas id="widgetChart3" height="60"></canvas>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-3 col-xxl-3 col-sm-6 ">
-								<div class="card chart-bx">
-									<div class="card-body pt-sm-4 pt-3 d-flex align-items-center justify-content-between">
-										<div class="me-3">
-											<div class="d-flex align-items-center">
-												<h2 class="chart-num font-w600 mb-0">45242</h2>
-											</div>
-											<div>
-												<h5 class="text-black font-w500 mb-3 mt-2">Event Held</h5>
-											</div>
-											<div>
-												<p class="text-primary fs-14 mb-0">
-													<svg class="me-2 primary-icon" width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns=	"http://www.w3.org/2000/svg">
-														<path d="M2.00401 11.1924C0.222201 11.1924 -0.670134 9.0381 0.589795 7.77817L7.78218 0.585786C8.56323 -0.195262 9.82956 -0.195262 10.6106 0.585786L17.803 7.77817C19.0629 9.0381 18.1706 11.1924 16.3888 11.1924H2.00401Z" fill="#0E8A74"/>
-													</svg>
-													2.4%
-													<span class="op-6 text-muted">than Last Week</span>
-												</p>
-											</div>
-										</div>
-										<div>
-											<div class="d-inline-block position-relative donut-chart-sale">
-												<span class="donut1" data-peity='{ "fill": ["var(--primary)", "rgba(240, 240, 240)"],   "innerRadius": 35, "radius": 10}'>5/8</span>
-												<small class="text-black">66%</small>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-12">
-						<div class="row">
-							<div class="col-xl-6">
-								<div class="card">
-									<div class="card-header border-0 pb-0 flex-wrap">
-										<h4 class="fs-20 card-title font-w500">Best Selling</h4>
-										<div class="card-action coin-tabs">
-											<ul class="nav nav-tabs" role="tablist">
-												<li class="nav-item">
-													<a class="nav-link active" data-bs-toggle="tab" href="#Monthly">
-														Monthly
-													</a>
-												</li>
-												<li class="nav-item">
-													<a class="nav-link " data-bs-toggle="tab" href="#Weekly">
-														Weekly
-													</a>
-												</li>
-												<li class="nav-item">
-													<a class="nav-link " data-bs-toggle="tab" href="#Daily">
-														Daily
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<div class="card-body pt-2">
-										<div class="tab-content">
-											<div class="tab-pane fade active show" id="Monthly">
-												<div class="d-sm-flex d-block align-items-center justify-content-center">
-													<div class="col-xl-6 col-xxl-5 text-center">
-														<div id="donutChart2" class="donutChart2 d-inline-block"></div>
-													</div>
-													<div class="col-xl-6 col-xxl-7">
-														<p class="fs-14 mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-														<div class="d-flex  mt-4">
-															<div class="me-4">
-																<svg width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<rect width="20" height="8" rx="4" fill="#FB3E7A"/>
-																</svg>
-																<h4 class="fs-18 text-black mb-0 font-w600">21,512</h4>
-																<span class="fs-14">Ticket Left</span>
-															</div>
-															<div class="me-4">
-																<svg class="primary-icon" width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<rect width="20" height="8" rx="4" fill="#0E8A74"/>
-																</svg>
-																<h4 class="fs-18 text-black mb-0 font-w600">45,612</h4>
-																<span class="fs-14">Ticket Sold</span>
-															</div>
-															<div class="">
-																<svg width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<rect width="20" height="8" rx="4" fill="#C8C8C8"/>
-																</svg>
-																<h4 class="fs-18 text-black mb-0 font-w600">275</h4>
-																<span class="fs-14">Event Held</span>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="tab-pane fade" id="Weekly">
-												<div class="d-sm-flex d-block align-items-center justify-content-center">
-													<div class="col-xl-6 col-xxl-5 text-center">
-														<div id="donutChart3" class="donutChart2 d-inline-block"></div>
-													</div>
-													<div class="col-xl-6 col-xxl-7">
-														<p class="fs-14 mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-														<div class="d-flex  mt-4">
-															<div class="me-4">
-																<svg width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<rect width="20" height="8" rx="4" fill="#FB3E7A"/>
-																</svg>
-																<h4 class="fs-18 text-black mb-0 font-w600">21,512</h4>
-																<span class="fs-14">Ticket Left</span>
-															</div>
-															<div class="me-4">
-																<svg width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<rect width="20" height="8" rx="4" fill="#0E8A74"/>
-																</svg>
-																<h4 class="fs-18 text-black mb-0 font-w600">45,612</h4>
-																<span class="fs-14">Ticket Sold</span>
-															</div>
-															<div class="">
-																<svg width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<rect width="20" height="8" rx="4" fill="#C8C8C8"/>
-																</svg>
-																<h4 class="fs-18 text-black mb-0 font-w600">275</h4>
-																<span class="fs-14">Event Held</span>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="tab-pane fade" id="Daily">
-												<div class="d-sm-flex d-block align-items-center justify-content-center">
-													<div class="col-xl-6 col-xxl-5 text-center">
-														<div id="donutChart4" class="donutChart2 d-inline-block"></div>
-													</div>
-													<div class="col-xl-6 col-xxl-7">
-														<p class="fs-14 mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-														<div class="d-flex  mt-4">
-															<div class="me-4">
-																<svg width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<rect width="20" height="8" rx="4" fill="#FB3E7A"/>
-																</svg>
-																<h4 class="fs-18 text-black mb-0 font-w600">21,512</h4>
-																<span class="fs-14">Ticket Left</span>
-															</div>
-															<div class="me-4">
-																<svg width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<rect width="20" height="8" rx="4" fill="#0E8A74"/>
-																</svg>
-																<h4 class="fs-18 text-black mb-0 font-w600">45,612</h4>
-																<span class="fs-14">Ticket Sold</span>
-															</div>
-															<div class="">
-																<svg width="20" height="8" viewBox="0 0 20 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-																	<rect width="20" height="8" rx="4" fill="#C8C8C8"/>
-																</svg>
-																<h4 class="fs-18 text-black mb-0 font-w600">275</h4>
-																<span class="fs-14">Event Held</span>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-6">
-								<div class="card bg-primary">
-									<div class="card-body">
-										<div class="d-sm-flex d-block pb-sm-3 align-items-end mb-2">
-											<div class="me-auto pe-3 mb-3 mb-sm-0">
-												<span class="chart-num-3 font-w200 d-block mb-sm-3 mb-2 text-white">Ticket Sold Today</span>
-												<h2 class="chart-num-2 text-white mb-0">456,502<span class="fs-18 me-2 ms-3">pcs</span></h2>
-											</div>
-											<div class="d-flex flex-wrap mb-3 mb-sm-0">
-												<svg width="87" height="58" viewBox="0 0 87 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M18.4571 37.6458C11.9375 44.6715 4.81049 52.3964 2 55.7162H68.8125C77.6491 55.7162 84.8125 48.5528 84.8125 39.7162V2L61.531 31.9333C56.8486 37.9536 48.5677 39.832 41.746 36.4211L37.3481 34.2222C30.9901 31.0432 23.2924 32.4352 18.4571 37.6458Z" fill="url(#paint0_linear)"/>
-													<path d="M2 55.7162C4.81049 52.3964 11.9375 44.6715 18.4571 37.6458C23.2924 32.4352 30.9901 31.0432 37.3481 34.2222L41.746 36.4211C48.5677 39.832 56.8486 37.9536 61.531 31.9333L84.8125 2" stroke="white" stroke-width="4" stroke-linecap="round"/>
-													<defs>
-													<linearGradient id="paint0_linear" x1="43.4062" y1="8.71453" x2="46.7635" y2="55.7162" gradientUnits="userSpaceOnUse">
-													<stop stop-color="white" offset="0"/>
-													<stop offset="1" stop-color="white" stop-opacity="0"/>
-													</linearGradient>
-													</defs>
-												</svg>
-												<div class="ms-3">
-													<p class="fs-20 mb-0 font-w500 text-white">+4%</p>
-													<span class="fs-12 text-white">than last day</span>
-												</div>
-											</div>
-										</div>
-										<div class="progress style-1" style="height:15px;">
-											<div class="progress-bar bg-white progress-animated" style="width: 55%; height:15px;" role="progressbar">
-												<span class="sr-only">55% Complete</span>
-												<span class="bg-white arrow"></span>
-												<span class="font-w600 counter-bx text-black"><strong class="counter font-w400">985pcs Left</strong></span>
-											</div>
-										</div>
-										<p class="fs-12 text-white pt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini</p>
-										<a href="javascript:void(0);" class="text-white">View Detail<i class="las la-long-arrow-alt-right scale5 ms-3"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-9 col-xxl-8">
-						<div class="row">
-							<div class="col-xl-12">
-								<div class="card event-bx">
-									<div class="card-header border-0 mb-0">
-										<h4 class="fs-20 card-title">Recent Event List</h4>
-										<div class="dropdown custom-dropdown mb-0 tbl-orders-style">
-											<div class="btn sharp tp-btn" data-bs-toggle="dropdown">
-												<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="#194039" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													<path d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z" stroke="#194039" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													<path d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z" stroke="#194039" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-												</svg>
-											</div>
-											<div class="dropdown-menu dropdown-menu-right">
-												<a class="dropdown-item" href="javascript:void(0);">Details</a>
-												<a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
-											</div>
-										</div>
-									</div>
-									<div class="card-body dz-scroll loadmore-content pt-0" id="EventListContent">
-										<div class="media event-list pb-3 border-bottom mb-3">
-											<div class="image">
-												<img src="assets/images/card/Untitled-15.jpg" alt="">
-												<i class="las la-film image-icon"></i>
-											</div>
-											<div class="media-body">
-												<h4 class="fs-18 mb-sm-0 mb-2"><a href="javascript:void(0);" class="text-black"> Envato International Online Meetup 2020</a></h4>
-												<span class="fs-14 d-block mb-sm-2 mb-2 text-secondary">Medan, Indonesia</span>
-												<p class="fs-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini</p>
-											</div>
-											<div class="media-footer">
-												<div class="text-center">
-													<span class="ticket-icon-1 mb-3">
-														<i class="fa fa-usd" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">$124,00</div>
-												</div>
-												<div class="text-center">
-													<span class="ticket-icon-1 mb-3">
-														<i class="fa fa-ticket" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">561 pcs Left</div>
-												</div>
-												<div class="text-center">
-													<span class="ticket-icon-1 mb-3">
-														<i class="fa fa-calendar" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">24 June 2020</div>
-												</div>
-											</div>
-										</div>
-										<div class="media event-list pb-3 border-bottom mb-3">
-											<div class="image">
-												<img src="assets/images/card/Untitled-16.jpg" alt="">
-												<i class="fa fa-music image-icon"></i>
+    @php
+        $now = now();
+        $badgeClass = function ($tone) {
+            $tone = strtolower((string) $tone);
+            $className = "badge bg-{$tone}";
+            if (in_array($tone, ['warning', 'light'], true)) {
+                $className .= ' text-dark';
+            }
+            return $className;
+        };
 
-											</div>
-											<div class="media-body">
-												<h4 class="fs-18 mb-sm-0 mb-2"><a href="javascript:void(0);" class="text-black">Google I/O Developer Conference</a></h4>
-												<span class="fs-14 d-block mb-sm-2 mb-2 text-secondary">Medan, Indonesia</span>
-												<p class="fs-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini</p>
-											</div>
-											<div class="media-footer">
-												<div class="text-center">
-													<span class="ticket-icon-1 mb-3">
-														<i class="fa fa-usd" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">$124,00</div>
-												</div>
-												<div class="text-center">
-													<span class="ticket-icon-1 mb-3 disabled">
-														<i class="fa fa-ticket" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">561 pcs Left</div>
-												</div>
-												<div class="text-center">
-													<span class="ticket-icon-1 mb-3">
-														<i class="fa fa-calendar" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">24 June 2020</div>
-												</div>
-											</div>
-										</div>
-										<div class="media event-list pb-3 border-bottom mb-3">
-											<div class="image">
-												<img src="assets/images/card/Untitled-17.jpg" alt="">
-												<i class="fa fa-music image-icon"></i>
+        $ringkasan = [
+            [
+                'label' => 'Event Aktif',
+                'value' => 6,
+                'delta' => '+2 minggu ini',
+                'tone' => 'success',
+                'chartId' => 'widgetChart1',
+            ],
+            [
+                'label' => 'Sesi Terjadwal',
+                'value' => 18,
+                'delta' => '+3 minggu ini',
+                'tone' => 'primary',
+                'chartId' => 'widgetChart2',
+            ],
+            [
+                'label' => 'Pembayaran Berhasil',
+                'value' => 142,
+                'delta' => '98% sukses',
+                'tone' => 'success',
+                'chartId' => null,
+            ],
+            [
+                'label' => 'Tiket Dukungan',
+                'value' => 4,
+                'delta' => '1 prioritas tinggi',
+                'tone' => 'warning',
+                'chartId' => null,
+            ],
+        ];
 
-											</div>
-											<div class="media-body">
-												<h4 class="fs-18 mb-sm-0 mb-2"><a href="javascript:void(0);" class="text-black">Apple Worldwide Developers Conference (WWDC)</a></h4>
-												<span class="fs-14 d-block mb-sm-2 mb-2 text-secondary">Medan, Indonesia</span>
-												<p class="fs-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini</p>
-											</div>
-											<div class="media-footer">
-												<div class="text-center">
-													<span class="ticket-icon-1 mb-3">
-														<i class="fa fa-usd" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">$124,00</div>
-												</div>
-												<div class="text-center">
-													<span class="ticket-icon-1 mb-3 disabled">
-														<i class="fa fa-ticket" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">561 pcs Left</div>
-												</div>
-												<div class="text-center">
-													<span class="ticket-icon-1 disabled mb-3">
-														<i class="fa fa-calendar" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">24 June 2020</div>
-												</div>
-											</div>
-										</div>
-										<div class="media event-list pb-3 border-bottom mb-3">
-											<div class="image">
-												<img src="assets/images/card/Untitled-15.jpg" alt="">
-												<i class="fa fa-music image-icon"></i>
+        $contohEvents = [
+            [
+                'nama' => 'Webinar Keamanan Aplikasi',
+                'mulai' => '2026-02-04 09:00',
+                'selesai' => '2026-02-04 12:00',
+                'status' => 'Terjadwal',
+                'statusTone' => 'primary',
+            ],
+            [
+                'nama' => 'Workshop Laravel untuk Tim',
+                'mulai' => '2026-02-10 13:00',
+                'selesai' => '2026-02-10 16:00',
+                'status' => 'Draft',
+                'statusTone' => 'secondary',
+            ],
+            [
+                'nama' => 'Kelas Offline: QA & UAT',
+                'mulai' => '2026-01-22 10:00',
+                'selesai' => '2026-01-22 15:30',
+                'status' => 'Berjalan',
+                'statusTone' => 'success',
+            ],
+        ];
 
-											</div>
-											<div class="media-body">
-												<h4 class="fs-18 mb-sm-0 mb-2"><a href="javascript:void(0);" class="text-black"> TED Global Summit 2020</a></h4>
-												<span class="fs-14 d-block mb-sm-2 mb-2 text-secondary">Medan, Indonesia</span>
-												<p class="fs-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini</p>
-											</div>
-											<div class="media-footer">
-												<div class="text-center">
-													<span class="ticket-icon-1 mb-3">
-														<i class="fa fa-usd" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">$124,00</div>
-												</div>
-												<div class="text-center">
-													<span class="ticket-icon-1 mb-3 disabled">
-														<i class="fa fa-ticket" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">561 pcs Left</div>
-												</div>
-												<div class="text-center">
-													<span class="ticket-icon-1 disabled mb-3">
-														<i class="fa fa-calendar" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">24 June 2020</div>
-												</div>
-											</div>
-										</div>
-										<div class="media event-list pb-3 border-bottom mb-3">
-											<div class="image">
-												<img src="assets/images/card/Untitled-16.jpg" alt="">
-												<i class="fa fa-music image-icon"></i>
+        $contohSesi = [
+            [
+                'judul' => 'Pembukaan & Orientasi',
+                'mulai' => '09:00',
+                'selesai' => '09:15',
+                'status' => 'Siap',
+                'statusTone' => 'success',
+            ],
+            [
+                'judul' => 'Materi: Hardening & OWASP Top 10',
+                'mulai' => '09:15',
+                'selesai' => '10:45',
+                'status' => 'Terjadwal',
+                'statusTone' => 'primary',
+            ],
+            [
+                'judul' => 'Q&A',
+                'mulai' => '10:45',
+                'selesai' => '11:15',
+                'status' => 'Menunggu',
+                'statusTone' => 'warning',
+            ],
+        ];
 
-											</div>
-											<div class="media-body">
-												<h4 class="fs-18 mb-sm-0 mb-2"><a href="javascript:void(0);" class="text-black"> Adobe MAX Creative Conference</a></h4>
-												<span class="fs-14 d-block mb-sm-2 mb-2 text-secondary">Medan, Indonesia</span>
-												<p class="fs-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad mini</p>
-											</div>
-											<div class="media-footer">
-												<div class="text-center">
-													<span class="ticket-icon-1 mb-3">
-														<i class="fa fa-usd text-primary" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">$124,00</div>
-												</div>
-												<div class="text-center">
-													<span class="ticket-icon-1 mb-3 disabled">
-														<i class="fa fa-ticket" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">561 pcs Left</div>
-												</div>
-												<div class="text-center">
-													<span class="ticket-icon-1 disabled mb-3">
-														<i class="fa fa-calendar" aria-hidden="true"></i>
-													</span>
-													<div class="fs-12 text-primary">24 June 2020</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="card-footer text-center pt-0 border-0">
-										<a href="javascript:void(0);" class="btn btn-secondary btn-lg  text-white dz-load-more" id="EventList" rel="assets/ajax/event-list.html">Load More</a>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-6 col-xxl-12">
-								<div class="card latest-sales-bx">
-									<div class="card-header border-0 mb-0">
-										<h4 class="fs-20 card-title">Latest Sales</h4>
-										<div class="dropdown custom-dropdown mb-0 tbl-orders-style">
-											<div class="btn sharp tp-btn" data-bs-toggle="dropdown">
-												<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-													<path d="M12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13Z" stroke="#194039" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													<path d="M12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6Z" stroke="#194039" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-													<path d="M12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20Z" stroke="#194039" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-												</svg>
-											</div>
-											<div class="dropdown-menu dropdown-menu-right">
-												<a class="dropdown-item" href="javascript:void(0);">Details</a>
-												<a class="dropdown-item text-danger" href="javascript:void(0);">Cancel</a>
-											</div>
-										</div>
-									</div>
-									<div class="card-body pb-0 dz-scroll loadmore-content pt-0" id="LatestSalesContent">
-										<div class="media pb-3 border-bottom mb-3 align-items-center">
-											<div class="media-image me-2">
-												<img src="assets/images/contacts/pic1.jpg" alt="">
-											</div>
-											<div class="media-body">
-												<h6 class="fs-16 mb-0">Olivia Johanson</h6>
-												<div class="d-flex">
-													<span class="fs-14 me-auto text-secondary"><i class="fa fa-ticket me-1"></i>High Performance Conert 2020..</span>
-													<span class="fs-14 text-nowrap">2m ago</span>
-												</div>
-											</div>
-										</div>
-										<div class="media pb-3 border-bottom mb-3 align-items-center">
-											<div class="media-image me-2">
-												<img src="assets/images/contacts/pic2.jpg" alt="">
-											</div>
-											<div class="media-body">
-												<h6 class="fs-16 mb-0">Griezerman</h6>
-												<div class="d-flex">
-													<span class="fs-14 me-auto text-secondary"><i class="fa fa-ticket me-1"></i>Fireworks Show New Year 2020</span>
-													<span class="fs-14 text-nowrap">5m ago</span>
-												</div>
-											</div>
-										</div>
-										<div class="media pb-3 border-bottom mb-3 align-items-center">
-											<div class="media-image me-2">
-												<img src="assets/images/contacts/pic3.jpg" alt="">
-											</div>
-											<div class="media-body">
-												<h6 class="fs-16 mb-0">Uli Trumb</h6>
-												<div class="d-flex">
-													<span class="fs-14 me-auto text-secondary"><i class="fa fa-ticket me-1"></i>High Performance Conert 2020..</span>
-													<span class="fs-14 text-nowrap">8m ago</span>
-												</div>
-											</div>
-										</div>
-										<div class="media pb-3 border-bottom mb-3 align-items-center">
-											<div class="media-image me-2">
-												<img src="assets/images/contacts/pic1.jpg" alt="">
-											</div>
-											<div class="media-body">
-												<h6 class="fs-16 mb-0">Oconner</h6>
-												<div class="d-flex">
-													<span class="fs-14 me-auto text-secondary"><i class="fa fa-ticket me-1"></i>High Performance Conert 2020..</span>
-													<span class="fs-14 text-nowrap">9m ago</span>
-												</div>
-											</div>
-										</div>
-										<div class="media pb-3 border-bottom mb-3 align-items-center">
-											<div class="media-image me-2">
-												<img src="assets/images/contacts/pic1.jpg" alt="">
-											</div>
-											<div class="media-body">
-												<h6 class="fs-16 mb-0">Oconner</h6>
-												<div class="d-flex">
-													<span class="fs-14 me-auto text-secondary"><i class="fa fa-ticket me-1"></i>High Performance Conert 2020..</span>
-													<span class="fs-14 text-nowrap">9m ago</span>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="card-footer style-1 border-0 px-0">
-										<a href="javascript:void();" class="dz-load-more fa fa-long-arrow-down text-secondary" id="LatestSales" rel="assets/ajax/latest-sales.html"></a>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-6 col-xxl-12">
-								<div class="card">
-									<div class="card-header border-0 flex-wrap pb-0">
-										<h4 class="fs-20 font-w500 card-title">Sales Revenue</h4>
-										<div class="card-action coin-tabs">
-											<ul class="nav nav-tabs" role="tablist">
-												<li class="nav-item">
-													<a class="nav-link active" data-bs-toggle="tab" href="#Monthly1">
-														Monthly
-													</a>
-												</li>
-												<li class="nav-item">
-													<a class="nav-link " data-bs-toggle="tab" href="#Weekly1">
-														Weekly
-													</a>
-												</li>
-												<li class="nav-item">
-													<a class="nav-link " data-bs-toggle="tab" href="#Daily1">
-														Daily
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<div class="card-body pb-2">
-										<div class="tab-content">
-											<div class="tab-pane fade active show" id="Monthly1">
-												<div id="salesChart" class="chart-primary"></div>
-											</div>
-											<div class="tab-pane fade" id="Weekly1">
-												<div id="salesChart1" class="chart-primary"></div>
+        $contohPaket = [
+            [
+                'nama' => 'Basic',
+                'akses' => 'Live 1x + Rekaman 7 hari',
+                'harga' => 'Rp 99.000',
+                'aktif' => true,
+            ],
+            [
+                'nama' => 'Pro',
+                'akses' => 'Live + Rekaman 30 hari + Sertifikat',
+                'harga' => 'Rp 199.000',
+                'aktif' => true,
+            ],
+            [
+                'nama' => 'Enterprise',
+                'akses' => 'Kustom (SLA, Whitelist, SSO)',
+                'harga' => 'Hubungi',
+                'aktif' => false,
+            ],
+        ];
 
-											</div>
-											<div class="tab-pane fade" id="Daily1">
-												<div id="salesChart2" class="chart-primary"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-xxl-4">
-						<div class="row">
-							<div class="col-xl-12">
-								<div class="card">
-									<div class="card-body text-center event-calender pb-2 px-2 pt-2">
-										<input type='text' class="form-control d-none" id='datetimepicker1'>
-									</div>
-									<div class="card-header py-0 border-0">
-										<h4 class="text-black fs-20">Upcoming Events</h4>
-									</div>
-									<div class="card-body pb-0 loadmore-content height450 dz-scroll" id="UpcomingEventContent">
-										<div class="media mb-5 align-items-center event-list">
-											<div class="p-3 text-center me-3 date-bx bgl-primary">
-												<h2 class="mb-0 text-secondary fs-28 font-w600">3</h2>
-												<h5 class="mb-1 text-black">Wed</h5>
-											</div>
-											<div class="media-body px-0">
-												<h6 class="mt-0 mb-3 fs-14"><a class="text-black" href="event.html">Live Concert Choir Charity Event 2020</a></h6>
-												<ul class="fs-14 list-inline mb-2 d-flex justify-content-between">
-													<li>Ticket Sold</li>
-													<li>561/650</li>
-												</ul>
-												<div class="progress mb-0" style="height:4px; width:100%;">
-													<div class="progress-bar bg-warning progress-animated" style="width:60%;" role="progressbar">
-														<span class="sr-only">60% Complete</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="media mb-5 align-items-center event-list">
-											<div class="p-3 text-center me-3 date-bx bgl-primary">
-												<h2 class="mb-0 text-secondary fs-28 font-w600">16</h2>
-												<h5 class="mb-1 text-black">Wed</h5>
-											</div>
-											<div class="media-body px-0">
-												<h6 class="mt-0 mb-3 fs-14"><a class="text-black" href="event.html">Live Concert Choir Charity Event 2020</a></h6>
-												<ul class="fs-14 list-inline mb-2 d-flex justify-content-between">
-													<li>Ticket Sold</li>
-													<li>431/650</li>
-												</ul>
-												<div class="progress mb-0" style="height:4px; width:100%;">
-													<div class="progress-bar bg-warning progress-animated" style="width:50%;" role="progressbar">
-														<span class="sr-only">60% Complete</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="media mb-5 align-items-center event-list">
-											<div class="p-3 text-center me-3 date-bx bgl-primary">
-												<h2 class="mb-0 text-primary fs-28 font-w600">28</h2>
-												<h5 class="mb-1 text-black">Wed</h5>
-											</div>
-											<div class="media-body px-0">
-												<h6 class="mt-0 mb-3 fs-14"><a class="text-black" href="event.html">Live Concert Choir Charity Event 2020</a></h6>
-												<ul class="fs-14 list-inline mb-2 d-flex justify-content-between">
-													<li>Ticket Sold</li>
-													<li>650/650</li>
-												</ul>
-												<div class="progress mb-0" style="height:4px; width:100%;">
-													<div class="progress-bar bg-warning progress-animated" style="width:100%;" role="progressbar">
-														<span class="sr-only">60% Complete</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="card-footer pt-0 border-0">
-										<a href="javascript:void(0);" class="btn btn-secondary btn-block text-white dz-load-more" id="UpcomingEvent" rel="assets/ajax/upcoming-event.html">Load More</a>
-									</div>
-								</div>
-							</div>
-						</div>
+        $contohPeserta = [
+            [
+                'nama' => 'Siti Aulia',
+                'email' => 'siti@example.test',
+                'paket' => 'Pro',
+                'status' => 'Aktif',
+                'statusTone' => 'success',
+            ],
+            [
+                'nama' => 'Budi Santoso',
+                'email' => 'budi@example.test',
+                'paket' => 'Basic',
+                'status' => 'Menunggu verifikasi',
+                'statusTone' => 'warning',
+            ],
+        ];
 
-					</div>
-				</div>
+        $contohTransaksi = [
+            [
+                'kode' => 'INV-2026-00012',
+                'peserta' => 'Siti Aulia',
+                'nominal' => 'Rp 199.000',
+                'status' => 'Paid',
+                'statusTone' => 'success',
+                'waktu' => '2026-01-14 16:12',
+            ],
+            [
+                'kode' => 'INV-2026-00013',
+                'peserta' => 'Budi Santoso',
+                'nominal' => 'Rp 99.000',
+                'status' => 'Pending',
+                'statusTone' => 'warning',
+                'waktu' => '2026-01-15 09:31',
+            ],
+        ];
 
+        $contohTiket = [
+            [
+                'kode' => 'TCK-1024',
+                'judul' => 'Peserta tidak bisa join Zoom',
+                'prioritas' => 'Tinggi',
+                'prioritasTone' => 'danger',
+                'status' => 'Open',
+                'statusTone' => 'warning',
+                'updated' => '5 menit lalu',
+            ],
+            [
+                'kode' => 'TCK-1021',
+                'judul' => 'Konfirmasi pembayaran tertunda',
+                'prioritas' => 'Sedang',
+                'prioritasTone' => 'warning',
+                'status' => 'Investigasi',
+                'statusTone' => 'primary',
+                'updated' => '1 jam lalu',
+            ],
+        ];
+    @endphp
+
+    <a class="visually-hidden-focusable" href="#main-content">Lewati ke konten utama</a>
+
+    <main id="main-content" tabindex="-1" class="pb-4" role="main" aria-label="Dashboard admin">
+        <div class="d-flex flex-wrap align-items-start justify-content-between gap-3 mb-4">
+            <div class="me-auto">
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                    <h1 class="h3 mb-0">Dashboard Admin</h1>
+                    <span class="badge bg-light text-dark">Terakhir diperbarui: {{ $now->format('d M Y H:i') }}</span>
+                </div>
+                <p class="mb-0 text-muted">Kelola event, sesi, paket, peserta, operasi, dan laporan dari satu tempat.</p>
+            </div>
+
+            <div class="d-flex flex-wrap align-items-center gap-2">
+                <div class="input-group search-area2" style="min-width: 260px;">
+                    <label class="input-group-text" for="dashboard-search" aria-label="Cari">
+                        <i class="flaticon-381-search-2 text-primary" aria-hidden="true"></i>
+                    </label>
+                    <input
+                        id="dashboard-search"
+                        type="search"
+                        class="form-control"
+                        placeholder="Cari event, sesi, peserta, transaksi…"
+                        autocomplete="off"
+                    >
+                </div>
+                <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#dashboardHelpModal">
+                    Bantuan
+                </button>
+            </div>
+        </div>
+
+        <section class="mb-4" aria-label="Aksi cepat">
+            <div class="card">
+                <div class="card-body d-flex flex-wrap align-items-center justify-content-between gap-3">
+                    <div>
+                        <div class="fw-semibold">Aksi cepat</div>
+                        <div class="text-muted">Buat perubahan tanpa pindah halaman.</div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2">
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#eventModal">
+                            Buat event
+                        </button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sessionModal">
+                            Jadwalkan sesi
+                        </button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#packageModal">
+                            Tambah paket
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#participantModal">
+                            Daftarkan peserta
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#supportTicketModal">
+                            Buat tiket dukungan
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">
+                            Buat laporan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-4" aria-label="Ringkasan utama">
+            <div class="row">
+                @foreach ($ringkasan as $item)
+                    <div class="col-12 col-sm-6 col-xxl-3 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start gap-2">
+                                    <div>
+                                        <div class="text-muted">{{ $item['label'] }}</div>
+                                        <div class="d-flex align-items-baseline gap-2">
+                                            <div class="fs-30 fw-semibold text-black">{{ $item['value'] }}</div>
+                                            <span class="{{ $badgeClass($item['tone']) }}">{{ $item['delta'] }}</span>
+                                        </div>
+                                    </div>
+                                    @if ($item['chartId'])
+                                        <div class="ms-auto" style="min-width: 130px;">
+                                            <div id="{{ $item['chartId'] }}" style="height: 70px;"></div>
+                                        </div>
+                                    @else
+                                        <div class="d-inline-block position-relative donut-chart-sale" aria-hidden="true">
+                                            <span class="donut1" data-peity='{ "fill": ["var(--primary)", "rgba(240, 240, 240)"], "innerRadius": 35, "radius": 10 }'>5/8</span>
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </section>
+
+        <section class="mb-4" aria-label="Pusat kendali modul">
+            <div class="card">
+                <div class="card-header border-0 pb-0">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                        <h2 class="h5 mb-0">Pusat Kendali</h2>
+                        <div class="text-muted">Navigasi cepat per modul.</div>
+                    </div>
+                </div>
+                <div class="card-body pt-3">
+                    <ul class="nav nav-pills flex-wrap gap-2" id="admin-module-tabs" role="tablist" aria-label="Tab modul admin">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="tab-events" data-bs-toggle="tab" data-bs-target="#pane-events" type="button" role="tab" aria-controls="pane-events" aria-selected="true">
+                                Event
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tab-sessions" data-bs-toggle="tab" data-bs-target="#pane-sessions" type="button" role="tab" aria-controls="pane-sessions" aria-selected="false">
+                                Sesi
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tab-packages" data-bs-toggle="tab" data-bs-target="#pane-packages" type="button" role="tab" aria-controls="pane-packages" aria-selected="false">
+                                Paket & Akses
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tab-participants" data-bs-toggle="tab" data-bs-target="#pane-participants" type="button" role="tab" aria-controls="pane-participants" aria-selected="false">
+                                Peserta & Transaksi
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tab-operations" data-bs-toggle="tab" data-bs-target="#pane-operations" type="button" role="tab" aria-controls="pane-operations" aria-selected="false">
+                                Live & Offline
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="tab-reporting" data-bs-toggle="tab" data-bs-target="#pane-reporting" type="button" role="tab" aria-controls="pane-reporting" aria-selected="false">
+                                Laporan
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content pt-4" id="admin-module-tab-content">
+                        <div class="tab-pane fade show active" id="pane-events" role="tabpanel" aria-labelledby="tab-events" tabindex="0">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                                <div>
+                                    <div class="fw-semibold text-black">Event Control</div>
+                                    <div class="text-muted">Kelola event, jadwal, dan status.</div>
+                                </div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#eventModal">Tambah event</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#eventBulkModal">Aksi massal</button>
+                                </div>
+                            </div>
+
+                            <div class="table-responsive" data-dashboard-search-scope>
+                                <table class="table table-striped align-middle mb-0" aria-label="Daftar event">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Nama</th>
+                                            <th scope="col">Jadwal</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col" class="text-end">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($contohEvents as $event)
+                                            <tr>
+                                                <th scope="row" class="text-black">{{ $event['nama'] }}</th>
+                                                <td class="text-muted">
+                                                    {{ \Carbon\Carbon::parse($event['mulai'])->format('d M Y H:i') }}
+                                                    <span class="text-muted">–</span>
+                                                    {{ \Carbon\Carbon::parse($event['selesai'])->format('H:i') }}
+                                                </td>
+                                                <td>
+                                                    <span class="{{ $badgeClass($event['statusTone']) }}">{{ $event['status'] }}</span>
+                                                </td>
+                                                <td class="text-end">
+                                                    <div class="btn-group" role="group" aria-label="Aksi event">
+                                                        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#eventModal">Edit</button>
+                                                        <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Hapus</button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="row mt-4">
+                                <div class="col-12 col-xl-6 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-header border-0 pb-0">
+                                            <h3 class="h6 mb-0">Status & Penjadwalan</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="d-flex flex-column gap-3">
+                                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                    <div>
+                                                        <div class="text-black fw-semibold">Event berjalan</div>
+                                                        <div class="text-muted">Pantau progress operasional event yang sedang live.</div>
+                                                    </div>
+                                                    <span class="badge bg-success">Online</span>
+                                                </div>
+                                                <div>
+                                                    <div class="d-flex justify-content-between">
+                                                        <span class="text-muted">Kesiapan sesi</span>
+                                                        <span class="text-black fw-semibold">8/10</span>
+                                                    </div>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-flex justify-content-between">
+                                                        <span class="text-muted">Penjualan paket</span>
+                                                        <span class="text-black fw-semibold">62%</span>
+                                                    </div>
+                                                    <div class="progress" style="height: 6px;">
+                                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 62%;" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-muted">
+                                                    Gunakan tombol <span class="text-black fw-semibold">Tambah event</span> untuk membuat draft, lalu set status ke <span class="text-black fw-semibold">Terjadwal</span> saat siap rilis.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xl-6 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-header border-0 pb-0">
+                                            <h3 class="h6 mb-0">Kontrol cepat</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-3">
+                                                <div class="col-12 col-md-6">
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <input class="form-check-input mt-0" type="checkbox" id="toggle-public" checked>
+                                                        <label class="form-check-label text-black" for="toggle-public">Event publik</label>
+                                                    </div>
+                                                    <div class="text-muted">Tampilkan event pada halaman peserta.</div>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <input class="form-check-input mt-0" type="checkbox" id="toggle-registration" checked>
+                                                        <label class="form-check-label text-black" for="toggle-registration">Registrasi dibuka</label>
+                                                    </div>
+                                                    <div class="text-muted">Izinkan peserta mendaftar.</div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="alert alert-light mb-0" role="note">
+                                                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                            <div>
+                                                                <div class="text-black fw-semibold">Saran</div>
+                                                                <div class="text-muted">Jadwalkan sesi minimal H-1 untuk menghindari bentrok slot.</div>
+                                                            </div>
+                                                            <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sessionModal">Atur sesi</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="pane-sessions" role="tabpanel" aria-labelledby="tab-sessions" tabindex="0">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                                <div>
+                                    <div class="fw-semibold text-black">Session Control</div>
+                                    <div class="text-muted">Penjadwalan sesi, alokasi slot, dan monitoring status.</div>
+                                </div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sessionModal">Tambah sesi</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#slotModal">Alokasi slot</button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-xl-7 mb-3" data-dashboard-search-scope>
+                                    <div class="card h-100">
+                                        <div class="card-header border-0 pb-0">
+                                            <h3 class="h6 mb-0">Jadwal hari ini</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="list-group">
+                                                @foreach ($contohSesi as $sesi)
+                                                    <div class="list-group-item d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                        <div class="me-auto">
+                                                            <div class="text-black fw-semibold">{{ $sesi['judul'] }}</div>
+                                                            <div class="text-muted">{{ $sesi['mulai'] }} – {{ $sesi['selesai'] }}</div>
+                                                        </div>
+                                                        <div class="d-flex flex-wrap align-items-center gap-2">
+                                                            <span class="{{ $badgeClass($sesi['statusTone']) }}">{{ $sesi['status'] }}</span>
+                                                            <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sessionModal">Edit</button>
+                                                            <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#operationNoteModal">Catatan</button>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-xl-5 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-header border-0 pb-0">
+                                            <h3 class="h6 mb-0">Monitoring status sesi</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="mb-3">
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="text-muted">Terjadwal</span>
+                                                    <span class="text-black fw-semibold">12</span>
+                                                </div>
+                                                <div class="progress" style="height: 6px;">
+                                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="text-muted">Siap</span>
+                                                    <span class="text-black fw-semibold">5</span>
+                                                </div>
+                                                <div class="progress" style="height: 6px;">
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+                                            <div class="mb-0">
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="text-muted">Butuh perhatian</span>
+                                                    <span class="text-black fw-semibold">1</span>
+                                                </div>
+                                                <div class="progress" style="height: 6px;">
+                                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                            </div>
+
+                                            <div class="alert alert-light mt-4 mb-0" role="note">
+                                                <div class="text-black fw-semibold">Tip alokasi slot</div>
+                                                <div class="text-muted">Gunakan buffer 5–10 menit antarsesi untuk mitigasi keterlambatan.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="pane-packages" role="tabpanel" aria-labelledby="tab-packages" tabindex="0">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                                <div>
+                                    <div class="fw-semibold text-black">Package & Access Control</div>
+                                    <div class="text-muted">Konfigurasi paket, level akses, dan izin.</div>
+                                </div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#packageModal">Tambah paket</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#permissionModal">Kelola izin</button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-xl-8 mb-3" data-dashboard-search-scope>
+                                    <div class="table-responsive">
+                                        <table class="table table-hover align-middle mb-0" aria-label="Daftar paket">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Paket</th>
+                                                    <th scope="col">Akses</th>
+                                                    <th scope="col">Harga</th>
+                                                    <th scope="col">Aktif</th>
+                                                    <th scope="col" class="text-end">Aksi</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($contohPaket as $paket)
+                                                    <tr>
+                                                        <th scope="row" class="text-black">{{ $paket['nama'] }}</th>
+                                                        <td class="text-muted">{{ $paket['akses'] }}</td>
+                                                        <td class="text-black">{{ $paket['harga'] }}</td>
+                                                        <td>
+                                                            <div class="form-check form-switch m-0">
+                                                                <input class="form-check-input" type="checkbox" role="switch" @checked($paket['aktif']) aria-label="Aktifkan paket {{ $paket['nama'] }}">
+                                                            </div>
+                                                        </td>
+                                                        <td class="text-end">
+                                                            <div class="btn-group" role="group" aria-label="Aksi paket">
+                                                                <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#packageModal">Edit</button>
+                                                                <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal">Hapus</button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-xl-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-header border-0 pb-0">
+                                            <h3 class="h6 mb-0">Kebijakan langganan</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="mb-3">
+                                                <label class="form-label text-black" for="subscription-window">Masa akses rekaman (hari)</label>
+                                                <input id="subscription-window" type="number" class="form-control" value="30" min="1" max="365">
+                                                <div class="form-text">Berlaku untuk paket yang mengizinkan rekaman.</div>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="form-label text-black" for="access-level">Level akses default</label>
+                                                <select id="access-level" class="form-select">
+                                                    <option value="basic">Basic</option>
+                                                    <option value="pro" selected>Pro</option>
+                                                    <option value="enterprise">Enterprise</option>
+                                                </select>
+                                            </div>
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <button type="button" class="btn btn-primary btn-sm">Simpan</button>
+                                                <button type="button" class="btn btn-outline-secondary btn-sm">Reset</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="pane-participants" role="tabpanel" aria-labelledby="tab-participants" tabindex="0">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                                <div>
+                                    <div class="fw-semibold text-black">Participants & Transactions</div>
+                                    <div class="text-muted">Kelola peserta, histori transaksi, dan status pembayaran.</div>
+                                </div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#participantModal">Tambah peserta</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#transactionModal">Catat transaksi</button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-xl-6 mb-3" data-dashboard-search-scope>
+                                    <div class="card h-100">
+                                        <div class="card-header border-0 pb-0">
+                                            <h3 class="h6 mb-0">Peserta</h3>
+                                        </div>
+                                        <div class="card-body pt-3">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover align-middle mb-0" aria-label="Daftar peserta">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Nama</th>
+                                                            <th scope="col">Email</th>
+                                                            <th scope="col">Paket</th>
+                                                            <th scope="col">Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($contohPeserta as $peserta)
+                                                            <tr>
+                                                                <th scope="row" class="text-black">{{ $peserta['nama'] }}</th>
+                                                                <td class="text-muted">{{ $peserta['email'] }}</td>
+                                                                <td class="text-black">{{ $peserta['paket'] }}</td>
+                                                                <td>
+                                                                    <span class="{{ $badgeClass($peserta['statusTone']) }}">{{ $peserta['status'] }}</span>
+                                                                </td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-xl-6 mb-3" data-dashboard-search-scope>
+                                    <div class="card h-100">
+                                        <div class="card-header border-0 pb-0">
+                                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                <h3 class="h6 mb-0">Transaksi</h3>
+                                                <button type="button" class="btn btn-outline-secondary btn-sm" id="export-transaksi-csv">Ekspor CSV</button>
+                                            </div>
+                                        </div>
+                                        <div class="card-body pt-3">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover align-middle mb-0" id="table-transaksi" aria-label="Histori transaksi">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Kode</th>
+                                                            <th scope="col">Peserta</th>
+                                                            <th scope="col">Nominal</th>
+                                                            <th scope="col">Status</th>
+                                                            <th scope="col">Waktu</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($contohTransaksi as $trx)
+                                                            <tr>
+                                                                <th scope="row" class="text-black">{{ $trx['kode'] }}</th>
+                                                                <td class="text-muted">{{ $trx['peserta'] }}</td>
+                                                                <td class="text-black">{{ $trx['nominal'] }}</td>
+                                                                <td><span class="{{ $badgeClass($trx['statusTone']) }}">{{ $trx['status'] }}</span></td>
+                                                                <td class="text-muted">{{ \Carbon\Carbon::parse($trx['waktu'])->format('d M Y H:i') }}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="d-flex flex-wrap gap-2 mt-3">
+                                                <button type="button" class="btn btn-outline-secondary btn-sm" id="export-transaksi-pdf">Ekspor PDF</button>
+                                                <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#reconcileModal">Rekonsiliasi</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="pane-operations" role="tabpanel" aria-labelledby="tab-operations" tabindex="0">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                                <div>
+                                    <div class="fw-semibold text-black">Live & Offline Operations</div>
+                                    <div class="text-muted">Monitoring real-time, indikator status, dan tiket dukungan.</div>
+                                </div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#supportTicketModal">Buat tiket</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="refresh-ops">Refresh status</button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-xxl-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-header border-0 pb-0">
+                                            <h3 class="h6 mb-0">Indikator operasional</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="d-flex flex-column gap-3" aria-live="polite" aria-atomic="true" id="ops-status">
+                                                <div class="d-flex align-items-center justify-content-between gap-2">
+                                                    <div>
+                                                        <div class="text-black fw-semibold">Gateway pembayaran</div>
+                                                        <div class="text-muted">Webhook & settlement</div>
+                                                    </div>
+                                                    <span class="badge bg-success">Sehat</span>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between gap-2">
+                                                    <div>
+                                                        <div class="text-black fw-semibold">Integrasi Zoom</div>
+                                                        <div class="text-muted">Join link & host key</div>
+                                                    </div>
+                                                    <span class="badge bg-warning text-dark">Perlu verifikasi</span>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between gap-2">
+                                                    <div>
+                                                        <div class="text-black fw-semibold">Pengiriman email</div>
+                                                        <div class="text-muted">Konfirmasi & reminder</div>
+                                                    </div>
+                                                    <span class="badge bg-success">Sehat</span>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-between gap-2">
+                                                    <div>
+                                                        <div class="text-black fw-semibold">Mode event</div>
+                                                        <div class="text-muted">Live / offline</div>
+                                                    </div>
+                                                    <div class="form-check form-switch m-0">
+                                                        <input class="form-check-input" type="checkbox" role="switch" id="toggle-live-mode" checked aria-label="Aktifkan mode live">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-xxl-8 mb-3" data-dashboard-search-scope>
+                                    <div class="card h-100">
+                                        <div class="card-header border-0 pb-0">
+                                            <h3 class="h6 mb-0">Tiket dukungan</h3>
+                                        </div>
+                                        <div class="card-body pt-3">
+                                            <div class="table-responsive">
+                                                <table class="table table-hover align-middle mb-0" aria-label="Daftar tiket dukungan">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Kode</th>
+                                                            <th scope="col">Judul</th>
+                                                            <th scope="col">Prioritas</th>
+                                                            <th scope="col">Status</th>
+                                                            <th scope="col">Update</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($contohTiket as $tiket)
+                                                            <tr>
+                                                                <th scope="row" class="text-black">{{ $tiket['kode'] }}</th>
+                                                                <td class="text-muted">{{ $tiket['judul'] }}</td>
+                                                                <td><span class="{{ $badgeClass($tiket['prioritasTone']) }}">{{ $tiket['prioritas'] }}</span></td>
+                                                                <td><span class="{{ $badgeClass($tiket['statusTone']) }}">{{ $tiket['status'] }}</span></td>
+                                                                <td class="text-muted">{{ $tiket['updated'] }}</td>
+                                                            </tr>
+                                                        @endforeach
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="pane-reporting" role="tabpanel" aria-labelledby="tab-reporting" tabindex="0">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                                <div>
+                                    <div class="fw-semibold text-black">Reporting</div>
+                                    <div class="text-muted">Visualisasi data, laporan kustom, dan ekspor.</div>
+                                </div>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">Generate report</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="export-report-csv">Ekspor CSV</button>
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" id="export-report-pdf">Ekspor PDF</button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-xxl-4 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-header border-0 pb-0">
+                                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                <h3 class="h6 mb-0">Ringkasan penjualan</h3>
+                                                <div class="btn-group" role="group" aria-label="Rentang ringkasan">
+                                                    <button class="btn btn-outline-secondary btn-sm active" type="button" data-bs-toggle="tab" data-bs-target="#donut-month">Bulanan</button>
+                                                    <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="tab" data-bs-target="#donut-week">Mingguan</button>
+                                                    <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="tab" data-bs-target="#donut-day">Harian</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="tab-content">
+                                                <div class="tab-pane fade show active" id="donut-month" role="tabpanel">
+                                                    <div id="donutChart2" style="min-height: 240px;"></div>
+                                                </div>
+                                                <div class="tab-pane fade" id="donut-week" role="tabpanel">
+                                                    <div id="donutChart3" style="min-height: 240px;"></div>
+                                                </div>
+                                                <div class="tab-pane fade" id="donut-day" role="tabpanel">
+                                                    <div id="donutChart4" style="min-height: 240px;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="text-muted mt-2">Gunakan filter laporan untuk menyesuaikan segmentasi.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-xxl-8 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-header border-0 pb-0">
+                                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                <h3 class="h6 mb-0">Analitik</h3>
+                                                <div class="d-flex flex-wrap gap-2">
+                                                    <div class="input-group input-group-sm" style="max-width: 260px;">
+                                                        <label class="input-group-text" for="report-range">Rentang</label>
+                                                        <input id="report-range" type="text" class="form-control" value="{{ $now->copy()->subDays(7)->format('d M Y') }} - {{ $now->format('d M Y') }}" aria-label="Rentang laporan">
+                                                    </div>
+                                                    <button type="button" class="btn btn-outline-primary btn-sm">Terapkan</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-3">
+                                                <div class="col-12 col-lg-4">
+                                                    <div class="card bg-light h-100">
+                                                        <div class="card-body">
+                                                            <div class="text-muted">Konversi</div>
+                                                            <div class="fs-24 fw-semibold text-black">3,8%</div>
+                                                            <div class="text-muted">Pendaftar → Pembayaran</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-lg-4">
+                                                    <div class="card bg-light h-100">
+                                                        <div class="card-body">
+                                                            <div class="text-muted">Refund</div>
+                                                            <div class="fs-24 fw-semibold text-black">0,4%</div>
+                                                            <div class="text-muted">7 hari terakhir</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-lg-4">
+                                                    <div class="card bg-light h-100">
+                                                        <div class="card-body">
+                                                            <div class="text-muted">Rata-rata tiket</div>
+                                                            <div class="fs-24 fw-semibold text-black">Rp 146k</div>
+                                                            <div class="text-muted">Per transaksi</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row g-3">
+                                                        <div class="col-12 col-xl-4">
+                                                            <div class="card h-100">
+                                                                <div class="card-body">
+                                                                    <div class="text-muted mb-2">Tren pendaftar</div>
+                                                                    <div id="salesChart" style="height: 220px;"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-xl-4">
+                                                            <div class="card h-100">
+                                                                <div class="card-body">
+                                                                    <div class="text-muted mb-2">Tren pembayaran</div>
+                                                                    <div id="salesChart1" style="height: 220px;"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-xl-4">
+                                                            <div class="card h-100">
+                                                                <div class="card-body">
+                                                                    <div class="text-muted mb-2">Tren attendance</div>
+                                                                    <div id="salesChart2" style="height: 220px;"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-12 col-xl-6 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-header border-0 pb-0">
+                                            <h3 class="h6 mb-0">Widget tambahan</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <canvas id="widgetChart3" height="80" aria-label="Grafik ringkas" role="img"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-xl-6 mb-3">
+                                    <div class="card h-100">
+                                        <div class="card-header border-0 pb-0">
+                                            <h3 class="h6 mb-0">Checklist ekspor</h3>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="d-flex flex-column gap-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="1" id="export-include-events" checked>
+                                                    <label class="form-check-label text-black" for="export-include-events">Sertakan event</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="1" id="export-include-sessions" checked>
+                                                    <label class="form-check-label text-black" for="export-include-sessions">Sertakan sesi</label>
+                                                </div>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="1" id="export-include-transactions" checked>
+                                                    <label class="form-check-label text-black" for="export-include-transactions">Sertakan transaksi</label>
+                                                </div>
+                                                <div class="text-muted mt-2">Untuk PDF, gunakan dialog print browser agar konsisten.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="modal fade" id="dashboardHelpModal" tabindex="-1" aria-labelledby="dashboardHelpTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="dashboardHelpTitle">Bantuan cepat</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="accordion" id="help-accordion">
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="help-events-heading">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#help-events" aria-expanded="true" aria-controls="help-events">
+                                        Event Control
+                                    </button>
+                                </h3>
+                                <div id="help-events" class="accordion-collapse collapse show" aria-labelledby="help-events-heading" data-bs-parent="#help-accordion">
+                                    <div class="accordion-body">
+                                        <div class="text-black fw-semibold mb-2">Alur yang disarankan</div>
+                                        <ol class="mb-0">
+                                            <li>Buat event sebagai Draft.</li>
+                                            <li>Isi jadwal mulai/selesai dan publish.</li>
+                                            <li>Aktifkan registrasi, lalu pantau kesiapan sesi.</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="help-sessions-heading">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#help-sessions" aria-expanded="false" aria-controls="help-sessions">
+                                        Session Control
+                                    </button>
+                                </h3>
+                                <div id="help-sessions" class="accordion-collapse collapse" aria-labelledby="help-sessions-heading" data-bs-parent="#help-accordion">
+                                    <div class="accordion-body">
+                                        <div class="text-muted">Atur slot dengan buffer dan gunakan status sesi untuk memudahkan monitoring saat live.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="help-packages-heading">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#help-packages" aria-expanded="false" aria-controls="help-packages">
+                                        Paket & Akses
+                                    </button>
+                                </h3>
+                                <div id="help-packages" class="accordion-collapse collapse" aria-labelledby="help-packages-heading" data-bs-parent="#help-accordion">
+                                    <div class="accordion-body">
+                                        <div class="text-muted">Pastikan izin paket selaras dengan akses Live/Offline, durasi rekaman, dan peran pengguna.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h3 class="accordion-header" id="help-reporting-heading">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#help-reporting" aria-expanded="false" aria-controls="help-reporting">
+                                        Laporan & Ekspor
+                                    </button>
+                                </h3>
+                                <div id="help-reporting" class="accordion-collapse collapse" aria-labelledby="help-reporting-heading" data-bs-parent="#help-accordion">
+                                    <div class="accordion-body">
+                                        <div class="text-muted">CSV tersedia untuk pengolahan data, sedangkan PDF menggunakan fitur print browser.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Mengerti</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="eventModalTitle">Event</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label text-black" for="event-name">Nama event</label>
+                                    <input id="event-name" class="form-control" type="text" placeholder="Contoh: Webinar Keamanan Aplikasi">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="event-start">Mulai</label>
+                                    <input id="event-start" class="form-control" type="datetime-local">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="event-end">Selesai</label>
+                                    <input id="event-end" class="form-control" type="datetime-local">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="event-status">Status</label>
+                                    <select id="event-status" class="form-select">
+                                        <option>Draft</option>
+                                        <option selected>Terjadwal</option>
+                                        <option>Berjalan</option>
+                                        <option>Selesai</option>
+                                        <option>Ditutup</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="event-visibility">Visibilitas</label>
+                                    <select id="event-visibility" class="form-select">
+                                        <option value="public" selected>Publik</option>
+                                        <option value="private">Privat</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-black" for="event-notes">Catatan</label>
+                                    <textarea id="event-notes" class="form-control" rows="3" placeholder="Catatan internal untuk tim admin"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="eventBulkModal" tabindex="-1" aria-labelledby="eventBulkModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="eventBulkModalTitle">Aksi massal event</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-muted mb-3">Gunakan untuk update status atau publish beberapa event sekaligus.</div>
+                        <div class="mb-3">
+                            <label class="form-label text-black" for="bulk-action">Aksi</label>
+                            <select id="bulk-action" class="form-select">
+                                <option selected>Ubah status ke Terjadwal</option>
+                                <option>Ubah status ke Ditutup</option>
+                                <option>Publish</option>
+                                <option>Unpublish</option>
+                            </select>
+                        </div>
+                        <div class="mb-0">
+                            <label class="form-label text-black" for="bulk-reason">Alasan</label>
+                            <textarea id="bulk-reason" class="form-control" rows="3" placeholder="Opsional"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Terapkan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="sessionModal" tabindex="-1" aria-labelledby="sessionModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="sessionModalTitle">Sesi</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label text-black" for="session-title">Judul sesi</label>
+                                    <input id="session-title" class="form-control" type="text" placeholder="Contoh: Materi Utama">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="session-start">Mulai</label>
+                                    <input id="session-start" class="form-control" type="time">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="session-end">Selesai</label>
+                                    <input id="session-end" class="form-control" type="time">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="session-status">Status</label>
+                                    <select id="session-status" class="form-select">
+                                        <option selected>Terjadwal</option>
+                                        <option>Siap</option>
+                                        <option>Berjalan</option>
+                                        <option>Selesai</option>
+                                        <option>Butuh perhatian</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="session-slot">Slot kapasitas</label>
+                                    <input id="session-slot" class="form-control" type="number" min="1" value="300">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-black" for="session-link">Link live</label>
+                                    <input id="session-link" class="form-control" type="url" placeholder="https://">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="slotModal" tabindex="-1" aria-labelledby="slotModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="slotModalTitle">Alokasi slot</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="form-label text-black" for="slot-rule">Aturan</label>
+                            <select id="slot-rule" class="form-select">
+                                <option selected>Auto-allocate berdasarkan kapasitas</option>
+                                <option>Batasi per paket</option>
+                                <option>Whitelist peserta</option>
+                            </select>
+                        </div>
+                        <div class="mb-0">
+                            <label class="form-label text-black" for="slot-note">Catatan</label>
+                            <textarea id="slot-note" class="form-control" rows="3" placeholder="Contoh: Paket Pro memiliki prioritas"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Terapkan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="packageModal" tabindex="-1" aria-labelledby="packageModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="packageModalTitle">Paket</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="package-name">Nama paket</label>
+                                    <input id="package-name" class="form-control" type="text" placeholder="Contoh: Pro">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="package-price">Harga</label>
+                                    <input id="package-price" class="form-control" type="text" placeholder="Rp 199.000">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-black" for="package-access">Akses</label>
+                                    <textarea id="package-access" class="form-control" rows="3" placeholder="Contoh: Live + rekaman 30 hari + sertifikat"></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <input class="form-check-input mt-0" type="checkbox" id="package-active" checked>
+                                        <label class="form-check-label text-black" for="package-active">Aktif</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="permissionModal" tabindex="-1" aria-labelledby="permissionModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="permissionModalTitle">Pengaturan izin</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <div class="text-black fw-semibold">Admin</div>
+                                        <div class="form-check mt-2">
+                                            <input class="form-check-input" type="checkbox" id="perm-admin-all" checked>
+                                            <label class="form-check-label" for="perm-admin-all">Akses penuh</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <div class="text-black fw-semibold">Operator</div>
+                                        <div class="form-check mt-2">
+                                            <input class="form-check-input" type="checkbox" id="perm-operator-events" checked>
+                                            <label class="form-check-label" for="perm-operator-events">Kelola event & sesi</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="perm-operator-payments">
+                                            <label class="form-check-label" for="perm-operator-payments">Kelola pembayaran</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-muted mt-3">Sesuaikan izin agar aman dan sesuai kebutuhan operasional.</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="participantModal" tabindex="-1" aria-labelledby="participantModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="participantModalTitle">Pendaftaran peserta</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="participant-name">Nama</label>
+                                    <input id="participant-name" class="form-control" type="text" placeholder="Nama lengkap">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="participant-email">Email</label>
+                                    <input id="participant-email" class="form-control" type="email" placeholder="email@domain.tld" autocomplete="email">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="participant-package">Paket</label>
+                                    <select id="participant-package" class="form-select">
+                                        <option>Basic</option>
+                                        <option selected>Pro</option>
+                                        <option>Enterprise</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="participant-status">Status</label>
+                                    <select id="participant-status" class="form-select">
+                                        <option selected>Aktif</option>
+                                        <option>Menunggu verifikasi</option>
+                                        <option>Dinonaktifkan</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="transactionModal" tabindex="-1" aria-labelledby="transactionModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="transactionModalTitle">Catat transaksi</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="trx-code">Kode</label>
+                                    <input id="trx-code" class="form-control" type="text" placeholder="INV-2026-XXXXX">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="trx-amount">Nominal</label>
+                                    <input id="trx-amount" class="form-control" type="text" placeholder="Rp 0">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-black" for="trx-participant">Peserta</label>
+                                    <input id="trx-participant" class="form-control" type="text" placeholder="Nama peserta">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="trx-status">Status pembayaran</label>
+                                    <select id="trx-status" class="form-select">
+                                        <option selected>Pending</option>
+                                        <option>Paid</option>
+                                        <option>Failed</option>
+                                        <option>Refund</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="trx-time">Waktu</label>
+                                    <input id="trx-time" class="form-control" type="datetime-local">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="supportTicketModal" tabindex="-1" aria-labelledby="supportTicketModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="supportTicketModalTitle">Tiket dukungan</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label text-black" for="ticket-title">Judul</label>
+                                    <input id="ticket-title" class="form-control" type="text" placeholder="Contoh: Gagal join live">
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="ticket-priority">Prioritas</label>
+                                    <select id="ticket-priority" class="form-select">
+                                        <option selected>Sedang</option>
+                                        <option>Tinggi</option>
+                                        <option>Rendah</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="ticket-status">Status</label>
+                                    <select id="ticket-status" class="form-select">
+                                        <option selected>Open</option>
+                                        <option>Investigasi</option>
+                                        <option>Selesai</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-black" for="ticket-desc">Deskripsi</label>
+                                    <textarea id="ticket-desc" class="form-control" rows="4" placeholder="Detail masalah, langkah reproduksi, dan konteks"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="reportModalTitle">Generate report</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="report-type">Jenis laporan</label>
+                                    <select id="report-type" class="form-select">
+                                        <option selected>Ringkasan event</option>
+                                        <option>Penjualan paket</option>
+                                        <option>Transaksi & pembayaran</option>
+                                        <option>Operasional live</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <label class="form-label text-black" for="report-format">Format</label>
+                                    <select id="report-format" class="form-select">
+                                        <option selected>CSV</option>
+                                        <option>PDF (Print)</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-black" for="report-filter">Filter</label>
+                                    <textarea id="report-filter" class="form-control" rows="3" placeholder="Contoh: status=paid, paket=pro, tanggal=2026-01-01..2026-01-31"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Generate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="operationNoteModal" tabindex="-1" aria-labelledby="operationNoteModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="operationNoteModalTitle">Catatan operasional</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <label class="form-label text-black" for="ops-note">Catatan</label>
+                        <textarea id="ops-note" class="form-control" rows="5" placeholder="Catatan internal untuk pengingat saat live"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="reconcileModal" tabindex="-1" aria-labelledby="reconcileModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="reconcileModalTitle">Rekonsiliasi pembayaran</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-muted mb-3">Cocokkan status transaksi dengan data gateway pembayaran.</div>
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <label class="form-label text-black" for="reconcile-from">Dari tanggal</label>
+                                <input id="reconcile-from" type="date" class="form-control">
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label class="form-label text-black" for="reconcile-to">Sampai tanggal</label>
+                                <input id="reconcile-to" type="date" class="form-control">
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="1" id="reconcile-auto" checked>
+                                    <label class="form-check-label text-black" for="reconcile-auto">Perbaiki status otomatis jika cocok</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Jalankan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalTitle" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="confirmDeleteModalTitle">Konfirmasi hapus</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-black fw-semibold">Hapus item terpilih?</div>
+                        <div class="text-muted">Tindakan ini tidak dapat dibatalkan.</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            (function () {
+                const searchInput = document.getElementById('dashboard-search');
+                const scopes = Array.from(document.querySelectorAll('[data-dashboard-search-scope]'));
+
+                function normalize(text) {
+                    return (text || '')
+                        .toString()
+                        .toLowerCase()
+                        .replace(/\s+/g, ' ')
+                        .trim();
+                }
+
+                function filterScope(scope, query) {
+                    const rows = Array.from(scope.querySelectorAll('tbody tr, .list-group-item'));
+                    if (!rows.length) return;
+
+                    rows.forEach((row) => {
+                        const hay = normalize(row.innerText);
+                        const show = !query || hay.includes(query);
+                        row.style.display = show ? '' : 'none';
+                    });
+                }
+
+                if (searchInput) {
+                    searchInput.addEventListener('input', () => {
+                        const query = normalize(searchInput.value);
+                        scopes.forEach((scope) => filterScope(scope, query));
+                    });
+                }
+
+                function tableToCsv(table) {
+                    const rows = Array.from(table.querySelectorAll('tr'));
+                    return rows
+                        .map((tr) => Array.from(tr.querySelectorAll('th,td')).map((cell) => {
+                            const text = (cell.innerText || '').replace(/\s+/g, ' ').trim();
+                            const escaped = '"' + text.replace(/"/g, '""') + '"';
+                            return escaped;
+                        }).join(','))
+                        .join('\n');
+                }
+
+                function downloadText(filename, text) {
+                    const blob = new Blob([text], { type: 'text/csv;charset=utf-8' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = filename;
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                    URL.revokeObjectURL(url);
+                }
+
+                const exportTransaksiCsvBtn = document.getElementById('export-transaksi-csv');
+                const transaksiTable = document.getElementById('table-transaksi');
+                if (exportTransaksiCsvBtn && transaksiTable) {
+                    exportTransaksiCsvBtn.addEventListener('click', () => {
+                        const csv = tableToCsv(transaksiTable);
+                        downloadText('transaksi.csv', csv);
+                    });
+                }
+
+                const exportTransaksiPdfBtn = document.getElementById('export-transaksi-pdf');
+                if (exportTransaksiPdfBtn) {
+                    exportTransaksiPdfBtn.addEventListener('click', () => window.print());
+                }
+
+                const exportReportCsvBtn = document.getElementById('export-report-csv');
+                if (exportReportCsvBtn && transaksiTable) {
+                    exportReportCsvBtn.addEventListener('click', () => {
+                        const csv = tableToCsv(transaksiTable);
+                        downloadText('report.csv', csv);
+                    });
+                }
+
+                const exportReportPdfBtn = document.getElementById('export-report-pdf');
+                if (exportReportPdfBtn) {
+                    exportReportPdfBtn.addEventListener('click', () => window.print());
+                }
+
+                const refreshOpsBtn = document.getElementById('refresh-ops');
+                const opsStatus = document.getElementById('ops-status');
+                if (refreshOpsBtn && opsStatus) {
+                    refreshOpsBtn.addEventListener('click', () => {
+                        opsStatus.setAttribute('data-last-refresh', new Date().toISOString());
+                    });
+                }
+            })();
+        </script>
+    </main>
 @endsection
