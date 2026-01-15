@@ -11,6 +11,13 @@
             color: #111827;
         }
 
+        .header-main-con,
+        .footer-main-section,
+        .copyright,
+        #button {
+            display: none !important;
+        }
+
         .dashboard-topbar {
             position: sticky;
             top: 0;
@@ -18,10 +25,46 @@
             backdrop-filter: blur(10px);
             background: rgba(255, 255, 255, 0.9);
             border-bottom: 1px solid rgba(17, 24, 39, 0.08);
+            padding-top: env(safe-area-inset-top);
         }
 
-        .dashboard-topbar__inner {
-            min-height: 72px;
+        .dashboard-topbar__bar {
+            min-height: 64px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 0;
+        }
+
+        .dashboard-topbar__logo {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .dashboard-topbar__logo img {
+            width: auto;
+            max-height: 44px;
+            max-width: 130px;
+        }
+
+        .dashboard-topbar__right {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .dashboard-topbar__logo img {
+                max-height: 50px;
+                max-width: 180px;
+            }
         }
 
         .dashboard-icon-btn {
@@ -56,9 +99,46 @@
             margin: 0;
         }
 
+        .dashboard-breadcrumb {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .dashboard-breadcrumb::-webkit-scrollbar {
+            display: none;
+        }
+
         .dashboard-breadcrumb .breadcrumb-item a {
             color: #3500fc;
             font-weight: 600;
+        }
+
+        .dashboard-subbar {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-bottom: 14px;
+        }
+
+        @media (min-width: 768px) {
+            .dashboard-subbar {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 16px;
+            }
+        }
+
+        .dashboard-pagehead__img {
+            width: 56px;
+            height: 56px;
+        }
+
+        @media (max-width: 575.98px) {
+            .dashboard-pagehead__img {
+                width: 44px;
+                height: 44px;
+            }
         }
 
         .event-card {
@@ -248,8 +328,8 @@
 
         <header class="dashboard-topbar" role="banner">
             <div class="container">
-                <div class="row align-items-center dashboard-topbar__inner">
-                    <div class="col-4 d-flex align-items-center">
+                <div class="dashboard-topbar__bar">
+                    <div class="d-flex align-items-center" style="gap: 10px;">
                         <a
                             href="{{ url()->previous() }}"
                             class="dashboard-icon-btn"
@@ -260,22 +340,21 @@
                         >
                             <i class="fas fa-arrow-left" aria-hidden="true"></i>
                         </a>
-                        <span class="d-none d-md-inline-block ml-2" style="font-weight: 700;">Kembali</span>
+                        <span class="d-none d-sm-inline-block" style="font-weight: 700;">Kembali</span>
                     </div>
 
-                    <div class="col-4 d-flex align-items-center justify-content-center">
+                    <div class="dashboard-topbar__logo" aria-hidden="true">
                         <img
                             src="{{ asset('assets/images/logo.png') }}"
-                            alt="Logo"
-                            width="160"
+                            alt=""
+                            width="180"
                             height="50"
-                            style="max-height: 50px; width: auto;"
                             loading="lazy"
                             decoding="async"
                         >
                     </div>
 
-                    <div class="col-4 d-flex align-items-center justify-content-end" style="gap: 10px;">
+                    <div class="dashboard-topbar__right">
                         <button
                             type="button"
                             class="dashboard-icon-btn position-relative"
@@ -310,32 +389,31 @@
                     </div>
                 </div>
 
-                <div class="row pb-3">
-                    <div class="col-12 d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between" style="gap: 10px;">
-                        <div class="dashboard-breadcrumb">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">
-                                        <a href="{{ route('peserta.index') }}">Home</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
-                                </ol>
-                            </nav>
-                        </div>
-                        <div class="d-flex align-items-center" style="gap: 10px;">
-                            <img
-                                src="{{ asset('assets/images/dash-bg-img.png') }}"
-                                alt=""
-                                width="64"
-                                height="64"
-                                loading="lazy"
-                                decoding="async"
-                                style="border-radius: 16px; border: 1px solid rgba(17, 24, 39, 0.08); background: #ffffff;"
-                            >
-                            <div>
-                                <div style="font-weight: 900; letter-spacing: -0.02em; font-size: 18px;">Dashboard Peserta</div>
-                                <div style="color: #4b5563; font-size: 14px;">Kelola akses live dan rekaman event.</div>
-                            </div>
+                <div class="dashboard-subbar">
+                    <div class="dashboard-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb d-flex flex-nowrap mb-0" style="gap: 0;">
+                                {{-- <li class="breadcrumb-item">
+                                    <a href="{{ route('peserta.index') }}">Home</a>
+                                </li> --}}
+                                {{-- <li c  lass="breadcrumb-item active" aria-current="page">Dashboard</li> --}}
+                            </ol>
+                        </nav>
+                    </div>
+                    <div class="d-flex align-items-center" style="gap: 10px;">
+                        <img
+                            src="{{ asset('assets/images/dash-bg-img.png') }}"
+                            alt=""
+                            width="56"
+                            height="56"
+                            loading="lazy"
+                            decoding="async"
+                            class="dashboard-pagehead__img"
+                            style="border-radius: 16px; border: 1px solid rgba(17, 24, 39, 0.08); background: #ffffff;"
+                        >
+                        <div>
+                            <div style="font-weight: 900; letter-spacing: -0.02em; font-size: 18px;">Dashboard Peserta</div>
+                            <div style="color: #4b5563; font-size: 14px;">Kelola akses live dan rekaman event.</div>
                         </div>
                     </div>
                 </div>
