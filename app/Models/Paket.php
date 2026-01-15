@@ -33,6 +33,7 @@ class Paket extends Model
     {
         return $this->hasMany(Pesanan::class);
     }
+
     public function sesi()
     {
         return $this->belongsToMany(

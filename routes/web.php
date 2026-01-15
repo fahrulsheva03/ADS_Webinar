@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PesertaDashboardController;
 use Illuminate\Support\Facades\Route;
 
 // URL PESERTA
@@ -30,9 +31,9 @@ Route::get('/blog', function () {
 
 // URL DASHBOARD PESERTA
 Route::prefix('dashboard')->group(function () {
-    Route::get('/', function () {
-        return view('peserta.dashboard.index');
-    })->name('peserta.dashboard');
+    Route::get('/', [PesertaDashboardController::class, 'index'])->name('peserta.dashboard');
+    Route::post('/join/{sesi}', [PesertaDashboardController::class, 'join'])->name('peserta.join');
+    Route::get('/video/{video}', [PesertaDashboardController::class, 'video'])->name('peserta.video');
     Route::get('/profile', function () {
         return view('peserta.dashboard.profile');
     })->name('peserta.profile');

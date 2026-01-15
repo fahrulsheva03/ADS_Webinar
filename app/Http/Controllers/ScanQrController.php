@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pesanan;
 use App\Models\EventSesi;
 use App\Models\KehadiranSesi;
+use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,13 +17,12 @@ class ScanQrController extends Controller
     {
         // 0. Validasi input dasar
         $data = $request->validate([
-            'qr_token'      => 'required|string',
+            'qr_token' => 'required|string',
             'event_sesi_id' => 'required|exists:event_sesi,id',
         ]);
 
         // Gunakan transaksi biar aman dari race condition
         return DB::transaction(function () use ($data) {
-
             // 1. Cari pesanan berdasarkan QR
             $pesanan = Pesanan::with(['paket', 'paket.sesi'])
                 ->where('qr_token', $data['qr_token'])
@@ -32,7 +31,7 @@ class ScanQrController extends Controller
 
             if (! $pesanan) {
                 return response()->json([
-                    'status'  => 'error',
+                    'status' => 'error',
                     'message' => 'QR tidak valid atau pesanan belum dibayar',
                 ], 422);
             }
@@ -43,7 +42,7 @@ class ScanQrController extends Controller
             // 3. Pastikan sesi milik event yang sama
             if ($pesanan->paket->event_id !== $sesi->event_id) {
                 return response()->json([
-                    'status'  => 'error',
+                    'status' => 'error',
                     'message' => 'QR tidak berlaku untuk event ini',
                 ], 422);
             }
@@ -55,7 +54,7 @@ class ScanQrController extends Controller
 
             if (! $bolehSesi) {
                 return response()->json([
-                    'status'  => 'error',
+                    'status' => 'error',
                     'message' => 'Peserta tidak memiliki akses untuk hari/sesi ini',
                 ], 403);
             }
@@ -67,28 +66,28 @@ class ScanQrController extends Controller
 
             if ($sudahCheckin) {
                 return response()->json([
-                    'status'  => 'error',
+                    'status' => 'error',
                     'message' => 'Peserta sudah check-in untuk sesi ini',
                 ], 409);
             }
 
             // 6. Simpan kehadiran (OFFLINE QR)
             KehadiranSesi::create([
-                'user_id'        => $pesanan->user_id,
-                'event_sesi_id'  => $sesi->id,
-                'waktu_join'     => now(),
+                'user_id' => $pesanan->user_id,
+                'event_sesi_id' => $sesi->id,
+                'waktu_join' => now(),
                 'metode_checkin' => 'offline_qr',
             ]);
 
             // 7. Response sukses (dipakai UI panitia)
             return response()->json([
-                'status'  => 'success',
+                'status' => 'success',
                 'message' => 'Check-in berhasil',
-                'data'    => [
+                'data' => [
                     'nama_peserta' => $pesanan->user->nama,
-                    'event'        => $sesi->event->judul,
-                    'sesi'         => $sesi->judul_sesi,
-                    'waktu'        => now()->toDateTimeString(),
+                    'event' => $sesi->event->judul,
+                    'sesi' => $sesi->judul_sesi,
+                    'waktu' => now()->toDateTimeString(),
                 ],
             ]);
         });

@@ -22,7 +22,7 @@ class PesertaDashboardController extends Controller
             ->where('status_pembayaran', 'paid')
             ->get();
 
-        return view('peserta.dashboard', compact('pesanan'));
+        return view('peserta.dashboard.index', compact('pesanan'));
     }
 
     /**
@@ -44,6 +44,8 @@ class PesertaDashboardController extends Controller
         // SECURITY UTAMA
         Gate::authorize('view', $video);
 
-        return view('peserta.video', compact('video'));
+        abort_if(empty($video->url_video), 404);
+
+        return redirect()->away($video->url_video);
     }
 }

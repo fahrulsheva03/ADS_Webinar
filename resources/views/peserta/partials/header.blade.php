@@ -18,7 +18,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ asset('assets/images/favicon/apple-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
-    <title>HOME</title>
+    <title>@yield('title', 'WEBINAR')</title>
     <link rel="stylesheet" href="{{ asset('assets/fontawesome/all.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/aos.css') }}">
@@ -32,4 +32,5 @@
     <link rel="stylesheet" href="{{ asset('assets/css/custom-style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/magnific-popup.js/1.1.0/magnific-popup.css') }}">
 
+    @stack('styles')
 </head>
