@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\Facades\Route;
 
 // URL PESERTA
@@ -29,8 +28,6 @@ Route::get('/blog', function () {
     return view('peserta.blog');
 })->name('peserta.blog');
 
-
-
 // URL DASHBOARD PESERTA
 Route::prefix('dashboard')->group(function () {
     Route::get('/', function () {
@@ -41,8 +38,6 @@ Route::prefix('dashboard')->group(function () {
     })->name('peserta.profile');
 });
 
-
-
 // URL AUTH LOGIN & REGISTRASI PESERTA
 Route::get('/login', function () {
     return view('peserta.auth.login');
@@ -50,8 +45,6 @@ Route::get('/login', function () {
 Route::get('/registrasi', function () {
     return view('peserta.auth.registrasi');
 })->name('peserta.registrasi');
-
-
 
 // URL UNTUK ADMIN
 Route::prefix('admin')->group(function () {
