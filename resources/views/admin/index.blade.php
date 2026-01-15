@@ -14,23 +14,23 @@
 
         $ringkasan = [
             [
-                'label' => 'Event Aktif',
+                'label' => 'Total Event Aktif',
                 'value' => 6,
-                'delta' => '+2 minggu ini',
+                'delta' => 'stabil',
                 'tone' => 'success',
                 'chartId' => 'widgetChart1',
             ],
             [
-                'label' => 'Sesi Terjadwal',
-                'value' => 18,
-                'delta' => '+3 minggu ini',
+                'label' => 'Event Hari Ini',
+                'value' => 2,
+                'delta' => '1 online, 1 offline',
                 'tone' => 'primary',
                 'chartId' => 'widgetChart2',
             ],
             [
-                'label' => 'Pembayaran Berhasil',
-                'value' => 142,
-                'delta' => '98% sukses',
+                'label' => 'Peserta Hari Ini',
+                'value' => 57,
+                'delta' => '+12 vs kemarin',
                 'tone' => 'success',
                 'chartId' => null,
             ],
@@ -168,6 +168,22 @@
                 'updated' => '1 jam lalu',
             ],
         ];
+
+        $requestedTab = (string) request()->query('tab', 'events');
+        $tabToModule = [
+            'events' => 'events',
+            'sessions' => 'sessions',
+            'packages' => 'packages',
+            'participants' => 'participants',
+            'transactions' => 'participants',
+            'operations' => 'operations',
+            'live-session' => 'operations',
+            'scan-qr' => 'operations',
+            'recordings' => 'operations',
+            'reporting' => 'reporting',
+            'attendance-report' => 'reporting',
+        ];
+        $activeModule = $tabToModule[$requestedTab] ?? 'events';
     @endphp
 
     <a class="visually-hidden-focusable" href="#main-content">Lewati ke konten utama</a>
@@ -211,6 +227,9 @@
                     <div class="d-flex flex-wrap gap-2">
                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#eventModal">
                             Buat event
+                        </button>
+                        <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#scanQrModal">
+                            Buka Scan QR
                         </button>
                         <button type="button" class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#sessionModal">
                             Jadwalkan sesi
@@ -274,39 +293,39 @@
                 <div class="card-body pt-3">
                     <ul class="nav nav-pills flex-wrap gap-2" id="admin-module-tabs" role="tablist" aria-label="Tab modul admin">
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link active" id="tab-events" data-bs-toggle="tab" data-bs-target="#pane-events" type="button" role="tab" aria-controls="pane-events" aria-selected="true">
+                            <button class="nav-link @if ($activeModule === 'events') active @endif" id="tab-events" data-bs-toggle="tab" data-bs-target="#pane-events" type="button" role="tab" aria-controls="pane-events" aria-selected="{{ $activeModule === 'events' ? 'true' : 'false' }}">
                                 Event
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="tab-sessions" data-bs-toggle="tab" data-bs-target="#pane-sessions" type="button" role="tab" aria-controls="pane-sessions" aria-selected="false">
+                            <button class="nav-link @if ($activeModule === 'sessions') active @endif" id="tab-sessions" data-bs-toggle="tab" data-bs-target="#pane-sessions" type="button" role="tab" aria-controls="pane-sessions" aria-selected="{{ $activeModule === 'sessions' ? 'true' : 'false' }}">
                                 Sesi
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="tab-packages" data-bs-toggle="tab" data-bs-target="#pane-packages" type="button" role="tab" aria-controls="pane-packages" aria-selected="false">
+                            <button class="nav-link @if ($activeModule === 'packages') active @endif" id="tab-packages" data-bs-toggle="tab" data-bs-target="#pane-packages" type="button" role="tab" aria-controls="pane-packages" aria-selected="{{ $activeModule === 'packages' ? 'true' : 'false' }}">
                                 Paket & Akses
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="tab-participants" data-bs-toggle="tab" data-bs-target="#pane-participants" type="button" role="tab" aria-controls="pane-participants" aria-selected="false">
+                            <button class="nav-link @if ($activeModule === 'participants') active @endif" id="tab-participants" data-bs-toggle="tab" data-bs-target="#pane-participants" type="button" role="tab" aria-controls="pane-participants" aria-selected="{{ $activeModule === 'participants' ? 'true' : 'false' }}">
                                 Peserta & Transaksi
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="tab-operations" data-bs-toggle="tab" data-bs-target="#pane-operations" type="button" role="tab" aria-controls="pane-operations" aria-selected="false">
+                            <button class="nav-link @if ($activeModule === 'operations') active @endif" id="tab-operations" data-bs-toggle="tab" data-bs-target="#pane-operations" type="button" role="tab" aria-controls="pane-operations" aria-selected="{{ $activeModule === 'operations' ? 'true' : 'false' }}">
                                 Live & Offline
                             </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link" id="tab-reporting" data-bs-toggle="tab" data-bs-target="#pane-reporting" type="button" role="tab" aria-controls="pane-reporting" aria-selected="false">
+                            <button class="nav-link @if ($activeModule === 'reporting') active @endif" id="tab-reporting" data-bs-toggle="tab" data-bs-target="#pane-reporting" type="button" role="tab" aria-controls="pane-reporting" aria-selected="{{ $activeModule === 'reporting' ? 'true' : 'false' }}">
                                 Laporan
                             </button>
                         </li>
                     </ul>
 
                     <div class="tab-content pt-4" id="admin-module-tab-content">
-                        <div class="tab-pane fade show active" id="pane-events" role="tabpanel" aria-labelledby="tab-events" tabindex="0">
+                        <div class="tab-pane fade @if ($activeModule === 'events') show active @endif" id="pane-events" role="tabpanel" aria-labelledby="tab-events" tabindex="0">
                             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
                                 <div>
                                     <div class="fw-semibold text-black">Event Control</div>
@@ -431,7 +450,7 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="pane-sessions" role="tabpanel" aria-labelledby="tab-sessions" tabindex="0">
+                        <div class="tab-pane fade @if ($activeModule === 'sessions') show active @endif" id="pane-sessions" role="tabpanel" aria-labelledby="tab-sessions" tabindex="0">
                             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
                                 <div>
                                     <div class="fw-semibold text-black">Session Control</div>
@@ -513,7 +532,7 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="pane-packages" role="tabpanel" aria-labelledby="tab-packages" tabindex="0">
+                        <div class="tab-pane fade @if ($activeModule === 'packages') show active @endif" id="pane-packages" role="tabpanel" aria-labelledby="tab-packages" tabindex="0">
                             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
                                 <div>
                                     <div class="fw-semibold text-black">Package & Access Control</div>
@@ -591,7 +610,7 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="pane-participants" role="tabpanel" aria-labelledby="tab-participants" tabindex="0">
+                        <div class="tab-pane fade @if ($activeModule === 'participants') show active @endif" id="pane-participants" role="tabpanel" aria-labelledby="tab-participants" tabindex="0">
                             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
                                 <div>
                                     <div class="fw-semibold text-black">Participants & Transactions</div>
@@ -604,7 +623,7 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-12 col-xl-6 mb-3" data-dashboard-search-scope>
+                                <div class="col-12 col-xl-6 mb-3" data-dashboard-search-scope id="participants">
                                     <div class="card h-100">
                                         <div class="card-header border-0 pb-0">
                                             <h3 class="h6 mb-0">Peserta</h3>
@@ -638,7 +657,7 @@
                                     </div>
                                 </div>
 
-                                <div class="col-12 col-xl-6 mb-3" data-dashboard-search-scope>
+                                <div class="col-12 col-xl-6 mb-3" data-dashboard-search-scope id="transactions">
                                     <div class="card h-100">
                                         <div class="card-header border-0 pb-0">
                                             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
@@ -681,7 +700,7 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="pane-operations" role="tabpanel" aria-labelledby="tab-operations" tabindex="0">
+                        <div class="tab-pane fade @if ($activeModule === 'operations') show active @endif" id="pane-operations" role="tabpanel" aria-labelledby="tab-operations" tabindex="0">
                             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
                                 <div>
                                     <div class="fw-semibold text-black">Live & Offline Operations</div>
@@ -772,7 +791,7 @@
                             </div>
                         </div>
 
-                        <div class="tab-pane fade" id="pane-reporting" role="tabpanel" aria-labelledby="tab-reporting" tabindex="0">
+                        <div class="tab-pane fade @if ($activeModule === 'reporting') show active @endif" id="pane-reporting" role="tabpanel" aria-labelledby="tab-reporting" tabindex="0">
                             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
                                 <div>
                                     <div class="fw-semibold text-black">Reporting</div>
@@ -1504,6 +1523,281 @@
             </div>
         </div>
 
+        <div class="modal fade" id="scanQrModal" tabindex="-1" aria-labelledby="scanQrModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="scanQrModalTitle">Scan QR</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-12 col-lg-5">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <div class="row g-3">
+                                            <div class="col-12">
+                                                <label class="form-label text-black" for="scan-event">Pilih event</label>
+                                                <select id="scan-event" class="form-select">
+                                                    <option selected value="1">Webinar Keamanan Aplikasi</option>
+                                                    <option value="2">Workshop Laravel untuk Tim</option>
+                                                    <option value="3">Kelas Offline: QA & UAT</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label text-black" for="scan-session">Pilih sesi/hari</label>
+                                                <select id="scan-session" class="form-select">
+                                                    <option selected value="101">Day 1 — Pembukaan & Orientasi</option>
+                                                    <option value="102">Day 1 — Materi Utama</option>
+                                                    <option value="201">Day 2 — Praktik</option>
+                                                </select>
+                                                <div class="form-text">Untuk event multi-day, sesi bisa dikelompokkan Day 1, Day 2, dst.</div>
+                                            </div>
+                                            <div class="col-12">
+                                                <label class="form-label text-black" for="scan-token">QR token (fallback manual)</label>
+                                                <input id="scan-token" type="text" class="form-control" placeholder="Tempel token QR di sini jika kamera tidak tersedia">
+                                            </div>
+                                            <div class="col-12 d-flex flex-wrap gap-2">
+                                                <button type="button" class="btn btn-primary" id="btn-scan-start">Buka kamera</button>
+                                                <button type="button" class="btn btn-outline-secondary" id="btn-scan-stop" disabled>Stop</button>
+                                                <button type="button" class="btn btn-outline-primary" id="btn-scan-submit">Check-in</button>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="alert alert-light mb-0" role="status" id="scan-status" aria-live="polite">
+                                                    Siap untuk scan.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-7">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+                                            <div class="text-black fw-semibold">Kamera</div>
+                                            <div class="text-muted">Pastikan izin kamera diaktifkan pada browser.</div>
+                                        </div>
+                                        <div class="ratio ratio-16x9 bg-light rounded">
+                                            <video id="scan-video" class="w-100 h-100" autoplay playsinline muted></video>
+                                        </div>
+                                        <div class="text-muted mt-2">Jika QR tidak terbaca, gunakan input manual token untuk check-in.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="liveSessionModal" tabindex="-1" aria-labelledby="liveSessionModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="liveSessionModalTitle">Live Session</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label text-black" for="live-session-select">Pilih sesi</label>
+                                <select id="live-session-select" class="form-select">
+                                    <option selected value="101">Pembukaan & Orientasi</option>
+                                    <option value="102">Materi: Hardening & OWASP Top 10</option>
+                                    <option value="103">Q&A</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-black" for="live-zoom-link">Link Zoom</label>
+                                <input id="live-zoom-link" type="url" class="form-control" placeholder="https://">
+                            </div>
+                            <div class="col-12 d-flex flex-wrap align-items-center gap-2">
+                                <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="live-toggle" checked>
+                                    <label class="form-check-label text-black" for="live-toggle">Aktifkan sesi live</label>
+                                </div>
+                                <span class="text-muted">Gunakan saat sesi mulai.</span>
+                            </div>
+                            <div class="col-12">
+                                <div class="card bg-light mb-0">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <div class="text-black fw-semibold">Kehadiran peserta</div>
+                                                <div class="text-muted">Ringkasan real-time (placeholder)</div>
+                                            </div>
+                                            <span class="badge bg-success">Stabil</span>
+                                        </div>
+                                        <div class="row g-3 mt-1">
+                                            <div class="col-6 col-lg-4">
+                                                <div class="text-muted">Join</div>
+                                                <div class="fs-20 fw-semibold text-black">128</div>
+                                            </div>
+                                            <div class="col-6 col-lg-4">
+                                                <div class="text-muted">Aktif</div>
+                                                <div class="fs-20 fw-semibold text-black">97</div>
+                                            </div>
+                                            <div class="col-12 col-lg-4">
+                                                <div class="text-muted">Drop</div>
+                                                <div class="fs-20 fw-semibold text-black">6</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="recordingModal" tabindex="-1" aria-labelledby="recordingModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="recordingModalTitle">Rekaman & Video</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label text-black" for="video-session-select">Sesi</label>
+                                <select id="video-session-select" class="form-select">
+                                    <option selected value="102">Materi: Hardening & OWASP Top 10</option>
+                                    <option value="103">Q&A</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-black" for="video-file">Upload video</label>
+                                <input id="video-file" type="file" class="form-control" accept="video/*">
+                                <div class="form-text">Alternatif: gunakan URL video jika hosting terpisah.</div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-black" for="video-url">URL video</label>
+                                <input id="video-url" type="url" class="form-control" placeholder="https://">
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" role="switch" id="video-publish" checked>
+                                    <label class="form-check-label text-black" for="video-publish">Publish video</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="attendanceModal" tabindex="-1" aria-labelledby="attendanceModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="attendanceModalTitle">Laporan Kehadiran</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-12 col-md-6">
+                                <label class="form-label text-black" for="attendance-event">Event</label>
+                                <select id="attendance-event" class="form-select">
+                                    <option selected value="1">Webinar Keamanan Aplikasi</option>
+                                    <option value="2">Workshop Laravel untuk Tim</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label class="form-label text-black" for="attendance-mode">Mode laporan</label>
+                                <select id="attendance-mode" class="form-select">
+                                    <option selected value="per-sesi">Per sesi</option>
+                                    <option value="per-peserta">Per peserta</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                    <div class="text-muted">Ekspor dalam bentuk CSV agar bisa dibuka di Excel.</div>
+                                    <button type="button" class="btn btn-outline-primary btn-sm" id="export-attendance-excel">Ekspor Excel</button>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle mb-0" id="table-attendance" aria-label="Data kehadiran">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Nama</th>
+                                                <th scope="col">Sesi</th>
+                                                <th scope="col">Metode</th>
+                                                <th scope="col">Waktu</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row" class="text-black">Siti Aulia</th>
+                                                <td class="text-muted">Day 1 — Materi Utama</td>
+                                                <td><span class="badge bg-success">Live</span></td>
+                                                <td class="text-muted">2026-01-15 09:12</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row" class="text-black">Budi Santoso</th>
+                                                <td class="text-muted">Day 1 — Pembukaan</td>
+                                                <td><span class="badge bg-warning text-dark">Offline QR</span></td>
+                                                <td class="text-muted">2026-01-15 08:58</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="adminProfileModal" tabindex="-1" aria-labelledby="adminProfileModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="adminProfileModalTitle">Profil Admin</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label text-black" for="admin-name">Nama</label>
+                                <input id="admin-name" type="text" class="form-control" value="Admin">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-black" for="admin-email">Email</label>
+                                <input id="admin-email" type="email" class="form-control" value="admin@example.test">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-black" for="admin-password">Password baru</label>
+                                <input id="admin-password" type="password" class="form-control" placeholder="Kosongkan jika tidak ingin mengubah">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Simpan</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script>
             (function () {
                 const searchInput = document.getElementById('dashboard-search');
@@ -1591,6 +1885,45 @@
                     refreshOpsBtn.addEventListener('click', () => {
                         opsStatus.setAttribute('data-last-refresh', new Date().toISOString());
                     });
+                }
+
+                const params = new URLSearchParams(window.location.search);
+                const requestedTab = params.get('tab') || '';
+                const tabToModule = {
+                    events: 'events',
+                    sessions: 'sessions',
+                    packages: 'packages',
+                    participants: 'participants',
+                    transactions: 'participants',
+                    operations: 'operations',
+                    'live-session': 'operations',
+                    'scan-qr': 'operations',
+                    recordings: 'operations',
+                    reporting: 'reporting',
+                    'attendance-report': 'reporting',
+                };
+
+                const moduleKey = tabToModule[requestedTab] || '';
+                if (moduleKey && window.bootstrap && bootstrap.Tab) {
+                    const tabButton = document.getElementById(`tab-${moduleKey}`);
+                    if (tabButton) {
+                        bootstrap.Tab.getOrCreateInstance(tabButton).show();
+                    }
+                }
+
+                const requestedModal = params.get('modal') || '';
+                if (requestedModal && window.bootstrap && bootstrap.Modal) {
+                    const modalEl = document.getElementById(requestedModal);
+                    if (modalEl) {
+                        bootstrap.Modal.getOrCreateInstance(modalEl).show();
+                    }
+                }
+
+                if (window.location.hash) {
+                    const hashTarget = document.querySelector(window.location.hash);
+                    if (hashTarget) {
+                        requestAnimationFrame(() => hashTarget.scrollIntoView({ behavior: 'smooth', block: 'start' }));
+                    }
                 }
             })();
         </script>
