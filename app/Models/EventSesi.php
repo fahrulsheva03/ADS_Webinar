@@ -39,4 +39,12 @@ class EventSesi extends Model
     {
         return $this->hasMany(VideoSesi::class);
     }
+
+    public function paket()
+    {
+        return $this->belongsToMany(
+            Paket::class,
+            'paket_sesi'
+        );
+    }
 }
