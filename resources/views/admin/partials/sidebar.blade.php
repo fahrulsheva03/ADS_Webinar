@@ -55,7 +55,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.index', ['tab' => 'participants']) }}#transactions" class="ai-icon" aria-expanded="false">
+                <a href="{{ route('admin.transaksi.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="la la-credit-card" aria-hidden="true"></i>
                     <span class="nav-text">Transaksi</span>
                 </a>

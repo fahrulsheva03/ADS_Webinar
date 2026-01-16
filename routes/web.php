@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\EventSesiController as AdminEventSesiController;
 use App\Http\Controllers\Admin\PaketController as AdminPaketController;
 use App\Http\Controllers\Admin\PesertaController as AdminPesertaController;
+use App\Http\Controllers\Admin\TransaksiController as AdminTransaksiController;
 use App\Http\Controllers\PesertaDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -81,6 +82,12 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/peserta', [AdminPesertaController::class, 'index'])->name('admin.peserta.index');
     Route::get('/peserta/{user}', [AdminPesertaController::class, 'show'])->name('admin.peserta.show');
+
+    Route::get('/transaksi', [AdminTransaksiController::class, 'index'])->name('admin.transaksi.index');
+    Route::put('/transaksi/{transaksi}', [AdminTransaksiController::class, 'update'])->name('admin.transaksi.update');
+    Route::delete('/transaksi/{transaksi}', [AdminTransaksiController::class, 'destroy'])->name('admin.transaksi.destroy');
+    Route::post('/transaksi/bulk', [AdminTransaksiController::class, 'bulk'])->name('admin.transaksi.bulk');
+    Route::get('/transaksi/export/{format}', [AdminTransaksiController::class, 'export'])->name('admin.transaksi.export');
 
     // Login
     Route::get('/login', function () {
