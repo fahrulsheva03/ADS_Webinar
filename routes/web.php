@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\EventSesiController as AdminEventSesiController;
+use App\Http\Controllers\Admin\PaketController as AdminPaketController;
 use App\Http\Controllers\PesertaDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -66,6 +67,16 @@ Route::prefix('admin')->group(function () {
     Route::post('/sesi-event', [AdminEventSesiController::class, 'store'])->name('admin.sesi-event.store');
     Route::put('/sesi-event/{sesi}', [AdminEventSesiController::class, 'update'])->name('admin.sesi-event.update');
     Route::delete('/sesi-event/{sesi}', [AdminEventSesiController::class, 'destroy'])->name('admin.sesi-event.destroy');
+
+    Route::get('/paket', [AdminPaketController::class, 'index'])->name('admin.paket.index');
+    Route::post('/paket', [AdminPaketController::class, 'store'])->name('admin.paket.store');
+    Route::put('/paket/{paket}', [AdminPaketController::class, 'update'])->name('admin.paket.update');
+    Route::delete('/paket/{paket}', [AdminPaketController::class, 'destroy'])->name('admin.paket.destroy');
+
+    Route::get('/paket/akses', [AdminPaketController::class, 'akses'])->name('admin.paket.akses');
+    Route::get('/paket/{paket}/sesi', [AdminPaketController::class, 'assignedSesi'])->name('admin.paket.sesi.assigned');
+    Route::post('/paket/{paket}/sesi', [AdminPaketController::class, 'syncSesi'])->name('admin.paket.sesi.sync');
+    Route::delete('/paket/{paket}/sesi/{sesi}', [AdminPaketController::class, 'detachSesi'])->name('admin.paket.sesi.detach');
 
     // Login
     Route::get('/login', function () {

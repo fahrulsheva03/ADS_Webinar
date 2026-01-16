@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.index', ['tab' => 'packages']) }}" class="ai-icon" aria-expanded="false">
+                <a href="{{ route('admin.paket.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="la la-box" aria-hidden="true"></i>
                     <span class="nav-text">Paket & Akses</span>
                 </a>

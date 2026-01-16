@@ -14,10 +14,19 @@ class Paket extends Model
     protected $fillable = [
         'event_id',
         'nama_paket',
+        'deskripsi',
         'harga',
+        'status',
         'akses_live',
         'akses_rekaman',
         'kuota',
+    ];
+
+    protected $casts = [
+        'harga' => 'decimal:2',
+        'akses_live' => 'boolean',
+        'akses_rekaman' => 'boolean',
+        'kuota' => 'integer',
     ];
 
     /* =====================
