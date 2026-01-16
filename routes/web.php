@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\PesertaDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,6 +53,13 @@ Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.index');
     })->name('admin.index');
+
+    Route::get('/events', [AdminEventController::class, 'index'])->name('admin.events.index');
+    Route::post('/events', [AdminEventController::class, 'store'])->name('admin.events.store');
+    Route::put('/events/{event}', [AdminEventController::class, 'update'])->name('admin.events.update');
+    Route::delete('/events/{event}', [AdminEventController::class, 'destroy'])->name('admin.events.destroy');
+    Route::post('/events/bulk', [AdminEventController::class, 'bulk'])->name('admin.events.bulk');
+    Route::get('/events/export/{format}', [AdminEventController::class, 'export'])->name('admin.events.export');
 
     // Login
     Route::get('/login', function () {
