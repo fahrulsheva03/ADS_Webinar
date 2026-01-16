@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\EventSesiController as AdminEventSesiController;
 use App\Http\Controllers\Admin\PaketController as AdminPaketController;
+use App\Http\Controllers\Admin\PesertaController as AdminPesertaController;
 use App\Http\Controllers\PesertaDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -77,6 +78,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/paket/{paket}/sesi', [AdminPaketController::class, 'assignedSesi'])->name('admin.paket.sesi.assigned');
     Route::post('/paket/{paket}/sesi', [AdminPaketController::class, 'syncSesi'])->name('admin.paket.sesi.sync');
     Route::delete('/paket/{paket}/sesi/{sesi}', [AdminPaketController::class, 'detachSesi'])->name('admin.paket.sesi.detach');
+
+    Route::get('/peserta', [AdminPesertaController::class, 'index'])->name('admin.peserta.index');
+    Route::get('/peserta/{user}', [AdminPesertaController::class, 'show'])->name('admin.peserta.show');
 
     // Login
     Route::get('/login', function () {

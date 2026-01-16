@@ -32,7 +32,7 @@
             </li>
             <li>
                 <a href="{{ route('admin.events.index') }}" class="ai-icon" aria-expanded="false">
-                    <i class="la la-stream" aria-hidden="true"></i>
+                    <i class="la la-calendar-alt" aria-hidden="true"></i>
                     <span class="nav-text">Event </span>
                 </a>
             </li>
@@ -49,7 +49,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.index', ['tab' => 'participants']) }}#participants" class="ai-icon" aria-expanded="false">
+                <a href="{{ route('admin.peserta.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="la la-users" aria-hidden="true"></i>
                     <span class="nav-text">Peserta</span>
                 </a>
