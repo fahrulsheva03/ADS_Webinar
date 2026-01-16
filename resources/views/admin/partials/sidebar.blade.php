@@ -15,7 +15,7 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('admin.index', ['tab' => 'events', 'modal' => 'eventModal']) }}">Buat Event</a></li>
-                    <li><a href="{{ route('admin.index', ['tab' => 'scan-qr', 'modal' => 'scanQrModal']) }}">Buka Scan QR</a></li>
+                    <li><a href="{{ route('admin.scan.index') }}">Buka Scan QR</a></li>
                 </ul>
             </li>
 
@@ -69,7 +69,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.index', ['tab' => 'scan-qr', 'modal' => 'scanQrModal']) }}" class="ai-icon" aria-expanded="false">
+                <a href="{{ route('admin.scan.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="la la-qrcode" aria-hidden="true"></i>
                     <span class="nav-text">Scan QR</span>
                 </a>

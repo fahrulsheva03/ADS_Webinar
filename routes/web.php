@@ -5,8 +5,10 @@ use App\Http\Controllers\Admin\EventSesiController as AdminEventSesiController;
 use App\Http\Controllers\Admin\LiveSessionController as AdminLiveSessionController;
 use App\Http\Controllers\Admin\PaketController as AdminPaketController;
 use App\Http\Controllers\Admin\PesertaController as AdminPesertaController;
+use App\Http\Controllers\Admin\ScanController as AdminScanController;
 use App\Http\Controllers\Admin\TransaksiController as AdminTransaksiController;
 use App\Http\Controllers\PesertaDashboardController;
+use App\Http\Controllers\ScanQrController;
 use Illuminate\Support\Facades\Route;
 
 // URL PESERTA
@@ -97,6 +99,11 @@ Route::prefix('admin')->group(function () {
     Route::post('/live/{sesi}/start', [AdminLiveSessionController::class, 'start'])->name('admin.live.start');
     Route::post('/live/{sesi}/stop', [AdminLiveSessionController::class, 'stop'])->name('admin.live.stop');
     Route::delete('/live/{sesi}', [AdminLiveSessionController::class, 'destroy'])->name('admin.live.destroy');
+
+    Route::get('/scan', [AdminScanController::class, 'index'])->name('admin.scan.index');
+    Route::get('/scan/history', [AdminScanController::class, 'history'])->name('admin.scan.history');
+    Route::get('/scan/export/{format}', [AdminScanController::class, 'export'])->name('admin.scan.export');
+    Route::post('/scan/checkin', [ScanQrController::class, 'checkin'])->name('admin.scan.checkin');
 
     // Login
     Route::get('/login', function () {

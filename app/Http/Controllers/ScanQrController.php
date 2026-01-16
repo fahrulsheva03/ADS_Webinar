@@ -25,7 +25,7 @@ class ScanQrController extends Controller
         return DB::transaction(function () use ($data) {
             // 1. Cari pesanan berdasarkan QR
             $pesanan = Pesanan::with(['paket', 'paket.sesi'])
-                ->where('qr_token', $data['qr_token'])
+                ->where('kode_pesanan', $data['qr_token'])
                 ->where('status_pembayaran', 'paid')
                 ->first();
 
@@ -76,7 +76,6 @@ class ScanQrController extends Controller
                 'user_id' => $pesanan->user_id,
                 'event_sesi_id' => $sesi->id,
                 'waktu_join' => now(),
-                'metode_checkin' => 'offline_qr',
             ]);
 
             // 7. Response sukses (dipakai UI panitia)
