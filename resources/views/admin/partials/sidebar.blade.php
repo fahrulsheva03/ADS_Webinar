@@ -89,7 +89,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.index', ['tab' => 'attendance-report', 'modal' => 'attendanceModal']) }}" class="ai-icon" aria-expanded="false">
+                <a href="{{ route('admin.laporan.kehadiran.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="la la-clipboard-check" aria-hidden="true"></i>
                     <span class="nav-text">Laporan Kehadiran</span>
                 </a>

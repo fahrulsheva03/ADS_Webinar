@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\EventSesiController as AdminEventSesiController;
+use App\Http\Controllers\Admin\LaporanKehadiranController as AdminLaporanKehadiranController;
 use App\Http\Controllers\Admin\LiveSessionController as AdminLiveSessionController;
 use App\Http\Controllers\Admin\PaketController as AdminPaketController;
 use App\Http\Controllers\Admin\PesertaController as AdminPesertaController;
@@ -105,6 +106,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/scan/history', [AdminScanController::class, 'history'])->name('admin.scan.history');
     Route::get('/scan/export/{format}', [AdminScanController::class, 'export'])->name('admin.scan.export');
     Route::post('/scan/checkin', [ScanQrController::class, 'checkin'])->name('admin.scan.checkin');
+
+    Route::get('/laporan/kehadiran', [AdminLaporanKehadiranController::class, 'index'])->name('admin.laporan.kehadiran.index');
+    Route::get('/laporan/kehadiran/export/{format}', [AdminLaporanKehadiranController::class, 'export'])->name('admin.laporan.kehadiran.export');
 
     Route::get('/video', [AdminVideoController::class, 'index'])->name('admin.video.index');
     Route::post('/video', [AdminVideoController::class, 'store'])->name('admin.video.store');
