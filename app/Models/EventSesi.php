@@ -21,6 +21,11 @@ class EventSesi extends Model
         'status_sesi',
     ];
 
+    protected $casts = [
+        'waktu_mulai' => 'datetime',
+        'waktu_selesai' => 'datetime',
+    ];
+
     /* =====================
      * RELATIONS
      * ===================== */

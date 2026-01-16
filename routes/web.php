@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\EventController as AdminEventController;
+use App\Http\Controllers\Admin\EventSesiController as AdminEventSesiController;
 use App\Http\Controllers\PesertaDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -60,6 +61,11 @@ Route::prefix('admin')->group(function () {
     Route::delete('/events/{event}', [AdminEventController::class, 'destroy'])->name('admin.events.destroy');
     Route::post('/events/bulk', [AdminEventController::class, 'bulk'])->name('admin.events.bulk');
     Route::get('/events/export/{format}', [AdminEventController::class, 'export'])->name('admin.events.export');
+
+    Route::get('/sesi-event', [AdminEventSesiController::class, 'index'])->name('admin.sesi-event.index');
+    Route::post('/sesi-event', [AdminEventSesiController::class, 'store'])->name('admin.sesi-event.store');
+    Route::put('/sesi-event/{sesi}', [AdminEventSesiController::class, 'update'])->name('admin.sesi-event.update');
+    Route::delete('/sesi-event/{sesi}', [AdminEventSesiController::class, 'destroy'])->name('admin.sesi-event.destroy');
 
     // Login
     Route::get('/login', function () {

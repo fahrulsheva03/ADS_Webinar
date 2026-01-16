@@ -37,7 +37,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.index', ['tab' => 'sessions']) }}" class="ai-icon" aria-expanded="false">
+                <a href="{{ route('admin.sesi-event.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="la la-stream" aria-hidden="true"></i>
                     <span class="nav-text">Sesi Event</span>
                 </a>
