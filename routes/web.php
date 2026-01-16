@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\EventSesiController as AdminEventSesiController;
+use App\Http\Controllers\Admin\LiveSessionController as AdminLiveSessionController;
 use App\Http\Controllers\Admin\PaketController as AdminPaketController;
 use App\Http\Controllers\Admin\PesertaController as AdminPesertaController;
 use App\Http\Controllers\Admin\TransaksiController as AdminTransaksiController;
@@ -88,6 +89,14 @@ Route::prefix('admin')->group(function () {
     Route::delete('/transaksi/{transaksi}', [AdminTransaksiController::class, 'destroy'])->name('admin.transaksi.destroy');
     Route::post('/transaksi/bulk', [AdminTransaksiController::class, 'bulk'])->name('admin.transaksi.bulk');
     Route::get('/transaksi/export/{format}', [AdminTransaksiController::class, 'export'])->name('admin.transaksi.export');
+
+    Route::get('/live', [AdminLiveSessionController::class, 'index'])->name('admin.live.index');
+    Route::get('/live/poll', [AdminLiveSessionController::class, 'poll'])->name('admin.live.poll');
+    Route::post('/live', [AdminLiveSessionController::class, 'store'])->name('admin.live.store');
+    Route::put('/live/{sesi}', [AdminLiveSessionController::class, 'update'])->name('admin.live.update');
+    Route::post('/live/{sesi}/start', [AdminLiveSessionController::class, 'start'])->name('admin.live.start');
+    Route::post('/live/{sesi}/stop', [AdminLiveSessionController::class, 'stop'])->name('admin.live.stop');
+    Route::delete('/live/{sesi}', [AdminLiveSessionController::class, 'destroy'])->name('admin.live.destroy');
 
     // Login
     Route::get('/login', function () {

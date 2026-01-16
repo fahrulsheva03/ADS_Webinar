@@ -63,7 +63,7 @@
 
             <li class="nav-label">Operasional</li>
             <li>
-                <a href="{{ route('admin.index', ['tab' => 'live-session', 'modal' => 'liveSessionModal']) }}" class="ai-icon" aria-expanded="false">
+                <a href="{{ route('admin.live.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="la la-broadcast-tower" aria-hidden="true"></i>
                     <span class="nav-text">Live Session</span>
                 </a>
