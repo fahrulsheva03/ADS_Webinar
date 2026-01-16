@@ -109,6 +109,8 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/laporan/kehadiran', [AdminLaporanKehadiranController::class, 'index'])->name('admin.laporan.kehadiran.index');
     Route::get('/laporan/kehadiran/export/{format}', [AdminLaporanKehadiranController::class, 'export'])->name('admin.laporan.kehadiran.export');
+    Route::get('/laporan/transaksi', [AdminTransaksiController::class, 'laporan'])->name('admin.laporan.transaksi.index');
+    Route::get('/laporan/transaksi/export/{format}', [AdminTransaksiController::class, 'exportLaporan'])->name('admin.laporan.transaksi.export');
 
     Route::get('/video', [AdminVideoController::class, 'index'])->name('admin.video.index');
     Route::post('/video', [AdminVideoController::class, 'store'])->name('admin.video.store');

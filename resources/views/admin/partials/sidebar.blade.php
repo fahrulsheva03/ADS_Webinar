@@ -8,28 +8,10 @@
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            <li>
-                <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
-                    <i class="la la-bolt" aria-hidden="true"></i>
-                    <span class="nav-text">Quick Actions</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('admin.index', ['tab' => 'events', 'modal' => 'eventModal']) }}">Buat Event</a></li>
-                    <li><a href="{{ route('admin.scan.index') }}">Buka Scan QR</a></li>
-                </ul>
-            </li>
+
 
             <li class="nav-label">Manajemen</li>
-            <li>
-                <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
-                    <i class="la la-calendar-alt" aria-hidden="true"></i>
-                    <span class="nav-text">Event</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="{{ route('admin.index', ['tab' => 'events']) }}">Daftar Event</a></li>
-                    <li><a href="{{ route('admin.index', ['tab' => 'events', 'modal' => 'eventModal']) }}">Buat Event</a></li>
-                </ul>
-            </li>
+
             <li>
                 <a href="{{ route('admin.events.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="la la-calendar-alt" aria-hidden="true"></i>
@@ -83,7 +65,7 @@
 
             <li class="nav-label">Laporan</li>
             <li>
-                <a href="{{ route('admin.index', ['tab' => 'reporting']) }}" class="ai-icon" aria-expanded="false">
+                <a href="{{ route('admin.laporan.transaksi.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="la la-chart-bar" aria-hidden="true"></i>
                     <span class="nav-text">Reporting</span>
                 </a>
