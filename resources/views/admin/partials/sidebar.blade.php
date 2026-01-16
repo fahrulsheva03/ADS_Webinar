@@ -75,7 +75,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('admin.index', ['tab' => 'recordings', 'modal' => 'recordingModal']) }}" class="ai-icon" aria-expanded="false">
+                <a href="{{ route('admin.video.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="la la-video" aria-hidden="true"></i>
                     <span class="nav-text">Rekaman & Video</span>
                 </a>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PaketController as AdminPaketController;
 use App\Http\Controllers\Admin\PesertaController as AdminPesertaController;
 use App\Http\Controllers\Admin\ScanController as AdminScanController;
 use App\Http\Controllers\Admin\TransaksiController as AdminTransaksiController;
+use App\Http\Controllers\Admin\VideoController as AdminVideoController;
 use App\Http\Controllers\PesertaDashboardController;
 use App\Http\Controllers\ScanQrController;
 use Illuminate\Support\Facades\Route;
@@ -104,6 +105,13 @@ Route::prefix('admin')->group(function () {
     Route::get('/scan/history', [AdminScanController::class, 'history'])->name('admin.scan.history');
     Route::get('/scan/export/{format}', [AdminScanController::class, 'export'])->name('admin.scan.export');
     Route::post('/scan/checkin', [ScanQrController::class, 'checkin'])->name('admin.scan.checkin');
+
+    Route::get('/video', [AdminVideoController::class, 'index'])->name('admin.video.index');
+    Route::post('/video', [AdminVideoController::class, 'store'])->name('admin.video.store');
+    Route::put('/video/{video}', [AdminVideoController::class, 'update'])->name('admin.video.update');
+    Route::delete('/video/{video}', [AdminVideoController::class, 'destroy'])->name('admin.video.destroy');
+    Route::post('/video/bulk', [AdminVideoController::class, 'bulk'])->name('admin.video.bulk');
+    Route::get('/video/export/{format}', [AdminVideoController::class, 'export'])->name('admin.video.export');
 
     // Login
     Route::get('/login', function () {
