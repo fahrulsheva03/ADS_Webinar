@@ -4,7 +4,7 @@
             <li class="nav-label first">Dashboard</li>
             <li>
                 <a href="{{ route('admin.index') }}" class="ai-icon" aria-expanded="false">
-                    <i class="flaticon-025-dashboard" aria-hidden="true"></i>
+                    <i class="flaticon-381-app" aria-hidden="true"></i>
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
@@ -14,31 +14,31 @@
 
             <li>
                 <a href="{{ route('admin.events.index') }}" class="ai-icon" aria-expanded="false">
-                    <i class="la la-calendar-alt" aria-hidden="true"></i>
+                    <i class="flaticon-381-calendar" aria-hidden="true"></i>
                     <span class="nav-text">Event </span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('admin.sesi-event.index') }}" class="ai-icon" aria-expanded="false">
-                    <i class="la la-stream" aria-hidden="true"></i>
+                    <i class="flaticon-381-list" aria-hidden="true"></i>
                     <span class="nav-text">Sesi Event</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('admin.paket.index') }}" class="ai-icon" aria-expanded="false">
-                    <i class="la la-box" aria-hidden="true"></i>
+                    <i class="flaticon-381-box" aria-hidden="true"></i>
                     <span class="nav-text">Paket & Akses</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('admin.peserta.index') }}" class="ai-icon" aria-expanded="false">
-                    <i class="la la-users" aria-hidden="true"></i>
+                    <i class="flaticon-381-user" aria-hidden="true"></i>
                     <span class="nav-text">Peserta</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('admin.transaksi.index') }}" class="ai-icon" aria-expanded="false">
-                    <i class="la la-credit-card" aria-hidden="true"></i>
+                    <i class="flaticon-381-calculator" aria-hidden="true"></i>
                     <span class="nav-text">Transaksi</span>
                 </a>
             </li>
@@ -46,19 +46,19 @@
             <li class="nav-label">Operasional</li>
             <li>
                 <a href="{{ route('admin.live.index') }}" class="ai-icon" aria-expanded="false">
-                    <i class="la la-broadcast-tower" aria-hidden="true"></i>
+                    <i class="flaticon-381-microphone" aria-hidden="true"></i>
                     <span class="nav-text">Live Session</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('admin.scan.index') }}" class="ai-icon" aria-expanded="false">
-                    <i class="la la-qrcode" aria-hidden="true"></i>
+                    <i class="flaticon-381-search" aria-hidden="true"></i>
                     <span class="nav-text">Scan QR</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('admin.video.index') }}" class="ai-icon" aria-expanded="false">
-                    <i class="la la-video" aria-hidden="true"></i>
+                    <i class="flaticon-381-video-camera" aria-hidden="true"></i>
                     <span class="nav-text">Rekaman & Video</span>
                 </a>
             </li>
@@ -66,13 +66,13 @@
             <li class="nav-label">Laporan</li>
             <li>
                 <a href="{{ route('admin.laporan.transaksi.index') }}" class="ai-icon" aria-expanded="false">
-                    <i class="la la-chart-bar" aria-hidden="true"></i>
+                    <i class="flaticon-381-notebook" aria-hidden="true"></i>
                     <span class="nav-text">Reporting</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('admin.laporan.kehadiran.index') }}" class="ai-icon" aria-expanded="false">
-                    <i class="la la-clipboard-check" aria-hidden="true"></i>
+                    <i class="flaticon-381-file" aria-hidden="true"></i>
                     <span class="nav-text">Laporan Kehadiran</span>
                 </a>
             </li>
@@ -80,7 +80,7 @@
             <li class="nav-label">Akun</li>
             <li>
                 <a class="has-arrow ai-icon" href="javascript:void(0)" aria-expanded="false">
-                    <i class="la la-cog" aria-hidden="true"></i>
+                    <i class="flaticon-381-settings" aria-hidden="true"></i>
                     <span class="nav-text">Pengaturan</span>
                 </a>
                 <ul aria-expanded="false">
