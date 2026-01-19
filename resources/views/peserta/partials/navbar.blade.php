@@ -17,29 +17,36 @@
                 <ul class="navbar-nav text-center">
 
                     <li class="nav-item">
-                        <a class="nav-link p-0" href="{{ route('peserta.index') }}">HOME</a>
+                        <a class="nav-link p-0 {{ request()->routeIs('peserta.index') ? 'active' : '' }}"
+                            href="{{ route('peserta.index') }}">HOME</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link p-0" href="{{ route('peserta.about') }}">ABOUT</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link p-0" href="{{ route('peserta.event') }}">EVENT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-0" href="{{ route('peserta.shop') }}">SHOP</a>
+                        <a class="nav-link p-0 {{ request()->routeIs('peserta.about') ? 'active' : '' }}"
+                            href="{{ route('peserta.about') }}">ABOUT</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link p-0" href="{{ route('peserta.blog') }}">BLOG</a>
+                        <a class="nav-link p-0 {{ request()->routeIs('peserta.event') ? 'active' : '' }}"
+                            href="{{ route('peserta.event') }}">EVENT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-0 {{ request()->routeIs('peserta.shop') ? 'active' : '' }}"
+                            href="{{ route('peserta.shop') }}">SHOP</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link p-0" href="{{ route('peserta.contact') }}">CONTACT</a>
+                        <a class="nav-link p-0 {{ request()->routeIs('peserta.blog') ? 'active' : '' }}"
+                            href="{{ route('peserta.blog') }}">BLOG</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link p-0" href="{{ route('peserta.dashboard') }}">DASHBOARD</a>
+                        <a class="nav-link p-0 {{ request()->routeIs('peserta.contact') ? 'active' : '' }}"
+                            href="{{ route('peserta.contact') }}">CONTACT</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link p-0 {{ request()->routeIs('peserta.dashboard') ? 'active' : '' }}"
+                            href="{{ route('peserta.dashboard') }}">DASHBOARD</a>
                     </li>
                 </ul>
                 <div class="header-contact d-flex align-items-center">
