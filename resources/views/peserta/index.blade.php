@@ -1,106 +1,69 @@
 @extends('peserta.partials.app')
 
 @section('content')
-    <!-- BANNER SECTION START -->
-    <section class="banner-main-section w-100 float-left">
+   <section class="index3-banner-section w-100 float-left">
         <div class="container-fluid">
-            <div class="banner-outer-con" data-aos="fade-up" data-aos-duration="700">
+            <div class="index3-banner-outer-con" data-aos="fade-up" data-aos-duration="700">
                 <div id="owl-carouselone" class="owl-carousel owl-theme">
                     <div class="item">
-                        <div class="banner-inner-section">
-                            <div class="banner-left-section">
-                                <h1>BIGGEST BUSINESS CONF <span class="d-inline-block">2024</span></h1>
-                                <span>21 SEPTEMBER, 2024</span>
-                                <div class="generic-btn">
-                                    <a href="contact.html">REGISTER FOR FREE <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                                <div class="banner-left-images d-flex">
-                                    <figure class="mb-0">
-                                        <img src="{{ asset('assets/images/banner-left-img1.jpg') }}" alt="banner-left-img1">
-                                    </figure>
-                                    <figure class="mb-0">
-                                        <img src="{{ asset('assets/images/banner-left-img2.jpg') }}" alt="banner-left-img2">
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="banner-right-section">
-                                <figure>
-                                    <img src="{{ asset('assets/images/banner-right-img.png') }}" alt="banner-right-img">
+                        <div class="index3-banner-inner-con">
+                            <div class="index3-banner-img-con">
+                                <figure class="mb-0">
+                                    <img src="assets/images/index3-banner-img1.jpg" alt="index3-banner-img1">
                                 </figure>
-                                <span>21 King Street, 1175 Australia</span>
-                                <div class="social-links d-flex">
-                                    <a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="https://twitter.com/i/flow/login"><i class="fab fa-twitter"></i></a>
-                                    <a
-                                        href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i
-                                            class="fab fa-instagram"></i></a>
-                                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <div class="index3-banner-text-con">
+                                <span class="d-block position-relative">25 SEP, 2024</span>
+                                <h1>World Biggest
+                                    Business Conf.
+                                    2024</h1>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-map-marker-alt"></i> 21 King Street, 1175 Australia</li>
+                                </ul>
+                                <div class="generic-btn">
+                                    <a href="contact.html">REGISTER NOW <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="item">
-                        <div class="banner-inner-section">
-                            <div class="banner-left-section">
-                                <h1>BIGGEST BUSINESS CONF <span class="d-inline-block">2024</span></h1>
-                                <span>21 SEPTEMBER, 2024</span>
-                                <div class="generic-btn">
-                                    <a href="contact.html">REGISTER FOR FREE <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                                <div class="banner-left-images d-flex">
-                                    <figure class="mb-0">
-                                        <img src="{{ asset('assets/images/banner-left-img3.jpg') }}" alt="banner-left-img1">
-                                    </figure>
-                                    <figure class="mb-0">
-                                        <img src="{{ asset('assets/images/banner-left-img2.jpg') }}" alt="banner-left-img2">
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="banner-right-section">
-                                <figure>
-                                    <img src="{{ asset('assets/images/banner-right-img2.png') }}" alt="banner-right-img2">
+                        <div class="index3-banner-inner-con">
+                            <div class="index3-banner-img-con">
+                                <figure class="mb-0">
+                                    <img src="assets/images/index3-banner-img2.jpg" alt="index3-banner-img2">
                                 </figure>
-                                <span>21 King Street, 1175 Australia</span>
-                                <div class="social-links d-flex">
-                                    <a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="https://twitter.com/i/flow/login"><i class="fab fa-twitter"></i></a>
-                                    <a
-                                        href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i
-                                            class="fab fa-instagram"></i></a>
-                                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <div class="index3-banner-text-con">
+                                <span class="d-block position-relative">25 SEP, 2024</span>
+                                <h1>World Biggest
+                                    Business Conf.
+                                    2024</h1>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-map-marker-alt"></i> 21 King Street, 1175 Australia</li>
+                                </ul>
+                                <div class="generic-btn">
+                                    <a href="contact.html">REGISTER NOW <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="item">
-                        <div class="banner-inner-section">
-                            <div class="banner-left-section">
-                                <h1>BIGGEST BUSINESS CONF <span class="d-inline-block">2024</span></h1>
-                                <span>21 SEPTEMBER, 2024</span>
-                                <div class="generic-btn">
-                                    <a href="contact.html">REGISTER FOR FREE <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                                <div class="banner-left-images d-flex">
-                                    <figure class="mb-0">
-                                        <img src="{{ asset('assets/images/banner-left-img3.jpg') }}" alt="banner-left-img3">
-                                    </figure>
-                                    <figure class="mb-0">
-                                        <img src="{{ asset('assets/images/banner-left-img4.jpg') }}" alt="banner-left-img2">
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="banner-right-section">
-                                <figure>
-                                    <img src="{{ asset('assets/images/banner-right-img3.png') }}" alt="banner-right-img">
+                        <div class="index3-banner-inner-con">
+                            <div class="index3-banner-img-con">
+                                <figure class="mb-0">
+                                    <img src="assets/images/index3-banner-img1.jpg" alt="index3-banner-img1">
                                 </figure>
-                                <span>21 King Street, 1175 Australia</span>
-                                <div class="social-links d-flex">
-                                    <a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="https://twitter.com/i/flow/login"><i class="fab fa-twitter"></i></a>
-                                    <a
-                                        href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i
-                                            class="fab fa-instagram"></i></a>
-                                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                            <div class="index3-banner-text-con">
+                                <span class="d-block position-relative">25 SEP, 2024</span>
+                                <h1>World Biggest
+                                    Business Conf.
+                                    2024</h1>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-map-marker-alt"></i> 21 King Street, 1175 Australia</li>
+                                </ul>
+                                <div class="generic-btn">
+                                    <a href="contact.html">REGISTER NOW <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -110,228 +73,657 @@
         </div>
     </section>
     <!-- BANNER SECTION END -->
-    <!-- ABOUT SECTION START-->
-    <section class="about-main-section w-100 float-left padding-top padding-bottom">
+    <!-- JOURNEY SECTION START -->
+    <section class="journey-section w-100 float-left padding-top padding-bottom grey-bg position-relative">
         <div class="container">
-            <div class="about-inner-con">
-                <div class="about-left-con">
-                    <div class="generic-title">
-                        <span class="small-text" data-aos="fade-up" data-aos-duration="700">ABOUT CONFX</span>
-                        <h2 data-aos="fade-up" data-aos-duration="700">Digital Innovations Conference</h2>
-                    </div>
-                    <p data-aos="fade-up" data-aos-duration="700">We direct our conference to specialists from financial and
-                        investment industry.</p>
-                    <p data-aos="fade-up" data-aos-duration="700">Thanks to the wide range of speakers, this is the most
-                        recognizable conference in the country.
-                    </p>
+            <div class="journey-inner-con">
+                <div class="journey-text-con">
+                    <h2 data-aos="fade-up" data-aos-duration="700">Embark <br>
+                        on a Journey of
+                        Knowledge. </h2>
+                    <p data-aos="fade-up" data-aos-duration="700">The Digital Technology Conference is the world's leading organizational learning conference With
+                        more than 10,000 participants from different countries</p>
                     <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
-                        <a href="event.html">VIEW SCHEDULE <i class="fas fa-arrow-right"></i></a>
+                        <a href="about.html">READ MORE <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="about-right-con">
-                    <div class="co-box" data-aos="fade-up" data-aos-duration="700">
-                        <div class="investment d-flex">
-                            <span>1B+</span>
-                            <small>Investment <br> Funds</small>
-                        </div>
-                        <div class="co-image-box">
-                            <figure class="mb-0">
-                                <img src="{{ asset('assets/images/co-image.jpg') }}" alt="co-image">
+                <div class="journey-video-con d-inline-block">
+                    <div class="video-inner-con">
+                        <div class="learning-conference-video-box" data-aos="fade-up" data-aos-duration="700">
+                            <figure class="mb-0 d-inline-block">
+                                <img src="assets/images/index3-video-bg.jpg" alt="index3-video-bg">
                             </figure>
-                            <div class="status">
-                                EVE OWENS - <span class="d-inline-block">CO</span>
+                            <div class="video-play-icon d-inline-block">
+                                <a href="javascript:void(0)" onclick="lightbox_open();">
+                                    <figure class="mb-0 d-inline-block">
+                                        <img src="assets/images/video-play-icon2.png" alt="video-play-icon2">
+                                    </figure>
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <div class="ceo-box" data-aos="fade-up" data-aos-duration="700">
-                        <div class="ceo-image-box">
-                            <figure class="mb-0">
-                                <img src="{{ asset('assets/images/ceo-image.jpg') }}" alt="ceo-image">
-                            </figure>
-                            <div class="status">
-                                JHON SMITH - <span class="d-inline-block">CEO</span>
-                            </div>
-                        </div>
-                        <div class="attendees align-items-center justify-content-center">
-                            <div class="attendents">
-                                <figure class="mb-0">
-                                    <img src="{{ asset('assets/images/attendents-img.png') }}" alt="attendents-img">
-                                </figure>
-                                <figure class="mb-0">
-                                    <img src="{{ asset('assets/images/attendents-img.png') }}" alt="attendents-img">
-                                </figure>
-                                <figure class="mb-0">
-                                    <img src="{{ asset('assets/images/attendents-img.png') }}" alt="attendents-img">
-                                </figure>
-                                <figure class="mb-0">
-                                    <img src="{{ asset('assets/images/attendents-img.png') }}" alt="attendents-img">
-                                </figure>
-                            </div>
-                            <div class="numbers">
-                                <span>2K+</span>
-                                <small>Attendees</small>
-                            </div>
+                    <div id="light">
+                        <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
+                        <div id="VisaChipCardVideo" width="600" controls>
+                            <iframe width="560" height="315"
+                                src="https://www.youtube.com/embed/wdw8KNmr2pc?si=FuEK7fdoFZh86koK"
+                                title="YouTube video player" frameborder="0"></iframe>
+                            <!--Browser does not support <video> tag -->
                         </div>
                     </div>
+
+                    <div id="fade" onClick="lightbox_close();"></div>
                 </div>
             </div>
-            <div class="counter-sec">
-                <ul class="list-unstyled mb-0" data-aos="fade-up" data-aos-duration="700">
-                    <li class="position-relative">
-                        <div class="count d-inline-block">20</div>
-                        <span class="d-block client-status">Skilled Speakers</span>
-                    </li>
-                    <li class="position-relative">
-                        <div class="count d-inline-block">5</div>
-                        <span class="d-block client-status">Days Full of Inspiration</span>
-                    </li>
-                    <li class="position-relative">
-                        <div class="count d-inline-block">15</div>
-                        <span class="d-block client-status">Unique Workshops</span>
-                    </li>
-                    <li class="position-relative">
-                        <div class="counter-box position-relative">
-                            <div class="count d-inline-block">2</div>
-                            <div class="plus d-inline-block"><span>X</span></div>
+            <div class="digital-conference-section">
+                <div class="digital-conference-img-con" data-aos="fade-up" data-aos-duration="700">
+                    <figure class="mb-0 position-relative">
+                        <img src="assets/images/digital-conference-img.jpg" alt="digital-conference-img">
+                    </figure>
+                </div>
+                <div class="digital-counter-con">
+                    <ul class="list-unstyled mb-0" data-aos="fade-up" data-aos-duration="700">
+                        <li class="position-relative">
+                            <div class="count d-inline-block">25</div>
+                            <div class="plus-details">
+                                <div class="plus d-inline-block"><span>+</span></div>
+                                <span class="d-block client-status">Speakers</span>
+                            </div>
+                        </li>
+                        <li class="position-relative">
+                            <div class="count d-inline-block">32</div>
+                            <div class="plus-details">
+                                <div class="plus d-inline-block"><span>+</span></div>
+                                <span class="d-block client-status">Sponsors</span>
+                            </div>
+                        </li>
+                        <li class="position-relative">
+                            <div class="count d-inline-block">40</div>
+                            <div class="plus-details">
+                                <div class="plus d-inline-block"><span>+</span></div>
+                                <span class="d-block client-status">Session</span>
+                            </div>
+                        </li>
+                        <li class="position-relative">
+                            <div class="counter-box position-relative">
+                                <div class="2k-con">
+                                    <div class="count d-inline-block">2</div>
+                                    <small class="d-inline-block">K</small>
+                                </div>
+                                <div class="plus-details">
+                                    <div class="plus d-inline-block"><span>+</span></div>
+                                    <span class="d-block client-status">Attendees</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="digital-text-con">
+                        <h3 data-aos="fade-up" data-aos-duration="700">Join Us at 5th Digital Summer
+                            Confrence <span class="d-inline-block">NOV 21-25</span>, 2024</h3>
+                        <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
+                            <a href="contact.html">REGISTER NOW <i class="fas fa-arrow-right"></i></a>
                         </div>
-                        <span class="d-block client-status">Networking with Industry</span>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
-    <!-- ABOUT SECTION END-->
+    <!-- JOURNEY SECTION END -->
     <!-- EVENT SECTION START -->
-    <section class="event-main-section w-100 float-left padding-top padding-bottom light-bg">
+    <section class="index3-event-section w-100 float-left padding-top padding-bottom">
         <div class="container">
-            <div class="event-inner-section">
-                <div class="event-left-con">
-                    <div class="generic-title">
-                        <span class="small-text" data-aos="fade-up" data-aos-duration="700">SCHEDULE OF EVENT</span>
-                        <h2 data-aos="fade-up" data-aos-duration="700">List of Events Planned in This Conference</h2>
-                    </div>
-                    <p data-aos="fade-up" data-aos-duration="700">This is a detailed list event of conference for digital
-                        technology 2024.</p>
-                    <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
-                        <a href="event.html">DOWNLOAD SCHEDULE <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="event-right-con" data-aos="fade-up" data-aos-duration="700">
-                    <ul class="nav nav-tabs" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                <span class="d-block">Day 1</span>
-                                <small>25 OCT 2024</small>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                <span class="d-block">Day 2</span>
-                                <small>26 OCT 2024</small>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                <span class="d-block">Day 3</span>
-                                <small>27 OCT 2024</small>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                            <div class='education'>
-                                <div class='education__content'>
-                                    <small>09:00 - 11:00</small>
-                                    <span class='year'>1</span>
-                                    <h6>Registration</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscin
-                                        g elit, sed do eiusmod tempo. <a href="about.html">More</a></p>
+            <div class="generic-title">
+                <span class="small-text" data-aos="fade-up" data-aos-duration="700">SCHEDULE OF EVENT</span>
+                <h2 class="mb-0" data-aos="fade-up" data-aos-duration="700">List of Events Planned in This <br> Conference</h2>
+            </div>
+            <div class="index3-event-tabs-con">
+                <ul class="nav nav-tabs" id="myTab" role="tablist" data-aos="fade-up" data-aos-duration="700">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home"
+                            type="button" role="tab" aria-controls="home" aria-selected="true">DAY 1</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile" type="button"
+                            role="tab" aria-controls="profile" aria-selected="false">DAY 2</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-toggle="tab" data-target="#contact" type="button"
+                            role="tab" aria-controls="contact" aria-selected="false">DAY 3</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div id="accordion" class="index3-faqs">
+                            <div class="card" data-aos="fade-up" data-aos-duration="700">
+                                <div class="card-header" id="headingOne">
+                                    <h6 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                            <div class="index3-event-detail">
+                                                <div class="index3-event-date-con">
+                                                    <div class="index3-event-date">
+                                                        25
+                                                    </div>
+                                                    <div class="index3-event-month text-left">
+                                                        <span class="d-block">NOVEMBER</span>
+                                                        <small class="d-block">08:00 AM-08.45 AM</small>
+                                                    </div>
+                                                </div>
+                                                <div class="index3-event-organizer">
+                                                    <figure class="mb-0">
+                                                        <img src="assets/images/index3-organizer-img1.png"
+                                                            alt="index3-organizer-img1">
+                                                    </figure>
+                                                    <div class="index3-organizer-detail">
+                                                        <span class="d-block">Creativitye Technology</span>
+                                                        <small class="d-block"><span>By:</span> Tim Cook - CEO of
+                                                            Apple</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h6>
                                 </div>
-                                <div class='education__content'>
-                                    <small>11:00 - 12:00</small>
-                                    <span class='year'>2</span>
-                                    <h6>Introduction Digital Technology - 2024</h6>
-                                    <p>Npendisse ultrices gravida. Risus commodo viverr
-                                        a maecenas accumsan lacus vel facilisis. <a href="about.html">More</a></p>
+
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                            ultrices gravida. </p>
+                                        <span class="d-block"><i class="fas fa-map-marker-alt"></i> 21 KING STREET, 1175
+                                            AUSTRALIA</span>
+                                    </div>
                                 </div>
-                                <div class='education__content'>
-                                    <small>12:00 - 14:00</small>
-                                    <span class='year'>3</span>
-                                    <h6>Speaker Speech</h6>
-                                    <p>Consectetur adipiscing elit, sed do eiusmod temp
-                                        or incididunt ut labore et dolore. <a href="about.html">More</a></p>
+                            </div>
+                            <div class="card" data-aos="fade-up" data-aos-duration="700">
+                                <div class="card-header" id="headingTwo">
+                                    <h6 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseTwo" aria-expanded="false"
+                                            aria-controls="collapseTwo">
+                                            <div class="index3-event-detail">
+                                                <div class="index3-event-date-con">
+                                                    <div class="index3-event-date">
+                                                        26
+                                                    </div>
+                                                    <div class="index3-event-month text-left">
+                                                        <span class="d-block">NOVEMBER</span>
+                                                        <small class="d-block">09:00 AM-10.00 AM</small>
+                                                    </div>
+                                                </div>
+                                                <div class="index3-event-organizer">
+                                                    <figure class="mb-0">
+                                                        <img src="assets/images/index3-organizer-img2.png"
+                                                            alt="index3-organizer-img2">
+                                                    </figure>
+                                                    <div class="index3-organizer-detail">
+                                                        <span class="d-block">Driverless Cities</span>
+                                                        <small class="d-block"><span>By:</span> Andy Jassy - CEO of
+                                                            Amazon</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h6>
                                 </div>
-                                <div class='education__content'>
-                                    <small>14:00 - 15:00</small>
-                                    <span class='year'>4</span>
-                                    <h6>Lunch Break</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscin
-                                        glit, sed do eiusmod tempor incididunt ut. <a href="about.html">More</a></p>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                            ultrices gravida. </p>
+                                        <span class="d-block"><i class="fas fa-map-marker-alt"></i> 21 KING STREET, 1175
+                                            AUSTRALIA</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" data-aos="fade-up" data-aos-duration="700">
+                                <div class="card-header" id="headingThree">
+                                    <h6 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseThree" aria-expanded="false"
+                                            aria-controls="collapseThree">
+                                            <div class="index3-event-detail">
+                                                <div class="index3-event-date-con">
+                                                    <div class="index3-event-date">
+                                                        27
+                                                    </div>
+                                                    <div class="index3-event-month text-left">
+                                                        <span class="d-block">NOVEMBER</span>
+                                                        <small class="d-block">10:00 AM-11.15 AM</small>
+                                                    </div>
+                                                </div>
+                                                <div class="index3-event-organizer">
+                                                    <figure class="mb-0">
+                                                        <img src="assets/images/index3-organizer-img3.png"
+                                                            alt="index3-organizer-img3">
+                                                    </figure>
+                                                    <div class="index3-organizer-detail">
+                                                        <span class="d-block">Bringing al to Life</span>
+                                                        <small class="d-block"><span>By:</span> Satya Nadella - CEO of
+                                                            Microsoft</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h6>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                            ultrices gravida. </p>
+                                        <span class="d-block"><i class="fas fa-map-marker-alt"></i> 21 KING STREET, 1175
+                                            AUSTRALIA</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" data-aos="fade-up" data-aos-duration="700">
+                                <div class="card-header" id="headingfour">
+                                    <h6 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapsefour" aria-expanded="false"
+                                            aria-controls="collapsefour">
+                                            <div class="index3-event-detail">
+                                                <div class="index3-event-date-con">
+                                                    <div class="index3-event-date">
+                                                        28
+                                                    </div>
+                                                    <div class="index3-event-month text-left">
+                                                        <span class="d-block">NOVEMBER</span>
+                                                        <small class="d-block">11:00 AM-12.00 AM</small>
+                                                    </div>
+                                                </div>
+                                                <div class="index3-event-organizer">
+                                                    <figure class="mb-0">
+                                                        <img src="assets/images/index3-organizer-img4.png"
+                                                            alt="index3-organizer-img4">
+                                                    </figure>
+                                                    <div class="index3-organizer-detail">
+                                                        <span class="d-block">Creativitye Technology</span>
+                                                        <small class="d-block"><span>By:</span> Neal Mohan CEO of
+                                                            YouTube</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h6>
+                                </div>
+                                <div id="collapsefour" class="collapse" aria-labelledby="headingfour"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                            ultrices gravida. </p>
+                                        <span class="d-block"><i class="fas fa-map-marker-alt"></i> 21 KING STREET, 1175
+                                            AUSTRALIA</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tabs-2" role="tabpanel">
-                            <div class='education'>
-                                <div class='education__content'>
-                                    <small>12:00 - 14:00</small>
-                                    <span class='year'>1</span>
-                                    <h6>Speaker Speech</h6>
-                                    <p>Consectetur adipiscing elit, sed do eiusmod temp
-                                        or incididunt ut labore et dolore. <a href="about.html">More</a></p>
+                        <div class="index3-faq-btn-con text-center">
+                            <p data-aos="fade-up" data-aos-duration="700">This is a Detailed List Event of Conference for Digital Technology 2024.</p>
+                            <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
+                                <a href="contact.html">DOWNLOAD SCHEDULE <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div id="accordion" class="index3-faqs">
+                            <div class="card" data-aos="fade-up" data-aos-duration="700">
+                                <div class="card-header" id="headingsix">
+                                    <h6 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapsesix" aria-expanded="false"
+                                            aria-controls="collapsesix">
+                                            <div class="index3-event-detail">
+                                                <div class="index3-event-date-con">
+                                                    <div class="index3-event-date">
+                                                        27
+                                                    </div>
+                                                    <div class="index3-event-month text-left">
+                                                        <span class="d-block">NOVEMBER</span>
+                                                        <small class="d-block">10:00 AM-11.15 AM</small>
+                                                    </div>
+                                                </div>
+                                                <div class="index3-event-organizer">
+                                                    <figure class="mb-0">
+                                                        <img src="assets/images/index3-organizer-img3.png"
+                                                            alt="index3-organizer-img3">
+                                                    </figure>
+                                                    <div class="index3-organizer-detail">
+                                                        <span class="d-block">Bringing al to Life</span>
+                                                        <small class="d-block"><span>By:</span> Satya Nadella - CEO of
+                                                            Microsoft</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h6>
                                 </div>
-                                <div class='education__content'>
-                                    <small>09:00 - 11:00</small>
-                                    <span class='year'>2</span>
-                                    <h6>Registration</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscin
-                                        g elit, sed do eiusmod tempo. <a href="about.html">More</a></p>
+                                <div id="collapsesix" class="collapse" aria-labelledby="headingsix"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                            ultrices gravida. </p>
+                                        <span class="d-block"><i class="fas fa-map-marker-alt"></i> 21 KING STREET, 1175
+                                            AUSTRALIA</span>
+                                    </div>
                                 </div>
-                                <div class='education__content'>
-                                    <small>11:00 - 12:00</small>
-                                    <span class='year'>3</span>
-                                    <h6>Introduction Digital Technology - 2024</h6>
-                                    <p>Npendisse ultrices gravida. Risus commodo viverr
-                                        a maecenas accumsan lacus vel facilisis. <a href="about.html">More</a></p>
+                            </div>
+                            <div class="card" data-aos="fade-up" data-aos-duration="700">
+                                <div class="card-header" id="headingseven">
+                                    <h6 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseseven" aria-expanded="false"
+                                            aria-controls="collapseseven">
+                                            <div class="index3-event-detail">
+                                                <div class="index3-event-date-con">
+                                                    <div class="index3-event-date">
+                                                        28
+                                                    </div>
+                                                    <div class="index3-event-month text-left">
+                                                        <span class="d-block">NOVEMBER</span>
+                                                        <small class="d-block">11:00 AM-12.00 AM</small>
+                                                    </div>
+                                                </div>
+                                                <div class="index3-event-organizer">
+                                                    <figure class="mb-0">
+                                                        <img src="assets/images/index3-organizer-img4.png"
+                                                            alt="index3-organizer-img4">
+                                                    </figure>
+                                                    <div class="index3-organizer-detail">
+                                                        <span class="d-block">Creativitye Technology</span>
+                                                        <small class="d-block"><span>By:</span> Neal Mohan CEO of
+                                                            YouTube</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h6>
                                 </div>
-                                <div class='education__content'>
-                                    <small>14:00 - 15:00</small>
-                                    <span class='year'>4</span>
-                                    <h6>Lunch Break</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscin
-                                        glit, sed do eiusmod tempor incididunt ut. <a href="about.html">More</a></p>
+                                <div id="collapseseven" class="collapse" aria-labelledby="headingseven"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                            ultrices gravida. </p>
+                                        <span class="d-block"><i class="fas fa-map-marker-alt"></i> 21 KING STREET, 1175
+                                            AUSTRALIA</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" data-aos="fade-up" data-aos-duration="700">
+                                <div class="card-header" id="headingeight">
+                                    <h6 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseeight" aria-expanded="true"
+                                            aria-controls="collapseeight">
+                                            <div class="index3-event-detail">
+                                                <div class="index3-event-date-con">
+                                                    <div class="index3-event-date">
+                                                        25
+                                                    </div>
+                                                    <div class="index3-event-month text-left">
+                                                        <span class="d-block">NOVEMBER</span>
+                                                        <small class="d-block">08:00 AM-08.45 AM</small>
+                                                    </div>
+                                                </div>
+                                                <div class="index3-event-organizer">
+                                                    <figure class="mb-0">
+                                                        <img src="assets/images/index3-organizer-img1.png"
+                                                            alt="index3-organizer-img1">
+                                                    </figure>
+                                                    <div class="index3-organizer-detail">
+                                                        <span class="d-block">Creativitye Technology</span>
+                                                        <small class="d-block"><span>By:</span> Tim Cook - CEO of
+                                                            Apple</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h6>
+                                </div>
+
+                                <div id="collapseeight" class="collapse" aria-labelledby="headingeight"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                            ultrices gravida. </p>
+                                        <span class="d-block"><i class="fas fa-map-marker-alt"></i> 21 KING STREET, 1175
+                                            AUSTRALIA</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" data-aos="fade-up" data-aos-duration="700">
+                                <div class="card-header" id="headingnine">
+                                    <h6 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapsenine" aria-expanded="false"
+                                            aria-controls="collapsenine">
+                                            <div class="index3-event-detail">
+                                                <div class="index3-event-date-con">
+                                                    <div class="index3-event-date">
+                                                        26
+                                                    </div>
+                                                    <div class="index3-event-month text-left">
+                                                        <span class="d-block">NOVEMBER</span>
+                                                        <small class="d-block">09:00 AM-10.00 AM</small>
+                                                    </div>
+                                                </div>
+                                                <div class="index3-event-organizer">
+                                                    <figure class="mb-0">
+                                                        <img src="assets/images/index3-organizer-img2.png"
+                                                            alt="index3-organizer-img2">
+                                                    </figure>
+                                                    <div class="index3-organizer-detail">
+                                                        <span class="d-block">Driverless Cities</span>
+                                                        <small class="d-block"><span>By:</span> Andy Jassy - CEO of
+                                                            Amazon</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h6>
+                                </div>
+                                <div id="collapsenine" class="collapse" aria-labelledby="headingnine"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                            ultrices gravida. </p>
+                                        <span class="d-block"><i class="fas fa-map-marker-alt"></i> 21 KING STREET, 1175
+                                            AUSTRALIA</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane" id="tabs-3" role="tabpanel">
-                            <div class='education'>
-                                <div class='education__content'>
-                                    <small>11:00 - 12:00</small>
-                                    <span class='year'>1</span>
-                                    <h6>Introduction Digital Technology - 2024</h6>
-                                    <p>Npendisse ultrices gravida. Risus commodo viverr
-                                        a maecenas accumsan lacus vel facilisis. <a href="about.html">More</a></p>
+                        <div class="index3-faq-btn-con text-center">
+                            <p data-aos="fade-up" data-aos-duration="700">This is a Detailed List Event of Conference for Digital Technology 2024.</p>
+                            <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
+                                <a href="contact.html">DOWNLOAD SCHEDULE <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                        <div id="accordion" class="index3-faqs">
+                            <div class="card" data-aos="fade-up" data-aos-duration="700">
+                                <div class="card-header" id="headingten">
+                                    <h6 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseten" aria-expanded="true" aria-controls="collapseten">
+                                            <div class="index3-event-detail">
+                                                <div class="index3-event-date-con">
+                                                    <div class="index3-event-date">
+                                                        25
+                                                    </div>
+                                                    <div class="index3-event-month text-left">
+                                                        <span class="d-block">NOVEMBER</span>
+                                                        <small class="d-block">08:00 AM-08.45 AM</small>
+                                                    </div>
+                                                </div>
+                                                <div class="index3-event-organizer">
+                                                    <figure class="mb-0">
+                                                        <img src="assets/images/index3-organizer-img1.png"
+                                                            alt="index3-organizer-img1">
+                                                    </figure>
+                                                    <div class="index3-organizer-detail">
+                                                        <span class="d-block">Creativitye Technology</span>
+                                                        <small class="d-block"><span>By:</span> Tim Cook - CEO of
+                                                            Apple</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h6>
                                 </div>
-                                <div class='education__content'>
-                                    <small>09:00 - 11:00</small>
-                                    <span class='year'>2</span>
-                                    <h6>Registration</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscin
-                                        g elit, sed do eiusmod tempo. <a href="about.html">More</a></p>
+
+                                <div id="collapseten" class="collapse" aria-labelledby="headingten"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                            ultrices gravida. </p>
+                                        <span class="d-block"><i class="fas fa-map-marker-alt"></i> 21 KING STREET, 1175
+                                            AUSTRALIA</span>
+                                    </div>
                                 </div>
-                                <div class='education__content'>
-                                    <small>12:00 - 14:00</small>
-                                    <span class='year'>3</span>
-                                    <h6>Speaker Speech</h6>
-                                    <p>Consectetur adipiscing elit, sed do eiusmod temp
-                                        or incididunt ut labore et dolore. <a href="about.html">More</a></p>
+                            </div>
+                            <div class="card" data-aos="fade-up" data-aos-duration="700">
+                                <div class="card-header" id="headingeleven">
+                                    <h6 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapseeleven" aria-expanded="false"
+                                            aria-controls="collapseeleven">
+                                            <div class="index3-event-detail">
+                                                <div class="index3-event-date-con">
+                                                    <div class="index3-event-date">
+                                                        26
+                                                    </div>
+                                                    <div class="index3-event-month text-left">
+                                                        <span class="d-block">NOVEMBER</span>
+                                                        <small class="d-block">09:00 AM-10.00 AM</small>
+                                                    </div>
+                                                </div>
+                                                <div class="index3-event-organizer">
+                                                    <figure class="mb-0">
+                                                        <img src="assets/images/index3-organizer-img2.png"
+                                                            alt="index3-organizer-img2">
+                                                    </figure>
+                                                    <div class="index3-organizer-detail">
+                                                        <span class="d-block">Driverless Cities</span>
+                                                        <small class="d-block"><span>By:</span> Andy Jassy - CEO of
+                                                            Amazon</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h6>
                                 </div>
-                                <div class='education__content'>
-                                    <small>14:00 - 15:00</small>
-                                    <span class='year'>4</span>
-                                    <h6>Lunch Break</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscin
-                                        glit, sed do eiusmod tempor incididunt ut. <a href="about.html">More</a></p>
+                                <div id="collapseeleven" class="collapse" aria-labelledby="headingeleven"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                            ultrices gravida. </p>
+                                        <span class="d-block"><i class="fas fa-map-marker-alt"></i> 21 KING STREET, 1175
+                                            AUSTRALIA</span>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="card" data-aos="fade-up" data-aos-duration="700">
+                                <div class="card-header" id="headingtwelve">
+                                    <h6 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapsetwelve" aria-expanded="false"
+                                            aria-controls="collapsetwelve">
+                                            <div class="index3-event-detail">
+                                                <div class="index3-event-date-con">
+                                                    <div class="index3-event-date">
+                                                        27
+                                                    </div>
+                                                    <div class="index3-event-month text-left">
+                                                        <span class="d-block">NOVEMBER</span>
+                                                        <small class="d-block">10:00 AM-11.15 AM</small>
+                                                    </div>
+                                                </div>
+                                                <div class="index3-event-organizer">
+                                                    <figure class="mb-0">
+                                                        <img src="assets/images/index3-organizer-img3.png"
+                                                            alt="index3-organizer-img3">
+                                                    </figure>
+                                                    <div class="index3-organizer-detail">
+                                                        <span class="d-block">Bringing al to Life</span>
+                                                        <small class="d-block"><span>By:</span> Satya Nadella - CEO of
+                                                            Microsoft</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h6>
+                                </div>
+                                <div id="collapsetwelve" class="collapse" aria-labelledby="headingtwelve"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                            ultrices gravida. </p>
+                                        <span class="d-block"><i class="fas fa-map-marker-alt"></i> 21 KING STREET, 1175
+                                            AUSTRALIA</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" data-aos="fade-up" data-aos-duration="700">
+                                <div class="card-header" id="headingthirteen">
+                                    <h6 class="mb-0">
+                                        <button class="btn btn-link collapsed" data-toggle="collapse"
+                                            data-target="#collapsethirteen" aria-expanded="false"
+                                            aria-controls="collapsethirteen">
+                                            <div class="index3-event-detail">
+                                                <div class="index3-event-date-con">
+                                                    <div class="index3-event-date">
+                                                        28
+                                                    </div>
+                                                    <div class="index3-event-month text-left">
+                                                        <span class="d-block">NOVEMBER</span>
+                                                        <small class="d-block">11:00 AM-12.00 AM</small>
+                                                    </div>
+                                                </div>
+                                                <div class="index3-event-organizer">
+                                                    <figure class="mb-0">
+                                                        <img src="assets/images/index3-organizer-img4.png"
+                                                            alt="index3-organizer-img4">
+                                                    </figure>
+                                                    <div class="index3-organizer-detail">
+                                                        <span class="d-block">Creativitye Technology</span>
+                                                        <small class="d-block"><span>By:</span> Neal Mohan CEO of
+                                                            YouTube</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </button>
+                                    </h6>
+                                </div>
+                                <div id="collapsethirteen" class="collapse" aria-labelledby="headingthirteen"
+                                    data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse
+                                            ultrices gravida. </p>
+                                        <span class="d-block"><i class="fas fa-map-marker-alt"></i> 21 KING STREET, 1175
+                                            AUSTRALIA</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="index3-faq-btn-con text-center">
+                            <p data-aos="fade-up" data-aos-duration="700">This is a Detailed List Event of Conference for Digital Technology 2024.</p>
+                            <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
+                                <a href="contact.html">DOWNLOAD SCHEDULE <i class="fas fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -340,367 +732,516 @@
         </div>
     </section>
     <!-- EVENT SECTION END -->
-    <!-- SPEAKERS SECTION START -->
-    <section class="speakers-main-section w-100 float-left padding-top padding-bottom">
-        <div class="container-fluid">
-            <div class="generic-title text-center">
+    <!-- INDEX3 EVENT INFO ZONE SECTION START -->
+    <section class="index3-event-info-zone w-100 float-left padding-top padding-bottom">
+        <div class="container">
+            <div class="generic-title2 text-center">
+                <span class="small-text" data-aos="fade-up" data-aos-duration="700">EVENT INFO ZONE</span>
+                <h2 data-aos="fade-up" data-aos-duration="700">How to Attend ConfX 2024</h2>
+            </div>
+            <div class="index3-event-info-inner-con">
+                <div class="index3-event-zone" data-aos="fade-up" data-aos-duration="700">
+                    <figure>
+                        <img src="assets/images/event-zone-img1.png" alt="event-zone-img1">
+                    </figure>
+                    <h3>Venue</h3>
+                    <p>Find a simulcast location
+                        near you and experience
+                        an inclusive leadership is
+                        avont to homo.</p>
+                </div>
+                <div class="index3-event-zone" data-aos="fade-up" data-aos-duration="700">
+                    <figure>
+                        <img src="assets/images/event-zone-img2.png" alt="event-zone-img2">
+                    </figure>
+                    <h3>Transport</h3>
+                    <p>Land transport covers all land-based transport the systems that a provide for movament</p>
+                </div>
+                <div class="index3-event-zone" data-aos="fade-up" data-aos-duration="700">
+                    <figure>
+                        <img src="assets/images/event-zone-img3.png" alt="event-zone-img3">
+                    </figure>
+                    <h3>Hotel</h3>
+                    <p>Enjoy is the enjoyment of
+                        the pleasure particularly best leisure activities fun experianco afton.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- INDEX3 EVENT INFO ZONE SECTION END -->
+    <!-- INDEX3 SPEAKERS SECTION START -->
+    <section class="index3-speakers-section w-100 float-left padding-top padding-bottom">
+        <div class="container">
+            <div class="generic-title2 text-center">
                 <span class="small-text" data-aos="fade-up" data-aos-duration="700">WORLD BEST SPEAKERS</span>
                 <h2 data-aos="fade-up" data-aos-duration="700">Meet Our Amazing Speakers</h2>
-                <p data-aos="fade-up" data-aos-duration="700">8+ Inspiring Talks, Meet the Best Product People Around the
-                    World, and <br> Party Together After the
-                    Event!</p>
             </div>
-            <div class="speakers-inner-sec" data-aos="fade-up" data-aos-duration="700">
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="{{ asset('assets/images/speakers-img1.jpg') }}" alt="speakers-img1">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn1">Declan Heyes <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data1">
-                            <span>CEO - ConfX</span>
+            <div class="index3-speaker-outer-con" data-aos="fade-up" data-aos-duration="700">
+                <div id="owl-carouselfive" class="owl-carousel owl-theme">
+                    <div class="item">
+                        <div class="index3-speaker-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-speaker-img1.png" alt="index3-speaker-img1">
+                            </figure>
+                            <div class="index3-speaker-detail-con text-center">
+                                <ul>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                                <h5>Declan Heyes</h5>
+                                <span class="d-block">CMP - ConfX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="index3-speaker-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-speaker-img2.png" alt="index3-speaker-img2">
+                            </figure>
+                            <div class="index3-speaker-detail-con text-center">
+                                <ul>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                                <h5>Stella Hindley</h5>
+                                <span class="d-block">CCEP - ConfX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="index3-speaker-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-speaker-img3.png" alt="index3-speaker-img3">
+                            </figure>
+                            <div class="index3-speaker-detail-con text-center">
+                                <ul>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                                <h5>Jackson Allardyce</h5>
+                                <span class="d-block">CDME - ConfX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="index3-speaker-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-speaker-img1.png" alt="index3-speaker-img1">
+                            </figure>
+                            <div class="index3-speaker-detail-con text-center">
+                                <ul>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                                <h5>Declan Heyes</h5>
+                                <span class="d-block">CMP - ConfX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="index3-speaker-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-speaker-img2.png" alt="index3-speaker-img2">
+                            </figure>
+                            <div class="index3-speaker-detail-con text-center">
+                                <ul>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                                <h5>Stella Hindley</h5>
+                                <span class="d-block">CCEP - ConfX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="index3-speaker-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-speaker-img3.png" alt="index3-speaker-img3">
+                            </figure>
+                            <div class="index3-speaker-detail-con text-center">
+                                <ul>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                                <h5>Jackson Allardyce</h5>
+                                <span class="d-block">CDME - ConfX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="index3-speaker-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-speaker-img1.png" alt="index3-speaker-img1">
+                            </figure>
+                            <div class="index3-speaker-detail-con text-center">
+                                <ul>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                                <h5>Declan Heyes</h5>
+                                <span class="d-block">CMP - ConfX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="index3-speaker-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-speaker-img2.png" alt="index3-speaker-img2">
+                            </figure>
+                            <div class="index3-speaker-detail-con text-center">
+                                <ul>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                                <h5>Stella Hindley</h5>
+                                <span class="d-block">CCEP - ConfX</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="index3-speaker-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-speaker-img3.png" alt="index3-speaker-img3">
+                            </figure>
+                            <div class="index3-speaker-detail-con text-center">
+                                <ul>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                </ul>
+                                <h5>Jackson Allardyce</h5>
+                                <span class="d-block">CDME - ConfX</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="{{ asset('assets/images/speakers-img2.jpg') }}" alt="speakers-img2">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn2">Stella Hindley <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data2">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="{{ asset('assets/images/speakers-img3.jpg') }}" alt="speakers-img3">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn3">Jackson Allardyce <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data3">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="{{ asset('assets/images/speakers-img4.jpg') }}" alt="speakers-img4">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn4">Kiara Simons <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data4">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="{{ asset('assets/images/speakers-img5.jpg') }}" alt="speakers-img5">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn5">Eden Hoff <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data5">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="{{ asset('assets/images/speakers-img6.jpg') }}" alt="speakers-img6">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn6">Jesse Beeby <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data6">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="{{ asset('assets/images/speakers-img7.jpg') }}" alt="speakers-img7">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn7">Matthew Grey-Smith <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data7">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="{{ asset('assets/images/speakers-img1.jpg') }}" alt="speakers-img1">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn8">Declan Heyes <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data8">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="generic-btn text-center" data-aos="fade-up" data-aos-duration="700">
-                <a href="speaker.html">VIEW ALL SPEAKERS <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
-    <!-- SPEAKERS SECTION END -->
-    <!-- TICKET SECTION START -->
-    <section class="ticket-main-section w-100 float-left padding-top padding-bottom">
+    <!-- INDEX3 SPEAKERS SECTION END -->
+    <!-- INDEX3 PRICING PLANS SECTION START -->
+    <section class="index3-pricing-plans-section w-100 float-left padding-top padding-bottom">
         <div class="container">
-            <div class="ticket-inner-section">
-                <div class="ticket-left-section">
-                    <div class="generic-title">
-                        <span class="small-text" data-aos="fade-up" data-aos-duration="700">CHOOSE A TICKET</span>
-                        <h2 data-aos="fade-up" data-aos-duration="700">Get Your Ticket
-                            Here</h2>
-                        <p data-aos="fade-up" data-aos-duration="700">This is a detailed list event of conference for <br>
-                            digital technology 2024.</p>
-                        <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
-                            <a href="about.html">GET VIP PASS <i class="fas fa-arrow-right"></i></a>
-                        </div>
+            <div class="generic-title2 text-center">
+                <span class="small-text" data-aos="fade-up" data-aos-duration="700">TICKET PRICING</span>
+                <h2 data-aos="fade-up" data-aos-duration="700">We Have Several Options <br> for Tickets</h2>
+            </div>
+            <div class="index3-plan-inner-con">
+                <div class="ticket-details silver-ticket-details" data-aos="fade-up" data-aos-duration="700">
+                    <h3>Silver</h3>
+                    <p>For individuals</p>
+                    <span>Starting at:</span>
+                    <div class="price"><small>$</small>29</div>
+                    <ul class="list-unstyled">
+                        <li class="position-relative">Full Access the Conference</li>
+                        <li class="position-relative">Music, Launch and Snack</li>
+                        <li class="position-relative">Meet Event Speaker</li>
+                    </ul>
+                    <div class="generic-btn">
+                        <a href="shop.html">BUY TICKET <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="ticket-right-section">
-                    <div class="swiper mySwiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="ticket-details">
-                                    <h3>Business</h3>
-                                    <p>For individuals</p>
-                                    <span>Starting at:</span>
-                                    <div class="price"><small>$</small>59</div>
-                                    <ul class="list-unstyled">
-                                        <li class="position-relative">Full Access the Conference</li>
-                                        <li class="position-relative">Music, Launch and Snack</li>
-                                        <li class="position-relative">Meet Event Speaker</li>
-                                    </ul>
-                                    <div class="generic-btn">
-                                        <a href="shop.html">BUY TICKET <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="ticket-details">
-                                    <h3>Business</h3>
-                                    <p>For individuals</p>
-                                    <span>Starting at:</span>
-                                    <div class="price"><small>$</small>59</div>
-                                    <ul class="list-unstyled">
-                                        <li class="position-relative">Full Access the Conference</li>
-                                        <li class="position-relative">Music, Launch and Snack</li>
-                                        <li class="position-relative">Meet Event Speaker</li>
-                                    </ul>
-                                    <div class="generic-btn">
-                                        <a href="shop.html">BUY TICKET <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="ticket-details">
-                                    <h3>Business</h3>
-                                    <p>For individuals</p>
-                                    <span>Starting at:</span>
-                                    <div class="price"><small>$</small>59</div>
-                                    <ul class="list-unstyled">
-                                        <li class="position-relative">Full Access the Conference</li>
-                                        <li class="position-relative">Music, Launch and Snack</li>
-                                        <li class="position-relative">Meet Event Speaker</li>
-                                    </ul>
-                                    <div class="generic-btn">
-                                        <a href="shop.html">BUY TICKET <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="ticket-details">
-                                    <h3>Business</h3>
-                                    <p>For individuals</p>
-                                    <span>Starting at:</span>
-                                    <div class="price"><small>$</small>59</div>
-                                    <ul class="list-unstyled">
-                                        <li class="position-relative">Full Access the Conference</li>
-                                        <li class="position-relative">Music, Launch and Snack</li>
-                                        <li class="position-relative">Meet Event Speaker</li>
-                                    </ul>
-                                    <div class="generic-btn">
-                                        <a href="shop.html">BUY TICKET <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="ticket-details">
-                                    <h3>Business</h3>
-                                    <p>For individuals</p>
-                                    <span>Starting at:</span>
-                                    <div class="price"><small>$</small>59</div>
-                                    <ul class="list-unstyled">
-                                        <li class="position-relative">Full Access the Conference</li>
-                                        <li class="position-relative">Music, Launch and Snack</li>
-                                        <li class="position-relative">Meet Event Speaker</li>
-                                    </ul>
-                                    <div class="generic-btn">
-                                        <a href="shop.html">BUY TICKET <i class="fas fa-arrow-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
+                <div class="ticket-details gold-ticket-details" data-aos="fade-up" data-aos-duration="700">
+                    <h3>Gold</h3>
+                    <p>For individuals</p>
+                    <span>Starting at:</span>
+                    <div class="price"><small>$</small>45</div>
+                    <ul class="list-unstyled">
+                        <li class="position-relative">Full Access the Conference</li>
+                        <li class="position-relative">Music, Launch and Snack</li>
+                        <li class="position-relative">Meet Event Speaker</li>
+                    </ul>
+                    <div class="generic-btn">
+                        <a href="shop.html">BUY TICKET <i class="fas fa-arrow-right"></i></a>
                     </div>
+                    <div class="recomended-box">
+                        RECOMMENDED
+                    </div>
+                </div>
+                <div class="ticket-details premium-ticket-details" data-aos="fade-up" data-aos-duration="700">
+                    <h3>Premium</h3>
+                    <p>For individuals</p>
+                    <span>Starting at:</span>
+                    <div class="price"><small>$</small>59</div>
+                    <ul class="list-unstyled">
+                        <li class="position-relative">Full Access the Conference</li>
+                        <li class="position-relative">Music, Launch and Snack</li>
+                        <li class="position-relative">Meet Event Speaker</li>
+                    </ul>
+                    <div class="generic-btn">
+                        <a href="shop.html">BUY TICKET <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="index3-plan-btn text-center">
+                <p data-aos="fade-up" data-aos-duration="700">This is a Detailed List Event of Conference for Digital Technology 2024.</p>
+                <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
+                    <a href="pricing.html">GET VIP PASS <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
-    <!-- TICKET SECTION END -->
-    <!-- CONFERENCE SECTION START -->
-    <section class="conference-main-section w-100 float-left padding-top padding-bottom">
+    <!-- INDEX3 PRICING PLANS SECTION END -->
+    <!-- INDEX3 REGISTRATION SECTION START -->
+    <section class="index3-registration-section w-100 float-left">
+        <div class="container">
+            <div class="index3-registration-inner-con">
+                <div class="index3-registration-left-con">
+                    <h2 data-aos="fade-up" data-aos-duration="700">Join the Biggest <br>
+                        Conf-2024 of The Year</h2>
+                    <p data-aos="fade-up" data-aos-duration="700">Hear Highlights From Our Sponsors, or Get a Lite or Core Subscription
+                        to Watch the Full Main Stage Event on Demand.</p>
+                    <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
+                        <a href="contact.html">REGISTER NOW <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="index3-registration-right-con" data-aos="fade-up" data-aos-duration="700">
+                    <figure class="mb-0">
+                        <img src="assets/images/index3-registration-right-img.png" alt="index3-registration-right-img">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- INDEX3 REGISTRATION SECTION END -->
+    <!-- INDEX3 TOP EXPERTS SECTION START -->
+    <section class="index3-top-experts-section w-100 float-left padding-top padding-bottom">
         <div class="container-fluid">
-            <div class="generic-title text-center">
+            <div class="generic-title2 text-center">
                 <span class="small-text" data-aos="fade-up" data-aos-duration="700">SHOWCASE CONFERENCE</span>
                 <h2 data-aos="fade-up" data-aos-duration="700">We Bring Together Top Experts <br>
                     to Discuss the Future.</h2>
             </div>
-            <div class="conference-inner-con">
-                <div class="conference-box position-relative" data-aos="fade-up" data-aos-duration="700">
-                    <figure class="mb-0">
-                        <img src="{{ asset('assets/images/conference-img1.jpg') }}" alt="conference-img1">
-                    </figure>
-                    <div class="conference-txt">
-                        <small class="d-block">business - workshop</small>
-                        <span class="d-block mb-0">Digital Conference</span>
+            <div class="index3-top-experts-inner-section">
+                <div class="index3-experts-left-con">
+                    <div class="index3-expert index3-expert-con1 container__img-holder" data-aos="fade-up" data-aos-duration="700">
+                        <img src="assets/images/index3-expert-img1.jpg" alt="index3-expert-img1">
+                        <div class="search-icon-con">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="index3-expert container__img-holder" data-aos="fade-up" data-aos-duration="700">
+                        <img src="assets/images/index3-expert-img6.jpg" alt="index3-expert-img6">
+                        <div class="search-icon-con">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="index3-expert container__img-holder" data-aos="fade-up" data-aos-duration="700">
+                        <img src="assets/images/index3-expert-img7.jpg" alt="index3-expert-img7">
+                        <div class="search-icon-con">
+                            <i class="fas fa-search"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="conference-box position-relative" data-aos="fade-up" data-aos-duration="700">
-                    <figure class="mb-0">
-                        <img src="{{ asset('assets/images/conference-img2.jpg') }}" alt="conference-img2">
-                    </figure>
-                    <div class="conference-txt">
-                        <small class="d-block">business - workshop</small>
-                        <span class="d-block mb-0">Digital Conference</span>
+                <div class="index3-experts-right-con">
+                    <div class="index3-expert container__img-holder" data-aos="fade-up" data-aos-duration="700">
+                        <img src="assets/images/index3-expert-img2.jpg" alt="index3-expert-img2">
+                        <div class="search-icon-con">
+                            <i class="fas fa-search"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="conference-box position-relative" data-aos="fade-up" data-aos-duration="700">
-                    <figure class="mb-0">
-                        <img src="{{ asset('assets/images/conference-img3.jpg') }}" alt="conference-img3">
-                    </figure>
-                    <div class="conference-txt">
-                        <small class="d-block">business - workshop</small>
-                        <span class="d-block mb-0">Digital Conference</span>
+                    <div class="index3-expert container__img-holder" data-aos="fade-up" data-aos-duration="700">
+                        <img src="assets/images/index3-expert-img3.jpg" alt="index3-expert-img3">
+                        <div class="search-icon-con">
+                            <i class="fas fa-search"></i>
+                        </div>
                     </div>
-                </div>
-                <div class="conference-box position-relative" data-aos="fade-up" data-aos-duration="700">
-                    <figure class="mb-0">
-                        <img src="{{ asset('assets/images/conference-img4.jpg') }}" alt="conference-img4">
-                    </figure>
-                    <div class="conference-txt">
-                        <small class="d-block">business - workshop</small>
-                        <span class="d-block mb-0">Digital Conference</span>
+                    <div class="index3-expert container__img-holder" data-aos="fade-up" data-aos-duration="700">
+                        <img src="assets/images/index3-expert-img4.jpg" alt="index3-expert-img4">
+                        <div class="search-icon-con">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="index3-expert container__img-holder" data-aos="fade-up" data-aos-duration="700">
+                        <img src="assets/images/index3-expert-img5.jpg" alt="index3-expert-img5">
+                        <div class="search-icon-con">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="index3-expert-right-bottom-con">
+                        <div class="index3-expert container__img-holder" data-aos="fade-up" data-aos-duration="700">
+                            <img src="assets/images/index3-expert-img8.jpg" alt="index3-expert-img8">
+                            <div class="search-icon-con">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="index3-expert container__img-holder" data-aos="fade-up" data-aos-duration="700">
+                            <img src="assets/images/index3-expert-img9.jpg" alt="index3-expert-img9">
+                            <div class="search-icon-con">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="generic-btn text-center" data-aos="fade-up" data-aos-duration="700">
-                <a href="event.html">VIEW ALL <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="img-popup">
+            <img src="#" alt="Popup Image">
+            <div class="close-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
         </div>
     </section>
-    <!-- CONFERENCE SECTION END -->
-    <!-- TESTIMONAIL SECTION START -->
-    <section class="testimonial-main-section w-100 float-left padding-top padding-bottom">
+    <!-- INDEX3 TOP EXPERTS SECTION END -->
+    <!-- INDEX3 TESTIMONIAL SECTION START -->
+    <section class="index3-testimonial-section w-100 float-left padding-top padding-bottom">
         <div class="container">
-            <div id="owl-carouseltwo" class="owl-carousel owl-theme" data-aos="fade-up" data-aos-duration="700">
-                <div class="item">
-                    <div class="testimonial-inner-con">
-                        <div class="testimonial-img-con">
-                            <div class="testimonial-img-outer-con">
+            <div class="generic-title2 text-center">
+                <span class="small-text" data-aos="fade-up" data-aos-duration="700">TESTIMONIALS</span>
+                <h2 data-aos="fade-up" data-aos-duration="700">Hear it From Our Clients</h2>
+            </div>
+            <div class="index3-testimonial-inner-con" data-aos="fade-up" data-aos-duration="700">
+                <div id="owl-carouseltwo" class="owl-carousel owl-theme">
+                    <div class="item">
+                        <div class="index3-testimonial-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-client-img1.png" alt="index3-client-img1">
+                            </figure>
+                            <p>Lorem ipsum dolor sit amersvta consectetur adipiscing elitf sed do eiusmod tempor ia dncidfr idunt ut labour adire.</p>
+                            <h6>Peter Johns</h6>
+                            <small>CEO- Company</small>
+                            <div class="index3-quote-con">
                                 <figure class="mb-0">
-                                    <img src="{{ asset('assets/images/testimonial-left-img.jpg') }}" alt="testimonial-left-img">
+                                    <img src="assets/images/index3-quote-icon.png" alt="index3-quote-icon">
                                 </figure>
-                            </div>
-                        </div>
-                        <div class="testimonial-right-con">
-                            <div class="generic-title">
-                                <span class="small-text">EVENT REVIEWS</span>
-                                <h2>Testimonials</h2>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolorem agna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                                viverra maecenas accumsan lacus vel facilisis. </p>
-                            <div class="reviewer-con">
-                                <figure class="mb-0">
-                                    <img src="{{ asset('assets/images/reviewer-img.png') }}" alt="reviewer-img">
-                                </figure>
-                                <div class="reviewer-details">
-                                    <span class="d-block">Leon Drescher</span>
-                                    <small class="d-block">CEO - Company</small>
-                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="testimonial-inner-con">
-                        <div class="testimonial-img-con">
-                            <div class="testimonial-img-outer-con">
+                    <div class="item">
+                        <div class="index3-testimonial-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-client-img2.png" alt="index3-client-img2">
+                            </figure>
+                            <p>Lorem ipsum dolor sit amersvta consectetur adipiscing elitf sed do eiusmod tempor ia dncidfr idunt ut labour adire.</p>
+                            <h6>Peter Johns</h6>
+                            <small>CEO- Company</small>
+                            <div class="index3-quote-con">
                                 <figure class="mb-0">
-                                    <img src="{{ asset('assets/images/testimonial-left-img.jpg') }}" alt="testimonial-left-img">
+                                    <img src="assets/images/index3-quote-icon.png" alt="index3-quote-icon">
                                 </figure>
-                            </div>
-                        </div>
-                        <div class="testimonial-right-con">
-                            <div class="generic-title">
-                                <span class="small-text">EVENT REVIEWS</span>
-                                <h2>Testimonials</h2>
-                            </div>
-                            <p>Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet,
-                                consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolorem agna
-                                aliqua. Quis ipsum suspendisse ultrices gravida. </p>
-                            <div class="reviewer-con">
-                                <figure class="mb-0">
-                                    <img src="{{ asset('assets/images/reviewer-img2.png') }}" alt="reviewer-img">
-                                </figure>
-                                <div class="reviewer-details">
-                                    <span class="d-block">Declan Heyes</span>
-                                    <small class="d-block">CEO - Company</small>
-                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="testimonial-inner-con">
-                        <div class="testimonial-img-con">
-                            <div class="testimonial-img-outer-con">
+                    <div class="item">
+                        <div class="index3-testimonial-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-client-img3.png" alt="index3-client-img3">
+                            </figure>
+                            <p>Lorem ipsum dolor sit amersvta consectetur adipiscing elitf sed do eiusmod tempor ia dncidfr idunt ut labour adire.</p>
+                            <h6>Peter Johns</h6>
+                            <small>CEO- Company</small>
+                            <div class="index3-quote-con">
                                 <figure class="mb-0">
-                                    <img src="{{ asset('assets/images/testimonial-left-img.jpg') }}" alt="testimonial-left-img">
+                                    <img src="assets/images/index3-quote-icon.png" alt="index3-quote-icon">
                                 </figure>
                             </div>
                         </div>
-                        <div class="testimonial-right-con">
-                            <div class="generic-title">
-                                <span class="small-text">EVENT REVIEWS</span>
-                                <h2>Testimonials</h2>
-                            </div>
-                            <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
-                                facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolorem agna aliqua. </p>
-                            <div class="reviewer-con">
+                    </div>
+                    <div class="item">
+                        <div class="index3-testimonial-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-client-img1.png" alt="index3-client-img1">
+                            </figure>
+                            <p>Lorem ipsum dolor sit amersvta consectetur adipiscing elitf sed do eiusmod tempor ia dncidfr idunt ut labour adire.</p>
+                            <h6>Peter Johns</h6>
+                            <small>CEO- Company</small>
+                            <div class="index3-quote-con">
                                 <figure class="mb-0">
-                                    <img src="{{ asset('assets/images/reviewer-img3.png') }}" alt="reviewer-img">
+                                    <img src="assets/images/index3-quote-icon.png" alt="index3-quote-icon">
                                 </figure>
-                                <div class="reviewer-details">
-                                    <span class="d-block">Eden Hoff </span>
-                                    <small class="d-block">CEO - Company</small>
-                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="index3-testimonial-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-client-img2.png" alt="index3-client-img2">
+                            </figure>
+                            <p>Lorem ipsum dolor sit amersvta consectetur adipiscing elitf sed do eiusmod tempor ia dncidfr idunt ut labour adire.</p>
+                            <h6>Peter Johns</h6>
+                            <small>CEO- Company</small>
+                            <div class="index3-quote-con">
+                                <figure class="mb-0">
+                                    <img src="assets/images/index3-quote-icon.png" alt="index3-quote-icon">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="index3-testimonial-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-client-img3.png" alt="index3-client-img3">
+                            </figure>
+                            <p>Lorem ipsum dolor sit amersvta consectetur adipiscing elitf sed do eiusmod tempor ia dncidfr idunt ut labour adire.</p>
+                            <h6>Peter Johns</h6>
+                            <small>CEO- Company</small>
+                            <div class="index3-quote-con">
+                                <figure class="mb-0">
+                                    <img src="assets/images/index3-quote-icon.png" alt="index3-quote-icon">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="index3-testimonial-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-client-img1.png" alt="index3-client-img1">
+                            </figure>
+                            <p>Lorem ipsum dolor sit amersvta consectetur adipiscing elitf sed do eiusmod tempor ia dncidfr idunt ut labour adire.</p>
+                            <h6>Peter Johns</h6>
+                            <small>CEO- Company</small>
+                            <div class="index3-quote-con">
+                                <figure class="mb-0">
+                                    <img src="assets/images/index3-quote-icon.png" alt="index3-quote-icon">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="index3-testimonial-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-client-img2.png" alt="index3-client-img2">
+                            </figure>
+                            <p>Lorem ipsum dolor sit amersvta consectetur adipiscing elitf sed do eiusmod tempor ia dncidfr idunt ut labour adire.</p>
+                            <h6>Peter Johns</h6>
+                            <small>CEO- Company</small>
+                            <div class="index3-quote-con">
+                                <figure class="mb-0">
+                                    <img src="assets/images/index3-quote-icon.png" alt="index3-quote-icon">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="index3-testimonial-box position-relative">
+                            <figure class="mb-0">
+                                <img src="assets/images/index3-client-img3.png" alt="index3-client-img3">
+                            </figure>
+                            <p>Lorem ipsum dolor sit amersvta consectetur adipiscing elitf sed do eiusmod tempor ia dncidfr idunt ut labour adire.</p>
+                            <h6>Peter Johns</h6>
+                            <small>CEO- Company</small>
+                            <div class="index3-quote-con">
+                                <figure class="mb-0">
+                                    <img src="assets/images/index3-quote-icon.png" alt="index3-quote-icon">
+                                </figure>
                             </div>
                         </div>
                     </div>
@@ -708,35 +1249,83 @@
             </div>
         </div>
     </section>
-    <!-- TESTIMONAIL SECTION END -->
+    <!-- INDEX3 TESTIMONIAL SECTION END -->
+    <!-- INDEX3 BLOG SECTION START -->
+    <section class="blog-main-section index3-blog-section w-100 float-left padding-top position-relative">
+        <div class="container">
+            <div class="generic-title2 text-center">
+                <span class="small-text" data-aos="fade-up" data-aos-duration="700">SKILLS &amp; EXPERIENCE</span>
+                <h2 class="mb-0" data-aos="fade-up" data-aos-duration="700">Recent News Articles</h2>
+            </div>
+            <div class="blogs-inner-con">
+                <div class="blog-box position-relative" data-aos="fade-up" data-aos-duration="700">
+                    <div class="blog-img position-relative">
+                        <span class="d-inline-block">Illustration, Art</span>
+                        <figure class="mb-0">
+                            <img src="assets/images/blog-img1.jpg" alt="blog-img1">
+                        </figure>
+                    </div>
+                    <div class="blog-text">
+                        <span class="d-block">Nov 11, 2020</span>
+                        <h6 class="position-relative"><a href="single-blog.html">Lorem ipsum dolor sita consectetur adip.</a></h6>
+                    </div>
+                </div>
+                <div class="blog-box position-relative" data-aos="fade-up" data-aos-duration="700">
+                    <div class="blog-img position-relative">
+                        <span class="d-inline-block">Vintage, Design</span>
+                        <figure class="mb-0">
+                            <img src="assets/images/blog-img2.jpg" alt="blog-img3">
+                        </figure>
+                    </div>
+                    <div class="blog-text">
+                        <span class="d-block">Nov 18, 2020</span>
+                        <h6 class="position-relative"><a href="single-blog.html">Dolor sit amet, consec adipiscing elit, sed.</a></h6>
+                    </div>
+                </div>
+                <div class="blog-box position-relative" data-aos="fade-up" data-aos-duration="700">
+                    <div class="blog-img position-relative">
+                        <span class="d-inline-block">Questions, Answers</span>
+                        <figure class="mb-0">
+                            <img src="assets/images/blog-img3.jpg" alt="blog-img3">
+                        </figure>
+                    </div>
+                    <div class="blog-text">
+                        <span class="d-block">Nov 25, 2020</span>
+                        <h6 class="position-relative"><a href="single-blog.html">Sit amet, consecteturs elit, sed.</a></h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- INDEX3 BLOG SECTION END -->
     <!-- SPONSERS SECTION START -->
-    <div class="sponsers-main-section w-100 float-left">
+    <div class="index3-sponsers-main-section sponsers-main-section w-100 float-left">
         <div class="container">
             <div class="sponsers-companies">
                 <ul class="list-unstyled mb-0" data-aos="fade-up" data-aos-duration="700">
                     <li>
                         <figure class="mb-0">
-                            <img src="{{ asset('assets/images/sponsers-logo1.png') }}" alt="sponsers-logo1">
+                            <img src="assets/images/sponsers-logo1.png" alt="sponsers-logo1">
                         </figure>
                     </li>
                     <li>
                         <figure class="mb-0">
-                            <img src="{{ asset('assets/images/sponsers-logo2.png') }}" alt="sponsers-logo2">
+                            <img src="assets/images/sponsers-logo2.png" alt="sponsers-logo2">
                         </figure>
                     </li>
                     <li>
                         <figure class="mb-0">
-                            <img src="{{ asset('assets/images/sponsers-logo3.png') }}" alt="sponsers-logo3">
+                            <img src="assets/images/sponsers-logo3.png" alt="sponsers-logo3">
                         </figure>
                     </li>
                     <li>
                         <figure class="mb-0">
-                            <img src="{{ asset('assets/images/sponsers-logo4.png') }}" alt="sponsers-logo4">
+                            <img src="assets/images/sponsers-logo4.png" alt="sponsers-logo4">
                         </figure>
                     </li>
                     <li>
                         <figure class="mb-0">
-                            <img src="{{ asset('assets/images/sponsers-logo5.png') }}" alt="sponsers-logo5">
+                            <img src="assets/images/sponsers-logo5.png" alt="sponsers-logo5">
                         </figure>
                     </li>
                 </ul>
@@ -744,71 +1333,5 @@
         </div>
     </div>
     <!-- SPONSERS SECTION END -->
-    <!-- BLOG SECTION START -->
-    <section class="blog-main-section w-100 float-left padding-top light-bg">
-        <div class="container">
-            <div class="generic-title text-center position-relative">
-                <span class="small-text" data-aos="fade-up" data-aos-duration="700">SHOWCASE CONFERENCE</span>
-                <h2 class="mb-0" data-aos="fade-up" data-aos-duration="700">We Bring Together Top Experts <br> to
-                    Discuss the Future.</h2>
-            </div>
-            <div class="blogs-inner-con">
-                <div class="blog-box position-relative" data-aos="fade-up" data-aos-duration="700">
-                    <div class="blog-img position-relative">
-                        <span class="d-inline-block">Illustration, Art</span>
-                        <figure class="mb-0">
-                            <img src="{{ asset('assets/images/blog-img1.jpg') }}" alt="blog-img1">
-                        </figure>
-                    </div>
-                    <div class="blog-text">
-                        <span class="d-block">Nov 11, 2020</span>
-                        <h6 class="position-relative"><a href="single-blog.html">Lorem ipsum dolor sita consectetur
-                                adip.</a></h6>
-                    </div>
-                </div>
-                <div class="blog-box position-relative" data-aos="fade-up" data-aos-duration="700">
-                    <div class="blog-img position-relative">
-                        <span class="d-inline-block">Vintage, Design</span>
-                        <figure class="mb-0">
-                            <img src="{{ asset('assets/images/blog-img2.jpg') }}" alt="blog-img3">
-                        </figure>
-                    </div>
-                    <div class="blog-text">
-                        <span class="d-block">Nov 18, 2020</span>
-                        <h6 class="position-relative"><a href="single-blog.html">Dolor sit amet, consec adipiscing elit,
-                                sed.</a></h6>
-                    </div>
-                </div>
-                <div class="blog-box position-relative" data-aos="fade-up" data-aos-duration="700">
-                    <div class="blog-img position-relative">
-                        <span class="d-inline-block">Questions, Answers</span>
-                        <figure class="mb-0">
-                            <img src="{{ asset('assets/images/blog-img1.jpg') }}" alt="blog-img1">
-                        </figure>
-                    </div>
-                    <div class="blog-text">
-                        <span class="d-block">Nov 25, 2020</span>
-                        <h6 class="position-relative"><a href="single-blog.html">Sit amet, consecteturs elit, sed.</a>
-                        </h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- BLOG SECTION END -->
-    <!-- REGISTRATION SECTION START -->
-    <section class="registration-main-section w-100 float-left light-bg">
-        <div class="container">
-            <div class="registration-inner-con">
-                <div class="generic-title mb-0">
-                    <span class="small-text" data-aos="fade-up" data-aos-duration="700">JOIN THE CONFX</span>
-                    <h2 data-aos="fade-up" data-aos-duration="700">The Biggest Conference of the Year</h2>
-                    <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
-                        <a href="contact.html">REGISTER FOR FREE <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- REGISTRATION SECTION END -->
+
 @endsection

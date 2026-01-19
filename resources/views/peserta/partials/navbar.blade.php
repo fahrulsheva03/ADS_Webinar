@@ -15,16 +15,9 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav text-center">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle p-0 active" href="#" id="navbarDropdown3"
-                            role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            HOME
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                            <a class="dropdown-item active" href="{{ route('peserta.index') }}">HOME 01</a>
-                            <a class="dropdown-item" href="{{ route('peserta.index2') }}">HOME 02</a>
-                            <a class="dropdown-item" href="{{ route('peserta.index3') }}">HOME 03</a>
-                        </div>
+
+                    <li class="nav-item">
+                        <a class="nav-link p-0" href="{{ route('peserta.index') }}">HOME</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link p-0" href="{{ route('peserta.about') }}">ABOUT</a>
