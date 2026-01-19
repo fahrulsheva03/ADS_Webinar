@@ -22,7 +22,8 @@ function getUrlParams(dParam){
 	"use strict"
 
 	var body = $('body');
-	var direction =  getUrlParams('dir');
+	var direction =  getUrlParams('direction');
+	direction = (direction === 'rtl') ? 'rtl' : 'ltr';
 
 	dezSettingsOptions = {
 		language: "en_GB",
@@ -50,10 +51,8 @@ function getUrlParams(dParam){
 	});
 
 	if(direction == 'rtl' || body.attr('direction') == 'rtl'){
-        direction = 'rtl';
 		jQuery('.main-css').attr('href','assetsAdmin/css/style-rtl.css');
     }else{
-        direction = 'ltr';
 		jQuery('.main-css').attr('href','assetsAdmin/css/style.css');
 	}
 

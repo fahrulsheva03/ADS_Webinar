@@ -68,7 +68,8 @@ function deleteAllCookie(reload = true)
 
 	"use strict"
 
-	var direction =  getUrlParams('dir');
+	var direction =  getUrlParams('direction');
+	direction = (direction === 'rtl') ? 'rtl' : 'ltr';
 	var theme =  getUrlParams('theme');
 
 	var dezThemeSet0 = { /* Default Theme */
