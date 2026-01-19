@@ -7,10 +7,41 @@ use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class EventController extends Controller
 {
+    public function image(Event $event)
+    {
+        $raw = (string) ($event->gambar_utama ?? '');
+        $raw = trim($raw);
+
+        if ($raw === '') {
+            abort(404);
+        }
+
+        if (str_starts_with($raw, 'http://') || str_starts_with($raw, 'https://')) {
+            return redirect()->away($raw);
+        }
+
+        $path = ltrim($raw, '/');
+        if (str_starts_with($path, 'storage/')) {
+            $path = substr($path, strlen('storage/'));
+        }
+        if (str_starts_with($path, 'public/')) {
+            $path = substr($path, strlen('public/'));
+        }
+
+        abort_if(str_contains($path, '..'), 404);
+
+        $disk = Storage::disk('public');
+        abort_if(! $disk->exists($path), 404);
+
+        return response()->file($disk->path($path));
+    }
+
     public function index(Request $request)
     {
         $q = (string) $request->query('q', '');
@@ -291,8 +322,18 @@ class EventController extends Controller
         }
 
         $anyId = User::query()->value('id');
-        abort_if(! $anyId, 422, 'Tidak ada user untuk mengisi created_by.');
+        if ($anyId) {
+            return (int) $anyId;
+        }
 
-        return (int) $anyId;
+        $user = User::query()->create([
+            'nama' => 'System Admin',
+            'email' => 'system@webinar.local',
+            'password' => Hash::make(Str::random(64)),
+            'role' => 'admin',
+            'status_akun' => 'aktif',
+        ]);
+
+        return (int) $user->id;
     }
 }

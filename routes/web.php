@@ -67,6 +67,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/events', [AdminEventController::class, 'store'])->name('admin.events.store');
     Route::put('/events/{event}', [AdminEventController::class, 'update'])->name('admin.events.update');
     Route::delete('/events/{event}', [AdminEventController::class, 'destroy'])->name('admin.events.destroy');
+    Route::get('/events/{event}/image', [AdminEventController::class, 'image'])->name('admin.events.image');
     Route::post('/events/bulk', [AdminEventController::class, 'bulk'])->name('admin.events.bulk');
     Route::get('/events/export/{format}', [AdminEventController::class, 'export'])->name('admin.events.export');
 

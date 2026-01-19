@@ -250,7 +250,14 @@
                                             $isActive = $event->status === 'active';
                                             $statusLabel = $isActive ? 'Aktif' : 'Non-aktif';
                                             $statusTone = $isActive ? 'success' : 'secondary';
-                                            $imageUrl = $event->gambar_utama ? asset('storage/' . ltrim($event->gambar_utama, '/')) : '';
+                                            $gambar = (string) ($event->gambar_utama ?? '');
+                                            if ($gambar === '') {
+                                                $imageUrl = '';
+                                            } elseif (str_starts_with($gambar, 'http://') || str_starts_with($gambar, 'https://')) {
+                                                $imageUrl = $gambar;
+                                            } else {
+                                                $imageUrl = route('admin.events.image', $event);
+                                            }
                                         @endphp
                                         <tr data-search-row>
                                             <td>
@@ -343,7 +350,7 @@
                             <h2 class="modal-title h5" id="eventModalTitle">Buat event</h2>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body overflow-auto" style="max-height: calc(100vh - 220px);">
                             <div class="row g-3">
                                 <div class="col-12">
                                     <label class="form-label text-black" for="event-judul">Judul event</label>
@@ -406,6 +413,13 @@
                 </div>
             </div>
         </div>
+
+        <style>
+            #eventModal .ck-editor__editable {
+                max-height: 40vh;
+                overflow-y: auto;
+            }
+        </style>
 
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalTitle" aria-hidden="true">
             <div class="modal-dialog">
