@@ -203,6 +203,18 @@
                                             <p class="auth-subtitle">Silakan masukkan email dan password Anda.</p>
                                         </div>
 
+                                        @if (session('success'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session('success') }}
+                                            </div>
+                                        @endif
+
+                                        @if (session('error'))
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ session('error') }}
+                                            </div>
+                                        @endif
+
                                         <form action="#" method="post" class="mt-3">
                                             <div class="mb-3">
                                                 <label for="email" class="auth-label mb-2 d-block">Email</label>

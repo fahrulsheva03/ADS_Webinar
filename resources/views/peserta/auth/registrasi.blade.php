@@ -203,17 +203,36 @@
                                             <p class="auth-subtitle">Lengkapi data berikut untuk membuat akun.</p>
                                         </div>
 
-                                        <form id="registrasi-form" action="#" method="post" class="needs-validation mt-3" novalidate>
+                                        @if (session('success'))
+                                            <div class="alert alert-success" role="alert">
+                                                {{ session('success') }}
+                                            </div>
+                                        @endif
+
+                                        @if (session('error'))
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ session('error') }}
+                                            </div>
+                                        @endif
+
+                                        <form id="registrasi-form" action="{{ route('peserta.registrasi.store') }}" method="post" class="needs-validation mt-3" novalidate>
+                                            @csrf
                                             <div class="mb-3">
                                                 <label for="nama" class="auth-label mb-2 d-block">Nama lengkap</label>
                                                 <div class="input-group auth-input">
                                                     <span class="input-group-text bg-white">
                                                         <i class="fas fa-user text-muted"></i>
                                                     </span>
-                                                    <input id="nama" name="nama" type="text" class="form-control"
-                                                        placeholder="Masukkan nama lengkap" autocomplete="name" required maxlength="120">
+                                                    <input id="nama" name="nama" type="text"
+                                                        class="form-control @error('nama') is-invalid @enderror"
+                                                        placeholder="Masukkan nama lengkap" autocomplete="name" required maxlength="120"
+                                                        value="{{ old('nama') }}">
                                                     <div class="invalid-feedback">
-                                                        Nama lengkap wajib diisi.
+                                                        @error('nama')
+                                                            {{ $message }}
+                                                        @else
+                                                            Nama lengkap wajib diisi.
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -224,10 +243,16 @@
                                                     <span class="input-group-text bg-white">
                                                         <i class="fas fa-envelope text-muted"></i>
                                                     </span>
-                                                    <input id="email" name="email" type="email" class="form-control"
-                                                        placeholder="Masukkan alamat email" autocomplete="email" required>
+                                                    <input id="email" name="email" type="email"
+                                                        class="form-control @error('email') is-invalid @enderror"
+                                                        placeholder="Masukkan alamat email" autocomplete="email" required
+                                                        value="{{ old('email') }}">
                                                     <div class="invalid-feedback">
-                                                        Masukkan email dengan format yang benar.
+                                                        @error('email')
+                                                            {{ $message }}
+                                                        @else
+                                                            Masukkan email dengan format yang benar.
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -238,10 +263,15 @@
                                                     <span class="input-group-text bg-white">
                                                         <i class="fas fa-lock text-muted"></i>
                                                     </span>
-                                                    <input id="password" name="password" type="password" class="form-control"
+                                                    <input id="password" name="password" type="password"
+                                                        class="form-control @error('password') is-invalid @enderror"
                                                         placeholder="Masukkan password" autocomplete="new-password" required minlength="8">
                                                     <div class="invalid-feedback">
-                                                        Password minimal 8 karakter.
+                                                        @error('password')
+                                                            {{ $message }}
+                                                        @else
+                                                            Password minimal 8 karakter.
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -276,8 +306,6 @@
                     if (!form.checkValidity()) {
                         event.preventDefault();
                         event.stopPropagation();
-                    } else {
-                        event.preventDefault();
                     }
                     form.classList.add('was-validated');
                 }, false);

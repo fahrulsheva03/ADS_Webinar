@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PesertaController as AdminPesertaController;
 use App\Http\Controllers\Admin\ScanController as AdminScanController;
 use App\Http\Controllers\Admin\TransaksiController as AdminTransaksiController;
 use App\Http\Controllers\Admin\VideoController as AdminVideoController;
+use App\Http\Controllers\PesertaAuthController;
 use App\Http\Controllers\PesertaDashboardController;
 use App\Http\Controllers\ScanQrController;
 use Illuminate\Support\Facades\Route;
@@ -53,9 +54,8 @@ Route::prefix('dashboard')->group(function () {
 Route::get('/login', function () {
     return view('peserta.auth.login');
 })->name('peserta.login');
-Route::get('/registrasi', function () {
-    return view('peserta.auth.registrasi');
-})->name('peserta.registrasi');
+Route::get('/registrasi', [PesertaAuthController::class, 'showRegister'])->name('peserta.registrasi');
+Route::post('/registrasi', [PesertaAuthController::class, 'register'])->name('peserta.registrasi.store');
 
 // URL UNTUK ADMIN
 Route::prefix('admin')->group(function () {
