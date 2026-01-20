@@ -6,6 +6,7 @@
     <script src="{{ asset('assets/js/aos.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.validate.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(window).on('load', function(){
         // Preloader
@@ -150,6 +151,20 @@
             },
         });
     </script>
+
+    @if (session('login_success'))
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                if (typeof Swal === 'undefined') return;
+                Swal.fire({
+                    icon: 'success',
+                    title: @json(session('login_success')),
+                    timer: 1600,
+                    showConfirmButton: false
+                });
+            });
+        </script>
+    @endif
     <script>
         var btn = $('#button');
 

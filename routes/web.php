@@ -51,9 +51,9 @@ Route::prefix('dashboard')->group(function () {
 });
 
 // URL AUTH LOGIN & REGISTRASI PESERTA
-Route::get('/login', function () {
-    return view('peserta.auth.login');
-})->name('peserta.login');
+Route::get('/login', [PesertaAuthController::class, 'showLogin'])->name('peserta.login');
+Route::post('/login', [PesertaAuthController::class, 'login'])->name('peserta.login.store');
+Route::post('/logout', [PesertaAuthController::class, 'logout'])->name('peserta.logout');
 Route::get('/registrasi', [PesertaAuthController::class, 'showRegister'])->name('peserta.registrasi');
 Route::post('/registrasi', [PesertaAuthController::class, 'register'])->name('peserta.registrasi.store');
 

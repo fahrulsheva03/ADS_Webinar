@@ -5,14 +5,62 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\View\View;
 
 class PesertaAuthController extends Controller
 {
+    public function showLogin(): View
+    {
+        return view('peserta.auth.login');
+    }
+
     public function showRegister(): View
     {
         return view('peserta.auth.registrasi');
+    }
+
+    public function login(Request $request): RedirectResponse
+    {
+        $data = $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+
+        $user = User::query()
+            ->where('email', $data['email'])
+            ->where('role', 'user')
+            ->first();
+
+        if (! $user) {
+            return back()
+                ->withInput($request->except('password'))
+                ->with('error', 'Email atau password salah.');
+        }
+
+        if ($user->status_akun !== 'aktif') {
+            return back()
+                ->withInput($request->except('password'))
+                ->with('error', 'Akun Anda nonaktif.');
+        }
+
+        $ok = Auth::attempt([
+            'email' => $data['email'],
+            'password' => $data['password'],
+        ], false);
+
+        if (! $ok) {
+            return back()
+                ->withInput($request->except('password'))
+                ->with('error', 'Email atau password salah.');
+        }
+
+        $request->session()->regenerate();
+
+        return redirect()
+            ->route('peserta.index')
+            ->with('login_success', 'Login Berhasil');
     }
 
     public function register(Request $request): RedirectResponse
@@ -41,5 +89,15 @@ class PesertaAuthController extends Controller
             ->route('peserta.login')
             ->with('success', 'Registrasi berhasil. Silakan login.');
     }
-}
 
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()
+            ->route('peserta.index');
+    }
+}

@@ -44,15 +44,30 @@
                             href="{{ route('peserta.contact') }}">CONTACT</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link p-0 {{ request()->routeIs('peserta.dashboard') ? 'active' : '' }}"
-                            href="{{ route('peserta.dashboard') }}">DASHBOARD</a>
-                    </li>
+                    @auth
+                        <li class="nav-item">
+                            <a class="nav-link p-0 {{ request()->routeIs('peserta.dashboard') ? 'active' : '' }}"
+                                href="{{ route('peserta.dashboard') }}">DASHBOARD</a>
+                        </li>
+                    @endauth
                 </ul>
                 <div class="header-contact d-flex align-items-center">
-                    <div class="lets-talk-btn ">
-                        <a href="{{ route('peserta.login') }}">Login <i class="fas fa-sign-in-alt"></i></a>
-                    </div>
+                    @guest
+                        <div class="lets-talk-btn ">
+                            <a href="{{ route('peserta.login') }}">Login <i class="fas fa-sign-in-alt"></i></a>
+                        </div>
+                    @endguest
+
+                    @auth
+                        <div class="lets-talk-btn ">
+                            <form action="{{ route('peserta.logout') }}" method="post">
+                                @csrf
+                                <a href="{{ route('peserta.logout') }}" onclick="event.preventDefault(); this.closest('form').submit();">
+                                    Logout <i class="fas fa-sign-out-alt"></i>
+                                </a>
+                            </form>
+                        </div>
+                    @endauth
 
 
                     {{-- <div class="lets-talk-btn ">

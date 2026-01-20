@@ -215,15 +215,21 @@
                                             </div>
                                         @endif
 
-                                        <form action="#" method="post" class="mt-3">
+                                        <form action="{{ route('peserta.login.store') }}" method="post" class="mt-3">
+                                            @csrf
                                             <div class="mb-3">
                                                 <label for="email" class="auth-label mb-2 d-block">Email</label>
                                                 <div class="input-group auth-input">
                                                     <span class="input-group-text bg-white">
                                                         <i class="fas fa-envelope text-muted"></i>
                                                     </span>
-                                                    <input id="email" name="email" type="email" class="form-control"
-                                                        placeholder="Masukkan alamat email" autocomplete="email">
+                                                    <input id="email" name="email" type="email"
+                                                        class="form-control @error('email') is-invalid @enderror"
+                                                        placeholder="Masukkan alamat email" autocomplete="email" required
+                                                        value="{{ old('email') }}">
+                                                    @error('email')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -233,12 +239,16 @@
                                                     <span class="input-group-text bg-white">
                                                         <i class="fas fa-lock text-muted"></i>
                                                     </span>
-                                                    <input id="password" name="password" type="password" class="form-control"
-                                                        placeholder="Masukkan password" autocomplete="current-password">
+                                                    <input id="password" name="password" type="password"
+                                                        class="form-control @error('password') is-invalid @enderror"
+                                                        placeholder="Masukkan password" autocomplete="current-password" required>
+                                                    @error('password')
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
                                                 </div>
                                             </div>
 
-                                            <button type="button" class="btn w-100 text-white auth-cta">
+                                            <button type="submit" class="btn w-100 text-white auth-cta">
                                                 Login
                                             </button>
                                         </form>
