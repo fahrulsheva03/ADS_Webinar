@@ -31,6 +31,12 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('admin.konten-halaman.home') }}" class="ai-icon" aria-expanded="false">
+                    <i class="flaticon-381-notepad" aria-hidden="true"></i>
+                    <span class="nav-text">Konten Halaman</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('admin.peserta.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-user" aria-hidden="true"></i>
                     <span class="nav-text">Peserta</span>

@@ -9,61 +9,17 @@
                         <div class="index3-banner-inner-con">
                             <div class="index3-banner-img-con">
                                 <figure class="mb-0">
-                                    <img src="assets/images/index3-banner-img1.jpg" alt="index3-banner-img1">
+                                    <img src="{{ asset(konten('home', 'banner', 'slide_1_image')) }}" alt="">
                                 </figure>
                             </div>
                             <div class="index3-banner-text-con">
-                                <span class="d-block position-relative">25 SEP, 2024</span>
-                                <h1>World Biggest
-                                    Business Conf.
-                                    2024</h1>
+                                <span class="d-block position-relative">{{ konten('home', 'banner', 'slide_1_date') }}</span>
+                                <h1>{!! nl2br(e(konten('home', 'banner', 'slide_1_title'))) !!}</h1>
                                 <ul class="list-unstyled">
-                                    <li><i class="fas fa-map-marker-alt"></i> 21 King Street, 1175 Australia</li>
+                                    <li><i class="fas fa-map-marker-alt"></i> {{ konten('home', 'banner', 'slide_1_location') }}</li>
                                 </ul>
                                 <div class="generic-btn">
-                                    <a href="contact.html">REGISTER NOW <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="index3-banner-inner-con">
-                            <div class="index3-banner-img-con">
-                                <figure class="mb-0">
-                                    <img src="assets/images/index3-banner-img2.jpg" alt="index3-banner-img2">
-                                </figure>
-                            </div>
-                            <div class="index3-banner-text-con">
-                                <span class="d-block position-relative">25 SEP, 2024</span>
-                                <h1>World Biggest
-                                    Business Conf.
-                                    2024</h1>
-                                <ul class="list-unstyled">
-                                    <li><i class="fas fa-map-marker-alt"></i> 21 King Street, 1175 Australia</li>
-                                </ul>
-                                <div class="generic-btn">
-                                    <a href="contact.html">REGISTER NOW <i class="fas fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="index3-banner-inner-con">
-                            <div class="index3-banner-img-con">
-                                <figure class="mb-0">
-                                    <img src="assets/images/index3-banner-img1.jpg" alt="index3-banner-img1">
-                                </figure>
-                            </div>
-                            <div class="index3-banner-text-con">
-                                <span class="d-block position-relative">25 SEP, 2024</span>
-                                <h1>World Biggest
-                                    Business Conf.
-                                    2024</h1>
-                                <ul class="list-unstyled">
-                                    <li><i class="fas fa-map-marker-alt"></i> 21 King Street, 1175 Australia</li>
-                                </ul>
-                                <div class="generic-btn">
-                                    <a href="contact.html">REGISTER NOW <i class="fas fa-arrow-right"></i></a>
+                                    <a href="{{ konten('home', 'banner', 'slide_1_button_url') }}">{{ konten('home', 'banner', 'slide_1_button_text') }} <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -78,25 +34,22 @@
         <div class="container">
             <div class="journey-inner-con">
                 <div class="journey-text-con">
-                    <h2 data-aos="fade-up" data-aos-duration="700">Embark <br>
-                        on a Journey of
-                        Knowledge. </h2>
-                    <p data-aos="fade-up" data-aos-duration="700">The Digital Technology Conference is the world's leading organizational learning conference With
-                        more than 10,000 participants from different countries</p>
+                    <h2 data-aos="fade-up" data-aos-duration="700">{!! nl2br(e(konten('home', 'journey', 'title'))) !!}</h2>
+                    <p data-aos="fade-up" data-aos-duration="700">{{ konten('home', 'journey', 'description') }}</p>
                     <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
-                        <a href="about.html">READ MORE <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ konten('home', 'journey', 'button_url') }}">{{ konten('home', 'journey', 'button_text') }} <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="journey-video-con d-inline-block">
                     <div class="video-inner-con">
                         <div class="learning-conference-video-box" data-aos="fade-up" data-aos-duration="700">
                             <figure class="mb-0 d-inline-block">
-                                <img src="assets/images/index3-video-bg.jpg" alt="index3-video-bg">
+                                <img src="{{ asset(konten('home', 'journey', 'video_bg_image')) }}" alt="">
                             </figure>
                             <div class="video-play-icon d-inline-block">
                                 <a href="javascript:void(0)" onclick="lightbox_open();">
                                     <figure class="mb-0 d-inline-block">
-                                        <img src="assets/images/video-play-icon2.png" alt="video-play-icon2">
+                                        <img src="assets/images/video-play-icon2.png" alt="">
                                     </figure>
                                 </a>
                             </div>
@@ -106,7 +59,7 @@
                         <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
                         <div id="VisaChipCardVideo" width="600" controls>
                             <iframe width="560" height="315"
-                                src="https://www.youtube.com/embed/wdw8KNmr2pc?si=FuEK7fdoFZh86koK"
+                                src="{{ konten('home', 'journey', 'video_url') }}"
                                 title="YouTube video player" frameborder="0"></iframe>
                             <!--Browser does not support <video> tag -->
                         </div>
@@ -118,50 +71,49 @@
             <div class="digital-conference-section">
                 <div class="digital-conference-img-con" data-aos="fade-up" data-aos-duration="700">
                     <figure class="mb-0 position-relative">
-                        <img src="assets/images/digital-conference-img.jpg" alt="digital-conference-img">
+                        <img src="{{ asset(konten('home', 'journey', 'digital_image')) }}" alt="">
                     </figure>
                 </div>
                 <div class="digital-counter-con">
                     <ul class="list-unstyled mb-0" data-aos="fade-up" data-aos-duration="700">
                         <li class="position-relative">
-                            <div class="count d-inline-block">25</div>
+                            <div class="count d-inline-block">{{ konten('home', 'journey', 'counter_1_value') }}</div>
                             <div class="plus-details">
                                 <div class="plus d-inline-block"><span>+</span></div>
-                                <span class="d-block client-status">Speakers</span>
+                                <span class="d-block client-status">{{ konten('home', 'journey', 'counter_1_label') }}</span>
                             </div>
                         </li>
                         <li class="position-relative">
-                            <div class="count d-inline-block">32</div>
+                            <div class="count d-inline-block">{{ konten('home', 'journey', 'counter_2_value') }}</div>
                             <div class="plus-details">
                                 <div class="plus d-inline-block"><span>+</span></div>
-                                <span class="d-block client-status">Sponsors</span>
+                                <span class="d-block client-status">{{ konten('home', 'journey', 'counter_2_label') }}</span>
                             </div>
                         </li>
                         <li class="position-relative">
-                            <div class="count d-inline-block">40</div>
+                            <div class="count d-inline-block">{{ konten('home', 'journey', 'counter_3_value') }}</div>
                             <div class="plus-details">
                                 <div class="plus d-inline-block"><span>+</span></div>
-                                <span class="d-block client-status">Session</span>
+                                <span class="d-block client-status">{{ konten('home', 'journey', 'counter_3_label') }}</span>
                             </div>
                         </li>
                         <li class="position-relative">
                             <div class="counter-box position-relative">
                                 <div class="2k-con">
-                                    <div class="count d-inline-block">2</div>
-                                    <small class="d-inline-block">K</small>
+                                    <div class="count d-inline-block">{{ konten('home', 'journey', 'counter_4_value') }}</div>
+                                    <small class="d-inline-block">{{ konten('home', 'journey', 'counter_4_suffix') }}</small>
                                 </div>
                                 <div class="plus-details">
                                     <div class="plus d-inline-block"><span>+</span></div>
-                                    <span class="d-block client-status">Attendees</span>
+                                    <span class="d-block client-status">{{ konten('home', 'journey', 'counter_4_label') }}</span>
                                 </div>
                             </div>
                         </li>
                     </ul>
                     <div class="digital-text-con">
-                        <h3 data-aos="fade-up" data-aos-duration="700">Join Us at 5th Digital Summer
-                            Confrence <span class="d-inline-block">NOV 21-25</span>, 2024</h3>
+                        <h3 data-aos="fade-up" data-aos-duration="700">{!! nl2br(e(konten('home', 'journey', 'digital_title'))) !!} <span class="d-inline-block">{{ konten('home', 'journey', 'digital_badge') }}</span></h3>
                         <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
-                            <a href="contact.html">REGISTER NOW <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ konten('home', 'journey', 'digital_button_url') }}">{{ konten('home', 'journey', 'digital_button_text') }} <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -169,6 +121,7 @@
         </div>
     </section>
     <!-- JOURNEY SECTION END -->
+    {{--
     <!-- EVENT SECTION START -->
     <section class="index3-event-section w-100 float-left padding-top padding-bottom">
         <div class="container">
@@ -1105,5 +1058,6 @@
         </div>
     </div>
     <!-- SPONSERS SECTION END -->
+    --}}
 
 @endsection
