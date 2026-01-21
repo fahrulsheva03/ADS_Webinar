@@ -91,7 +91,13 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('admin.index', ['modal' => 'adminProfileModal']) }}">Profil Admin</a></li>
-                    <li><a href="{{ route('admin.login') }}">Logout</a></li>
+                    <li>
+                        <form method="POST" action="{{ route('admin.logout') }}">
+                            @csrf
+                            <a href="{{ route('admin.logout') }}"
+                                onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
+                        </form>
+                    </li>
                 </ul>
             </li>
         </ul>

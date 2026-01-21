@@ -50,4 +50,3 @@ Route::post('/login', [PesertaAuthController::class, 'login'])->name('peserta.lo
 Route::post('/logout', [PesertaAuthController::class, 'logout'])->name('peserta.logout');
 Route::get('/registrasi', [PesertaAuthController::class, 'showRegister'])->name('peserta.registrasi');
 Route::post('/registrasi', [PesertaAuthController::class, 'register'])->name('peserta.registrasi.store');
-

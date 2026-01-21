@@ -55,15 +55,51 @@
                                                     alt=""></a>
                                         </div>
                                         <h4 class="text-center mb-4">Sign in your account</h4>
-                                        <form action="https://ventic-html.vercel.app/index.html">
+                                        @if (session('success'))
+                                            <div class="alert alert-success">
+                                                {{ session('success') }}
+                                            </div>
+                                        @endif
+
+                                        @if (session('error'))
+                                            <div class="alert alert-danger">
+                                                {{ session('error') }}
+                                            </div>
+                                        @endif
+
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul class="mb-0">
+                                                    @foreach ($errors->all() as $err)
+                                                        <li>{{ $err }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+
+                                        <form action="{{ route('admin.login.store') }}" method="POST">
+                                            @csrf
                                             <div class="mb-3">
                                                 <label class="mb-1 form-label">Email</label>
-                                                <input type="email" class="form-control" value="hello@example.com">
+                                                <input
+                                                    type="email"
+                                                    name="email"
+                                                    class="form-control"
+                                                    value="{{ old('email') }}"
+                                                    autocomplete="email"
+                                                    required
+                                                >
                                             </div>
                                             <div class="mb-3 position-relative">
                                                 <label class="mb-1 form-label">Password</label>
-                                                <input type="password" id="dz-password" class="form-control"
-                                                    value="123456">
+                                                <input
+                                                    type="password"
+                                                    id="dz-password"
+                                                    name="password"
+                                                    class="form-control"
+                                                    autocomplete="current-password"
+                                                    required
+                                                >
                                                 <span class="show-pass eye">
 
                                                     <i class="fa fa-eye-slash"></i>
