@@ -5,9 +5,116 @@
 @push('styles')
     <style>
         .peserta-dashboard {
-            background: #c4c4c4;
+            --dashboard-primary: #F80000;
+            --dashboard-secondary: #000000;
+            background: radial-gradient(900px circle at 12% 10%, rgba(248, 0, 0, 0.18), transparent 60%),
+                radial-gradient(700px circle at 88% 24%, rgba(0, 0, 0, 0.12), transparent 55%),
+                linear-gradient(180deg, #f2f2f2 0%, #ffffff 100%);
             color: #111827;
             min-height: 100vh;
+        }
+
+        .dashboard-panel {
+            border: 1px solid rgba(17, 24, 39, 0.08);
+            border-radius: 18px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 18px 60px rgba(35, 23, 105, 0.08);
+        }
+
+        .dashboard-panel__header {
+            padding: 16px 18px;
+            background: linear-gradient(135deg, rgba(248, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.10) 100%);
+        }
+
+        .dashboard-panel__title {
+            font-weight: 950;
+            letter-spacing: -0.03em;
+            font-size: 18px;
+            line-height: 1.25;
+            margin-bottom: 2px;
+        }
+
+        .dashboard-panel__subtitle {
+            color: #4b5563;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .dashboard-kpi {
+            border-radius: 16px;
+            border: 1px solid rgba(17, 24, 39, 0.08);
+            background: #ffffff;
+            padding: 12px 12px;
+            height: 100%;
+        }
+
+        .dashboard-kpi__label {
+            color: #4b5563;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .dashboard-kpi__value {
+            font-size: 22px;
+            font-weight: 950;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-top: 6px;
+        }
+
+        .dashboard-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            border-radius: 16px;
+            border: 1px solid rgba(17, 24, 39, 0.08);
+            background: #ffffff;
+            padding: 12px 12px;
+        }
+
+        .dashboard-step__icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(248, 0, 0, 0.22);
+            background: rgba(248, 0, 0, 0.08);
+            color: var(--dashboard-primary);
+            flex: 0 0 auto;
+        }
+
+        .dashboard-step__title {
+            font-weight: 900;
+            margin-bottom: 2px;
+        }
+
+        .dashboard-step__desc {
+            color: #4b5563;
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        .dashboard-history-item {
+            border-radius: 16px !important;
+            border: 1px solid rgba(17, 24, 39, 0.08);
+            background: #ffffff;
+            padding: 14px 14px;
+        }
+
+        .dashboard-history-item + .dashboard-history-item {
+            margin-top: 10px;
+        }
+
+        .dashboard-history-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
         }
 
         .header-main-con,
@@ -22,7 +129,8 @@
             top: 0;
             z-index: 20;
             backdrop-filter: blur(10px);
-            background: rgba(196, 196, 196, 0.92);
+            background: linear-gradient(90deg, rgba(248, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.05) 100%),
+                rgba(255, 255, 255, 0.88);
             border-bottom: 1px solid rgba(17, 24, 39, 0.08);
             padding-top: env(safe-area-inset-top);
         }
@@ -81,15 +189,15 @@
 
         .dashboard-icon-btn:hover {
             transform: translateY(-1px);
-            border-color: rgba(53, 0, 252, 0.35);
+            border-color: rgba(248, 0, 0, 0.45);
             box-shadow: 0 10px 22px rgba(17, 24, 39, 0.08);
-            color: #3500fc;
+            color: var(--dashboard-primary);
             text-decoration: none;
         }
 
         .dashboard-icon-btn:focus {
             outline: 0;
-            box-shadow: 0 0 0 3px rgba(53, 0, 252, 0.25);
+            box-shadow: 0 0 0 3px rgba(248, 0, 0, 0.22);
         }
 
         .dashboard-breadcrumb .breadcrumb {
@@ -108,7 +216,7 @@
         }
 
         .dashboard-breadcrumb .breadcrumb-item a {
-            color: #3500fc;
+            color: var(--dashboard-primary);
             font-weight: 600;
         }
 
@@ -156,7 +264,7 @@
 
         .event-card__header {
             padding: 18px 18px 12px 18px;
-            background: linear-gradient(135deg, rgba(53, 0, 252, 0.08) 0%, rgba(236, 57, 139, 0.06) 55%, rgba(239, 98, 46, 0.08) 100%);
+            background: linear-gradient(135deg, rgba(248, 0, 0, 0.14) 0%, rgba(0, 0, 0, 0.10) 100%);
         }
 
         .event-meta {
@@ -179,7 +287,7 @@
         }
 
         .event-badge i {
-            color: #3500fc;
+            color: var(--dashboard-primary);
         }
 
         .sesi-item {
@@ -191,7 +299,7 @@
         }
 
         .sesi-item:hover {
-            border-color: rgba(53, 0, 252, 0.35);
+            border-color: rgba(248, 0, 0, 0.45);
             transform: translateY(-1px);
         }
 
@@ -208,8 +316,8 @@
         }
 
         .btn-primary-soft {
-            background: #3500fc;
-            border-color: #3500fc;
+            background: var(--dashboard-primary);
+            border-color: var(--dashboard-primary);
             color: #ffffff;
             border-radius: 12px;
             padding: 10px 14px;
@@ -218,14 +326,35 @@
         }
 
         .btn-primary-soft:hover {
-            background: #2d00d8;
-            border-color: #2d00d8;
+            background: #d40000;
+            border-color: #d40000;
+            color: #ffffff;
             transform: translateY(-1px);
-            box-shadow: 0 14px 30px rgba(53, 0, 252, 0.25);
+            box-shadow: 0 14px 30px rgba(248, 0, 0, 0.22);
+            text-decoration: none;
         }
 
         .btn-primary-soft:focus {
-            box-shadow: 0 0 0 3px rgba(53, 0, 252, 0.25);
+            color: #ffffff;
+            box-shadow: 0 0 0 3px rgba(248, 0, 0, 0.22);
+            text-decoration: none;
+        }
+
+        .peserta-dashboard .btn-outline-secondary {
+            border-radius: 12px;
+            border-color: rgba(0, 0, 0, 0.35);
+            color: #000000;
+            font-weight: 800;
+        }
+
+        .peserta-dashboard .btn-outline-secondary:hover {
+            background: #000000;
+            border-color: #000000;
+            color: #ffffff;
+        }
+
+        .peserta-dashboard .btn-outline-secondary:focus {
+            box-shadow: 0 0 0 3px rgba(248, 0, 0, 0.22);
         }
 
         .video-link {
@@ -243,9 +372,9 @@
 
         .video-link:hover {
             transform: translateY(-1px);
-            border-color: rgba(53, 0, 252, 0.35);
+            border-color: rgba(248, 0, 0, 0.45);
             box-shadow: 0 10px 22px rgba(17, 24, 39, 0.08);
-            color: #3500fc;
+            color: var(--dashboard-primary);
             text-decoration: none;
         }
 
@@ -280,8 +409,8 @@
             width: 44px;
             height: 44px;
             border-radius: 999px;
-            border: 4px solid rgba(53, 0, 252, 0.15);
-            border-top-color: #3500fc;
+            border: 4px solid rgba(248, 0, 0, 0.16);
+            border-top-color: var(--dashboard-primary);
             animation: dashboardSpin 900ms linear infinite;
         }
 
@@ -344,37 +473,28 @@
 
                     <div class="dashboard-topbar__logo" aria-hidden="true">
                         <img
-                            src="{{ asset('assets/images/logo.png') }}"
+                            src="{{ asset('assets/images/ads/ads-full.png') }}"
                             alt=""
-                            width="180"
-                            height="50"
+                            width="300"
+                            height="300"
                             loading="lazy"
                             decoding="async"
                         >
                     </div>
 
                     <div class="dashboard-topbar__right">
-                        <button
-                            type="button"
-                            class="dashboard-icon-btn position-relative"
-                            aria-label="Notifikasi"
-                            title="Notifikasi (segera hadir)"
-                            data-toggle="tooltip"
-                            data-notification
-                        >
-                            <i class="far fa-bell" aria-hidden="true"></i>
-                            <span class="position-absolute" style="top: 8px; right: 10px; width: 8px; height: 8px; border-radius: 999px; background: #ef3a2f;" aria-hidden="true"></span>
-                        </button>
-
-                        <a
-                            href="{{ route('peserta.about') }}#faq"
-                            class="dashboard-icon-btn"
-                            aria-label="Bantuan (FAQ)"
-                            title="Bantuan (FAQ)"
-                            data-toggle="tooltip"
-                        >
-                            <i class="far fa-question-circle" aria-hidden="true"></i>
-                        </a>
+                        <form action="{{ route('peserta.logout') }}" method="POST" class="mb-0" style="display: inline-flex;" data-loading-trigger="submit">
+                            @csrf
+                            <button
+                                type="submit"
+                                class="dashboard-icon-btn"
+                                aria-label="Logout"
+                                title="Logout"
+                                data-toggle="tooltip"
+                            >
+                                <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                            </button>
+                        </form>
 
                         <a
                             href="{{ route('peserta.profile') }}"
@@ -410,10 +530,6 @@
                             class="dashboard-pagehead__img"
                             style="border-radius: 16px; border: 1px solid rgba(17, 24, 39, 0.08); background: #ffffff;"
                         >
-                        <div>
-                            <div style="font-weight: 900; letter-spacing: -0.02em; font-size: 18px;">Dashboard Peserta</div>
-                            <div style="color: #4b5563; font-size: 14px;">Kelola akses live dan rekaman event.</div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -421,16 +537,131 @@
 
         <main class="w-100 float-left padding-top padding-bottom" role="main">
             <div class="container">
+                <div id="dashboardTop" aria-hidden="true"></div>
+
                 @if ($pesanan->isEmpty())
-                    <div class="event-card" data-aos="fade-up" data-aos-duration="700">
+                    <div class="row">
+                        <div class="col-12 col-lg-7 mb-4 mb-lg-0" data-aos="fade-up" data-aos-duration="700">
+                            <section class="dashboard-panel" aria-label="Ringkasan dashboard peserta">
+                                <div class="dashboard-panel__header">
+                                    <div class="d-flex align-items-center" style="gap: 12px;">
+                                        <span class="dashboard-step__icon" aria-hidden="true">
+                                            <i class="far fa-user"></i>
+                                        </span>
+                                        <div>
+                                            <div class="dashboard-panel__title">
+                                                Selamat datang
+                                                @auth
+                                                    , {{ auth()->user()?->nama ?? 'Peserta' }}
+                                                @endauth
+                                            </div>
+                                            <div class="dashboard-panel__subtitle">Mulai dari sini untuk membeli event dan mengatur akses.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-3 p-md-4">
+                                    <div class="row">
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="dashboard-kpi">
+                                                <div class="dashboard-kpi__label">Event</div>
+                                                <div class="dashboard-kpi__value">0</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="dashboard-kpi">
+                                                <div class="dashboard-kpi__label">Akses Live</div>
+                                                <div class="dashboard-kpi__value">0</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="dashboard-kpi">
+                                                <div class="dashboard-kpi__label">Akses Rekaman</div>
+                                                <div class="dashboard-kpi__value">0</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="dashboard-kpi">
+                                                <div class="dashboard-kpi__label">Sesi</div>
+                                                <div class="dashboard-kpi__value">0</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-wrap align-items-center" style="gap: 10px;">
+                                        <a href="{{ route('peserta.shop') }}" class="btn btn-primary-soft" aria-label="Cari event di shop">
+                                            Cari Event <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="{{ route('peserta.profile') }}" class="btn btn-outline-secondary" style="border-radius: 12px; font-weight: 800;" aria-label="Buka profil peserta">
+                                            Profil
+                                        </a>
+                                        <a href="{{ route('peserta.about') }}#faq" class="btn btn-outline-secondary" style="border-radius: 12px; font-weight: 800;" aria-label="Buka FAQ peserta">
+                                            Panduan (FAQ)
+                                        </a>
+                                        <a href="{{ route('peserta.contact') }}" class="btn btn-outline-secondary" style="border-radius: 12px; font-weight: 800;" aria-label="Hubungi admin">
+                                            Hubungi Admin
+                                        </a>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="col-12 col-lg-5" data-aos="fade-up" data-aos-duration="700">
+                            <section class="dashboard-panel" aria-label="Panduan cepat dashboard">
+                                <div class="dashboard-panel__header">
+                                    <div class="d-flex align-items-center" style="gap: 12px;">
+                                    <span class="dashboard-step__icon" aria-hidden="true" style="background: rgba(0, 0, 0, 0.06); border-color: rgba(0, 0, 0, 0.18); color: #000000;">
+                                            <i class="far fa-compass"></i>
+                                        </span>
+                                        <div>
+                                            <div class="dashboard-panel__title">Panduan Cepat</div>
+                                            <div class="dashboard-panel__subtitle">Agar tidak bingung saat pertama masuk.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-3 p-md-4">
+                                    <div class="d-flex flex-column" style="gap: 12px;">
+                                        <div class="dashboard-step">
+                                            <span class="dashboard-step__icon" aria-hidden="true">
+                                                <i class="fas fa-store"></i>
+                                            </span>
+                                            <div>
+                                                <div class="dashboard-step__title">1) Beli event</div>
+                                                <p class="dashboard-step__desc">Masuk ke Shop, pilih event dan paket sesuai kebutuhan.</p>
+                                            </div>
+                                        </div>
+                                        <div class="dashboard-step">
+                                            <span class="dashboard-step__icon" aria-hidden="true">
+                                                <i class="fas fa-video"></i>
+                                            </span>
+                                            <div>
+                                                <div class="dashboard-step__title">2) Join saat Live</div>
+                                                <p class="dashboard-step__desc">Tombol Join Live muncul saat sesi berstatus live dan paket mendukung live.</p>
+                                            </div>
+                                        </div>
+                                        <div class="dashboard-step">
+                                            <span class="dashboard-step__icon" aria-hidden="true">
+                                                <i class="fas fa-play-circle"></i>
+                                            </span>
+                                            <div>
+                                                <div class="dashboard-step__title">3) Tonton rekaman</div>
+                                                <p class="dashboard-step__desc">Rekaman muncul jika event selesai dan paket punya akses rekaman.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                    <div class="event-card mt-4" data-aos="fade-up" data-aos-duration="700">
                         <div class="event-card__header">
                             <div class="d-flex align-items-center" style="gap: 12px;">
-                                <span class="dashboard-icon-btn" aria-hidden="true" style="border-color: rgba(53, 0, 252, 0.18);">
+                                <span class="dashboard-icon-btn" aria-hidden="true" style="border-color: rgba(248, 0, 0, 0.25);">
                                     <i class="fas fa-ticket-alt" aria-hidden="true"></i>
                                 </span>
                                 <div>
                                     <div style="font-weight: 900; font-size: 18px;">Belum ada event</div>
-                                    <div style="color: #4b5563; font-size: 14px;">Kamu belum mengikuti event apapun.</div>
+                                    <div style="color: #4b5563; font-size: 14px;">Setelah checkout berhasil, event akan muncul di sini beserta daftar sesi.</div>
                                 </div>
                             </div>
                         </div>
@@ -441,6 +672,252 @@
                         </div>
                     </div>
                 @else
+                    @php
+                        $totalEvent = $pesanan->count();
+                        $totalLive = $pesanan->filter(function ($o) {
+                            return (bool) ($o->paket->akses_live ?? false);
+                        })->count();
+                        $totalRekaman = $pesanan->filter(function ($o) {
+                            return (bool) ($o->paket->akses_rekaman ?? false);
+                        })->count();
+                        $totalSesi = 0;
+                        foreach ($pesanan as $o) {
+                            $evt = $o->paket->event;
+                            $totalSesi += $evt?->sesi?->count() ?? 0;
+                        }
+                        $pesananAktif = $pesanan->filter(function ($o) {
+                            $status = strtolower((string) ($o->paket->event->status ?? ''));
+                            return $status !== 'finished';
+                        });
+                        $pesananSelesai = $pesanan->filter(function ($o) {
+                            $status = strtolower((string) ($o->paket->event->status ?? ''));
+                            return $status === 'finished';
+                        });
+                    @endphp
+
+                    <div class="row mb-4">
+                        <div class="col-12 col-lg-7 mb-4 mb-lg-0" data-aos="fade-up" data-aos-duration="700">
+                            <section class="dashboard-panel" aria-label="Ringkasan dashboard peserta">
+                                <div class="dashboard-panel__header">
+                                    <div class="d-flex align-items-center" style="gap: 12px;">
+                                        <span class="dashboard-step__icon" aria-hidden="true">
+                                            <i class="far fa-user"></i>
+                                        </span>
+                                        <div>
+                                            <div class="dashboard-panel__title">
+                                                Selamat datang
+                                                @auth
+                                                    , {{ auth()->user()?->nama ?? 'Peserta' }}
+                                                @endauth
+                                            </div>
+                                            <div class="dashboard-panel__subtitle">Ringkasan akses dan riwayat event yang kamu ikuti.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-3 p-md-4">
+                                    <div class="row">
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="dashboard-kpi">
+                                                <div class="dashboard-kpi__label">Event</div>
+                                                <div class="dashboard-kpi__value">{{ $totalEvent }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="dashboard-kpi">
+                                                <div class="dashboard-kpi__label">Akses Live</div>
+                                                <div class="dashboard-kpi__value">{{ $totalLive }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="dashboard-kpi">
+                                                <div class="dashboard-kpi__label">Akses Rekaman</div>
+                                                <div class="dashboard-kpi__value">{{ $totalRekaman }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-md-3 mb-3">
+                                            <div class="dashboard-kpi">
+                                                <div class="dashboard-kpi__label">Total Sesi</div>
+                                                <div class="dashboard-kpi__value">{{ $totalSesi }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-wrap align-items-center" style="gap: 10px;">
+                                        <a href="{{ route('peserta.shop') }}" class="btn btn-primary-soft" aria-label="Cari event di shop">
+                                            Cari Event <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="{{ route('peserta.profile') }}" class="btn btn-outline-secondary" style="border-radius: 12px; font-weight: 800;" aria-label="Buka profil peserta">
+                                            Profil
+                                        </a>
+                                        <a href="{{ route('peserta.about') }}#faq" class="btn btn-outline-secondary" style="border-radius: 12px; font-weight: 800;" aria-label="Buka FAQ peserta">
+                                            Panduan (FAQ)
+                                        </a>
+                                        <a href="{{ route('peserta.contact') }}" class="btn btn-outline-secondary" style="border-radius: 12px; font-weight: 800;" aria-label="Hubungi admin">
+                                            Hubungi Admin
+                                        </a>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                        <div class="col-12 col-lg-5" data-aos="fade-up" data-aos-duration="700">
+                            <section class="dashboard-panel" aria-label="Cara menggunakan dashboard">
+                                <div class="dashboard-panel__header">
+                                    <div class="d-flex align-items-center" style="gap: 12px;">
+                                    <span class="dashboard-step__icon" aria-hidden="true" style="background: rgba(0, 0, 0, 0.06); border-color: rgba(0, 0, 0, 0.18); color: #000000;">
+                                            <i class="far fa-compass"></i>
+                                        </span>
+                                        <div>
+                                            <div class="dashboard-panel__title">Cara Pakai Dashboard</div>
+                                            <div class="dashboard-panel__subtitle">Pilih event, lalu akses sesi yang tersedia.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-3 p-md-4">
+                                    <div class="d-flex flex-column" style="gap: 12px;">
+                                        <div class="dashboard-step">
+                                            <span class="dashboard-step__icon" aria-hidden="true">
+                                                <i class="fas fa-history"></i>
+                                            </span>
+                                            <div>
+                                                <div class="dashboard-step__title">Riwayat event</div>
+                                                <p class="dashboard-step__desc">Gunakan daftar riwayat untuk cepat lompat ke detail event.</p>
+                                            </div>
+                                        </div>
+                                        <div class="dashboard-step">
+                                            <span class="dashboard-step__icon" aria-hidden="true">
+                                                <i class="fas fa-video"></i>
+                                            </span>
+                                            <div>
+                                                <div class="dashboard-step__title">Join Live</div>
+                                                <p class="dashboard-step__desc">Tombol Join Live hanya muncul pada sesi yang live dan paket mendukung.</p>
+                                            </div>
+                                        </div>
+                                        <div class="dashboard-step">
+                                            <span class="dashboard-step__icon" aria-hidden="true">
+                                                <i class="fas fa-play-circle"></i>
+                                            </span>
+                                            <div>
+                                                <div class="dashboard-step__title">Rekaman</div>
+                                                <p class="dashboard-step__desc">Rekaman tersedia setelah event selesai dan ada video pada sesi.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+                    <section class="dashboard-panel mb-4" aria-label="Riwayat event">
+                        <div class="dashboard-panel__header">
+                            <div class="d-flex align-items-center justify-content-between" style="gap: 12px;">
+                                <div class="d-flex align-items-center" style="gap: 12px;">
+                                    <span class="dashboard-step__icon" aria-hidden="true">
+                                        <i class="fas fa-list"></i>
+                                    </span>
+                                    <div>
+                                        <div class="dashboard-panel__title">Riwayat Event</div>
+                                        <div class="dashboard-panel__subtitle">Klik item untuk membuka detail dan daftar sesi.</div>
+                                    </div>
+                                </div>
+                                <span class="event-badge" aria-label="Total event">
+                                    <i class="fas fa-ticket-alt" aria-hidden="true"></i>
+                                    <span>{{ $totalEvent }} event</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3 p-md-4">
+                            @if ($pesananAktif->isNotEmpty())
+                                <div style="font-weight: 900; margin-bottom: 10px;">Sedang Berjalan</div>
+                                <div class="list-group">
+                                    @foreach ($pesananAktif as $order)
+                                        @php
+                                            $event = $order->paket->event;
+                                        @endphp
+                                        <a href="#order-{{ $order->id }}" class="list-group-item list-group-item-action dashboard-history-item" aria-label="Buka detail event {{ $event->judul }}">
+                                            <div class="d-flex align-items-start justify-content-between" style="gap: 12px;">
+                                                <div>
+                                                    <div style="font-weight: 950; letter-spacing: -0.02em; font-size: 16px; line-height: 1.25;">
+                                                        {{ $event->judul }}
+                                                    </div>
+                                                    <div style="color: #4b5563; font-weight: 600; font-size: 14px;">
+                                                        Paket: {{ $order->paket->nama_paket }}
+                                                    </div>
+                                                </div>
+                                                <span class="event-badge" aria-label="Status event {{ $event->status }}">
+                                                    <i class="fas fa-info-circle" aria-hidden="true"></i>
+                                                    <span>{{ strtoupper($event->status) }}</span>
+                                                </span>
+                                            </div>
+                                            <div class="dashboard-history-meta" aria-label="Ringkasan akses">
+                                                <span class="event-badge">
+                                                    <i class="fas fa-layer-group" aria-hidden="true"></i>
+                                                    <span>{{ $event->sesi->count() }} sesi</span>
+                                                </span>
+                                                <span class="event-badge">
+                                                    <i class="fas fa-video" aria-hidden="true"></i>
+                                                    <span>{{ $order->paket->akses_live ? 'Live' : 'Tanpa live' }}</span>
+                                                </span>
+                                                <span class="event-badge">
+                                                    <i class="fas fa-play-circle" aria-hidden="true"></i>
+                                                    <span>{{ $order->paket->akses_rekaman ? 'Rekaman' : 'Tanpa rekaman' }}</span>
+                                                </span>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                            @if ($pesananSelesai->isNotEmpty())
+                                <div style="font-weight: 900; margin-top: 18px; margin-bottom: 10px;">Selesai</div>
+                                <div class="list-group">
+                                    @foreach ($pesananSelesai as $order)
+                                        @php
+                                            $event = $order->paket->event;
+                                        @endphp
+                                        <a href="#order-{{ $order->id }}" class="list-group-item list-group-item-action dashboard-history-item" aria-label="Buka detail event {{ $event->judul }}">
+                                            <div class="d-flex align-items-start justify-content-between" style="gap: 12px;">
+                                                <div>
+                                                    <div style="font-weight: 950; letter-spacing: -0.02em; font-size: 16px; line-height: 1.25;">
+                                                        {{ $event->judul }}
+                                                    </div>
+                                                    <div style="color: #4b5563; font-weight: 600; font-size: 14px;">
+                                                        Paket: {{ $order->paket->nama_paket }}
+                                                    </div>
+                                                </div>
+                                                <span class="event-badge" aria-label="Status event {{ $event->status }}">
+                                                    <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                                    <span>{{ strtoupper($event->status) }}</span>
+                                                </span>
+                                            </div>
+                                            <div class="dashboard-history-meta" aria-label="Ringkasan akses">
+                                                <span class="event-badge">
+                                                    <i class="fas fa-layer-group" aria-hidden="true"></i>
+                                                    <span>{{ $event->sesi->count() }} sesi</span>
+                                                </span>
+                                                <span class="event-badge">
+                                                    <i class="fas fa-video" aria-hidden="true"></i>
+                                                    <span>{{ $order->paket->akses_live ? 'Live' : 'Tanpa live' }}</span>
+                                                </span>
+                                                <span class="event-badge">
+                                                    <i class="fas fa-play-circle" aria-hidden="true"></i>
+                                                    <span>{{ $order->paket->akses_rekaman ? 'Rekaman' : 'Tanpa rekaman' }}</span>
+                                                </span>
+                                            </div>
+                                        </a>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
+                    </section>
+
+                    <div class="d-flex align-items-center justify-content-between mb-3" style="gap: 12px;">
+                        <div style="font-weight: 950; letter-spacing: -0.03em; font-size: 18px;">Detail Event & Sesi</div>
+                        <a href="#dashboardTop" class="btn btn-outline-secondary" style="border-radius: 12px; font-weight: 800;">
+                            Kembali ke atas
+                        </a>
+                    </div>
+
                     <div class="row">
                         @foreach ($pesanan as $order)
                             @php
@@ -448,7 +925,7 @@
                             @endphp
 
                             <div class="col-12 col-lg-6 mb-4" data-aos="fade-up" data-aos-duration="700">
-                                <section class="event-card" aria-label="Event {{ $event->judul }}">
+                                <section class="event-card" aria-label="Event {{ $event->judul }}" id="order-{{ $order->id }}">
                                     <div class="event-card__header">
                                         <div class="d-flex align-items-start justify-content-between" style="gap: 12px;">
                                             <div>
@@ -523,7 +1000,7 @@
                                                                     aria-label="Rekaman tersedia"
                                                                     title="Rekaman tersedia"
                                                                     data-toggle="tooltip"
-                                                                    style="border-color: rgba(53, 0, 252, 0.18);"
+                                                                    style="border-color: rgba(248, 0, 0, 0.25);"
                                                                 >
                                                                     <i class="fas fa-film" aria-hidden="true"></i>
                                                                 </button>
