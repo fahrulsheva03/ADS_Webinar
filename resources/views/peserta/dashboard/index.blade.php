@@ -5,10 +5,9 @@
 @push('styles')
     <style>
         .peserta-dashboard {
-            background: radial-gradient(900px circle at 10% 10%, rgba(53, 0, 252, 0.10), transparent 60%),
-                radial-gradient(700px circle at 90% 30%, rgba(239, 98, 46, 0.10), transparent 55%),
-                linear-gradient(180deg, #f9f9fb 0%, #ffffff 100%);
+            background: #c4c4c4;
             color: #111827;
+            min-height: 100vh;
         }
 
         .header-main-con,
@@ -23,7 +22,7 @@
             top: 0;
             z-index: 20;
             backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(196, 196, 196, 0.92);
             border-bottom: 1px solid rgba(17, 24, 39, 0.08);
             padding-top: env(safe-area-inset-top);
         }
