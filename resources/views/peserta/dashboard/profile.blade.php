@@ -5,8 +5,8 @@
 @push('styles')
     <style>
         .peserta-profile {
-            background: radial-gradient(900px circle at 10% 10%, rgba(53, 0, 252, 0.10), transparent 60%),
-                radial-gradient(700px circle at 90% 30%, rgba(239, 98, 46, 0.10), transparent 55%),
+            background: radial-gradient(900px circle at 10% 10%, rgba(248, 0, 0, 0.14), transparent 60%),
+                radial-gradient(700px circle at 90% 30%, rgba(0, 0, 0, 0.10), transparent 55%),
                 linear-gradient(180deg, #f9f9fb 0%, #ffffff 100%);
             color: #111827;
             min-height: 100vh;
@@ -77,28 +77,28 @@
 
         .profile-icon-btn:hover {
             transform: translateY(-1px);
-            border-color: rgba(53, 0, 252, 0.35);
+            border-color: rgba(248, 0, 0, 0.35);
             box-shadow: 0 10px 22px rgba(17, 24, 39, 0.08);
-            color: #3500fc;
+            color: #F80000;
             text-decoration: none;
         }
 
         .profile-icon-btn:focus {
             outline: 0;
-            box-shadow: 0 0 0 3px rgba(53, 0, 252, 0.25);
+            box-shadow: 0 0 0 3px rgba(248, 0, 0, 0.22);
         }
 
         .profile-card {
             border: 1px solid rgba(17, 24, 39, 0.08);
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 18px 60px rgba(35, 23, 105, 0.08);
+            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
             background: #ffffff;
         }
 
         .profile-card__header {
             padding: 18px;
-            background: linear-gradient(135deg, rgba(53, 0, 252, 0.08) 0%, rgba(236, 57, 139, 0.06) 55%, rgba(239, 98, 46, 0.08) 100%);
+            background: linear-gradient(135deg, rgba(248, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.10) 100%);
         }
 
         .profile-avatar {
@@ -170,8 +170,8 @@
             width: 44px;
             height: 44px;
             border-radius: 999px;
-            border: 4px solid rgba(53, 0, 252, 0.15);
-            border-top-color: #3500fc;
+            border: 4px solid rgba(248, 0, 0, 0.18);
+            border-top-color: #F80000;
             animation: profileSpin 900ms linear infinite;
         }
 
@@ -369,4 +369,3 @@
         })();
     </script>
 @endpush
-

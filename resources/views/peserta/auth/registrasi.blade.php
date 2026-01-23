@@ -16,23 +16,23 @@
 
         <style>
             .peserta-auth {
-                background: radial-gradient(900px circle at 10% 10%, rgba(53, 0, 252, 0.10), transparent 60%),
-                    radial-gradient(700px circle at 90% 30%, rgba(239, 98, 46, 0.10), transparent 55%),
+                background: radial-gradient(900px circle at 10% 10%, rgba(248, 0, 0, 0.14), transparent 60%),
+                    radial-gradient(700px circle at 90% 30%, rgba(0, 0, 0, 0.10), transparent 55%),
                     linear-gradient(180deg, #f9f9fb 0%, #ffffff 100%);
             }
 
             .auth-shell {
                 border-radius: 24px;
                 overflow: hidden;
-                box-shadow: 0 18px 60px rgba(35, 23, 105, 0.10);
-                border: 1px solid rgba(35, 23, 105, 0.06);
+                box-shadow: 0 18px 60px rgba(0, 0, 0, 0.10);
+                border: 1px solid rgba(0, 0, 0, 0.06);
                 background: #ffffff;
             }
 
             .auth-visual {
                 position: relative;
                 min-height: 520px;
-                background: linear-gradient(135deg, rgba(53, 0, 252, 1) 0%, rgba(98, 46, 239, 1) 60%, rgba(236, 57, 139, 1) 120%);
+                background: linear-gradient(135deg, rgba(248, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 100%);
                 color: #fff;
             }
 
@@ -111,20 +111,20 @@
 
             .auth-input .input-group-text {
                 border-radius: 14px 0 0 14px;
-                border-color: rgba(35, 23, 105, 0.12);
+                border-color: rgba(0, 0, 0, 0.12);
             }
 
             .auth-input .form-control {
                 border-radius: 0 14px 14px 0;
-                border-color: rgba(35, 23, 105, 0.12);
+                border-color: rgba(0, 0, 0, 0.12);
                 padding-top: 14px;
                 padding-bottom: 14px;
                 font-size: 16px;
             }
 
             .auth-input .form-control:focus {
-                border-color: rgba(53, 0, 252, 0.45);
-                box-shadow: 0 0 0 0.25rem rgba(53, 0, 252, 0.12);
+                border-color: rgba(248, 0, 0, 0.45);
+                box-shadow: 0 0 0 0.25rem rgba(248, 0, 0, 0.12);
             }
 
             .auth-cta {
@@ -134,7 +134,7 @@
                 font-weight: 700;
                 background: var(--button-color);
                 border-color: var(--button-color);
-                box-shadow: 0 12px 26px rgba(53, 0, 252, 0.22);
+                box-shadow: 0 12px 26px rgba(248, 0, 0, 0.22);
             }
 
             .auth-cta:hover {

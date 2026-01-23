@@ -19,7 +19,7 @@
             border-radius: 18px;
             overflow: hidden;
             background: rgba(255, 255, 255, 0.92);
-            box-shadow: 0 18px 60px rgba(35, 23, 105, 0.08);
+            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
         }
 
         .dashboard-panel__header {
@@ -252,14 +252,14 @@
             border: 1px solid rgba(17, 24, 39, 0.08);
             border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 18px 60px rgba(35, 23, 105, 0.08);
+            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.08);
             background: #ffffff;
             transition: transform 180ms ease, box-shadow 180ms ease;
         }
 
         .event-card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 24px 80px rgba(35, 23, 105, 0.12);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.12);
         }
 
         .event-card__header {

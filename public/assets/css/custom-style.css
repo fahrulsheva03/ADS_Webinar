@@ -1,13 +1,13 @@
 :root {
-    --primary-color:#FFF;
+    --primary-color:#ffffff;
     --secondary-color:#000000;
-    --accent:#ef622e;
+    --accent:#F80000;
     --text-color: #6d6c6c;
-    --button-color: #3500fc;
-    --light-blue: #622eef;
-    --yellow-color: #fdb913;
-    --pink-color: #ec398b;
-    --dark-blue: #231769;
+    --button-color: #F80000;
+    --light-blue: #F80000;
+    --yellow-color: #F80000;
+    --pink-color: #F80000;
+    --dark-blue: #000000;
 }
 a {
 	outline:none;

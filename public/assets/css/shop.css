@@ -6,22 +6,22 @@ body {
 }
 
 :root {
-    --e-global-color-primary: #343434;
-    --e-global-color-secondary: #fa5733;
+    --e-global-color-primary: #000000;
+    --e-global-color-secondary: #F80000;
     --e-global-color-text: #828282;
-    --e-global-color-accent: #fa5733;
+    --e-global-color-accent: #F80000;
     --e-global-color-white: #ffffff;
     --e-global-color-very-dark-gray: #4c4c4c;
     --e-global-color-very-dark-black: #2d2d2d;
     --e-global-color-light-gray: #f8f8f8;
-    --e-global-color-desaturated-blue: #7e82b8;
+    --e-global-color-desaturated-blue: #2d2d2d;
     --e-global-color-light-orange: #ffbf44;
     --e-global-color-very-very-light-gray: #eaeaea;
-    --primary-color: #fff;
-    --secondary-color: #232323;
-    --accent: #ee8961;
+    --primary-color: #ffffff;
+    --secondary-color: #000000;
+    --accent: #F80000;
     --text-color: #7a7a7a;
-    --button-color: #156c5f;
+    --button-color: #F80000;
 }
 
 a {
@@ -517,7 +517,9 @@ input[type="number"]::-webkit-calendar-picker-indicator {
 /* Shop Section */
 
 .shop_section {
-    background-color: var(--e-global-color-light-gray);
+    background: radial-gradient(900px circle at 12% 10%, rgba(248, 0, 0, 0.10), transparent 60%),
+        radial-gradient(700px circle at 88% 24%, rgba(0, 0, 0, 0.08), transparent 55%),
+        linear-gradient(180deg, var(--e-global-color-light-gray) 0%, var(--e-global-color-white) 100%);
 }
 
 .shop_section .nav-tabs {
