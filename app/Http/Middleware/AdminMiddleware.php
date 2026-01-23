@@ -23,10 +23,6 @@ class AdminMiddleware
             Auth::guard('admin')->logout();
         }
 
-        if (Auth::guard('web')->check()) {
-            return redirect()->route('peserta.index');
-        }
-
         return redirect()->route('admin.login');
     }
 }

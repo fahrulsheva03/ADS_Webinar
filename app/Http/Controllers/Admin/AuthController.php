@@ -16,10 +16,6 @@ class AuthController extends Controller
             return redirect()->route('admin.index');
         }
 
-        if (Auth::guard('web')->check()) {
-            return redirect()->route('peserta.index');
-        }
-
         return view('admin.auth.login');
     }
 
@@ -54,7 +50,12 @@ class AuthController extends Controller
     {
         Auth::guard('admin')->logout();
 
-        $request->session()->invalidate();
+        if (! Auth::guard('web')->check()) {
+            $request->session()->invalidate();
+        } else {
+            $request->session()->migrate(true);
+        }
+
         $request->session()->regenerateToken();
 
         return redirect()->route('admin.login');

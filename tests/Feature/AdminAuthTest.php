@@ -26,7 +26,18 @@ class AdminAuthTest extends TestCase
 
         $response = $this->actingAs($user, 'web')->get('/admin');
 
-        $response->assertRedirect(route('peserta.index'));
+        $response->assertRedirect(route('admin.login'));
+    }
+
+    public function test_web_authenticated_user_can_open_admin_login_page(): void
+    {
+        $user = User::factory()->create([
+            'role' => 'user',
+        ]);
+
+        $response = $this->actingAs($user, 'web')->get(route('admin.login'));
+
+        $response->assertOk();
     }
 
     public function test_admin_can_login_and_access_admin_dashboard(): void
@@ -85,5 +96,63 @@ class AdminAuthTest extends TestCase
             'role' => 'admin',
             'status_akun' => 'aktif',
         ]);
+    }
+
+    public function test_logout_peserta_does_not_logout_admin(): void
+    {
+        $user = User::factory()->create([
+            'role' => 'user',
+            'status_akun' => 'aktif',
+        ]);
+
+        $admin = User::factory()->admin()->create([
+            'status_akun' => 'aktif',
+        ]);
+
+        $this->actingAs($user, 'web');
+        $this->actingAs($admin, 'admin');
+
+        $this->assertAuthenticatedAs($user, 'web');
+        $this->assertAuthenticatedAs($admin, 'admin');
+
+        $token = 'token';
+
+        $response = $this->withSession(['_token' => $token])->post(route('peserta.logout'), [
+            '_token' => $token,
+        ]);
+
+        $response->assertRedirect(route('peserta.index'));
+        $this->assertGuest('web');
+        $this->assertAuthenticatedAs($admin, 'admin');
+
+        $this->get('/admin')->assertOk();
+    }
+
+    public function test_logout_admin_does_not_logout_peserta(): void
+    {
+        $user = User::factory()->create([
+            'role' => 'user',
+            'status_akun' => 'aktif',
+        ]);
+
+        $admin = User::factory()->admin()->create([
+            'status_akun' => 'aktif',
+        ]);
+
+        $this->actingAs($user, 'web');
+        $this->actingAs($admin, 'admin');
+
+        $this->assertAuthenticatedAs($user, 'web');
+        $this->assertAuthenticatedAs($admin, 'admin');
+
+        $token = 'token';
+
+        $response = $this->withSession(['_token' => $token])->post(route('admin.logout'), [
+            '_token' => $token,
+        ]);
+
+        $response->assertRedirect(route('admin.login'));
+        $this->assertGuest('admin');
+        $this->assertAuthenticatedAs($user, 'web');
     }
 }

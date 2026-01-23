@@ -38,6 +38,17 @@
 
         <!-- Style Css -->
         <link class="main-css" href="/assetsAdmin/css/style.css" rel="stylesheet">
+        <style>
+            .authincation-content {
+                background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 50%, #22c55e 100%);
+                border-radius: 20px;
+            }
+
+            .authincation-content .auth-form {
+                background: #d6e094;
+                border-radius: 20px;
+            }
+        </style>
 
     </head>
 
@@ -81,25 +92,13 @@
                                             @csrf
                                             <div class="mb-3">
                                                 <label class="mb-1 form-label">Email</label>
-                                                <input
-                                                    type="email"
-                                                    name="email"
-                                                    class="form-control"
-                                                    value="{{ old('email') }}"
-                                                    autocomplete="email"
-                                                    required
-                                                >
+                                                <input type="email" name="email" class="form-control"
+                                                    value="{{ old('email') }}" autocomplete="email" required>
                                             </div>
                                             <div class="mb-3 position-relative">
                                                 <label class="mb-1 form-label">Password</label>
-                                                <input
-                                                    type="password"
-                                                    id="dz-password"
-                                                    name="password"
-                                                    class="form-control"
-                                                    autocomplete="current-password"
-                                                    required
-                                                >
+                                                <input type="password" id="dz-password" name="password"
+                                                    class="form-control" autocomplete="current-password" required>
                                                 <span class="show-pass eye">
 
                                                     <i class="fa fa-eye-slash"></i>

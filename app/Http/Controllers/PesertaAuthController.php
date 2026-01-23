@@ -92,9 +92,14 @@ class PesertaAuthController extends Controller
 
     public function logout(Request $request): RedirectResponse
     {
-        Auth::logout();
+        Auth::guard('web')->logout();
 
-        $request->session()->invalidate();
+        if (! Auth::guard('admin')->check()) {
+            $request->session()->invalidate();
+        } else {
+            $request->session()->migrate(true);
+        }
+
         $request->session()->regenerateToken();
 
         return redirect()
