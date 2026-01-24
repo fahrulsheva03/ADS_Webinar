@@ -2,7 +2,16 @@
 
 @section('content')
     @php
-        $imageUrl = $news->gambar_utama ? Storage::disk('public')->url($news->gambar_utama) : asset('assets/images/blog-image1.jpg');
+        $gambar = (string) ($news->gambar_utama ?? '');
+        if ($gambar === '') {
+            $imageUrl = asset('assets/images/blog-image1.jpg');
+        } elseif (str_starts_with($gambar, 'http://') || str_starts_with($gambar, 'https://')) {
+            $imageUrl = $gambar;
+        } elseif (str_starts_with($gambar, 'storage/')) {
+            $imageUrl = asset($gambar);
+        } else {
+            $imageUrl = asset('storage/'.$gambar);
+        }
         $author = $news->creator?->nama ?: 'Admin';
         $category = $news->category?->nama ?: 'Umum';
         $date = $news->published_at ?? $news->created_at;
@@ -105,4 +114,3 @@
         }
     </style>
 @endsection
-

@@ -190,17 +190,29 @@
 
                         <div class="mb-3">
                             <div class="rounded border bg-light d-flex align-items-center justify-content-center" style="height: 220px; overflow: hidden;">
+                                @php
+                                    $gambar = (string) ($news->gambar_utama ?? '');
+                                    if ($gambar === '') {
+                                        $gambarUrl = null;
+                                    } elseif (str_starts_with($gambar, 'http://') || str_starts_with($gambar, 'https://')) {
+                                        $gambarUrl = $gambar;
+                                    } elseif (str_starts_with($gambar, 'storage/')) {
+                                        $gambarUrl = asset($gambar);
+                                    } else {
+                                        $gambarUrl = asset('storage/'.$gambar);
+                                    }
+                                @endphp
                                 <img
                                     id="gambar-preview"
                                     alt="Preview gambar utama"
-                                    @if ($news->gambar_utama)
-                                        src="{{ Storage::disk('public')->url($news->gambar_utama) }}"
+                                    @if ($gambarUrl)
+                                        src="{{ $gambarUrl }}"
                                         style="max-width: 100%; max-height: 100%; object-fit: cover; display: block;"
                                     @else
                                         style="max-width: 100%; max-height: 100%; object-fit: cover; display: none;"
                                     @endif
                                 >
-                                <div id="gambar-placeholder" class="text-muted small" @if ($news->gambar_utama) style="display: none;" @endif>
+                                <div id="gambar-placeholder" class="text-muted small" @if ($gambarUrl) style="display: none;" @endif>
                                     Preview gambar akan muncul di sini.
                                 </div>
                             </div>

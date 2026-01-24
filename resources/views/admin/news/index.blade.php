@@ -133,9 +133,21 @@
                                                     class="rounded border bg-light"
                                                     style="width: 56px; height: 42px; overflow: hidden; flex: 0 0 auto;"
                                                 >
-                                                    @if ($n->gambar_utama)
+                                                    @php
+                                                        $thumb = (string) ($n->gambar_utama ?? '');
+                                                        if ($thumb === '') {
+                                                            $thumbUrl = null;
+                                                        } elseif (str_starts_with($thumb, 'http://') || str_starts_with($thumb, 'https://')) {
+                                                            $thumbUrl = $thumb;
+                                                        } elseif (str_starts_with($thumb, 'storage/')) {
+                                                            $thumbUrl = asset($thumb);
+                                                        } else {
+                                                            $thumbUrl = asset('storage/'.$thumb);
+                                                        }
+                                                    @endphp
+                                                    @if ($thumbUrl)
                                                         <img
-                                                            src="{{ Storage::disk('public')->url($n->gambar_utama) }}"
+                                                            src="{{ $thumbUrl }}"
                                                             alt="{{ $n->judul }}"
                                                             style="width: 100%; height: 100%; object-fit: cover;"
                                                             loading="lazy"

@@ -31,7 +31,16 @@
                     <div class="row">
                         @forelse ($items as $row)
                             @php
-                                $imageUrl = $row->gambar_utama ? Storage::disk('public')->url($row->gambar_utama) : asset('assets/images/blog-image1.jpg');
+                                $gambar = (string) ($row->gambar_utama ?? '');
+                                if ($gambar === '') {
+                                    $imageUrl = asset('assets/images/blog-image1.jpg');
+                                } elseif (str_starts_with($gambar, 'http://') || str_starts_with($gambar, 'https://')) {
+                                    $imageUrl = $gambar;
+                                } elseif (str_starts_with($gambar, 'storage/')) {
+                                    $imageUrl = asset($gambar);
+                                } else {
+                                    $imageUrl = asset('storage/'.$gambar);
+                                }
                                 $author = $row->creator?->nama ?: 'Admin';
                                 $category = $row->category?->nama ?: 'Umum';
                                 $date = $row->published_at ?? $row->created_at;

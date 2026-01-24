@@ -4,6 +4,7 @@ use App\Http\Controllers\PesertaAuthController;
 use App\Http\Controllers\PesertaDashboardController;
 use App\Models\News;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
 
 Route::get('/', function () {
     return view('peserta.index');
@@ -34,6 +35,12 @@ Route::get('/shop', function () {
 })->name('peserta.shop');
 
 Route::get('/blog', function () {
+    if (! Schema::hasTable('news')) {
+        return view('peserta.blog', [
+            'news' => collect(),
+        ]);
+    }
+
     $news = News::query()
         ->with(['category', 'creator'])
         ->where('status', 'published')
@@ -48,6 +55,8 @@ Route::get('/blog', function () {
 })->name('peserta.blog');
 
 Route::get('/blog/{slug}', function (string $slug) {
+    abort_if(! Schema::hasTable('news'), 404);
+
     $news = News::query()
         ->with(['category', 'creator'])
         ->where('status', 'published')
