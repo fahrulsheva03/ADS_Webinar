@@ -125,7 +125,15 @@
                             </thead>
                             <tbody>
                                 @forelse ($news as $n)
-                                    @php([$badgeClass, $badgeLabel] = $statusBadge($n->status))
+                                    @php
+                                        $badgeClass = 'bg-light text-dark';
+                                        $badgeLabel = '-';
+                                        $badge = $statusBadge($n->status);
+                                        if (is_array($badge) && count($badge) >= 2) {
+                                            $badgeClass = (string) $badge[0];
+                                            $badgeLabel = (string) $badge[1];
+                                        }
+                                    @endphp
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center gap-3">
@@ -134,6 +142,7 @@
                                                     style="width: 56px; height: 42px; overflow: hidden; flex: 0 0 auto;"
                                                 >
                                                     @php
+                                                        $thumbUrl = null;
                                                         $thumb = (string) ($n->gambar_utama ?? '');
                                                         if ($thumb === '') {
                                                             $thumbUrl = null;
@@ -145,7 +154,7 @@
                                                             $thumbUrl = asset('storage/'.$thumb);
                                                         }
                                                     @endphp
-                                                    @if ($thumbUrl)
+                                                    @if ($thumbUrl ?? null)
                                                         <img
                                                             src="{{ $thumbUrl }}"
                                                             alt="{{ $n->judul }}"
