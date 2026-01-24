@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\EventSesiController as AdminEventSesiController;
 use App\Http\Controllers\Admin\KontenHalamanController;
 use App\Http\Controllers\Admin\LaporanKehadiranController as AdminLaporanKehadiranController;
 use App\Http\Controllers\Admin\LiveSessionController as AdminLiveSessionController;
+use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\PaketController as AdminPaketController;
 use App\Http\Controllers\Admin\PesertaController as AdminPesertaController;
 use App\Http\Controllers\Admin\ScanController as AdminScanController;
@@ -87,6 +88,14 @@ Route::prefix('admin')->group(function () {
             Route::get('/', [KontenHalamanController::class, 'home'])->name('admin.konten-halaman.home');
             Route::post('/', [KontenHalamanController::class, 'updateHome'])->name('admin.konten-halaman.home.update');
             Route::post('/upload-image', [KontenHalamanController::class, 'uploadImage'])->name('admin.konten-halaman.upload-image');
+        });
+        Route::prefix('news')->group(function () {
+            Route::get('/', [NewsController::class, 'index'])->name('admin.news.index');
+            Route::get('/create', [NewsController::class, 'create'])->name('admin.news.create');
+            Route::get('/{news}/edit', [NewsController::class, 'edit'])->name('admin.news.edit');
+            Route::post('/', [NewsController::class, 'store'])->name('admin.news.store');
+            Route::put('/{news}', [NewsController::class, 'update'])->name('admin.news.update');
+            Route::delete('/{news}', [NewsController::class, 'destroy'])->name('admin.news.destroy');
         });
     });
 });

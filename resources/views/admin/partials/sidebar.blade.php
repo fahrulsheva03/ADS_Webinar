@@ -30,10 +30,18 @@
                     <span class="nav-text">Paket & Akses</span>
                 </a>
             </li>
+            
             <li>
                 <a href="{{ route('admin.konten-halaman.home') }}" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-notepad" aria-hidden="true"></i>
                     <span class="nav-text">Konten Halaman</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="{{ route('admin.news.index') }}" class="ai-icon" aria-expanded="false">
+                    <i class="flaticon-381-newspaper" aria-hidden="true"></i>
+                    <span class="nav-text">News</span>
                 </a>
             </li>
             <li>

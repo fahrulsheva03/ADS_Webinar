@@ -1,17 +1,20 @@
 @extends('peserta.partials.app')
 
 @section('content')
+    @php
+        $items = $news ?? collect();
+    @endphp
     <!-- BANNER SECTION START -->
     <section class="sub-banner-main-section event-banner-section w-100 float-left">
         <div class="container">
             <div class="sub-banner-inner-con">
-                <h1 data-aos="fade-up" data-aos-duration="700">THREE COLUMN</h1>
-                <p data-aos="fade-up" data-aos-duration="700">Inspiring Talks, Meet the Best Product People Around the World,
+                <h1 data-aos="fade-up" data-aos-duration="700">BLOG</h1>
+                <p data-aos="fade-up" data-aos-duration="700">Berita terbaru seputar event, materi, dan update penting,
                     <br> and Party Together After the Event!</p>
                 <nav aria-label="breadcrumb" data-aos="fade-up" data-aos-duration="700">
                     <ol class="breadcrumb d-inline-block mb-0">
-                        <li class="breadcrumb-item d-inline-block"><a href="index.html">HOME</a></li>
-                        <li class="breadcrumb-item active d-inline-block" aria-current="page">THREE COLUMN</li>
+                        <li class="breadcrumb-item d-inline-block"><a href="{{ route('peserta.index') }}">HOME</a></li>
+                        <li class="breadcrumb-item active d-inline-block" aria-current="page">BLOG</li>
                     </ol>
                 </nav>
             </div>
@@ -26,169 +29,47 @@
                 <div id="blog" class="col-xl-12">
                     <!-- threecolumn-blog  -->
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-duration="700">
-                            <div class="blog-box blog-box1">
-                                <figure class="blog-image mb-0">
-                                    <img src="assets/images/blog-image1.jpg" alt="" class="img-fluid">
-                                </figure>
-                                <div class="lower-portion">
-                                    <i class="fas fa-user"></i>
-                                    <span class="text-size-14 text-mr">By : Admin</span>
-                                    <i class="tag-mb fas fa-tag"></i>
-                                    <span class="text-size-14">Virtual Assistant</span>
-                                    <h5>Why You Need Virtual Assistant for Your Company</h5>
-                                </div>
-                                <div class="button-portion ">
-                                    <div class="date">
-                                        <i class="mb-0 calendar-ml fas fa-calendar-alt"></i>
-                                        <span class="mb-0 text-size-14">Dec 20,2022</span>
-                                    </div>
-                                    <div class="button">
-                                        <a class="mb-0 read_more text-decoration-none" href="single-blog.html">Read
-                                            More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-duration="700">
-                            <div class="blog-box blog-box2">
-                                <figure class="blog-image mb-0">
-                                    <img src="assets/images/blog-image2.jpg" alt="" class="img-fluid">
-                                </figure>
-                                <div class="lower-portion">
-                                    <i class="fas fa-user"></i>
-                                    <span class="text-size-14 text-mr">By : Admin</span>
-                                    <i class="tag-mb fas fa-tag"></i>
-                                    <span class="text-size-14">Virtual Assistant</span>
-                                    <h5>Why You Need Virtual Assistant for Your Company</h5>
-                                </div>
-                                <div class="button-portion">
-                                    <div class="date">
-                                        <i class="mb-0 calendar-ml fas fa-calendar-alt"></i>
-                                        <span class="mb-0 text-size-14">Dec 20,2022</span>
-                                    </div>
-                                    <div class="button">
-                                        <a class="mb-0 read_more text-decoration-none" href="single-blog.html">Read
-                                            More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-duration="700">
-                            <div class="blog-box">
-                                <figure class="blog-image mb-0">
-                                    <img src="assets/images/blog-image3.jpg" alt="" class="img-fluid">
-                                </figure>
-                                <div class="lower-portion">
-                                    <i class="fas fa-user"></i>
-                                    <span class="text-size-14 text-mr">By : Admin</span>
-                                    <i class="tag-mb fas fa-tag"></i>
-                                    <span class="text-size-14">Virtual Assistant</span>
-                                    <h5>Why You Need Virtual Assistant for Your Company</h5>
-                                </div>
-                                <div class="button-portion">
-                                    <div class="date">
-                                        <i class="mb-0 calendar-ml fas fa-calendar-alt"></i>
-                                        <span class="mb-0 text-size-14">Dec 20,2022</span>
-                                    </div>
-                                    <div class="button">
-                                        <a class="mb-0 read_more text-decoration-none" href="single-blog.html">Read
-                                            More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-duration="700">
-                            <div class="blog-box">
-                                <div class="post-item-wrap position-relative">
-                                    <div class="post-audio position-relative">
-                                        <a href="#"><img src="assets/images/blog-image4.jpg" alt=""
-                                                class="img-fluid"></a>
-                                        <audio class="position-absolute" controls="">
-                                            <source src="horse.html" type="audio/ogg">
-                                            <source src="assets/audio/horse.html" type="audio/mpeg">
-                                        </audio>
-                                    </div>
+                        @forelse ($items as $row)
+                            @php
+                                $imageUrl = $row->gambar_utama ? Storage::disk('public')->url($row->gambar_utama) : asset('assets/images/blog-image1.jpg');
+                                $author = $row->creator?->nama ?: 'Admin';
+                                $category = $row->category?->nama ?: 'Umum';
+                                $date = $row->published_at ?? $row->created_at;
+                            @endphp
+                            <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-duration="700">
+                                <div class="blog-box blog-box1">
+                                    <figure class="blog-image mb-0">
+                                        <img src="{{ $imageUrl }}" alt="{{ $row->judul }}" class="img-fluid">
+                                    </figure>
                                     <div class="lower-portion">
                                         <i class="fas fa-user"></i>
-                                        <span class="text-size-14 text-mr">By : Admin</span>
+                                        <span class="text-size-14 text-mr">By : {{ $author }}</span>
                                         <i class="tag-mb fas fa-tag"></i>
-                                        <span class="text-size-14">Virtual Assistant</span>
-                                        <h5>Why You Need Virtual Assistant for Your Company</h5>
+                                        <span class="text-size-14">{{ $category }}</span>
+                                        <h5>{{ $row->judul }}</h5>
                                     </div>
-                                    <div class="button-portion">
+                                    <div class="button-portion ">
                                         <div class="date">
                                             <i class="mb-0 calendar-ml fas fa-calendar-alt"></i>
-                                            <span class="mb-0 text-size-14">Dec 20,2022</span>
+                                            <span class="mb-0 text-size-14">{{ optional($date)->format('M d, Y') }}</span>
                                         </div>
                                         <div class="button">
-                                            <a class="mb-0 read_more text-decoration-none" href="single-blog.html">Read
-                                                More</a>
+                                            <a class="mb-0 read_more text-decoration-none" href="{{ route('peserta.blog.show', $row->slug) }}">Read More</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-duration="700">
-                            <div class="blog-box">
-                                <div class="post-item-wrap position-relative">
-                                    <div class="post-video">
-                                        <div class="embed-container"><iframe
-                                                src="https://player.vimeo.com/video/157467640?background=1"></iframe>
-                                        </div>
-                                    </div>
-                                    <div class="lower-portion">
-                                        <i class="fas fa-user"></i>
-                                        <span class="text-size-14 text-mr">By : Admin</span>
-                                        <i class="tag-mb fas fa-tag"></i>
-                                        <span class="text-size-14">Virtual Assistant</span>
-                                        <h5>Why You Need Virtual Assistant for Your Company</h5>
-                                    </div>
-                                    <div class="button-portion">
-                                        <div class="date">
-                                            <i class="mb-0 calendar-ml fas fa-calendar-alt"></i>
-                                            <span class="mb-0 text-size-14">Dec 20,2022</span>
-                                        </div>
-                                        <div class="button">
-                                            <a class="mb-0 read_more text-decoration-none" href="single-blog.html">Read
-                                                More</a>
-                                        </div>
-                                    </div>
-                                </div>
+                        @empty
+                            <div class="col-12">
+                                <div class="text-center text-muted py-5">Belum ada berita yang dipublikasikan.</div>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-12" data-aos="fade-up" data-aos-duration="700">
-                            <div class="blog-box blogpost-box">
-                                <div class="post-item-wrap position-relative">
-                                    <div class="post-video">
-                                        <div class="fluid-width-video-wrapper">
-                                            <iframe width="560" height="376"
-                                                src="https://www.youtube.com/embed/dA8Smj5tZOQ"></iframe>
-                                        </div>
-                                    </div>
-                                    <div class="infinite-blog float-left">
-                                        <div class="lower-portion">
-                                            <i class="fas fa-user"></i>
-                                            <span class="text-size-14 text-mr">By : Admin</span>
-                                            <i class="tag-mb fas fa-tag"></i>
-                                            <span class="text-size-14">Virtual Assistant</span>
-                                            <h5>Why You Need Virtual Assistant for Your Company</h5>
-                                        </div>
-                                        <div class="button-portion">
-                                            <div class="date">
-                                                <i class="mb-0 calendar-ml fas fa-calendar-alt"></i>
-                                                <span class="mb-0 text-size-14">Dec 20,2022</span>
-                                            </div>
-                                            <div class="button">
-                                                <a class="mb-0 read_more text-decoration-none"
-                                                    href="single-blog.html">Read More</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforelse
                     </div>
+                    @if ($items instanceof \Illuminate\Pagination\LengthAwarePaginator)
+                        <div class="d-flex justify-content-center mt-4">
+                            {{ $items->onEachSide(1)->links('pagination::bootstrap-5') }}
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
