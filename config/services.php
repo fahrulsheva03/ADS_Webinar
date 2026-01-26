@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    'midtrans' => [
+        'client_key' => env('CLIENT_KEY'),
+        'server_key' => env('SERVER_KEY'),
+        'is_production' => (bool) env('MIDTRANS_IS_PRODUCTION', false),
+        'snap_url' => env('MIDTRANS_SNAP_URL', 'https://app.sandbox.midtrans.com/snap/v1/transactions'),
+        'snap_js_url' => env('MIDTRANS_SNAP_JS_URL', 'https://app.sandbox.midtrans.com/snap/snap.js'),
+    ],
+
 ];

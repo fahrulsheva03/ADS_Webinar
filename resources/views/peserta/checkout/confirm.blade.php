@@ -5,6 +5,7 @@
         $pesanan = $pesanan ?? null;
         $metodeOptions = $metodeOptions ?? [];
         $deadlineAt = $deadlineAt ?? null;
+        $midtransStatus = strtolower((string) request()->query('midtrans', ''));
 
         $fmtRp = function ($n) {
             return 'Rp '.number_format((float) ($n ?? 0), 0, ',', '.');
@@ -155,6 +156,22 @@
                                     </div>
                                 </div>
                             @else
+                                @if ($midtransStatus !== '')
+                                    @if ($midtransStatus === 'success')
+                                        <div class="alert alert-success" role="alert">
+                                            Pembayaran berhasil diproses. Jika status belum berubah menjadi lunas, tunggu beberapa saat.
+                                        </div>
+                                    @elseif ($midtransStatus === 'pending')
+                                        <div class="alert alert-warning" role="alert">
+                                            Pembayaran masih pending. Silakan selesaikan pembayaran, status akan ter-update otomatis.
+                                        </div>
+                                    @else
+                                        <div class="alert alert-danger" role="alert">
+                                            Pembayaran gagal atau dibatalkan. Silakan coba lagi dari halaman pembayaran.
+                                        </div>
+                                    @endif
+                                @endif
+
                                 <div class="border rounded p-3 bg-light">
                                     <div class="fw-semibold text-black">{{ $event?->judul ?? 'Event' }}</div>
                                     <div class="text-muted small mt-1">Paket: {{ $paket?->nama_paket ?? '-' }}</div>
@@ -240,9 +257,9 @@
                             @endif
 
                             <div class="mt-3 d-grid gap-2">
-                                @if ($pesanan && $isPending && ! $hasMetode && ! $isExpired && ! $isFailed)
+                                @if ($pesanan && $isPending && ! $isExpired && ! $isFailed)
                                     <a href="{{ route('peserta.checkout.payment', ['pesanan' => $pesanan->id]) }}" class="btn btn-primary" style="border-radius: 12px; font-weight: 900;">
-                                        Pilih Metode Pembayaran
+                                        Kembali ke Pembayaran
                                     </a>
                                 @endif
 
@@ -256,7 +273,7 @@
                             </div>
 
                             <div class="text-muted small mt-3">
-                                Untuk status pending, verifikasi dilakukan oleh admin. Status akan otomatis terlihat di dashboard setelah diperbarui.
+                                Untuk status pending, sistem menunggu notifikasi dari Midtrans. Status akan otomatis terlihat di dashboard setelah diperbarui.
                             </div>
                         </div>
                     </div>

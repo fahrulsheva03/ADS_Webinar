@@ -5,6 +5,8 @@
         $pesanan = $pesanan ?? null;
         $metodeOptions = $metodeOptions ?? [];
         $deadlineAt = $deadlineAt ?? null;
+        $midtransClientKey = (string) ($midtransClientKey ?? '');
+        $midtransSnapJsUrl = (string) ($midtransSnapJsUrl ?? 'https://app.sandbox.midtrans.com/snap/snap.js');
 
         $fmtRp = function ($n) {
             return 'Rp '.number_format((float) ($n ?? 0), 0, ',', '.');
@@ -134,8 +136,8 @@
                         <div class="pay-card__header">
                             <div class="d-flex align-items-start justify-content-between" style="gap: 12px;">
                                 <div>
-                                    <div class="fw-semibold text-black">Metode pembayaran</div>
-                                    <div class="text-muted small">Pilih metode, ikuti instruksi, lalu lanjut konfirmasi.</div>
+                                    <div class="fw-semibold text-black">Pembayaran via Midtrans</div>
+                                    <div class="text-muted small">Klik bayar untuk membuka halaman pembayaran Midtrans.</div>
                                 </div>
                                 <span class="badge bg-{{ $uiStatusCls }}">{{ $uiStatusText }}</span>
                             </div>
@@ -178,57 +180,29 @@
                                     </div>
                                 </div>
                             @else
-                                <div class="text-muted small mb-3">
-                                    Silakan selesaikan pembayaran untuk mengaktifkan paket Anda.
+                                <div class="border rounded p-3 bg-light">
+                                    <div class="fw-semibold text-black">Kode Pesanan: {{ $pesanan->kode_pesanan }}</div>
+                                    <div class="text-muted small mt-1">Total: {{ $fmtRp($pesanan->total_bayar ?? 0) }}</div>
                                 </div>
 
-                                <form action="{{ route('peserta.checkout.payment.method', ['pesanan' => $pesanan->id]) }}" method="post">
-                                    @csrf
-
-                                    <div class="d-flex flex-column" style="gap: 10px;">
-                                        @foreach ($metodeOptions as $value => $label)
-                                            @php
-                                                $checked = (string) ($pesanan->metode_pembayaran ?? '') === (string) $value;
-                                            @endphp
-                                            <label class="border rounded p-3 d-flex align-items-start justify-content-between" style="cursor: pointer; gap: 12px;">
-                                                <span class="d-flex align-items-start" style="gap: 10px;">
-                                                    <input type="radio" name="metode_pembayaran" value="{{ $value }}" @checked($checked) style="margin-top: 4px;">
-                                                    <span>
-                                                        <span class="fw-semibold text-black">{{ $label }}</span>
-                                                        <span class="d-block text-muted small mt-1">
-                                                            @if (str_starts_with((string) $value, 'bank_'))
-                                                                Transfer sesuai nominal total, lalu simpan bukti pembayaran.
-                                                            @else
-                                                                Bayar lewat aplikasi e-wallet, lalu simpan bukti pembayaran.
-                                                            @endif
-                                                        </span>
-                                                    </span>
-                                                </span>
-                                                <i class="fas fa-chevron-right text-muted" aria-hidden="true"></i>
-                                            </label>
-                                        @endforeach
+                                @if ($midtransClientKey === '')
+                                    <div class="alert alert-warning mt-3 mb-0" role="alert">
+                                        Konfigurasi Midtrans belum tersedia. Hubungi admin untuk bantuan.
                                     </div>
-
-                                    @error('metode_pembayaran')
-                                        <div class="text-danger small mt-2">{{ $message }}</div>
-                                    @enderror
-
+                                @else
                                     <div class="mt-3 d-flex flex-wrap" style="gap: 10px;">
-                                        <button type="submit" class="btn btn-primary" style="border-radius: 12px; font-weight: 900;">
-                                            Lanjut ke Konfirmasi
+                                        <button type="button" id="btnPayMidtrans" class="btn btn-primary" style="border-radius: 12px; font-weight: 900;">
+                                            Bayar Sekarang
                                         </button>
-                                        <a href="{{ route('peserta.contact') }}" class="btn btn-outline-secondary" style="border-radius: 12px; font-weight: 900;">
-                                            Hubungi Admin
+                                        <a href="{{ route('peserta.checkout.confirm', ['pesanan' => $pesanan->id]) }}" class="btn btn-outline-secondary" style="border-radius: 12px; font-weight: 900;">
+                                            Lihat Status
                                         </a>
                                     </div>
-                                </form>
 
-                                <div class="border rounded p-3 bg-light mt-4">
-                                    <div class="fw-semibold text-black">Instruksi pembayaran</div>
-                                    <div class="text-muted mt-1">
-                                        Setelah memilih metode, lakukan pembayaran sesuai total. Lanjutkan ke halaman konfirmasi untuk melihat ringkasan dan status pemrosesan.
+                                    <div class="text-muted small mt-3 mb-0">
+                                        Setelah pembayaran, status akan diperbarui otomatis dari Midtrans.
                                     </div>
-                                </div>
+                                @endif
                             @endif
                         </div>
                     </div>
@@ -305,6 +279,9 @@
     </section>
 
     @push('scripts')
+        @if ($midtransClientKey !== '')
+            <script src="{{ $midtransSnapJsUrl }}" data-client-key="{{ $midtransClientKey }}"></script>
+        @endif
         <script>
             (function () {
                 const countdownEl = document.getElementById('deadlineCountdown');
@@ -338,5 +315,92 @@
                 setInterval(tick, 1000);
             })();
         </script>
+
+        @if ($pesanan && $isPending && ! $isExpired && ! $isFailed && $midtransClientKey !== '')
+            <script>
+                (function () {
+                    const btn = document.getElementById('btnPayMidtrans');
+                    if (!btn) return;
+
+                    const csrf = @json(csrf_token());
+                    const tokenUrl = @json(route('peserta.checkout.midtrans.token', ['pesanan' => $pesanan->id]));
+                    const confirmUrl = @json(route('peserta.checkout.confirm', ['pesanan' => $pesanan->id]));
+
+                    function setLoading(isLoading) {
+                        btn.disabled = !!isLoading;
+                        btn.setAttribute('aria-busy', isLoading ? 'true' : 'false');
+                    }
+
+                    async function createToken() {
+                        const resp = await fetch(tokenUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'X-CSRF-TOKEN': csrf,
+                            },
+                            body: JSON.stringify({}),
+                        });
+
+                        const data = await resp.json().catch(() => ({}));
+                        if (!resp.ok) {
+                            const msg = (data && data.message) ? String(data.message) : 'Gagal membuat transaksi Midtrans.';
+                            throw new Error(msg);
+                        }
+
+                        if (!data || !data.token) {
+                            throw new Error('Token Midtrans tidak tersedia.');
+                        }
+
+                        return String(data.token);
+                    }
+
+                    async function pay() {
+                        if (!window.snap || typeof window.snap.pay !== 'function') {
+                            if (typeof Swal !== 'undefined') {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Midtrans belum siap',
+                                    text: 'Coba refresh halaman atau hubungi admin.',
+                                });
+                            }
+                            return;
+                        }
+
+                        setLoading(true);
+                        try {
+                            const token = await createToken();
+                            window.snap.pay(token, {
+                                onSuccess: function () {
+                                    window.location.href = confirmUrl + '?midtrans=success';
+                                },
+                                onPending: function () {
+                                    window.location.href = confirmUrl + '?midtrans=pending';
+                                },
+                                onError: function () {
+                                    window.location.href = confirmUrl + '?midtrans=error';
+                                },
+                                onClose: function () {
+                                    setLoading(false);
+                                }
+                            });
+                        } catch (e) {
+                            setLoading(false);
+                            if (typeof Swal !== 'undefined') {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Gagal memulai pembayaran',
+                                    text: String(e && e.message ? e.message : e),
+                                });
+                            }
+                        }
+                    }
+
+                    btn.addEventListener('click', function () {
+                        pay();
+                    });
+                })();
+            </script>
+        @endif
     @endpush
 @endsection
