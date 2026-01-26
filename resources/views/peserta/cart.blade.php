@@ -163,15 +163,19 @@
                 <div class="checkout-steps" aria-label="Status checkout">
                     <div class="checkout-step is-active">
                         <span class="checkout-step__dot">1</span>
-                        <span class="checkout-step__label">Keranjang</span>
+                        <span class="checkout-step__label">Pilih Paket</span>
                     </div>
                     <div class="checkout-step">
                         <span class="checkout-step__dot">2</span>
-                        <span class="checkout-step__label">Pembayaran</span>
+                        <span class="checkout-step__label">Bayar</span>
                     </div>
                     <div class="checkout-step">
                         <span class="checkout-step__dot">3</span>
                         <span class="checkout-step__label">Konfirmasi</span>
+                    </div>
+                    <div class="checkout-step">
+                        <span class="checkout-step__dot">4</span>
+                        <span class="checkout-step__label">Selesai</span>
                     </div>
                 </div>
             </div>
@@ -227,9 +231,14 @@
 
                             <div class="mt-3 d-grid gap-2">
                                 @auth
-                                    <a id="btn-checkout" href="{{ route('peserta.checkout.payment') }}" class="btn btn-primary" style="border-radius: 12px; font-weight: 900;">
+                                    <button id="btn-checkout" type="button" class="btn btn-primary" style="border-radius: 12px; font-weight: 900;">
                                         Lanjutkan ke Pembayaran
-                                    </a>
+                                    </button>
+                                    <form id="checkout-form" action="{{ route('peserta.checkout.start') }}" method="post" class="d-none">
+                                        @csrf
+                                        <input type="hidden" name="paket_id" id="checkout-paket-id">
+                                        <input type="hidden" name="qty" id="checkout-qty">
+                                    </form>
                                 @else
                                     <button id="btn-checkout-guest" type="button" class="btn btn-primary" style="border-radius: 12px; font-weight: 900;" disabled>
                                         Lanjutkan ke Pembayaran
@@ -419,6 +428,33 @@
                         return;
                     }
 
+                    const checkoutBtn = e.target.closest && e.target.closest('#btn-checkout');
+                    if (checkoutBtn) {
+                        const cart = readCart();
+                        if (!cart.items.length) return;
+                        if (cart.items.length > 1 && typeof Swal !== 'undefined') {
+                            Swal.fire({
+                                icon: 'info',
+                                title: 'Checkout 1 paket',
+                                text: 'Saat ini checkout dilakukan untuk 1 paket. Paket pertama akan diproses.',
+                                confirmButtonText: 'OK',
+                                allowOutsideClick: false,
+                            });
+                        }
+                        const first = cart.items[0] || {};
+                        const paketId = parseInt(first.paket_id || 0, 10);
+                        const qty = Math.max(1, parseInt(first.qty || 1, 10));
+                        const form = document.getElementById('checkout-form');
+                        const paketInput = document.getElementById('checkout-paket-id');
+                        const qtyInput = document.getElementById('checkout-qty');
+                        if (!form || !paketInput || !qtyInput) return;
+                        if (!paketId) return;
+                        paketInput.value = String(paketId);
+                        qtyInput.value = String(qty);
+                        form.submit();
+                        return;
+                    }
+
                     const checkoutGuest = e.target.closest && e.target.closest('#btn-checkout-guest');
                     if (checkoutGuest) {
                         if (typeof Swal === 'undefined') {
@@ -439,9 +475,9 @@
                 upsertSeed();
                 render();
 
-                if (!isLoggedIn) {
-                    const btn = document.getElementById('btn-checkout-guest');
+                {
                     const cart = readCart();
+                    const btn = document.getElementById(isLoggedIn ? 'btn-checkout' : 'btn-checkout-guest');
                     if (btn) btn.disabled = cart.items.length === 0;
                 }
 

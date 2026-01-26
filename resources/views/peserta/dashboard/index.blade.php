@@ -290,6 +290,95 @@
             color: var(--dashboard-primary);
         }
 
+        .payment-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-weight: 800;
+            border: 1px solid rgba(17, 24, 39, 0.10);
+            background: rgba(255, 255, 255, 0.85);
+            color: #111827;
+        }
+
+        .payment-badge.is-warning {
+            border-color: rgba(234, 179, 8, 0.30);
+            background: rgba(234, 179, 8, 0.16);
+            color: #92400e;
+        }
+
+        .payment-badge.is-info {
+            border-color: rgba(59, 130, 246, 0.30);
+            background: rgba(59, 130, 246, 0.14);
+            color: #1d4ed8;
+        }
+
+        .payment-badge.is-success {
+            border-color: rgba(34, 197, 94, 0.30);
+            background: rgba(34, 197, 94, 0.14);
+            color: #166534;
+        }
+
+        .payment-badge.is-muted {
+            border-color: rgba(0, 0, 0, 0.10);
+            background: rgba(0, 0, 0, 0.04);
+            color: #374151;
+        }
+
+        .checkout-progress {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 12px 12px;
+            border: 1px solid rgba(17, 24, 39, 0.08);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.92);
+        }
+
+        .checkout-progress__step {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 14px;
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        .checkout-progress__dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            background: rgba(0, 0, 0, 0.08);
+            color: #000000;
+            flex: 0 0 auto;
+        }
+
+        .checkout-progress__label {
+            font-weight: 900;
+            color: #111827;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .checkout-progress__step.is-active {
+            background: rgba(248, 0, 0, 0.08);
+            border: 1px solid rgba(248, 0, 0, 0.18);
+        }
+
+        .checkout-progress__step.is-active .checkout-progress__dot {
+            background: rgba(248, 0, 0, 0.16);
+            color: rgb(248, 0, 0);
+        }
+
         .sesi-item {
             border: 1px solid rgba(17, 24, 39, 0.08);
             border-radius: 14px;
@@ -439,6 +528,8 @@
 @section('content')
     @php
         $pesanan = $pesanan ?? collect();
+        $pesananTerbaru = $pesananTerbaru ?? null;
+        $riwayatPembayaran = $riwayatPembayaran ?? collect();
     @endphp
 
     <div class="peserta-dashboard">
@@ -538,6 +629,273 @@
         <main class="w-100 float-left padding-top padding-bottom" role="main">
             <div class="container">
                 <div id="dashboardTop" aria-hidden="true"></div>
+
+                @php
+                    $orderTerbaru = $pesananTerbaru;
+                    $fmtRp = function ($n) {
+                        return 'Rp '.number_format((float) ($n ?? 0), 0, ',', '.');
+                    };
+
+                    $orderStatusVal = strtolower((string) ($orderTerbaru?->status_pembayaran ?? ''));
+                    $orderHasMetode = (string) ($orderTerbaru?->metode_pembayaran ?? '') !== '';
+                    $orderDeadlineAt = $orderTerbaru?->created_at ? optional($orderTerbaru->created_at)->copy()->addHours(24) : null;
+
+                    $orderIsPending = $orderStatusVal === 'pending';
+                    $orderIsPaid = $orderStatusVal === 'paid';
+                    $orderIsExpired = $orderStatusVal === 'expired';
+                    $orderIsFailed = $orderStatusVal === 'failed';
+
+                    $orderUiStatusText = $orderIsPaid ? 'Lunas' : ($orderIsExpired ? 'Expired' : ($orderIsFailed ? 'Gagal' : ($orderHasMetode ? 'Sedang Diproses' : 'Pending')));
+                    $orderUiStatusClass = $orderIsPaid ? 'is-success' : ($orderIsExpired || $orderIsFailed ? 'is-muted' : ($orderHasMetode ? 'is-info' : 'is-warning'));
+
+                    $orderStep = 1;
+                    if ($orderTerbaru) {
+                        $orderStep = $orderIsPaid ? 4 : ($orderIsPending ? ($orderHasMetode ? 3 : 2) : 2);
+                    }
+
+                    $orderEvent = $orderTerbaru?->paket?->event;
+                    $orderPaket = $orderTerbaru?->paket;
+                    $orderJumlahSesi = is_object($orderPaket?->sesi) ? $orderPaket->sesi->count() : 0;
+                    $orderNeedReminder = false;
+                    if ($orderIsPending && $orderDeadlineAt && now()->lt($orderDeadlineAt) && ! $orderHasMetode) {
+                        $orderNeedReminder = now()->diffInMinutes($orderDeadlineAt) <= 120;
+                    }
+                @endphp
+
+                <section class="dashboard-panel mb-4" aria-label="Informasi paket dan pembayaran">
+                    <div class="dashboard-panel__header">
+                        <div class="d-flex align-items-center justify-content-between" style="gap: 12px;">
+                            <div class="d-flex align-items-center" style="gap: 12px;">
+                                <span class="dashboard-step__icon" aria-hidden="true">
+                                    <i class="fas fa-receipt"></i>
+                                </span>
+                                <div>
+                                    <div class="dashboard-panel__title">Paket &amp; Pembayaran</div>
+                                    <div class="dashboard-panel__subtitle">Pilih paket, bayar, konfirmasi, lalu akses event.</div>
+                                </div>
+                            </div>
+                            @if ($orderTerbaru)
+                                <span class="payment-badge {{ $orderUiStatusClass }}" aria-label="Status pembayaran">
+                                    <i class="fas fa-info-circle" aria-hidden="true"></i>
+                                    <span>{{ $orderUiStatusText }}</span>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="p-3 p-md-4">
+                        <div class="checkout-progress mb-3" aria-label="Progress checkout">
+                            <div class="checkout-progress__step {{ $orderStep === 1 ? 'is-active' : '' }}">
+                                <span class="checkout-progress__dot">1</span>
+                                <span class="checkout-progress__label">Pilih Paket</span>
+                            </div>
+                            <div class="checkout-progress__step {{ $orderStep === 2 ? 'is-active' : '' }}">
+                                <span class="checkout-progress__dot">2</span>
+                                <span class="checkout-progress__label">Bayar</span>
+                            </div>
+                            <div class="checkout-progress__step {{ $orderStep === 3 ? 'is-active' : '' }}">
+                                <span class="checkout-progress__dot">3</span>
+                                <span class="checkout-progress__label">Konfirmasi</span>
+                            </div>
+                            <div class="checkout-progress__step {{ $orderStep === 4 ? 'is-active' : '' }}">
+                                <span class="checkout-progress__dot">4</span>
+                                <span class="checkout-progress__label">Selesai</span>
+                            </div>
+                        </div>
+
+                        @if (! $orderTerbaru)
+                            <div class="border rounded p-4 bg-light">
+                                <div class="fw-semibold text-black">Belum memilih paket</div>
+                                <div class="text-muted mt-1">Silakan pilih paket terlebih dahulu untuk melanjutkan pembayaran.</div>
+                                <div class="mt-3 d-flex flex-wrap" style="gap: 10px;">
+                                    <a href="{{ route('peserta.shop') }}" class="btn btn-primary-soft" aria-label="Pilih paket di shop">
+                                        Pilih Paket <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="{{ route('peserta.cart') }}" class="btn btn-outline-secondary" aria-label="Buka keranjang">
+                                        Buka Keranjang
+                                    </a>
+                                </div>
+                            </div>
+                        @else
+                            <div class="row" style="row-gap: 14px;">
+                                <div class="col-12 col-lg-7">
+                                    <div class="border rounded p-3 h-100" style="background: #ffffff;">
+                                        <div class="fw-semibold text-black">Detail paket yang dipilih</div>
+                                        <div class="text-muted small mt-1">Pastikan nama paket dan total sudah sesuai.</div>
+
+                                        <div class="mt-3">
+                                            <div style="font-weight: 950; letter-spacing: -0.02em; font-size: 16px; line-height: 1.25;">
+                                                {{ $orderPaket?->nama_paket ?? '-' }}
+                                            </div>
+                                            <div class="text-muted mt-1">
+                                                {{ $orderEvent?->judul ?? 'Event' }}
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <div class="d-flex align-items-center justify-content-between py-2 border-top">
+                                                <div class="text-muted fw-semibold">Harga</div>
+                                                <div class="fw-bold text-black">{{ $fmtRp($orderPaket?->harga ?? 0) }}</div>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between py-2 border-top">
+                                                <div class="text-muted fw-semibold">Total</div>
+                                                <div class="fw-bold text-black">{{ $fmtRp($orderTerbaru?->total_bayar ?? 0) }}</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <div class="fw-semibold text-black">Fitur paket</div>
+                                            <ul class="text-muted small mb-0 mt-2" style="padding-left: 18px;">
+                                                <li>Akses Live: {{ (bool) ($orderPaket?->akses_live ?? false) ? 'Ya' : 'Tidak' }}</li>
+                                                <li>Akses Rekaman: {{ (bool) ($orderPaket?->akses_rekaman ?? false) ? 'Ya' : 'Tidak' }}</li>
+                                                <li>Jumlah sesi: {{ $orderJumlahSesi }}</li>
+                                                @if (! is_null($orderPaket?->kuota))
+                                                    <li>Kuota: {{ (int) $orderPaket->kuota }}</li>
+                                                @endif
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-lg-5">
+                                    <div class="border rounded p-3 h-100" style="background: #ffffff;">
+                                        <div class="fw-semibold text-black">Panduan singkat</div>
+                                        <div class="text-muted small mt-1">Ikuti langkah sesuai status pembayaran.</div>
+
+                                        @if ($orderIsPending && ! $orderHasMetode && ! $orderIsExpired && ! $orderIsFailed)
+                                            <div class="alert alert-warning mt-3 mb-0" role="alert">
+                                                Silakan selesaikan pembayaran untuk mengaktifkan paket Anda.
+                                            </div>
+                                        @elseif ($orderIsPending && $orderHasMetode)
+                                            <div class="alert alert-info mt-3 mb-0" role="alert">
+                                                Pembayaran sedang diproses. Kami akan memperbarui status setelah verifikasi.
+                                            </div>
+                                        @elseif ($orderIsPaid)
+                                            <div class="alert alert-success mt-3 mb-0" role="alert">
+                                                Pembayaran berhasil. Paket Anda sudah aktif.
+                                            </div>
+                                        @elseif ($orderIsExpired || $orderIsFailed)
+                                            <div class="alert alert-secondary mt-3 mb-0" role="alert">
+                                                Pesanan tidak dapat diproses. Silakan buat pesanan baru dari keranjang.
+                                            </div>
+                                        @endif
+
+                                        @if ($orderNeedReminder)
+                                            <div class="alert alert-warning mt-3 mb-0" role="alert">
+                                                Pembayaran mendekati batas waktu. Segera selesaikan pembayaran.
+                                            </div>
+                                        @endif
+
+                                        @if ($orderIsPending && $orderDeadlineAt)
+                                            <div class="mt-3">
+                                                <div class="text-muted small">Batas waktu pembayaran</div>
+                                                <div class="fw-semibold text-black" id="orderDeadlineText" data-deadline="{{ optional($orderDeadlineAt)->toIso8601String() }}">
+                                                    {{ optional($orderDeadlineAt)->format('d-m-Y H:i') }}
+                                                </div>
+                                                <div class="text-muted small mt-1" id="orderDeadlineCountdown"></div>
+                                            </div>
+                                        @endif
+
+                                        <div class="mt-3 d-grid gap-2">
+                                            @if ($orderIsPending && ! $orderHasMetode && ! $orderIsExpired && ! $orderIsFailed)
+                                                <a href="{{ route('peserta.checkout.payment', ['pesanan' => $orderTerbaru->id]) }}" class="btn btn-primary-soft" aria-label="Bayar sekarang">
+                                                    Bayar Sekarang <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i>
+                                                </a>
+                                            @elseif ($orderIsPending && $orderHasMetode)
+                                                <a href="{{ route('peserta.checkout.confirm', ['pesanan' => $orderTerbaru->id]) }}" class="btn btn-primary-soft" aria-label="Lihat status pembayaran">
+                                                    Lihat Status <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i>
+                                                </a>
+                                            @elseif ($orderIsPaid)
+                                                <a href="#riwayatEvent" class="btn btn-primary-soft" aria-label="Lihat event">
+                                                    Lihat Event <i class="fas fa-arrow-down ml-1" aria-hidden="true"></i>
+                                                </a>
+                                            @else
+                                                <a href="{{ route('peserta.cart') }}" class="btn btn-primary-soft" aria-label="Buat pesanan baru">
+                                                    Buat Pesanan Baru <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i>
+                                                </a>
+                                            @endif
+
+                                            <a href="{{ route('peserta.shop') }}" class="btn btn-outline-secondary" aria-label="Kembali ke shop">
+                                                Pilih Paket Lain
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </section>
+
+                @if (is_object($riwayatPembayaran) && $riwayatPembayaran->isNotEmpty())
+                    <section class="dashboard-panel mb-4" aria-label="Riwayat pembayaran">
+                        <div class="dashboard-panel__header">
+                            <div class="d-flex align-items-center justify-content-between" style="gap: 12px;">
+                                <div class="d-flex align-items-center" style="gap: 12px;">
+                                    <span class="dashboard-step__icon" aria-hidden="true" style="background: rgba(0, 0, 0, 0.06); border-color: rgba(0, 0, 0, 0.18); color: #000000;">
+                                        <i class="fas fa-history"></i>
+                                    </span>
+                                    <div>
+                                        <div class="dashboard-panel__title">Riwayat Pembayaran</div>
+                                        <div class="dashboard-panel__subtitle">Daftar transaksi terbaru Anda.</div>
+                                    </div>
+                                </div>
+                                <span class="event-badge" aria-label="Total transaksi">
+                                    <i class="fas fa-receipt" aria-hidden="true"></i>
+                                    <span>{{ $riwayatPembayaran->count() }} transaksi</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-3 p-md-4">
+                            <div class="list-group">
+                                @foreach ($riwayatPembayaran as $trx)
+                                    @php
+                                        $s = strtolower((string) ($trx->status_pembayaran ?? ''));
+                                        $hasM = (string) ($trx->metode_pembayaran ?? '') !== '';
+                                        $txt = $s === 'paid' ? 'Lunas' : ($s === 'expired' ? 'Expired' : ($s === 'failed' ? 'Gagal' : ($hasM ? 'Sedang Diproses' : 'Pending')));
+                                        $cls = $s === 'paid' ? 'is-success' : ($s === 'expired' || $s === 'failed' ? 'is-muted' : ($hasM ? 'is-info' : 'is-warning'));
+                                        $evt = $trx->paket?->event;
+                                    @endphp
+                                    <div class="list-group-item dashboard-history-item">
+                                        <div class="d-flex align-items-start justify-content-between" style="gap: 12px;">
+                                            <div style="min-width: 0;">
+                                                <div style="font-weight: 950; letter-spacing: -0.02em; font-size: 16px; line-height: 1.25;">
+                                                    {{ $evt?->judul ?? 'Event' }}
+                                                </div>
+                                                <div class="text-muted" style="font-weight: 600; font-size: 14px;">
+                                                    Paket: {{ $trx->paket?->nama_paket ?? '-' }}
+                                                </div>
+                                                <div class="text-muted small mt-1">
+                                                    Kode: {{ $trx->kode_pesanan }} • {{ optional($trx->created_at)->format('d-m-Y H:i') }}
+                                                </div>
+                                            </div>
+                                            <div class="text-end">
+                                                <div class="payment-badge {{ $cls }}">
+                                                    <i class="fas fa-info-circle" aria-hidden="true"></i>
+                                                    <span>{{ $txt }}</span>
+                                                </div>
+                                                <div class="fw-bold text-black mt-2">{{ $fmtRp($trx->total_bayar ?? 0) }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex flex-wrap mt-3" style="gap: 10px;">
+                                            @if ($s === 'pending' && ! $hasM)
+                                                <a href="{{ route('peserta.checkout.payment', ['pesanan' => $trx->id]) }}" class="btn btn-primary-soft" aria-label="Lanjutkan pembayaran">
+                                                    Bayar Sekarang <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i>
+                                                </a>
+                                            @elseif ($s === 'pending' && $hasM)
+                                                <a href="{{ route('peserta.checkout.confirm', ['pesanan' => $trx->id]) }}" class="btn btn-primary-soft" aria-label="Lihat status transaksi">
+                                                    Lihat Status <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i>
+                                                </a>
+                                            @else
+                                                <a href="{{ route('peserta.checkout.confirm', ['pesanan' => $trx->id]) }}" class="btn btn-outline-secondary" aria-label="Lihat detail transaksi">
+                                                    Detail
+                                                </a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </section>
+                @endif
 
                 @if ($pesanan->isEmpty())
                     <div class="row">
@@ -808,7 +1166,7 @@
                         </div>
                     </div>
 
-                    <section class="dashboard-panel mb-4" aria-label="Riwayat event">
+                    <section class="dashboard-panel mb-4" id="riwayatEvent" aria-label="Riwayat event">
                         <div class="dashboard-panel__header">
                             <div class="d-flex align-items-center justify-content-between" style="gap: 12px;">
                                 <div class="d-flex align-items-center" style="gap: 12px;">
@@ -1085,9 +1443,42 @@
                 }
             }
 
+            function initDeadlineCountdown() {
+                var deadlineTextEl = document.getElementById('orderDeadlineText');
+                var countdownEl = document.getElementById('orderDeadlineCountdown');
+                if (!deadlineTextEl || !countdownEl) return;
+
+                var raw = deadlineTextEl.getAttribute('data-deadline') || '';
+                var deadlineMs = Date.parse(raw);
+                if (!isFinite(deadlineMs)) return;
+
+                function pad(n) {
+                    return String(n).padStart(2, '0');
+                }
+
+                function tick() {
+                    var diff = deadlineMs - Date.now();
+                    if (!isFinite(diff)) return;
+                    if (diff <= 0) {
+                        countdownEl.textContent = 'Batas waktu pembayaran sudah lewat.';
+                        return;
+                    }
+
+                    var totalSeconds = Math.floor(diff / 1000);
+                    var hours = Math.floor(totalSeconds / 3600);
+                    var minutes = Math.floor((totalSeconds % 3600) / 60);
+                    var seconds = totalSeconds % 60;
+                    countdownEl.textContent = 'Sisa waktu: ' + pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+                }
+
+                tick();
+                setInterval(tick, 1000);
+            }
+
             document.addEventListener('DOMContentLoaded', function () {
                 initTooltips();
                 initInteractions();
+                initDeadlineCountdown();
             });
         })();
     </script>

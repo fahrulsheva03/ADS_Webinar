@@ -1,6 +1,32 @@
 @extends('peserta.partials.app')
 
 @section('content')
+    @php
+        $pesanan = $pesanan ?? null;
+        $metodeOptions = $metodeOptions ?? [];
+        $deadlineAt = $deadlineAt ?? null;
+
+        $fmtRp = function ($n) {
+            return 'Rp '.number_format((float) ($n ?? 0), 0, ',', '.');
+        };
+
+        $statusVal = strtolower((string) ($pesanan?->status_pembayaran ?? ''));
+        $isPending = $statusVal === 'pending';
+        $isPaid = $statusVal === 'paid';
+        $isExpired = $statusVal === 'expired';
+        $isFailed = $statusVal === 'failed';
+        $hasMetode = (string) ($pesanan?->metode_pembayaran ?? '') !== '';
+
+        $uiStatusText = $isPaid ? 'Lunas' : ($isExpired ? 'Expired' : ($isFailed ? 'Gagal' : ($hasMetode ? 'Sedang Diproses' : 'Pending')));
+        $uiStatusCls = $isPaid ? 'success' : ($isExpired || $isFailed ? 'secondary' : ($hasMetode ? 'info' : 'warning'));
+
+        $event = $pesanan?->paket?->event;
+        $paket = $pesanan?->paket;
+        $jumlahSesi = is_object($paket?->sesi) ? $paket->sesi->count() : 0;
+        $metodeKey = (string) ($pesanan?->metode_pembayaran ?? '');
+        $metodeLabel = $metodeKey !== '' ? (string) ($metodeOptions[$metodeKey] ?? $metodeKey) : '';
+    @endphp
+
     <section class="sub-banner-main-section event-banner-section w-100 float-left">
         <div class="container">
             <div class="sub-banner-inner-con">
@@ -88,7 +114,7 @@
                 <div class="checkout-steps" aria-label="Status checkout">
                     <div class="checkout-step">
                         <span class="checkout-step__dot">1</span>
-                        <span class="checkout-step__label">Keranjang</span>
+                        <span class="checkout-step__label">Pilih Paket</span>
                     </div>
                     <div class="checkout-step">
                         <span class="checkout-step__dot">2</span>
@@ -98,6 +124,10 @@
                         <span class="checkout-step__dot">3</span>
                         <span class="checkout-step__label">Konfirmasi</span>
                     </div>
+                    <div class="checkout-step">
+                        <span class="checkout-step__dot">4</span>
+                        <span class="checkout-step__label">Selesai</span>
+                    </div>
                 </div>
             </div>
 
@@ -105,20 +135,79 @@
                 <div class="col-12 col-lg-7">
                     <div class="confirm-card">
                         <div class="confirm-card__header">
-                            <div class="fw-semibold text-black">Detail pesanan</div>
-                            <div class="text-muted small">Pastikan sudah sesuai.</div>
-                        </div>
-                        <div id="confirm-items"></div>
-                        <div id="confirm-empty" class="p-4" style="display:none;">
-                            <div class="border rounded p-4 bg-light">
-                                <div class="fw-semibold text-black">Keranjang kosong</div>
-                                <div class="text-muted">Kembali ke shop untuk memilih paket.</div>
-                                <div class="mt-3">
-                                    <a href="{{ route('peserta.shop') }}#shop_section" class="btn btn-primary" style="border-radius: 12px; font-weight: 900;">
-                                        Ke Shop
-                                    </a>
+                            <div class="d-flex align-items-start justify-content-between" style="gap: 12px;">
+                                <div>
+                                    <div class="fw-semibold text-black">Detail pesanan</div>
+                                    <div class="text-muted small">Periksa ringkasan dan status pemrosesan.</div>
                                 </div>
+                                <span class="badge bg-{{ $uiStatusCls }}">{{ $uiStatusText }}</span>
                             </div>
+                        </div>
+                        <div class="p-3 p-md-4">
+                            @if (! $pesanan)
+                                <div class="border rounded p-4 bg-light">
+                                    <div class="fw-semibold text-black">Belum ada pesanan</div>
+                                    <div class="text-muted mt-1">Kembali ke keranjang untuk memilih paket.</div>
+                                    <div class="mt-3">
+                                        <a href="{{ route('peserta.cart') }}" class="btn btn-primary" style="border-radius: 12px; font-weight: 900;">
+                                            Kembali ke Keranjang
+                                        </a>
+                                    </div>
+                                </div>
+                            @else
+                                <div class="border rounded p-3 bg-light">
+                                    <div class="fw-semibold text-black">{{ $event?->judul ?? 'Event' }}</div>
+                                    <div class="text-muted small mt-1">Paket: {{ $paket?->nama_paket ?? '-' }}</div>
+                                    <div class="text-muted small mt-1">Kode Pesanan: {{ $pesanan->kode_pesanan }}</div>
+                                </div>
+
+                                <div class="mt-3">
+                                    <div class="fw-semibold text-black">Ringkasan paket</div>
+                                    <div class="text-muted small mt-1">Jumlah sesi: {{ $jumlahSesi }}</div>
+                                    <div class="text-muted small mt-1">Akses Live: {{ (bool) ($paket?->akses_live ?? false) ? 'Ya' : 'Tidak' }}</div>
+                                    <div class="text-muted small mt-1">Akses Rekaman: {{ (bool) ($paket?->akses_rekaman ?? false) ? 'Ya' : 'Tidak' }}</div>
+                                    @if (! is_null($paket?->kuota))
+                                        <div class="text-muted small mt-1">Kuota: {{ (int) $paket->kuota }}</div>
+                                    @endif
+                                </div>
+
+                                <div class="mt-3">
+                                    <div class="fw-semibold text-black">Metode pembayaran</div>
+                                    @if ($metodeLabel !== '')
+                                        <div class="text-muted mt-1">{{ $metodeLabel }}</div>
+                                    @else
+                                        <div class="text-muted mt-1">Belum dipilih. Silakan pilih metode di halaman pembayaran.</div>
+                                    @endif
+                                </div>
+
+                                @if ($isPending && $deadlineAt)
+                                    <div class="mt-3">
+                                        <div class="text-muted small">Batas waktu pembayaran</div>
+                                        <div class="fw-semibold text-black" id="deadlineText" data-deadline="{{ optional($deadlineAt)->toIso8601String() }}">
+                                            {{ optional($deadlineAt)->format('d-m-Y H:i') }}
+                                        </div>
+                                        <div class="text-muted small mt-1" id="deadlineCountdown"></div>
+                                    </div>
+                                @endif
+
+                                @if ($isPending && ! $hasMetode && $deadlineAt)
+                                    <div class="alert alert-warning mt-3 mb-0" role="alert">
+                                        Silakan selesaikan pembayaran untuk mengaktifkan paket Anda.
+                                    </div>
+                                @endif
+
+                                @if ($isPending && $hasMetode)
+                                    <div class="alert alert-info mt-3 mb-0" role="alert">
+                                        Pembayaran sedang diproses. Kami akan memperbarui status setelah verifikasi.
+                                    </div>
+                                @endif
+
+                                @if ($isPaid)
+                                    <div class="alert alert-success mt-3 mb-0" role="alert">
+                                        Pembayaran berhasil. Paket Anda sudah aktif.
+                                    </div>
+                                @endif
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -130,30 +219,44 @@
                             <div class="text-muted small">Ringkasan pembayaran.</div>
                         </div>
                         <div class="p-3 p-md-4">
-                            <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
-                                <div class="text-muted fw-semibold">Subtotal</div>
-                                <div class="text-black fw-bold" id="sum-subtotal">Rp 0</div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
-                                <div class="text-muted fw-semibold">Diskon</div>
-                                <div class="text-black fw-bold" id="sum-discount">Rp 0</div>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between py-2">
-                                <div class="text-muted fw-semibold">Total</div>
-                                <div class="text-black fw-bold" id="sum-total">Rp 0</div>
-                            </div>
+                            @if ($pesanan)
+                                <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
+                                    <div class="text-muted fw-semibold">Harga</div>
+                                    <div class="text-black fw-bold">{{ $fmtRp($paket?->harga ?? 0) }}</div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
+                                    <div class="text-muted fw-semibold">Diskon</div>
+                                    <div class="text-black fw-bold">{{ $fmtRp(0) }}</div>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-between py-2">
+                                    <div class="text-muted fw-semibold">Total</div>
+                                    <div class="text-black fw-bold">{{ $fmtRp($pesanan->total_bayar ?? 0) }}</div>
+                                </div>
+                            @else
+                                <div class="border rounded p-3 bg-light">
+                                    <div class="fw-semibold text-black">Belum ada ringkasan</div>
+                                    <div class="text-muted mt-1">Buat pesanan dari keranjang dulu.</div>
+                                </div>
+                            @endif
 
                             <div class="mt-3 d-grid gap-2">
-                                <button id="btn-finish" type="button" class="btn btn-primary" style="border-radius: 12px; font-weight: 900;">
-                                    Konfirmasi Pesanan
-                                </button>
-                                <a href="{{ route('peserta.cart') }}" class="btn btn-outline-secondary" style="border-radius: 12px; font-weight: 900;">
-                                    Kembali ke Keranjang
+                                @if ($pesanan && $isPending && ! $hasMetode && ! $isExpired && ! $isFailed)
+                                    <a href="{{ route('peserta.checkout.payment', ['pesanan' => $pesanan->id]) }}" class="btn btn-primary" style="border-radius: 12px; font-weight: 900;">
+                                        Pilih Metode Pembayaran
+                                    </a>
+                                @endif
+
+                                <a href="{{ route('peserta.dashboard') }}#dashboardTop" class="btn btn-outline-secondary" style="border-radius: 12px; font-weight: 900;">
+                                    Kembali ke Dashboard
+                                </a>
+
+                                <a href="{{ route('peserta.contact') }}" class="btn btn-outline-secondary" style="border-radius: 12px; font-weight: 900;">
+                                    Hubungi Admin
                                 </a>
                             </div>
 
                             <div class="text-muted small mt-3">
-                                Setelah konfirmasi, Anda akan diarahkan untuk menghubungi admin jika diperlukan.
+                                Untuk status pending, verifikasi dilakukan oleh admin. Status akan otomatis terlihat di dashboard setelah diperbarui.
                             </div>
                         </div>
                     </div>
@@ -165,91 +268,36 @@
     @push('scripts')
         <script>
             (function () {
-                const storageKey = 'peserta_cart_v1';
-                const itemsEl = document.getElementById('confirm-items');
-                const emptyEl = document.getElementById('confirm-empty');
-                const subtotalEl = document.getElementById('sum-subtotal');
-                const discountEl = document.getElementById('sum-discount');
-                const totalEl = document.getElementById('sum-total');
-                const finishBtn = document.getElementById('btn-finish');
-                const contactUrl = @json(route('peserta.contact'));
+                const countdownEl = document.getElementById('deadlineCountdown');
+                const deadlineTextEl = document.getElementById('deadlineText');
+                if (!countdownEl || !deadlineTextEl) return;
 
-                function safeParse(raw) {
-                    try { return JSON.parse(raw); } catch (e) { return null; }
-                }
-                function readCart() {
-                    const data = safeParse(localStorage.getItem(storageKey));
-                    if (!data || typeof data !== 'object') return { items: [] };
-                    if (!Array.isArray(data.items)) return { items: [] };
-                    return data;
-                }
-                function writeCart(cart) {
-                    cart.updated_at = new Date().toISOString();
-                    localStorage.setItem(storageKey, JSON.stringify(cart));
-                }
-                function formatRupiah(n) {
-                    const num = Number(n || 0);
-                    return 'Rp ' + (isFinite(num) ? num.toLocaleString('id-ID', { maximumFractionDigits: 0 }) : '0');
+                const raw = deadlineTextEl.getAttribute('data-deadline') || '';
+                const deadlineMs = Date.parse(raw);
+                if (!isFinite(deadlineMs)) return;
+
+                function pad(n) {
+                    return String(n).padStart(2, '0');
                 }
 
-                const cart = readCart();
-                const hasItems = cart.items.length > 0;
-                emptyEl.style.display = hasItems ? 'none' : 'block';
-                itemsEl.style.display = hasItems ? 'block' : 'none';
-
-                const subtotal = cart.items.reduce((acc, it) => acc + (Number(it.harga || 0) * Number(it.qty || 1)), 0);
-                const discount = 0;
-                const total = subtotal - discount;
-                subtotalEl.textContent = formatRupiah(subtotal);
-                discountEl.textContent = formatRupiah(discount);
-                totalEl.textContent = formatRupiah(total);
-
-                if (hasItems) {
-                    itemsEl.innerHTML = cart.items.map((it) => {
-                        const event = it.event || {};
-                        const qty = Math.max(1, parseInt(it.qty || 1, 10));
-                        const harga = Number(it.harga || 0);
-                        const lineTotal = harga * qty;
-                        return `
-                            <div class="confirm-item">
-                                <div class="d-flex align-items-start justify-content-between" style="gap: 12px;">
-                                    <div style="min-width: 0;">
-                                        <div class="fw-bold text-black">${(event.judul || 'Event').toString()}</div>
-                                        <div class="text-muted small mt-1">${(it.nama_paket || '').toString()}</div>
-                                        <div class="text-muted small mt-2">Jumlah: ${qty}</div>
-                                    </div>
-                                    <div class="text-end">
-                                        <div class="fw-bold text-black">${formatRupiah(lineTotal)}</div>
-                                        <div class="text-muted small">${formatRupiah(harga)} x ${qty}</div>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
-                    }).join('');
-                } else {
-                    itemsEl.innerHTML = '';
-                    finishBtn.disabled = true;
-                }
-
-                finishBtn.addEventListener('click', function () {
-                    if (!hasItems) return;
-                    writeCart({ items: [] });
-                    if (typeof Swal === 'undefined') {
-                        window.location.href = contactUrl;
+                function tick() {
+                    const diff = deadlineMs - Date.now();
+                    if (!isFinite(diff)) return;
+                    if (diff <= 0) {
+                        countdownEl.textContent = 'Batas waktu pembayaran sudah lewat.';
                         return;
                     }
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Pesanan dikonfirmasi',
-                        text: 'Silakan lanjut untuk mendapatkan instruksi pembayaran.',
-                        confirmButtonText: 'OK',
-                        allowOutsideClick: false,
-                    }).then((res) => {
-                        if (res.isConfirmed) window.location.href = contactUrl;
-                    });
-                });
+
+                    const totalSeconds = Math.floor(diff / 1000);
+                    const hours = Math.floor(totalSeconds / 3600);
+                    const minutes = Math.floor((totalSeconds % 3600) / 60);
+                    const seconds = totalSeconds % 60;
+                    countdownEl.textContent = 'Sisa waktu: ' + pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+                }
+
+                tick();
+                setInterval(tick, 1000);
             })();
         </script>
     @endpush
 @endsection
-
