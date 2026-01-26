@@ -34,6 +34,20 @@ Route::get('/shop', function () {
     return view('peserta.shop');
 })->name('peserta.shop');
 
+Route::get('/cart', function () {
+    return view('peserta.cart');
+})->name('peserta.cart');
+
+Route::prefix('checkout')->group(function () {
+    Route::get('/pembayaran', function () {
+        return view('peserta.checkout.payment');
+    })->middleware('auth')->name('peserta.checkout.payment');
+
+    Route::get('/konfirmasi', function () {
+        return view('peserta.checkout.confirm');
+    })->middleware('auth')->name('peserta.checkout.confirm');
+});
+
 Route::get('/blog', function () {
     if (! Schema::hasTable('news')) {
         return view('peserta.blog', [
@@ -77,7 +91,7 @@ Route::prefix('dashboard')->group(function () {
     })->name('peserta.profile');
 });
 
-Route::get('/login', [PesertaAuthController::class, 'showLogin'])->name('peserta.login');
+Route::get('/login', [PesertaAuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [PesertaAuthController::class, 'login'])->name('peserta.login.store');
 Route::post('/logout', [PesertaAuthController::class, 'logout'])->name('peserta.logout');
 Route::get('/registrasi', [PesertaAuthController::class, 'showRegister'])->name('peserta.registrasi');

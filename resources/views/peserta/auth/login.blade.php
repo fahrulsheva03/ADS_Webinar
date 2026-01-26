@@ -217,6 +217,7 @@
 
                                         <form action="{{ route('peserta.login.store') }}" method="post" class="mt-3">
                                             @csrf
+                                            <input type="hidden" name="redirect" value="{{ $redirect ?? '' }}">
                                             <div class="mb-3">
                                                 <label for="email" class="auth-label mb-2 d-block">Email</label>
                                                 <div class="input-group auth-input">
@@ -254,7 +255,7 @@
                                         </form>
 
                                         <div class="auth-link text-center text-lg-start">
-                                            Belum punya akun? <a href="{{ url('/registrasi') }}">Daftar</a>
+                                            Belum punya akun? <a href="{{ route('peserta.registrasi') }}">Daftar</a>
                                         </div>
 
                                         <div class="auth-footnote text-center text-lg-start">

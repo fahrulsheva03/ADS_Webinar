@@ -54,7 +54,7 @@
                 <div class="header-contact d-flex align-items-center">
                     @guest
                         <div class="lets-talk-btn ">
-                            <a href="{{ route('peserta.login') }}">Login <i class="fas fa-sign-in-alt"></i></a>
+                            <a href="{{ route('login') }}">Login <i class="fas fa-sign-in-alt"></i></a>
                         </div>
                     @endguest
 

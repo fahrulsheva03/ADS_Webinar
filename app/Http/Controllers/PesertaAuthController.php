@@ -11,9 +11,11 @@ use Illuminate\View\View;
 
 class PesertaAuthController extends Controller
 {
-    public function showLogin(): View
+    public function showLogin(Request $request): View
     {
-        return view('peserta.auth.login');
+        return view('peserta.auth.login', [
+            'redirect' => (string) $request->query('redirect', ''),
+        ]);
     }
 
     public function showRegister(): View
@@ -26,6 +28,7 @@ class PesertaAuthController extends Controller
         $data = $request->validate([
             'email' => 'required|string|email',
             'password' => 'required|string',
+            'redirect' => 'nullable|string',
         ]);
 
         $user = User::query()
@@ -58,6 +61,13 @@ class PesertaAuthController extends Controller
 
         $request->session()->regenerate();
 
+        $redirect = (string) ($data['redirect'] ?? '');
+        if ($redirect !== '' && str_starts_with($redirect, '/')) {
+            return redirect()
+                ->to($redirect)
+                ->with('login_success', 'Login Berhasil');
+        }
+
         return redirect()
             ->route('peserta.index')
             ->with('login_success', 'Login Berhasil');
@@ -86,7 +96,7 @@ class PesertaAuthController extends Controller
         }
 
         return redirect()
-            ->route('peserta.login')
+            ->route('login')
             ->with('success', 'Registrasi berhasil. Silakan login.');
     }
 
