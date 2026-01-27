@@ -8,7 +8,21 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 
 Route::get('/', function () {
-    return view('peserta.index');
+    $latestNews = collect();
+
+    if (Schema::hasTable('news')) {
+        $latestNews = News::query()
+            ->with(['category', 'creator'])
+            ->where('status', 'published')
+            ->orderByDesc('published_at')
+            ->orderByDesc('created_at')
+            ->limit(3)
+            ->get();
+    }
+
+    return view('peserta.index', [
+        'latestNews' => $latestNews,
+    ]);
 })->name('peserta.index');
 
 Route::get('/about', function () {
