@@ -362,6 +362,7 @@
         </div>
     </section>
     <!-- SPEAKERS SECTION END -->
+    
     <!-- FAQ SECTION START -->
     <section class="faq-main-section w-100 float-left padding-top padding-bottom position-relative light-bg">
         <div class="container">
@@ -459,6 +460,8 @@
         </div>
     </section>
     <!-- FAQ SECTION END -->
+
+
     <!-- TESTIMONAIL SECTION START -->
     <section class="testimonial-main-section w-100 float-left padding-top padding-bottom">
         <div class="container">

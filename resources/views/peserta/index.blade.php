@@ -1,7 +1,7 @@
 @extends('peserta.partials.app')
 
 @section('content')
-   <section class="index3-banner-section w-100 float-left">
+    <section class="index3-banner-section w-100 float-left">
         <div class="container-fluid">
             <div class="index3-banner-outer-con" data-aos="fade-up" data-aos-duration="700">
                 <div id="owl-carouselone" class="owl-carousel owl-theme">
@@ -13,13 +13,16 @@
                                 </figure>
                             </div>
                             <div class="index3-banner-text-con">
-                                <span class="d-block position-relative">{{ konten('home', 'banner', 'slide_1_date') }}</span>
+                                <span
+                                    class="d-block position-relative">{{ konten('home', 'banner', 'slide_1_date') }}</span>
                                 <h1>{!! nl2br(e(konten('home', 'banner', 'slide_1_title'))) !!}</h1>
                                 <ul class="list-unstyled">
-                                    <li><i class="fas fa-map-marker-alt"></i> {{ konten('home', 'banner', 'slide_1_location') }}</li>
+                                    <li><i class="fas fa-map-marker-alt"></i>
+                                        {{ konten('home', 'banner', 'slide_1_location') }}</li>
                                 </ul>
                                 <div class="generic-btn">
-                                    <a href="{{ konten('home', 'banner', 'slide_1_button_url') }}">{{ konten('home', 'banner', 'slide_1_button_text') }} <i class="fas fa-arrow-right"></i></a>
+                                    <a href="{{ konten('home', 'banner', 'slide_1_button_url') }}">{{ konten('home', 'banner', 'slide_1_button_text') }}
+                                        <i class="fas fa-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -37,7 +40,8 @@
                     <h2 data-aos="fade-up" data-aos-duration="700">{!! nl2br(e(konten('home', 'journey', 'title'))) !!}</h2>
                     <p data-aos="fade-up" data-aos-duration="700">{{ konten('home', 'journey', 'description') }}</p>
                     <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
-                        <a href="{{ konten('home', 'journey', 'button_url') }}">{{ konten('home', 'journey', 'button_text') }} <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ konten('home', 'journey', 'button_url') }}">{{ konten('home', 'journey', 'button_text') }}
+                            <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="journey-video-con d-inline-block">
@@ -58,8 +62,7 @@
                     <div id="light">
                         <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
                         <div id="VisaChipCardVideo" width="600" controls>
-                            <iframe width="560" height="315"
-                                src="{{ konten('home', 'journey', 'video_url') }}"
+                            <iframe width="560" height="315" src="{{ konten('home', 'journey', 'video_url') }}"
                                 title="YouTube video player" frameborder="0"></iframe>
                             <!--Browser does not support <video> tag -->
                         </div>
@@ -80,40 +83,48 @@
                             <div class="count d-inline-block">{{ konten('home', 'journey', 'counter_1_value') }}</div>
                             <div class="plus-details">
                                 <div class="plus d-inline-block"><span>+</span></div>
-                                <span class="d-block client-status">{{ konten('home', 'journey', 'counter_1_label') }}</span>
+                                <span
+                                    class="d-block client-status">{{ konten('home', 'journey', 'counter_1_label') }}</span>
                             </div>
                         </li>
                         <li class="position-relative">
                             <div class="count d-inline-block">{{ konten('home', 'journey', 'counter_2_value') }}</div>
                             <div class="plus-details">
                                 <div class="plus d-inline-block"><span>+</span></div>
-                                <span class="d-block client-status">{{ konten('home', 'journey', 'counter_2_label') }}</span>
+                                <span
+                                    class="d-block client-status">{{ konten('home', 'journey', 'counter_2_label') }}</span>
                             </div>
                         </li>
                         <li class="position-relative">
                             <div class="count d-inline-block">{{ konten('home', 'journey', 'counter_3_value') }}</div>
                             <div class="plus-details">
                                 <div class="plus d-inline-block"><span>+</span></div>
-                                <span class="d-block client-status">{{ konten('home', 'journey', 'counter_3_label') }}</span>
+                                <span
+                                    class="d-block client-status">{{ konten('home', 'journey', 'counter_3_label') }}</span>
                             </div>
                         </li>
                         <li class="position-relative">
                             <div class="counter-box position-relative">
                                 <div class="2k-con">
-                                    <div class="count d-inline-block">{{ konten('home', 'journey', 'counter_4_value') }}</div>
-                                    <small class="d-inline-block">{{ konten('home', 'journey', 'counter_4_suffix') }}</small>
+                                    <div class="count d-inline-block">{{ konten('home', 'journey', 'counter_4_value') }}
+                                    </div>
+                                    <small
+                                        class="d-inline-block">{{ konten('home', 'journey', 'counter_4_suffix') }}</small>
                                 </div>
                                 <div class="plus-details">
                                     <div class="plus d-inline-block"><span>+</span></div>
-                                    <span class="d-block client-status">{{ konten('home', 'journey', 'counter_4_label') }}</span>
+                                    <span
+                                        class="d-block client-status">{{ konten('home', 'journey', 'counter_4_label') }}</span>
                                 </div>
                             </div>
                         </li>
                     </ul>
                     <div class="digital-text-con">
-                        <h3 data-aos="fade-up" data-aos-duration="700">{!! nl2br(e(konten('home', 'journey', 'digital_title'))) !!} <span class="d-inline-block">{{ konten('home', 'journey', 'digital_badge') }}</span></h3>
+                        <h3 data-aos="fade-up" data-aos-duration="700">{!! nl2br(e(konten('home', 'journey', 'digital_title'))) !!} <span
+                                class="d-inline-block">{{ konten('home', 'journey', 'digital_badge') }}</span></h3>
                         <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
-                            <a href="{{ konten('home', 'journey', 'digital_button_url') }}">{{ konten('home', 'journey', 'digital_button_text') }} <i class="fas fa-arrow-right"></i></a>
+                            <a href="{{ konten('home', 'journey', 'digital_button_url') }}">{{ konten('home', 'journey', 'digital_button_text') }}
+                                <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -121,28 +132,34 @@
         </div>
     </section>
     <!-- JOURNEY SECTION END -->
-    
-    
-    <!-- INDEX3 SPEAKERS SECTION START -->
-    <section class="index3-speakers-section w-100 float-left padding-top padding-bottom">
+
+
+    <!--  SPEAKERS SECTION START -->
+    <section id="speakers" class="index3-speakers-section w-100 float-left padding-top padding-bottom">
         <div class="container">
             <div class="generic-title2 text-center">
-                <span class="small-text" data-aos="fade-up" data-aos-duration="700">WORLD BEST SPEAKERS</span>
-                <h2 data-aos="fade-up" data-aos-duration="700">Meet Our Amazing Speakers</h2>
+                <span class="small-text" data-aos="fade-up" data-aos-duration="700">{{ konten('home', 'speakers', 'small_text') ?: 'SPEAKERS' }}</span>
+                <h2 data-aos="fade-up" data-aos-duration="700">{{ konten('home', 'speakers', 'title') ?: 'Meet Our Amazing Speakers' }}</h2>
             </div>
             <div class="index3-speaker-outer-con" data-aos="fade-up" data-aos-duration="700">
                 <div id="owl-carouselfive" class="owl-carousel owl-theme">
                     <div class="item">
                         <div class="index3-speaker-box position-relative">
                             <figure class="mb-0">
-                                <img src="{{ asset('assets/images/index3-speaker-img1.png') }}" alt="index3-speaker-img1">
+                                <img src="{{ asset('assets/images/index3-speaker-img1.png') }}"
+                                    alt="index3-speaker-img1">
                             </figure>
                             <div class="index3-speaker-detail-con text-center">
                                 <ul>
-                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i
+                                                class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a
+                                            href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i
+                                                class="fab fa-instagram"></i></a></li>
                                 </ul>
                                 <h5>Declan Heyes</h5>
                                 <span class="d-block">CMP - ConfX</span>
@@ -152,14 +169,20 @@
                     <div class="item">
                         <div class="index3-speaker-box position-relative">
                             <figure class="mb-0">
-                                <img src="{{ asset('assets/images/index3-speaker-img2.png') }}" alt="index3-speaker-img2">
+                                <img src="{{ asset('assets/images/index3-speaker-img2.png') }}"
+                                    alt="index3-speaker-img2">
                             </figure>
                             <div class="index3-speaker-detail-con text-center">
                                 <ul>
-                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i
+                                                class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a
+                                            href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i
+                                                class="fab fa-instagram"></i></a></li>
                                 </ul>
                                 <h5>Stella Hindley</h5>
                                 <span class="d-block">CCEP - ConfX</span>
@@ -169,14 +192,20 @@
                     <div class="item">
                         <div class="index3-speaker-box position-relative">
                             <figure class="mb-0">
-                                <img src="{{ asset('assets/images/index3-speaker-img3.png') }}" alt="index3-speaker-img3">
+                                <img src="{{ asset('assets/images/index3-speaker-img3.png') }}"
+                                    alt="index3-speaker-img3">
                             </figure>
                             <div class="index3-speaker-detail-con text-center">
                                 <ul>
-                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i
+                                                class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a
+                                            href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i
+                                                class="fab fa-instagram"></i></a></li>
                                 </ul>
                                 <h5>Jackson Allardyce</h5>
                                 <span class="d-block">CDME - ConfX</span>
@@ -186,14 +215,20 @@
                     <div class="item">
                         <div class="index3-speaker-box position-relative">
                             <figure class="mb-0">
-                                <img src="{{ asset('assets/images/index3-speaker-img1.png') }}" alt="index3-speaker-img1">
+                                <img src="{{ asset('assets/images/index3-speaker-img1.png') }}"
+                                    alt="index3-speaker-img1">
                             </figure>
                             <div class="index3-speaker-detail-con text-center">
                                 <ul>
-                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i
+                                                class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a
+                                            href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i
+                                                class="fab fa-instagram"></i></a></li>
                                 </ul>
                                 <h5>Declan Heyes</h5>
                                 <span class="d-block">CMP - ConfX</span>
@@ -203,14 +238,20 @@
                     <div class="item">
                         <div class="index3-speaker-box position-relative">
                             <figure class="mb-0">
-                                <img src="{{ asset('assets/images/index3-speaker-img2.png') }}" alt="index3-speaker-img2">
+                                <img src="{{ asset('assets/images/index3-speaker-img2.png') }}"
+                                    alt="index3-speaker-img2">
                             </figure>
                             <div class="index3-speaker-detail-con text-center">
                                 <ul>
-                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i
+                                                class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a
+                                            href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i
+                                                class="fab fa-instagram"></i></a></li>
                                 </ul>
                                 <h5>Stella Hindley</h5>
                                 <span class="d-block">CCEP - ConfX</span>
@@ -220,14 +261,20 @@
                     <div class="item">
                         <div class="index3-speaker-box position-relative">
                             <figure class="mb-0">
-                                <img src="{{ asset('assets/images/index3-speaker-img3.png') }}" alt="index3-speaker-img3">
+                                <img src="{{ asset('assets/images/index3-speaker-img3.png') }}"
+                                    alt="index3-speaker-img3">
                             </figure>
                             <div class="index3-speaker-detail-con text-center">
                                 <ul>
-                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i
+                                                class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a
+                                            href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i
+                                                class="fab fa-instagram"></i></a></li>
                                 </ul>
                                 <h5>Jackson Allardyce</h5>
                                 <span class="d-block">CDME - ConfX</span>
@@ -237,14 +284,20 @@
                     <div class="item">
                         <div class="index3-speaker-box position-relative">
                             <figure class="mb-0">
-                                <img src="{{ asset('assets/images/index3-speaker-img1.png') }}" alt="index3-speaker-img1">
+                                <img src="{{ asset('assets/images/index3-speaker-img1.png') }}"
+                                    alt="index3-speaker-img1">
                             </figure>
                             <div class="index3-speaker-detail-con text-center">
                                 <ul>
-                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i
+                                                class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a
+                                            href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i
+                                                class="fab fa-instagram"></i></a></li>
                                 </ul>
                                 <h5>Declan Heyes</h5>
                                 <span class="d-block">CMP - ConfX</span>
@@ -254,14 +307,20 @@
                     <div class="item">
                         <div class="index3-speaker-box position-relative">
                             <figure class="mb-0">
-                                <img src="{{ asset('assets/images/index3-speaker-img2.png') }}" alt="index3-speaker-img2">
+                                <img src="{{ asset('assets/images/index3-speaker-img2.png') }}"
+                                    alt="index3-speaker-img2">
                             </figure>
                             <div class="index3-speaker-detail-con text-center">
                                 <ul>
-                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i
+                                                class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a
+                                            href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i
+                                                class="fab fa-instagram"></i></a></li>
                                 </ul>
                                 <h5>Stella Hindley</h5>
                                 <span class="d-block">CCEP - ConfX</span>
@@ -271,14 +330,20 @@
                     <div class="item">
                         <div class="index3-speaker-box position-relative">
                             <figure class="mb-0">
-                                <img src="{{ asset('assets/images/index3-speaker-img3.png') }}" alt="index3-speaker-img3">
+                                <img src="{{ asset('assets/images/index3-speaker-img3.png') }}"
+                                    alt="index3-speaker-img3">
                             </figure>
                             <div class="index3-speaker-detail-con text-center">
                                 <ul>
-                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i class="fab fa-youtube"></i></a></li>
-                                    <li class="d-inline-block"><a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i class="fab fa-instagram"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.facebook.com/login/"><i
+                                                class="fab fa-facebook-f"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.linkedin.com/login"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="d-inline-block"><a href="https://www.youtube.com/"><i
+                                                class="fab fa-youtube"></i></a></li>
+                                    <li class="d-inline-block"><a
+                                            href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Faccounts%2Fonetap%2F%3Fnext%3D%252F%26__coig_login%3D1"><i
+                                                class="fab fa-instagram"></i></a></li>
                                 </ul>
                                 <h5>Jackson Allardyce</h5>
                                 <span class="d-block">CDME - ConfX</span>
@@ -289,98 +354,238 @@
             </div>
         </div>
     </section>
-    <!-- INDEX3 SPEAKERS SECTION END -->
-    <!-- INDEX3 PRICING PLANS SECTION START -->
-    <section class="index3-pricing-plans-section w-100 float-left padding-top padding-bottom">
+    <!--  SPEAKERS SECTION END -->
+
+    <!--  PRICING PLANS SECTION START -->
+    @php
+        $pricingTitle = konten('home', 'pricing', 'title');
+        $pricingTitle = $pricingTitle !== '' ? $pricingTitle : "We Have Several Options\nfor Tickets";
+
+        $silverFeaturesText = konten('home', 'pricing', 'silver_features');
+        $silverFeatures = $silverFeaturesText !== '' ? preg_split("/\r\n|\r|\n/", trim($silverFeaturesText)) : [
+            'Full Access the Conference',
+            'Music, Launch and Snack',
+            'Meet Event Speaker',
+        ];
+
+        $goldFeaturesText = konten('home', 'pricing', 'gold_features');
+        $goldFeatures = $goldFeaturesText !== '' ? preg_split("/\r\n|\r|\n/", trim($goldFeaturesText)) : [
+            'Full Access the Conference',
+            'Music, Launch and Snack',
+            'Meet Event Speaker',
+        ];
+
+        $premiumFeaturesText = konten('home', 'pricing', 'premium_features');
+        $premiumFeatures = $premiumFeaturesText !== '' ? preg_split("/\r\n|\r|\n/", trim($premiumFeaturesText)) : [
+            'Full Access the Conference',
+            'Music, Launch and Snack',
+            'Meet Event Speaker',
+        ];
+    @endphp
+    <section id="pricing" class="index3-pricing-plans-section w-100 float-left padding-top padding-bottom">
         <div class="container">
             <div class="generic-title2 text-center">
-                <span class="small-text" data-aos="fade-up" data-aos-duration="700">TICKET PRICING</span>
-                <h2 data-aos="fade-up" data-aos-duration="700">We Have Several Options <br> for Tickets</h2>
+                <span class="small-text" data-aos="fade-up" data-aos-duration="700">{{ konten('home', 'pricing', 'small_text') ?: 'TICKET PRICING' }}</span>
+                <h2 data-aos="fade-up" data-aos-duration="700">{!! nl2br(e($pricingTitle)) !!}</h2>
             </div>
             <div class="index3-plan-inner-con">
                 <div class="ticket-details silver-ticket-details" data-aos="fade-up" data-aos-duration="700">
-                    <h3>Silver</h3>
-                    <p>For individuals</p>
+                    <h3>{{ konten('home', 'pricing', 'silver_title') ?: 'Silver' }}</h3>
+                    <p>{{ konten('home', 'pricing', 'silver_subtitle') ?: 'For individuals' }}</p>
                     <span>Starting at:</span>
-                    <div class="price"><small>$</small>29</div>
+                    <div class="price"><small>$</small>{{ konten('home', 'pricing', 'silver_price') ?: '29' }}</div>
                     <ul class="list-unstyled">
-                        <li class="position-relative">Full Access the Conference</li>
-                        <li class="position-relative">Music, Launch and Snack</li>
-                        <li class="position-relative">Meet Event Speaker</li>
+                        @foreach ($silverFeatures as $feature)
+                            @if (trim((string) $feature) !== '')
+                                <li class="position-relative">{{ $feature }}</li>
+                            @endif
+                        @endforeach
                     </ul>
                     <div class="generic-btn">
-                        <a href="shop.html">BUY TICKET <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ konten('home', 'pricing', 'silver_button_url') ?: 'shop.html' }}">{{ konten('home', 'pricing', 'silver_button_text') ?: 'BUY TICKET' }}
+                            <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="ticket-details gold-ticket-details" data-aos="fade-up" data-aos-duration="700">
-                    <h3>Gold</h3>
-                    <p>For individuals</p>
+                    <h3>{{ konten('home', 'pricing', 'gold_title') ?: 'Gold' }}</h3>
+                    <p>{{ konten('home', 'pricing', 'gold_subtitle') ?: 'For individuals' }}</p>
                     <span>Starting at:</span>
-                    <div class="price"><small>$</small>45</div>
+                    <div class="price"><small>$</small>{{ konten('home', 'pricing', 'gold_price') ?: '45' }}</div>
                     <ul class="list-unstyled">
-                        <li class="position-relative">Full Access the Conference</li>
-                        <li class="position-relative">Music, Launch and Snack</li>
-                        <li class="position-relative">Meet Event Speaker</li>
+                        @foreach ($goldFeatures as $feature)
+                            @if (trim((string) $feature) !== '')
+                                <li class="position-relative">{{ $feature }}</li>
+                            @endif
+                        @endforeach
                     </ul>
                     <div class="generic-btn">
-                        <a href="shop.html">BUY TICKET <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ konten('home', 'pricing', 'gold_button_url') ?: 'shop.html' }}">{{ konten('home', 'pricing', 'gold_button_text') ?: 'BUY TICKET' }}
+                            <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="recomended-box">
-                        RECOMMENDED
+                        {{ konten('home', 'pricing', 'gold_badge') ?: 'RECOMMENDED' }}
                     </div>
                 </div>
                 <div class="ticket-details premium-ticket-details" data-aos="fade-up" data-aos-duration="700">
-                    <h3>Premium</h3>
-                    <p>For individuals</p>
+                    <h3>{{ konten('home', 'pricing', 'premium_title') ?: 'Premium' }}</h3>
+                    <p>{{ konten('home', 'pricing', 'premium_subtitle') ?: 'For individuals' }}</p>
                     <span>Starting at:</span>
-                    <div class="price"><small>$</small>59</div>
+                    <div class="price"><small>$</small>{{ konten('home', 'pricing', 'premium_price') ?: '59' }}</div>
                     <ul class="list-unstyled">
-                        <li class="position-relative">Full Access the Conference</li>
-                        <li class="position-relative">Music, Launch and Snack</li>
-                        <li class="position-relative">Meet Event Speaker</li>
+                        @foreach ($premiumFeatures as $feature)
+                            @if (trim((string) $feature) !== '')
+                                <li class="position-relative">{{ $feature }}</li>
+                            @endif
+                        @endforeach
                     </ul>
                     <div class="generic-btn">
-                        <a href="shop.html">BUY TICKET <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ konten('home', 'pricing', 'premium_button_url') ?: 'shop.html' }}">{{ konten('home', 'pricing', 'premium_button_text') ?: 'BUY TICKET' }}
+                            <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
             <div class="index3-plan-btn text-center">
-                <p data-aos="fade-up" data-aos-duration="700">This is a Detailed List Event of Conference for Digital Technology 2024.</p>
+                <p data-aos="fade-up" data-aos-duration="700">{{ konten('home', 'pricing', 'bottom_text') ?: 'This is a Detailed List Event of Conference for Digital Technology 2024.' }}
+                </p>
                 <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
-                    <a href="pricing.html">GET VIP PASS <i class="fas fa-arrow-right"></i></a>
+                    <a href="{{ konten('home', 'pricing', 'bottom_button_url') ?: 'pricing.html' }}">{{ konten('home', 'pricing', 'bottom_button_text') ?: 'GET VIP PASS' }}
+                        <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
-    <!-- INDEX3 PRICING PLANS SECTION END -->
-    <!-- INDEX3 REGISTRATION SECTION START -->
-    <section class="index3-registration-section w-100 float-left">
+    <!--  PRICING PLANS SECTION END -->
+
+    <!--  REGISTRATION SECTION START -->
+    @php
+        $registrationImage = konten('home', 'registration', 'image');
+        $registrationImageUrl = $registrationImage !== '' ? asset($registrationImage) : asset('assets/images/index3-registration-right-img.png');
+        $registrationTitle = konten('home', 'registration', 'title');
+        $registrationTitle = $registrationTitle !== '' ? $registrationTitle : "Join the Biggest\nConf-2024 of The Year";
+        $registrationDescription = konten('home', 'registration', 'description');
+        $registrationDescription = $registrationDescription !== '' ? $registrationDescription : 'Hear Highlights From Our Sponsors, or Get a Lite or Core Subscription to Watch the Full Main Stage Event on Demand.';
+    @endphp
+    <section id="registration" class="index3-registration-section w-100 float-left">
         <div class="container">
             <div class="index3-registration-inner-con">
                 <div class="index3-registration-left-con">
-                    <h2 data-aos="fade-up" data-aos-duration="700">Join the Biggest <br>
-                        Conf-2024 of The Year</h2>
-                    <p data-aos="fade-up" data-aos-duration="700">Hear Highlights From Our Sponsors, or Get a Lite or Core Subscription
-                        to Watch the Full Main Stage Event on Demand.</p>
+                    <h2 data-aos="fade-up" data-aos-duration="700">{!! nl2br(e($registrationTitle)) !!}</h2>
+                    <p data-aos="fade-up" data-aos-duration="700">{{ $registrationDescription }}</p>
                     <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
-                        <a href="contact.html">REGISTER NOW <i class="fas fa-arrow-right"></i></a>
+                        <a href="{{ konten('home', 'registration', 'button_url') ?: 'contact.html' }}">{{ konten('home', 'registration', 'button_text') ?: 'REGISTER NOW' }}
+                            <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="index3-registration-right-con" data-aos="fade-up" data-aos-duration="700">
                     <figure class="mb-0">
-                        <img src="assets/images/index3-registration-right-img.png" alt="index3-registration-right-img">
+                        <img src="{{ $registrationImageUrl }}" alt="index3-registration-right-img">
                     </figure>
                 </div>
             </div>
         </div>
     </section>
-    <!-- INDEX3 REGISTRATION SECTION END -->
-  
-    <!-- INDEX3 BLOG SECTION START -->
+    <!--  REGISTRATION SECTION END -->
+
+    <!-- FAQ SECTION START -->
+    @php
+        $faqQ1 = konten('home', 'faq', 'q1') ?: 'What is the design process for branding?';
+        $faqA1 = konten('home', 'faq', 'a1') ?: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+        $faqQ2 = konten('home', 'faq', 'q2') ?: 'How much does logo design services cost?';
+        $faqA2 = konten('home', 'faq', 'a2') ?: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+        $faqQ3 = konten('home', 'faq', 'q3') ?: 'What is the process for a website redesign?';
+        $faqA3 = konten('home', 'faq', 'a3') ?: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+        $faqQ4 = konten('home', 'faq', 'q4') ?: 'What is a content strategy?';
+        $faqA4 = konten('home', 'faq', 'a4') ?: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+        $faqQ5 = konten('home', 'faq', 'q5') ?: 'How much does website design cost?';
+        $faqA5 = konten('home', 'faq', 'a5') ?: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+    @endphp
+    <section id="faq" class="faq-main-section w-100 float-left padding-top padding-bottom position-relative light-bg">
+        <div class="container">
+            <div class="generic-title text-center">
+                <span class="small-text" data-aos="fade-up" data-aos-duration="700">{{ konten('home', 'faq', 'small_text') ?: 'FAQ' }}</span>
+                <h2 data-aos="fade-up" data-aos-duration="700">{{ konten('home', 'faq', 'title') ?: 'Frequently Asked Questions' }}</h2>
+            </div>
+            <div class="faq-inner-section">
+                <div id="accordion">
+                    <div class="card" data-aos="fade-up" data-aos-duration="700">
+                        <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                    aria-expanded="true" aria-controls="collapseOne">
+                                    {{ $faqQ1 }}
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-parent="#accordion">
+                            <div class="card-body">{!! nl2br(e($faqA1)) !!}</div>
+                        </div>
+                    </div>
+                    <div class="card" data-aos="fade-up" data-aos-duration="700">
+                        <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
+                                    aria-expanded="false" aria-controls="collapseTwo">
+                                    {{ $faqQ2 }}
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">{!! nl2br(e($faqA2)) !!}</div>
+                        </div>
+                    </div>
+                    <div class="card" data-aos="fade-up" data-aos-duration="700">
+                        <div class="card-header" id="headingThree">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse"
+                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    {{ $faqQ3 }}
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-parent="#accordion">
+                            <div class="card-body">{!! nl2br(e($faqA3)) !!}</div>
+                        </div>
+                    </div>
+                    <div class="card" data-aos="fade-up" data-aos-duration="700">
+                        <div class="card-header" id="headingfour">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefour"
+                                    aria-expanded="false" aria-controls="collapsefour">
+                                    {{ $faqQ4 }}
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordion">
+                            <div class="card-body">{!! nl2br(e($faqA4)) !!}</div>
+                        </div>
+                    </div>
+                    <div class="card" data-aos="fade-up" data-aos-duration="700">
+                        <div class="card-header" id="headingfive">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefive"
+                                    aria-expanded="false" aria-controls="collapsefive">
+                                    {{ $faqQ5 }}
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordion">
+                            <div class="card-body">{!! nl2br(e($faqA5)) !!}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FAQ SECTION END -->
+
+    <!--  BLOG SECTION START -->
     <section class="blog-main-section index3-blog-section w-100 float-left padding-top position-relative">
         <div class="container">
             <div class="generic-title2 text-center">
-                <span class="small-text" data-aos="fade-up" data-aos-duration="700">SKILLS &amp; EXPERIENCE</span>
+                <span class="small-text" data-aos="fade-up" data-aos-duration="700">LATES NEWS</span>
                 <h2 class="mb-0" data-aos="fade-up" data-aos-duration="700">Recent News Articles</h2>
             </div>
             <div class="blogs-inner-con">
@@ -398,7 +603,7 @@
                         } elseif (str_starts_with($gambar, 'storage/')) {
                             $imageUrl = asset($gambar);
                         } else {
-                            $imageUrl = asset('storage/'.$gambar);
+                            $imageUrl = asset('storage/' . $gambar);
                         }
                         $category = $row->category?->nama ?: 'Umum';
                         $date = $row->published_at ?? $row->created_at;
@@ -426,7 +631,8 @@
             </div>
         </div>
     </section>
-    <!-- INDEX3 BLOG SECTION END -->
+    <!--  BLOG SECTION END -->
+
     <!-- SPONSERS SECTION START -->
     <div class="index3-sponsers-main-section sponsers-main-section w-100 float-left">
         <div class="container">
@@ -462,6 +668,4 @@
         </div>
     </div>
     <!-- SPONSERS SECTION END -->
-   
-
 @endsection
