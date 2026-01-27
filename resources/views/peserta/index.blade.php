@@ -49,7 +49,7 @@
                             <div class="video-play-icon d-inline-block">
                                 <a href="javascript:void(0)" onclick="lightbox_open();">
                                     <figure class="mb-0 d-inline-block">
-                                        <img src="assets/images/video-play-icon2.png" alt="">
+                                        <img src="{{ asset('assets/images/video-play-icon2.png') }}" alt="">
                                     </figure>
                                 </a>
                             </div>
