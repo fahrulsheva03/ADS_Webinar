@@ -361,6 +361,28 @@
         $pricingTitle = konten('home', 'pricing', 'title');
         $pricingTitle = $pricingTitle !== '' ? $pricingTitle : "We Have Several Options\nfor Tickets";
 
+        $currencySymbolByCode = [
+            'USD' => '$',
+            'IDR' => 'Rp',
+            'EUR' => '€',
+        ];
+
+        $silverCurrencyCode = konten('home', 'pricing', 'silver_currency') ?: 'USD';
+        $goldCurrencyCode = konten('home', 'pricing', 'gold_currency') ?: 'USD';
+        $premiumCurrencyCode = konten('home', 'pricing', 'premium_currency') ?: 'USD';
+
+        $silverCurrencySymbol = $currencySymbolByCode[$silverCurrencyCode] ?? '$';
+        $goldCurrencySymbol = $currencySymbolByCode[$goldCurrencyCode] ?? '$';
+        $premiumCurrencySymbol = $currencySymbolByCode[$premiumCurrencyCode] ?? '$';
+
+        $silverActiveRaw = konten('home', 'pricing', 'silver_active');
+        $goldActiveRaw = konten('home', 'pricing', 'gold_active');
+        $premiumActiveRaw = konten('home', 'pricing', 'premium_active');
+
+        $silverIsActive = $silverActiveRaw === '' ? true : $silverActiveRaw !== '0';
+        $goldIsActive = $goldActiveRaw === '' ? true : $goldActiveRaw !== '0';
+        $premiumIsActive = $premiumActiveRaw === '' ? true : $premiumActiveRaw !== '0';
+
         $silverFeaturesText = konten('home', 'pricing', 'silver_features');
         $silverFeatures = $silverFeaturesText !== '' ? preg_split("/\r\n|\r|\n/", trim($silverFeaturesText)) : [
             'Full Access the Conference',
@@ -381,6 +403,8 @@
             'Music, Launch and Snack',
             'Meet Event Speaker',
         ];
+
+        $goldBadge = trim(konten('home', 'pricing', 'gold_badge'));
     @endphp
     <section id="pricing" class="index3-pricing-plans-section w-100 float-left padding-top padding-bottom">
         <div class="container">
@@ -389,60 +413,70 @@
                 <h2 data-aos="fade-up" data-aos-duration="700">{!! nl2br(e($pricingTitle)) !!}</h2>
             </div>
             <div class="index3-plan-inner-con">
-                <div class="ticket-details silver-ticket-details" data-aos="fade-up" data-aos-duration="700">
-                    <h3>{{ konten('home', 'pricing', 'silver_title') ?: 'Silver' }}</h3>
-                    <p>{{ konten('home', 'pricing', 'silver_subtitle') ?: 'For individuals' }}</p>
-                    <span>Starting at:</span>
-                    <div class="price"><small>$</small>{{ konten('home', 'pricing', 'silver_price') ?: '29' }}</div>
-                    <ul class="list-unstyled">
-                        @foreach ($silverFeatures as $feature)
-                            @if (trim((string) $feature) !== '')
-                                <li class="position-relative">{{ $feature }}</li>
-                            @endif
-                        @endforeach
-                    </ul>
-                    <div class="generic-btn">
-                        <a href="{{ konten('home', 'pricing', 'silver_button_url') ?: 'shop.html' }}">{{ konten('home', 'pricing', 'silver_button_text') ?: 'BUY TICKET' }}
-                            <i class="fas fa-arrow-right"></i></a>
+                @if ($silverIsActive)
+                    <div class="ticket-details silver-ticket-details" data-aos="fade-up" data-aos-duration="700">
+                        <h3>{{ konten('home', 'pricing', 'silver_title') ?: 'Silver' }}</h3>
+                        <p>{{ konten('home', 'pricing', 'silver_subtitle') ?: 'For individuals' }}</p>
+                        <span>Starting at:</span>
+                        <div class="price"><small>{{ $silverCurrencySymbol }}</small>{{ konten('home', 'pricing', 'silver_price') ?: '29' }}</div>
+                        <ul class="list-unstyled">
+                            @foreach ($silverFeatures as $feature)
+                                @if (trim((string) $feature) !== '')
+                                    <li class="position-relative">{{ $feature }}</li>
+                                @endif
+                            @endforeach
+                        </ul>
+                        <div class="generic-btn">
+                            <a href="{{ konten('home', 'pricing', 'silver_button_url') ?: 'shop.html' }}">{{ konten('home', 'pricing', 'silver_button_text') ?: 'BUY TICKET' }}
+                                <i class="fas fa-arrow-right"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="ticket-details gold-ticket-details" data-aos="fade-up" data-aos-duration="700">
-                    <h3>{{ konten('home', 'pricing', 'gold_title') ?: 'Gold' }}</h3>
-                    <p>{{ konten('home', 'pricing', 'gold_subtitle') ?: 'For individuals' }}</p>
-                    <span>Starting at:</span>
-                    <div class="price"><small>$</small>{{ konten('home', 'pricing', 'gold_price') ?: '45' }}</div>
-                    <ul class="list-unstyled">
-                        @foreach ($goldFeatures as $feature)
-                            @if (trim((string) $feature) !== '')
-                                <li class="position-relative">{{ $feature }}</li>
-                            @endif
-                        @endforeach
-                    </ul>
-                    <div class="generic-btn">
-                        <a href="{{ konten('home', 'pricing', 'gold_button_url') ?: 'shop.html' }}">{{ konten('home', 'pricing', 'gold_button_text') ?: 'BUY TICKET' }}
-                            <i class="fas fa-arrow-right"></i></a>
+                @endif
+
+                @if ($goldIsActive)
+                    <div class="ticket-details gold-ticket-details" data-aos="fade-up" data-aos-duration="700">
+                        <h3>{{ konten('home', 'pricing', 'gold_title') ?: 'Gold' }}</h3>
+                        <p>{{ konten('home', 'pricing', 'gold_subtitle') ?: 'For individuals' }}</p>
+                        <span>Starting at:</span>
+                        <div class="price"><small>{{ $goldCurrencySymbol }}</small>{{ konten('home', 'pricing', 'gold_price') ?: '45' }}</div>
+                        <ul class="list-unstyled">
+                            @foreach ($goldFeatures as $feature)
+                                @if (trim((string) $feature) !== '')
+                                    <li class="position-relative">{{ $feature }}</li>
+                                @endif
+                            @endforeach
+                        </ul>
+                        <div class="generic-btn">
+                            <a href="{{ konten('home', 'pricing', 'gold_button_url') ?: 'shop.html' }}">{{ konten('home', 'pricing', 'gold_button_text') ?: 'BUY TICKET' }}
+                                <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        @if ($goldBadge !== '')
+                            <div class="recomended-box">
+                                {{ $goldBadge }}
+                            </div>
+                        @endif
                     </div>
-                    <div class="recomended-box">
-                        {{ konten('home', 'pricing', 'gold_badge') ?: 'RECOMMENDED' }}
+                @endif
+
+                @if ($premiumIsActive)
+                    <div class="ticket-details premium-ticket-details" data-aos="fade-up" data-aos-duration="700">
+                        <h3>{{ konten('home', 'pricing', 'premium_title') ?: 'Premium' }}</h3>
+                        <p>{{ konten('home', 'pricing', 'premium_subtitle') ?: 'For individuals' }}</p>
+                        <span>Starting at:</span>
+                        <div class="price"><small>{{ $premiumCurrencySymbol }}</small>{{ konten('home', 'pricing', 'premium_price') ?: '59' }}</div>
+                        <ul class="list-unstyled">
+                            @foreach ($premiumFeatures as $feature)
+                                @if (trim((string) $feature) !== '')
+                                    <li class="position-relative">{{ $feature }}</li>
+                                @endif
+                            @endforeach
+                        </ul>
+                        <div class="generic-btn">
+                            <a href="{{ konten('home', 'pricing', 'premium_button_url') ?: 'shop.html' }}">{{ konten('home', 'pricing', 'premium_button_text') ?: 'BUY TICKET' }}
+                                <i class="fas fa-arrow-right"></i></a>
+                        </div>
                     </div>
-                </div>
-                <div class="ticket-details premium-ticket-details" data-aos="fade-up" data-aos-duration="700">
-                    <h3>{{ konten('home', 'pricing', 'premium_title') ?: 'Premium' }}</h3>
-                    <p>{{ konten('home', 'pricing', 'premium_subtitle') ?: 'For individuals' }}</p>
-                    <span>Starting at:</span>
-                    <div class="price"><small>$</small>{{ konten('home', 'pricing', 'premium_price') ?: '59' }}</div>
-                    <ul class="list-unstyled">
-                        @foreach ($premiumFeatures as $feature)
-                            @if (trim((string) $feature) !== '')
-                                <li class="position-relative">{{ $feature }}</li>
-                            @endif
-                        @endforeach
-                    </ul>
-                    <div class="generic-btn">
-                        <a href="{{ konten('home', 'pricing', 'premium_button_url') ?: 'shop.html' }}">{{ konten('home', 'pricing', 'premium_button_text') ?: 'BUY TICKET' }}
-                            <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+                @endif
             </div>
             <div class="index3-plan-btn text-center">
                 <p data-aos="fade-up" data-aos-duration="700">{{ konten('home', 'pricing', 'bottom_text') ?: 'This is a Detailed List Event of Conference for Digital Technology 2024.' }}

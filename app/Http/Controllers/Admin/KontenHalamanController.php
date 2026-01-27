@@ -49,11 +49,45 @@ class KontenHalamanController extends Controller
         $page = 'home';
         $fields = $this->homeFields();
 
-        $data = $request->validate([
+        $rules = [
             'contents' => 'required|array',
             'contents.*' => 'array',
-            'contents.*.*' => 'nullable|string|max:65535',
-        ]);
+        ];
+
+        foreach ($fields as $field) {
+            $section = (string) $field['section'];
+            $key = (string) $field['key'];
+            $type = (string) ($field['type'] ?? 'textarea');
+
+            $rule = match ($type) {
+                'url' => 'nullable|url|max:2048',
+                'number' => 'nullable|numeric|min:0',
+                'image' => 'nullable|string|max:2048',
+                'text' => 'nullable|string|max:255',
+                default => 'nullable|string|max:65535',
+            };
+
+            $rules["contents.{$section}.{$key}"] = $rule;
+        }
+
+        $pricingCards = ['silver', 'gold', 'premium'];
+        foreach ($pricingCards as $card) {
+            $activeKey = "{$card}_active";
+            $currencyKey = "{$card}_currency";
+
+            $rules["contents.pricing.{$activeKey}"] = 'nullable|in:0,1';
+            $rules["contents.pricing.{$currencyKey}"] = "nullable|in:USD,IDR,EUR|required_if:contents.pricing.{$activeKey},1";
+            $rules["contents.pricing.{$card}_title"] = "nullable|string|max:150|required_if:contents.pricing.{$activeKey},1";
+            $rules["contents.pricing.{$card}_subtitle"] = "nullable|string|max:255|required_if:contents.pricing.{$activeKey},1";
+            $rules["contents.pricing.{$card}_price"] = "nullable|numeric|min:0|required_if:contents.pricing.{$activeKey},1";
+            $rules["contents.pricing.{$card}_features"] = "nullable|string|max:65535|required_if:contents.pricing.{$activeKey},1";
+            $rules["contents.pricing.{$card}_button_text"] = "nullable|string|max:80|required_if:contents.pricing.{$activeKey},1";
+            $rules["contents.pricing.{$card}_button_url"] = "nullable|url|max:2048|required_if:contents.pricing.{$activeKey},1";
+        }
+
+        $rules['contents.pricing.gold_badge'] = 'nullable|string|max:60';
+
+        $data = $request->validate($rules);
 
         DB::transaction(function () use ($data, $fields, $page) {
             foreach ($fields as $field) {
@@ -333,8 +367,22 @@ class KontenHalamanController extends Controller
                 'section' => 'pricing',
                 'key' => 'silver_price',
                 'label' => 'Ticket Pricing - Paket Silver (harga)',
-                'type' => 'text',
+                'type' => 'number',
                 'placeholder' => 'Contoh: 29',
+            ],
+            [
+                'section' => 'pricing',
+                'key' => 'silver_currency',
+                'label' => 'Ticket Pricing - Paket Silver (mata uang)',
+                'type' => 'text',
+                'placeholder' => 'Contoh: USD / IDR / EUR',
+            ],
+            [
+                'section' => 'pricing',
+                'key' => 'silver_active',
+                'label' => 'Ticket Pricing - Paket Silver (aktif)',
+                'type' => 'text',
+                'placeholder' => '0 atau 1',
             ],
             [
                 'section' => 'pricing',
@@ -373,8 +421,22 @@ class KontenHalamanController extends Controller
                 'section' => 'pricing',
                 'key' => 'gold_price',
                 'label' => 'Ticket Pricing - Paket Gold (harga)',
-                'type' => 'text',
+                'type' => 'number',
                 'placeholder' => 'Contoh: 45',
+            ],
+            [
+                'section' => 'pricing',
+                'key' => 'gold_currency',
+                'label' => 'Ticket Pricing - Paket Gold (mata uang)',
+                'type' => 'text',
+                'placeholder' => 'Contoh: USD / IDR / EUR',
+            ],
+            [
+                'section' => 'pricing',
+                'key' => 'gold_active',
+                'label' => 'Ticket Pricing - Paket Gold (aktif)',
+                'type' => 'text',
+                'placeholder' => '0 atau 1',
             ],
             [
                 'section' => 'pricing',
@@ -420,8 +482,22 @@ class KontenHalamanController extends Controller
                 'section' => 'pricing',
                 'key' => 'premium_price',
                 'label' => 'Ticket Pricing - Paket Premium (harga)',
-                'type' => 'text',
+                'type' => 'number',
                 'placeholder' => 'Contoh: 59',
+            ],
+            [
+                'section' => 'pricing',
+                'key' => 'premium_currency',
+                'label' => 'Ticket Pricing - Paket Premium (mata uang)',
+                'type' => 'text',
+                'placeholder' => 'Contoh: USD / IDR / EUR',
+            ],
+            [
+                'section' => 'pricing',
+                'key' => 'premium_active',
+                'label' => 'Ticket Pricing - Paket Premium (aktif)',
+                'type' => 'text',
+                'placeholder' => '0 atau 1',
             ],
             [
                 'section' => 'pricing',
