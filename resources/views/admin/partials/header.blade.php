@@ -4,7 +4,7 @@
 <head>
 
     <!-- Title -->
-	<title>Ventic - Event Ticketing Bootstrap 5 Admin Template</title>
+	<title>Admin Webinar</title>
 	<!-- Meta -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
