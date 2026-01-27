@@ -11,14 +11,6 @@ Route::get('/', function () {
     return view('peserta.index');
 })->name('peserta.index');
 
-Route::get('/2', function () {
-    return view('peserta.index2');
-})->name('peserta.index2');
-
-Route::get('/3', function () {
-    return view('peserta.index3');
-})->name('peserta.index3');
-
 Route::get('/about', function () {
     return view('peserta.about');
 })->name('peserta.about');
