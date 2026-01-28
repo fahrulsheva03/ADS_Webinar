@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Schema;
 
 Route::get('/', function () {
     $latestNews = collect();
+    $speakers = collect();
 
     if (Schema::hasTable('news')) {
         $latestNews = News::query()
@@ -22,8 +23,18 @@ Route::get('/', function () {
             ->get();
     }
 
+    if (Schema::hasTable('speakers')) {
+        $speakers = Speaker::query()
+            ->where('is_active', true)
+            ->orderBy('urutan')
+            ->orderByDesc('id')
+            ->limit(8)
+            ->get();
+    }
+
     return view('peserta.index', [
         'latestNews' => $latestNews,
+        'speakers' => $speakers,
     ]);
 })->name('peserta.index');
 
