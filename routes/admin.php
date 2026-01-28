@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\EventSesiController as AdminEventSesiController;
 use App\Http\Controllers\Admin\KontenHalamanController;
@@ -23,9 +24,7 @@ Route::prefix('admin')->group(function () {
     Route::post('/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
     Route::middleware('admin')->group(function () {
-        Route::get('/', function () {
-            return view('admin.index');
-        })->name('admin.index');
+        Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.index');
 
         Route::get('/events', [AdminEventController::class, 'index'])->name('admin.events.index');
         Route::post('/events', [AdminEventController::class, 'store'])->name('admin.events.store');

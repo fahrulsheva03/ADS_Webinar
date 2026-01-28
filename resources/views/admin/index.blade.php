@@ -1,244 +1,6 @@
 @extends('admin.partials.app')
 
 @section('content')
-    @php
-        use App\Models\Event;
-        use App\Models\EventSesi;
-        use App\Models\KehadiranSesi;
-        use App\Models\Pesanan;
-        use App\Models\User;
-        use Carbon\Carbon;
-        use Illuminate\Support\Facades\Route;
-
-        $now = now();
-        $todayStart = $now->copy()->startOfDay();
-        $todayEnd = $now->copy()->endOfDay();
-
-        $toneBadge = function (string $tone): string {
-            $tone = strtolower($tone);
-            $className = "badge bg-{$tone}";
-            if (in_array($tone, ['warning', 'light', 'info'], true)) {
-                $className .= ' text-dark';
-            }
-
-            return $className;
-        };
-
-        $eventIsOngoing = function (Event $event) use ($now): bool {
-            $mulai = $event->tanggal_mulai?->toDateString();
-            $selesai = $event->tanggal_selesai?->toDateString();
-            $today = $now->toDateString();
-
-            if ($event->status !== 'active') {
-                return false;
-            }
-
-            if ($mulai && $mulai > $today) {
-                return false;
-            }
-
-            if ($selesai && $selesai < $today) {
-                return false;
-            }
-
-            return true;
-        };
-
-        $eventProgress = function (Event $event) use ($now): int {
-            $start = $event->tanggal_mulai?->copy()->startOfDay();
-            $end = $event->tanggal_selesai?->copy()->startOfDay();
-            if (! $start || ! $end) {
-                return 0;
-            }
-
-            if ($end->lt($start)) {
-                return 0;
-            }
-
-            $totalDays = max(1, $start->diffInDays($end) + 1);
-            $passedDays = $start->diffInDays($now->copy()->startOfDay()) + 1;
-            $passedDays = max(0, min($totalDays, $passedDays));
-
-            return (int) round(($passedDays / $totalDays) * 100);
-        };
-
-        $allActiveEvents = Event::query()
-            ->where('status', 'active')
-            ->orderByDesc('tanggal_mulai')
-            ->get();
-
-        $ongoingEvents = $allActiveEvents
-            ->filter(fn (Event $e) => $eventIsOngoing($e))
-            ->values();
-
-        $ongoingCount = $ongoingEvents->count();
-        $allActiveCount = $allActiveEvents->count();
-        $ongoingAvgProgress = $ongoingCount > 0
-            ? (int) round($ongoingEvents->map(fn (Event $e) => $eventProgress($e))->avg() ?? 0)
-            : 0;
-
-        $todaySessions = EventSesi::query()
-            ->with('event')
-            ->where('waktu_mulai', '<', $todayEnd)
-            ->where('waktu_selesai', '>', $todayStart)
-            ->orderBy('waktu_mulai')
-            ->get();
-
-        $todaySessionIds = $todaySessions->pluck('id')->values();
-        $todayEventIds = $todaySessions->pluck('event_id')->unique()->values();
-        $todayEvents = $todayEventIds->isEmpty()
-            ? collect()
-            : Event::query()->whereIn('id', $todayEventIds)->orderBy('tanggal_mulai')->get();
-
-        $expectedUserIds = $todaySessionIds->isEmpty()
-            ? collect()
-            : Pesanan::query()
-                ->where('status_pembayaran', 'paid')
-                ->whereHas('paket.sesi', fn ($q) => $q->whereIn('event_sesi.id', $todaySessionIds))
-                ->distinct()
-                ->pluck('user_id')
-                ->values();
-
-        $hadirUserIds = $todaySessionIds->isEmpty()
-            ? collect()
-            : KehadiranSesi::query()
-                ->whereIn('event_sesi_id', $todaySessionIds)
-                ->whereBetween('waktu_join', [$todayStart, $todayEnd])
-                ->distinct()
-                ->pluck('user_id')
-                ->values();
-
-        $expectedCount = $expectedUserIds->count();
-        $hadirCount = $hadirUserIds->count();
-        $tidakHadirCount = max(0, $expectedCount - $hadirCount);
-        $hadirPct = $expectedCount > 0 ? (int) round(($hadirCount / $expectedCount) * 100) : 0;
-        $tidakHadirPct = $expectedCount > 0 ? 100 - $hadirPct : 0;
-
-        $onlineNowCount = $todaySessionIds->isEmpty()
-            ? 0
-            : KehadiranSesi::query()
-                ->whereIn('event_sesi_id', $todaySessionIds)
-                ->whereNull('waktu_leave')
-                ->whereBetween('waktu_join', [$todayStart, $todayEnd])
-                ->count();
-
-        $prioritySession = $todaySessions
-            ->first(fn (EventSesi $s) => $s->waktu_selesai && $now->lte($s->waktu_selesai));
-
-        $priorityAbsentUsers = collect();
-        if ($prioritySession) {
-            $priorityExpected = Pesanan::query()
-                ->where('status_pembayaran', 'paid')
-                ->whereHas('paket.sesi', fn ($q) => $q->where('event_sesi.id', $prioritySession->id))
-                ->distinct()
-                ->pluck('user_id')
-                ->values();
-
-            $priorityPresent = KehadiranSesi::query()
-                ->where('event_sesi_id', $prioritySession->id)
-                ->whereBetween('waktu_join', [$todayStart, $todayEnd])
-                ->distinct()
-                ->pluck('user_id')
-                ->values();
-
-            $priorityAbsentIds = $priorityExpected->diff($priorityPresent)->values();
-            if ($priorityAbsentIds->isNotEmpty()) {
-                $priorityAbsentUsers = User::query()
-                    ->whereIn('id', $priorityAbsentIds)
-                    ->orderBy('nama')
-                    ->limit(6)
-                    ->get(['id', 'nama', 'email', 'status_akun']);
-            }
-        }
-
-        $upcomingSoonCount = $todaySessions
-            ->filter(function (EventSesi $s) use ($now) {
-                if (! $s->waktu_mulai) {
-                    return false;
-                }
-
-                if ($s->status_sesi === 'live') {
-                    return false;
-                }
-
-                return $s->waktu_mulai->gt($now) && $s->waktu_mulai->diffInMinutes($now) <= 30;
-            })
-            ->count();
-
-        $overrunLiveCount = EventSesi::query()
-            ->where('status_sesi', 'live')
-            ->whereNotNull('waktu_selesai')
-            ->where('waktu_selesai', '<', $now->copy()->subMinutes(10))
-            ->count();
-
-        $pendingPaymentCount = Pesanan::query()->where('status_pembayaran', 'pending')->count();
-
-        $alerts = collect();
-        if ($overrunLiveCount > 0) {
-            $alerts->push([
-                'tone' => 'danger',
-                'level' => 'High',
-                'title' => "Ada {$overrunLiveCount} sesi masih Live melewati jadwal.",
-                'desc' => 'Cek status sesi dan hentikan yang sudah selesai.',
-                'actionLabel' => 'Buka Live Session',
-                'actionUrl' => Route::has('admin.live.index') ? route('admin.live.index', ['status' => 'live']) : '#',
-            ]);
-        }
-        if ($upcomingSoonCount > 0) {
-            $alerts->push([
-                'tone' => 'warning',
-                'level' => 'Medium',
-                'title' => "{$upcomingSoonCount} sesi mulai dalam 30 menit.",
-                'desc' => 'Pastikan host siap, link aktif, dan status sesi benar.',
-                'actionLabel' => 'Cek Jadwal Sesi',
-                'actionUrl' => Route::has('admin.sesi-event.index') ? route('admin.sesi-event.index') : '#',
-            ]);
-        }
-        if ($expectedCount > 0 && $hadirPct < 60) {
-            $alerts->push([
-                'tone' => 'warning',
-                'level' => 'Medium',
-                'title' => "Kehadiran hari ini baru {$hadirPct}%.",
-                'desc' => 'Pertimbangkan reminder peserta atau cek kendala akses.',
-                'actionLabel' => 'Buka Laporan Kehadiran',
-                'actionUrl' => Route::has('admin.laporan.kehadiran.index') ? route('admin.laporan.kehadiran.index', ['from' => $now->toDateString(), 'to' => $now->toDateString()]) : '#',
-            ]);
-        }
-        if ($pendingPaymentCount > 0) {
-            $alerts->push([
-                'tone' => 'secondary',
-                'level' => 'Low',
-                'title' => "Ada {$pendingPaymentCount} transaksi Pending.",
-                'desc' => 'Tinjau pembayaran untuk memperlancar akses peserta.',
-                'actionLabel' => 'Buka Transaksi',
-                'actionUrl' => Route::has('admin.transaksi.index') ? route('admin.transaksi.index', ['status' => 'pending']) : '#',
-            ]);
-        }
-
-        $next7Start = $now->copy()->startOfDay()->toDateString();
-        $next7End = $now->copy()->addDays(7)->toDateString();
-        $upcomingEvents = Event::query()
-            ->whereDate('tanggal_mulai', '>=', $next7Start)
-            ->whereDate('tanggal_mulai', '<=', $next7End)
-            ->orderBy('tanggal_mulai')
-            ->limit(20)
-            ->get();
-
-        $monthStart = $now->copy()->startOfMonth();
-        $calendarStart = $monthStart->copy()->startOfWeek(Carbon::MONDAY);
-        $calendarEnd = $monthStart->copy()->endOfMonth()->endOfWeek(Carbon::SUNDAY);
-        $calendarEventDates = Event::query()
-            ->whereDate('tanggal_mulai', '>=', $calendarStart->toDateString())
-            ->whereDate('tanggal_mulai', '<=', $calendarEnd->toDateString())
-            ->pluck('tanggal_mulai')
-            ->filter()
-            ->map(fn ($d) => Carbon::parse($d)->toDateString())
-            ->unique()
-            ->values()
-            ->all();
-        $calendarEventSet = array_fill_keys($calendarEventDates, true);
-    @endphp
-
     <a class="visually-hidden-focusable" href="#main-content">Lewati ke konten utama</a>
 
     <style>
@@ -289,8 +51,8 @@
                             <div class="text-muted">Jumlah event yang sedang berlangsung dan indikator progress.</div>
                         </div>
                         <div class="d-flex flex-wrap align-items-center gap-2">
-                            <span class="{{ $toneBadge('success') }}">Berlangsung: {{ $ongoingCount }}</span>
-                            <span class="{{ $toneBadge('primary') }}">Aktif: {{ $allActiveCount }}</span>
+                            <span class="{{ $badgeClass['success'] }}">Berlangsung: {{ $ongoingCount }}</span>
+                            <span class="{{ $badgeClass['primary'] }}">Aktif: {{ $allActiveCount }}</span>
                         </div>
                     </div>
                 </div>
@@ -334,10 +96,6 @@
                                 @else
                                     <div class="d-flex flex-column gap-3">
                                         @foreach ($ongoingEvents->take(5) as $event)
-                                            @php
-                                                $pct = $eventProgress($event);
-                                                $eventUrl = Route::has('admin.events.index') ? route('admin.events.index', ['q' => $event->judul]) : '#';
-                                            @endphp
                                             <div>
                                                 <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
                                                     <div class="me-auto">
@@ -352,12 +110,12 @@
                                                         </div>
                                                     </div>
                                                     <div class="d-flex align-items-center gap-2">
-                                                        <span class="{{ $toneBadge('success') }}">{{ $pct }}%</span>
-                                                        <a class="btn btn-outline-primary btn-sm" href="{{ $eventUrl }}">Buka</a>
+                                                        <span class="{{ $badgeClass['success'] }}">{{ $event->dash_progress_pct }}%</span>
+                                                        <a class="btn btn-outline-primary btn-sm" href="{{ $event->dash_url }}">Buka</a>
                                                     </div>
                                                 </div>
                                                 <div class="progress mt-2" style="height: 7px;">
-                                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ $pct }}%;" aria-valuenow="{{ $pct }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    <div class="progress-bar bg-success" role="progressbar" style="width: {{ $event->dash_progress_pct }}%;" aria-valuenow="{{ $event->dash_progress_pct }}" aria-valuemin="0" aria-valuemax="100"></div>
                                                 </div>
                                             </div>
                                         @endforeach
@@ -406,35 +164,6 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($todaySessions as $sesi)
-                                        @php
-                                            $start = $sesi->waktu_mulai;
-                                            $end = $sesi->waktu_selesai;
-                                            $statusTone = 'primary';
-                                            $statusText = 'Terjadwal';
-                                            if ($start && $end && $now->gte($start) && $now->lte($end)) {
-                                                $statusTone = 'success';
-                                                $statusText = 'Berjalan';
-                                            } elseif ($end && $now->gt($end)) {
-                                                $statusTone = 'secondary';
-                                                $statusText = 'Selesai';
-                                            } elseif ($start && $start->gt($now) && $start->diffInMinutes($now) <= 30) {
-                                                $statusTone = 'warning';
-                                                $statusText = 'Mulai Sebentar Lagi';
-                                            }
-
-                                            if ($sesi->status_sesi === 'live' && $statusText !== 'Selesai') {
-                                                $statusTone = 'success';
-                                                $statusText = 'Live';
-                                            }
-                                            if ($sesi->status_sesi === 'selesai') {
-                                                $statusTone = 'secondary';
-                                                $statusText = 'Selesai';
-                                            }
-
-                                            $lokasi = ! empty($sesi->zoom_link) ? 'Online (Zoom)' : ($sesi->event?->lokasi ?: '-');
-                                            $actionLiveUrl = Route::has('admin.live.index') ? route('admin.live.index', ['q' => $sesi->judul_sesi, 'status' => '']) : '#';
-                                            $actionScanUrl = Route::has('admin.scan.index') ? route('admin.scan.index') : '#';
-                                        @endphp
                                         <tr>
                                             <td class="text-black fw-semibold">{{ $sesi->event?->judul ?? '-' }}</td>
                                             <td>
@@ -442,16 +171,16 @@
                                                 <div class="text-muted small">ID Sesi: {{ $sesi->id }}</div>
                                             </td>
                                             <td class="text-muted">
-                                                {{ $start?->format('H:i') ?? '-' }}–{{ $end?->format('H:i') ?? '-' }}
+                                                {{ $sesi->dash_time_label }}
                                             </td>
-                                            <td class="text-muted">{{ $lokasi }}</td>
-                                            <td><span class="{{ $toneBadge($statusTone) }}">{{ $statusText }}</span></td>
+                                            <td class="text-muted">{{ $sesi->dash_lokasi }}</td>
+                                            <td><span class="{{ $badgeClass[$sesi->dash_status_tone] }}">{{ $sesi->dash_status_text }}</span></td>
                                             <td class="text-end">
                                                 <div class="d-inline-flex flex-wrap gap-2 justify-content-end">
-                                                    <a class="btn btn-outline-primary btn-sm" href="{{ $actionLiveUrl }}">
+                                                    <a class="btn btn-outline-primary btn-sm" href="{{ $sesi->dash_action_live_url }}">
                                                         <i class="la la-broadcast-tower me-1" aria-hidden="true"></i> Live
                                                     </a>
-                                                    <a class="btn btn-outline-secondary btn-sm" href="{{ $actionScanUrl }}">
+                                                    <a class="btn btn-outline-secondary btn-sm" href="{{ $sesi->dash_action_scan_url }}">
                                                         <i class="la la-qrcode me-1" aria-hidden="true"></i> QR
                                                     </a>
                                                 </div>
@@ -540,9 +269,9 @@
                             <div class="text-muted">Persentase hadir vs tidak hadir serta peserta prioritas yang belum hadir.</div>
                         </div>
                         <div class="d-flex flex-wrap gap-2">
-                            <span class="{{ $toneBadge('success') }}">Hadir: {{ $hadirCount }}</span>
-                            <span class="{{ $toneBadge('danger') }}">Belum: {{ $tidakHadirCount }}</span>
-                            <span class="{{ $toneBadge('primary') }}">Online: {{ $onlineNowCount }}</span>
+                            <span class="{{ $badgeClass['success'] }}">Hadir: {{ $hadirCount }}</span>
+                            <span class="{{ $badgeClass['danger'] }}">Belum: {{ $tidakHadirCount }}</span>
+                            <span class="{{ $badgeClass['primary'] }}">Online: {{ $onlineNowCount }}</span>
                         </div>
                     </div>
                 </div>
@@ -618,7 +347,7 @@
                                                         <div class="fw-semibold text-black">{{ $u->nama }}</div>
                                                         <div class="text-muted small">{{ $u->email }}</div>
                                                     </div>
-                                                    <span class="{{ $toneBadge($u->status_akun === 'aktif' ? 'success' : 'secondary') }}">{{ $u->status_akun ?: 'unknown' }}</span>
+                                                    <span class="{{ $badgeClass[$u->dash_status_tone] }}">{{ $u->status_akun ?: 'unknown' }}</span>
                                                 </div>
                                             @endforeach
                                         </div>
@@ -656,7 +385,7 @@
                                 <div class="list-group-item d-flex flex-wrap align-items-center justify-content-between gap-2">
                                     <div class="me-auto">
                                         <div class="d-flex flex-wrap align-items-center gap-2">
-                                            <span class="{{ $toneBadge($a['tone']) }}">{{ $a['level'] }}</span>
+                                            <span class="{{ $badgeClass[$a['tone']] }}">{{ $a['level'] }}</span>
                                             <div class="fw-semibold text-black">{{ $a['title'] }}</div>
                                         </div>
                                         <div class="text-muted small">{{ $a['desc'] }}</div>
@@ -709,38 +438,15 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @php
-                                                $cursor = $calendarStart->copy();
-                                            @endphp
-                                            @while ($cursor->lte($calendarEnd))
+                                            @foreach ($calendarRows as $week)
                                                 <tr>
-                                                    @for ($i = 0; $i < 7; $i++)
-                                                        @php
-                                                            $date = $cursor->copy();
-                                                            $key = $date->toDateString();
-                                                            $inMonth = $date->month === $now->month;
-                                                            $isToday = $key === $now->toDateString();
-                                                            $hasEvent = isset($calendarEventSet[$key]);
-
-                                                            $bg = '';
-                                                            $text = $inMonth ? 'text-black' : 'text-muted';
-                                                            if ($hasEvent) {
-                                                                $bg = $isToday ? 'bg-success text-white' : 'bg-primary text-white';
-                                                                $text = '';
-                                                            } elseif ($isToday) {
-                                                                $bg = 'bg-light text-dark';
-                                                                $text = '';
-                                                            }
-                                                        @endphp
+                                                    @foreach ($week as $cell)
                                                         <td>
-                                                            <span class="day {{ $bg }} {{ $text }}">{{ $date->day }}</span>
+                                                            <span class="day {{ $cell['bgClass'] }} {{ $cell['textClass'] }}">{{ $cell['day'] }}</span>
                                                         </td>
-                                                        @php
-                                                            $cursor->addDay();
-                                                        @endphp
-                                                    @endfor
+                                                    @endforeach
                                                 </tr>
-                                            @endwhile
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -759,12 +465,7 @@
                                 @else
                                     <div class="list-group">
                                         @foreach ($upcomingEvents as $event)
-                                            @php
-                                                $eventUrl = Route::has('admin.events.index') ? route('admin.events.index', ['q' => $event->judul]) : '#';
-                                                $tone = $eventIsOngoing($event) ? 'success' : ($event->status === 'active' ? 'primary' : 'secondary');
-                                                $statusText = $event->status === 'active' ? 'Aktif' : ($event->status ?: 'Draft');
-                                            @endphp
-                                            <a href="{{ $eventUrl }}" class="list-group-item list-group-item-action d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                            <a href="{{ $event->dash_url }}" class="list-group-item list-group-item-action d-flex flex-wrap align-items-center justify-content-between gap-2">
                                                 <div class="me-auto">
                                                     <div class="fw-semibold text-black">{{ $event->judul }}</div>
                                                     <div class="text-muted small">
@@ -774,7 +475,7 @@
                                                         @endif
                                                     </div>
                                                 </div>
-                                                <span class="{{ $toneBadge($tone) }}">{{ $statusText }}</span>
+                                                <span class="{{ $badgeClass[$event->dash_status_tone] }}">{{ $event->dash_status_text }}</span>
                                             </a>
                                         @endforeach
                                     </div>
@@ -787,4 +488,3 @@
         </section>
     </main>
 @endsection
-

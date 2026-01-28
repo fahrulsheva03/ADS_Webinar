@@ -39,6 +39,14 @@ function addSwitcher()
     const containerLayoutSelect = $('#container_layout');
     const themeDirectionSelect = $('#theme_direction');
 
+	if (typeof getCookie === 'function' && typeof setCookie === 'function') {
+		var savedSidebarStyle = getCookie('sidebarStyle');
+		if (savedSidebarStyle === 'mini') {
+			setCookie('sidebarStyle', 'full');
+			body.attr('data-sidebar-style', 'full');
+		}
+	}
+
     //change the theme typography controller
     typographySelect.on('change', function() {
         body.attr('data-typography', this.value);
@@ -116,6 +124,10 @@ function addSwitcher()
                 return;
             }
         }
+
+		if(this.value === "mini") {
+			this.value = "full";
+		}
 
         if(body.attr('data-layout') === "vertical") {
             if(body.attr('data-container') === "boxed" && this.value === "full") {
