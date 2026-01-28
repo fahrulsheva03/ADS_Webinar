@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\PaketController as AdminPaketController;
 use App\Http\Controllers\Admin\PesertaController as AdminPesertaController;
 use App\Http\Controllers\Admin\ScanController as AdminScanController;
+use App\Http\Controllers\Admin\SpeakerController;
 use App\Http\Controllers\Admin\TransaksiController as AdminTransaksiController;
 use App\Http\Controllers\Admin\VideoController as AdminVideoController;
 use App\Http\Controllers\ScanQrController;
@@ -96,5 +97,8 @@ Route::prefix('admin')->group(function () {
             Route::put('/{news}', [NewsController::class, 'update'])->name('admin.news.update');
             Route::delete('/{news}', [NewsController::class, 'destroy'])->name('admin.news.destroy');
         });
+
+        Route::get('speakers/{speaker}/image', [SpeakerController::class, 'image'])->name('speakers.image');
+        Route::resource('speakers', SpeakerController::class)->names('speakers');
     });
 });

@@ -109,145 +109,7 @@
         </div>
     </section>
     <!-- ABOUT SECTION END-->
-    <!-- EVENT SECTION START -->
-    <section class="event-main-section w-100 float-left padding-top padding-bottom light-bg">
-        <div class="container">
-            <div class="event-inner-section">
-                <div class="event-left-con">
-                    <div class="generic-title">
-                        <span class="small-text" data-aos="fade-up" data-aos-duration="700">SCHEDULE OF EVENT</span>
-                        <h2 data-aos="fade-up" data-aos-duration="700">List of Events Planned in This Conference</h2>
-                    </div>
-                    <p data-aos="fade-up" data-aos-duration="700">This is a detailed list event of conference for digital
-                        technology 2024.</p>
-                    <div class="generic-btn" data-aos="fade-up" data-aos-duration="700">
-                        <a href="event.html">DOWNLOAD SCHEDULE <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="event-right-con">
-                    <ul class="nav nav-tabs" role="tablist" data-aos="fade-up" data-aos-duration="700">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                <span class="d-block">Day 1</span>
-                                <small>25 OCT 2024</small>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                <span class="d-block">Day 2</span>
-                                <small>26 OCT 2024</small>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                <span class="d-block">Day 3</span>
-                                <small>27 OCT 2024</small>
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" data-aos="fade-up" data-aos-duration="700">
-                        <div class="tab-pane active" id="tabs-1" role="tabpanel">
-                            <div class='education'>
-                                <div class='education__content'>
-                                    <small>09:00 - 11:00</small>
-                                    <span class='year'>1</span>
-                                    <h6>Registration</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscin
-                                        g elit, sed do eiusmod tempo. <a href="event.html">More</a></p>
-                                </div>
-                                <div class='education__content'>
-                                    <small>11:00 - 12:00</small>
-                                    <span class='year'>2</span>
-                                    <h6>Introduction Digital Technology - 2024</h6>
-                                    <p>Npendisse ultrices gravida. Risus commodo viverr
-                                        a maecenas accumsan lacus vel facilisis. <a href="event.html">More</a></p>
-                                </div>
-                                <div class='education__content'>
-                                    <small>12:00 - 14:00</small>
-                                    <span class='year'>3</span>
-                                    <h6>Speaker Speech</h6>
-                                    <p>Consectetur adipiscing elit, sed do eiusmod temp
-                                        or incididunt ut labore et dolore. <a href="event.html">More</a></p>
-                                </div>
-                                <div class='education__content'>
-                                    <small>14:00 - 15:00</small>
-                                    <span class='year'>4</span>
-                                    <h6>Lunch Break</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscin
-                                        glit, sed do eiusmod tempor incididunt ut. <a href="event.html">More</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tabs-2" role="tabpanel">
-                            <div class='education'>
-                                <div class='education__content'>
-                                    <small>12:00 - 14:00</small>
-                                    <span class='year'>1</span>
-                                    <h6>Speaker Speech</h6>
-                                    <p>Consectetur adipiscing elit, sed do eiusmod temp
-                                        or incididunt ut labore et dolore. <a href="event.html">More</a></p>
-                                </div>
-                                <div class='education__content'>
-                                    <small>09:00 - 11:00</small>
-                                    <span class='year'>2</span>
-                                    <h6>Registration</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscin
-                                        g elit, sed do eiusmod tempo. <a href="event.html">More</a></p>
-                                </div>
-                                <div class='education__content'>
-                                    <small>11:00 - 12:00</small>
-                                    <span class='year'>3</span>
-                                    <h6>Introduction Digital Technology - 2024</h6>
-                                    <p>Npendisse ultrices gravida. Risus commodo viverr
-                                        a maecenas accumsan lacus vel facilisis. <a href="event.html">More</a></p>
-                                </div>
-                                <div class='education__content'>
-                                    <small>14:00 - 15:00</small>
-                                    <span class='year'>4</span>
-                                    <h6>Lunch Break</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscin
-                                        glit, sed do eiusmod tempor incididunt ut. <a href="event.html">More</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="tabs-3" role="tabpanel">
-                            <div class='education'>
-                                <div class='education__content'>
-                                    <small>11:00 - 12:00</small>
-                                    <span class='year'>1</span>
-                                    <h6>Introduction Digital Technology - 2024</h6>
-                                    <p>Npendisse ultrices gravida. Risus commodo viverr
-                                        a maecenas accumsan lacus vel facilisis. <a href="event.html">More</a></p>
-                                </div>
-                                <div class='education__content'>
-                                    <small>09:00 - 11:00</small>
-                                    <span class='year'>2</span>
-                                    <h6>Registration</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscin
-                                        g elit, sed do eiusmod tempo. <a href="event.html">More</a></p>
-                                </div>
-                                <div class='education__content'>
-                                    <small>12:00 - 14:00</small>
-                                    <span class='year'>3</span>
-                                    <h6>Speaker Speech</h6>
-                                    <p>Consectetur adipiscing elit, sed do eiusmod temp
-                                        or incididunt ut labore et dolore. <a href="event.html">More</a></p>
-                                </div>
-                                <div class='education__content'>
-                                    <small>14:00 - 15:00</small>
-                                    <span class='year'>4</span>
-                                    <h6>Lunch Break</h6>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscin
-                                        glit, sed do eiusmod tempor incididunt ut. <a href="event.html">More</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- EVENT SECTION END -->
+   
     <!-- SPEAKERS SECTION START -->
     <section class="speakers-main-section w-100 float-left padding-top padding-bottom">
         <div class="container-fluid">
@@ -364,11 +226,23 @@
     <!-- SPEAKERS SECTION END -->
     
     <!-- FAQ SECTION START -->
-    <section class="faq-main-section w-100 float-left padding-top padding-bottom position-relative light-bg">
+    @php
+        $faqQ1 = konten('home', 'faq', 'q1') ?: 'What is the design process for branding?';
+        $faqA1 = konten('home', 'faq', 'a1') ?: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+        $faqQ2 = konten('home', 'faq', 'q2') ?: 'How much does logo design services cost?';
+        $faqA2 = konten('home', 'faq', 'a2') ?: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+        $faqQ3 = konten('home', 'faq', 'q3') ?: 'What is the process for a website redesign?';
+        $faqA3 = konten('home', 'faq', 'a3') ?: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+        $faqQ4 = konten('home', 'faq', 'q4') ?: 'What is a content strategy?';
+        $faqA4 = konten('home', 'faq', 'a4') ?: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+        $faqQ5 = konten('home', 'faq', 'q5') ?: 'How much does website design cost?';
+        $faqA5 = konten('home', 'faq', 'a5') ?: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+    @endphp
+    <section id="faq" class="faq-main-section w-100 float-left padding-top padding-bottom position-relative light-bg">
         <div class="container">
             <div class="generic-title text-center">
-                <span class="small-text" data-aos="fade-up" data-aos-duration="700">CONFX - FAQ</span>
-                <h2 data-aos="fade-up" data-aos-duration="700">Frequently Asked Questions</h2>
+                <span class="small-text" data-aos="fade-up" data-aos-duration="700">{{ konten('home', 'faq', 'small_text') ?: 'FAQ' }}</span>
+                <h2 data-aos="fade-up" data-aos-duration="700">{{ konten('home', 'faq', 'title') ?: 'Frequently Asked Questions' }}</h2>
             </div>
             <div class="faq-inner-section">
                 <div id="accordion">
@@ -377,17 +251,14 @@
                             <h5 class="mb-0">
                                 <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
                                     aria-expanded="true" aria-controls="collapseOne">
-                                    What is the design process for branding?
+                                    {{ $faqQ1 }}
                                 </button>
                             </h5>
                         </div>
 
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
                             data-parent="#accordion">
-                            <div class="card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
-                                Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</div>
+                            <div class="card-body">{!! nl2br(e($faqA1)) !!}</div>
                         </div>
                     </div>
                     <div class="card" data-aos="fade-up" data-aos-duration="700">
@@ -395,15 +266,12 @@
                             <h5 class="mb-0">
                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
                                     aria-expanded="false" aria-controls="collapseTwo">
-                                    How much does logo design services cost?
+                                    {{ $faqQ2 }}
                                 </button>
                             </h5>
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                            <div class="card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
-                                Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</div>
+                            <div class="card-body">{!! nl2br(e($faqA2)) !!}</div>
                         </div>
                     </div>
                     <div class="card" data-aos="fade-up" data-aos-duration="700">
@@ -411,16 +279,13 @@
                             <h5 class="mb-0">
                                 <button class="btn btn-link collapsed" data-toggle="collapse"
                                     data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    What is the process for a website redesign?
+                                    {{ $faqQ3 }}
                                 </button>
                             </h5>
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                             data-parent="#accordion">
-                            <div class="card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
-                                Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</div>
+                            <div class="card-body">{!! nl2br(e($faqA3)) !!}</div>
                         </div>
                     </div>
                     <div class="card" data-aos="fade-up" data-aos-duration="700">
@@ -428,15 +293,12 @@
                             <h5 class="mb-0">
                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefour"
                                     aria-expanded="false" aria-controls="collapsefour">
-                                    What is a content strategy?
+                                    {{ $faqQ4 }}
                                 </button>
                             </h5>
                         </div>
                         <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordion">
-                            <div class="card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
-                                Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</div>
+                            <div class="card-body">{!! nl2br(e($faqA4)) !!}</div>
                         </div>
                     </div>
                     <div class="card" data-aos="fade-up" data-aos-duration="700">
@@ -444,15 +306,12 @@
                             <h5 class="mb-0">
                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefive"
                                     aria-expanded="false" aria-controls="collapsefive">
-                                    How much does website design cost?
+                                    {{ $faqQ5 }}
                                 </button>
                             </h5>
                         </div>
                         <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordion">
-                            <div class="card-body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
-                                Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua.</div>
+                            <div class="card-body">{!! nl2br(e($faqA5)) !!}</div>
                         </div>
                     </div>
                 </div>
@@ -462,104 +321,7 @@
     <!-- FAQ SECTION END -->
 
 
-    <!-- TESTIMONAIL SECTION START -->
-    <section class="testimonial-main-section w-100 float-left padding-top padding-bottom">
-        <div class="container">
-            <div id="owl-carouseltwo" class="owl-carousel owl-theme" data-aos="fade-up" data-aos-duration="700">
-                <div class="item">
-                    <div class="testimonial-inner-con">
-                        <div class="testimonial-img-con">
-                            <div class="testimonial-img-outer-con">
-                                <figure class="mb-0">
-                                    <img src="assets/images/testimonial-left-img.jpg" alt="testimonial-left-img">
-                                </figure>
-                            </div>
-                        </div>
-                        <div class="testimonial-right-con">
-                            <div class="generic-title">
-                                <span class="small-text">EVENT REVIEWS</span>
-                                <h2>Testimonials</h2>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolorem agna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                                viverra
-                                maecenas accumsan lacus vel facilisis. </p>
-                            <div class="reviewer-con">
-                                <figure class="mb-0">
-                                    <img src="assets/images/reviewer-img.png" alt="reviewer-img">
-                                </figure>
-                                <div class="reviewer-details">
-                                    <span class="d-block">Leon Drescher</span>
-                                    <small class="d-block">CEO - Company</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="testimonial-inner-con">
-                        <div class="testimonial-img-con">
-                            <div class="testimonial-img-outer-con">
-                                <figure class="mb-0">
-                                    <img src="assets/images/testimonial-left-img.jpg" alt="testimonial-left-img">
-                                </figure>
-                            </div>
-                        </div>
-                        <div class="testimonial-right-con">
-                            <div class="generic-title">
-                                <span class="small-text">EVENT REVIEWS</span>
-                                <h2>Testimonials</h2>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolorem agna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                                viverra
-                                maecenas accumsan lacus vel facilisis. </p>
-                            <div class="reviewer-con">
-                                <figure class="mb-0">
-                                    <img src="assets/images/reviewer-img.png" alt="reviewer-img">
-                                </figure>
-                                <div class="reviewer-details">
-                                    <span class="d-block">Leon Drescher</span>
-                                    <small class="d-block">CEO - Company</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="testimonial-inner-con">
-                        <div class="testimonial-img-con">
-                            <div class="testimonial-img-outer-con">
-                                <figure class="mb-0">
-                                    <img src="assets/images/testimonial-left-img.jpg" alt="testimonial-left-img">
-                                </figure>
-                            </div>
-                        </div>
-                        <div class="testimonial-right-con">
-                            <div class="generic-title">
-                                <span class="small-text">EVENT REVIEWS</span>
-                                <h2>Testimonials</h2>
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolorem agna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo
-                                viverra
-                                maecenas accumsan lacus vel facilisis. </p>
-                            <div class="reviewer-con">
-                                <figure class="mb-0">
-                                    <img src="assets/images/reviewer-img.png" alt="reviewer-img">
-                                </figure>
-                                <div class="reviewer-details">
-                                    <span class="d-block">Leon Drescher</span>
-                                    <small class="d-block">CEO - Company</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- TESTIMONAIL SECTION END -->
+
     <!-- SPONSERS SECTION START -->
     <div class="sponsers-main-section about-sponsers w-100 float-left">
         <div class="container">

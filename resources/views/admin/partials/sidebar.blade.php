@@ -45,6 +45,12 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('speakers.index') }}" class="ai-icon" aria-expanded="false">
+                    <i class="flaticon-381-microphone-1" aria-hidden="true"></i>
+                    <span class="nav-text">Speakers</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('admin.peserta.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-user" aria-hidden="true"></i>
                     <span class="nav-text">Peserta</span>
