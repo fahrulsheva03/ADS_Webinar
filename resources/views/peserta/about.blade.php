@@ -1,7 +1,6 @@
 @extends('peserta.partials.app')
 
 @section('content')
-    
     <!-- BANNER SECTION START -->
     @php
         $bannerTitle = trim(konten('about', 'banner', 'title'));
@@ -196,7 +195,12 @@
         </div>
     </section>
     <!-- ABOUT SECTION END-->
-   
+
+
+    @include('peserta.partials.faq', ['page' => 'home'])
+    @include('peserta.partials.speakers', ['speakers' => $speakers ?? collect()])
+
+
     @include('peserta.partials.sponsors', [
         'page' => 'about',
         'wrapperClass' => 'sponsers-main-section about-sponsers w-100 float-left',

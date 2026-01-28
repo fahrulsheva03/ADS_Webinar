@@ -65,34 +65,7 @@
     <!-- CONTACT INFORMATION SECTION END -->
     <!-- CONTACT FORM SECTION START -->
     <section class="contact-form-section w-100 float-left padding-top light-bg">
-        <div class="container">
-            <div class="generic-title text-center">
-                <span class="text-center small-text" data-aos="fade-up" data-aos-duration="700">GET IN TOUCH WITH US</span>
-                <h2 data-aos="fade-up" data-aos-duration="700">Send Us a Message</h2>
-            </div>
-            <form class="form-box" method="post" id="contactpage">
-                <ul class="list-unstyled" data-aos="fade-up" data-aos-duration="700">
-                    <li>
-                        <input type="text" name="fname" id="fname" placeholder="Name">
-                    </li>
-                    <li>
-                        <input type="tel" name="phone" id="phone" placeholder="Phone">
-                    </li>
-                    <li>
-                        <input type="email" placeholder="Email" name="email" id="email">
-                    </li>
-                    <li>
-                        <input type="text" placeholder="Website URL">
-                    </li>
-                    <li>
-                        <textarea placeholder="Message" name="subject" id="subject"></textarea>
-                    </li>
-                </ul>
-                <div class="submit-btn generic-btn">
-                    <button type="submit" id="submit">SEND MESSAGE <i class="fas fa-arrow-right"></i></button>
-                </div>
-            </form>
-        </div>
+        
     </section>
     <!-- CONTACT FORM SECTION END -->
     <!-- MAP SECTION START -->
@@ -104,39 +77,5 @@
         </div>
     </div>
     <!-- MAP SECTION END -->
-    <!-- SPONSERS SECTION START -->
-    <div class="sponsers-main-section about-sponsers w-100 float-left">
-        <div class="container">
-            <div class="sponsers-companies">
-                <ul class="list-unstyled mb-0" data-aos="fade-up" data-aos-duration="700">
-                    <li>
-                        <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo1.png" alt="sponsers-logo1">
-                        </figure>
-                    </li>
-                    <li>
-                        <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo2.png" alt="sponsers-logo2">
-                        </figure>
-                    </li>
-                    <li>
-                        <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo3.png" alt="sponsers-logo3">
-                        </figure>
-                    </li>
-                    <li>
-                        <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo4.png" alt="sponsers-logo4">
-                        </figure>
-                    </li>
-                    <li>
-                        <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo5.png" alt="sponsers-logo5">
-                        </figure>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- SPONSERS SECTION END -->
+    
 @endsection
