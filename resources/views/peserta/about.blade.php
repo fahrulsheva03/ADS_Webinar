@@ -121,106 +121,28 @@
                     Event!</p>
             </div>
             <div class="speakers-inner-sec" data-aos="fade-up" data-aos-duration="700">
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="assets/images/speakers-img1.jpg" alt="speakers-img1">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn1">Declan Heyes <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data1">
-                            <span>CEO - ConfX</span>
+                @forelse (($speakers ?? collect()) as $speaker)
+                    <div class="speaker-box position-relative">
+                        <a href="{{ $speaker->linkedin_url ?: '#' }}" @if($speaker->linkedin_url) target="_blank" rel="noopener" @endif>
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <figure class="mb-0">
+                            <img src="{{ $speaker->foto_url ?: asset('assets/images/speakers-img1.jpg') }}" alt="{{ $speaker->nama }}">
+                        </figure>
+                        <div class="speaker-status">
+                            <button class="showBtn{{ $loop->iteration }}">{{ $speaker->nama }} <i class="fas fa-angle-up"></i></button>
+                            <div class="staus-con data{{ $loop->iteration }}">
+                                <span>{{ $speaker->jabatan }} - {{ $speaker->perusahaan }}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="assets/images/speakers-img2.jpg" alt="speakers-img2">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn2">Stella Hindley <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data2">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="assets/images/speakers-img3.jpg" alt="speakers-img3">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn3">Jackson Allardyce <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data3">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="assets/images/speakers-img4.jpg" alt="speakers-img4">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn4">Kiara Simons <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data4">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="assets/images/speakers-img5.jpg" alt="speakers-img5">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn5">Eden Hoff <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data5">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="assets/images/speakers-img6.jpg" alt="speakers-img6">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn6">Jesse Beeby <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data6">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="assets/images/speakers-img7.jpg" alt="speakers-img7">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn7">Matthew Grey-Smith <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data7">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="speaker-box position-relative">
-                    <a href="https://www.linkedin.com/login"><i class="fab fa-linkedin-in"></i></a>
-                    <figure class="mb-0">
-                        <img src="assets/images/speakers-img1.jpg" alt="speakers-img1">
-                    </figure>
-                    <div class="speaker-status">
-                        <button class="showBtn8">Declan Heyes <i class="fas fa-angle-up"></i></button>
-                        <div class="staus-con data8">
-                            <span>CEO - ConfX</span>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                    <p class="text-center mb-0">Belum ada speaker.</p>
+                @endforelse
             </div>
-            <div class="generic-btn text-center" data-aos="fade-up" data-aos-duration="700">
+            {{-- <div class="generic-btn text-center" data-aos="fade-up" data-aos-duration="700">
                 <a href="speaker.html">VIEW ALL SPEAKERS <i class="fas fa-arrow-right"></i></a>
-            </div>
+            </div> --}}
         </div>
     </section>
     <!-- SPEAKERS SECTION END -->

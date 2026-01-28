@@ -97,8 +97,6 @@ Route::prefix('admin')->group(function () {
             Route::put('/{news}', [NewsController::class, 'update'])->name('admin.news.update');
             Route::delete('/{news}', [NewsController::class, 'destroy'])->name('admin.news.destroy');
         });
-
-        Route::get('speakers/{speaker}/image', [SpeakerController::class, 'image'])->name('speakers.image');
         Route::resource('speakers', SpeakerController::class)->names('speakers');
     });
 });

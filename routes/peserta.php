@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\SpeakerController as AdminSpeakerController;
 use App\Http\Controllers\PesertaAuthController;
 use App\Http\Controllers\PesertaCheckoutController;
 use App\Http\Controllers\PesertaDashboardController;
 use App\Models\News;
+use App\Models\Speaker;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 
@@ -25,8 +27,23 @@ Route::get('/', function () {
     ]);
 })->name('peserta.index');
 
+Route::get('/speakers/{speaker}/image', [AdminSpeakerController::class, 'image'])->name('speakers.image');
+
 Route::get('/about', function () {
-    return view('peserta.about');
+    $speakers = collect();
+
+    if (Schema::hasTable('speakers')) {
+        $speakers = Speaker::query()
+            ->where('is_active', true)
+            ->orderBy('urutan')
+            ->orderByDesc('id')
+            ->limit(8)
+            ->get();
+    }
+
+    return view('peserta.about', [
+        'speakers' => $speakers,
+    ]);
 })->name('peserta.about');
 
 Route::get('/contact', function () {
