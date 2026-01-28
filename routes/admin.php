@@ -87,6 +87,8 @@ Route::prefix('admin')->group(function () {
         Route::prefix('konten-halaman')->group(function () {
             Route::get('/', [KontenHalamanController::class, 'home'])->name('admin.konten-halaman.home');
             Route::post('/', [KontenHalamanController::class, 'updateHome'])->name('admin.konten-halaman.home.update');
+            Route::get('/about', [KontenHalamanController::class, 'about'])->name('admin.konten-halaman.about');
+            Route::post('/about', [KontenHalamanController::class, 'updateAbout'])->name('admin.konten-halaman.about.update');
             Route::post('/upload-image', [KontenHalamanController::class, 'uploadImage'])->name('admin.konten-halaman.upload-image');
         });
         Route::prefix('news')->group(function () {

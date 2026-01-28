@@ -21,94 +21,22 @@ class KontenHalamanController extends Controller
 
     public function home(): View
     {
-        $page = 'home';
-        $fields = $this->homeFields();
+        return $this->renderPage('home', $this->homeFields());
+    }
 
-        $existing = PageContent::query()
-            ->where('page', $page)
-            ->get()
-            ->keyBy(fn (PageContent $row) => "{$row->section}.{$row->key}");
-
-        $values = [];
-        foreach ($fields as $field) {
-            $compound = "{$field['section']}.{$field['key']}";
-            $values[$field['section']][$field['key']] = (string) optional($existing->get($compound))->value;
-        }
-
-        $fieldsBySection = collect($fields)->groupBy('section');
-
-        return view('admin.konten-halaman.index', [
-            'page' => $page,
-            'fieldsBySection' => $fieldsBySection,
-            'values' => $values,
-        ]);
+    public function about(): View
+    {
+        return $this->renderPage('about', $this->aboutFields());
     }
 
     public function updateHome(Request $request): RedirectResponse
     {
-        $page = 'home';
-        $fields = $this->homeFields();
+        return $this->updatePage($request, 'home', $this->homeFields(), true);
+    }
 
-        $rules = [
-            'contents' => 'required|array',
-            'contents.*' => 'array',
-        ];
-
-        foreach ($fields as $field) {
-            $section = (string) $field['section'];
-            $key = (string) $field['key'];
-            $type = (string) ($field['type'] ?? 'textarea');
-
-            $rule = match ($type) {
-                'url' => 'nullable|url|max:2048',
-                'number' => 'nullable|numeric|min:0',
-                'image' => 'nullable|string|max:2048',
-                'text' => 'nullable|string|max:255',
-                default => 'nullable|string|max:65535',
-            };
-
-            $rules["contents.{$section}.{$key}"] = $rule;
-        }
-
-        $pricingCards = ['silver', 'gold', 'premium'];
-        foreach ($pricingCards as $card) {
-            $activeKey = "{$card}_active";
-            $currencyKey = "{$card}_currency";
-
-            $rules["contents.pricing.{$activeKey}"] = 'nullable|in:0,1';
-            $rules["contents.pricing.{$currencyKey}"] = "nullable|in:USD,IDR,EUR|required_if:contents.pricing.{$activeKey},1";
-            $rules["contents.pricing.{$card}_title"] = "nullable|string|max:150|required_if:contents.pricing.{$activeKey},1";
-            $rules["contents.pricing.{$card}_subtitle"] = "nullable|string|max:255|required_if:contents.pricing.{$activeKey},1";
-            $rules["contents.pricing.{$card}_price"] = "nullable|numeric|min:0|required_if:contents.pricing.{$activeKey},1";
-            $rules["contents.pricing.{$card}_features"] = "nullable|string|max:65535|required_if:contents.pricing.{$activeKey},1";
-            $rules["contents.pricing.{$card}_button_text"] = "nullable|string|max:80|required_if:contents.pricing.{$activeKey},1";
-            $rules["contents.pricing.{$card}_button_url"] = "nullable|url|max:2048|required_if:contents.pricing.{$activeKey},1";
-        }
-
-        $rules['contents.pricing.gold_badge'] = 'nullable|string|max:60';
-
-        $data = $request->validate($rules);
-
-        DB::transaction(function () use ($data, $fields, $page) {
-            foreach ($fields as $field) {
-                $section = (string) $field['section'];
-                $key = (string) $field['key'];
-                $value = (string) ($data['contents'][$section][$key] ?? '');
-
-                PageContent::query()->updateOrCreate(
-                    [
-                        'page' => $page,
-                        'section' => $section,
-                        'key' => $key,
-                    ],
-                    [
-                        'value' => $value,
-                    ]
-                );
-            }
-        });
-
-        return back()->with('success', 'Konten berhasil disimpan.');
+    public function updateAbout(Request $request): RedirectResponse
+    {
+        return $this->updatePage($request, 'about', $this->aboutFields());
     }
 
     public function uploadImage(Request $request): JsonResponse
@@ -145,6 +73,94 @@ class KontenHalamanController extends Controller
                 'url' => asset($path),
             ],
         ]);
+    }
+
+    private function renderPage(string $page, array $fields): View
+    {
+        $existing = PageContent::query()
+            ->where('page', $page)
+            ->get()
+            ->keyBy(fn (PageContent $row) => "{$row->section}.{$row->key}");
+
+        $values = [];
+        foreach ($fields as $field) {
+            $compound = "{$field['section']}.{$field['key']}";
+            $values[$field['section']][$field['key']] = (string) optional($existing->get($compound))->value;
+        }
+
+        $fieldsBySection = collect($fields)->groupBy('section');
+
+        return view('admin.konten-halaman.index', [
+            'page' => $page,
+            'fieldsBySection' => $fieldsBySection,
+            'values' => $values,
+        ]);
+    }
+
+    private function updatePage(Request $request, string $page, array $fields, bool $withPricingRules = false): RedirectResponse
+    {
+        $rules = [
+            'contents' => 'required|array',
+            'contents.*' => 'array',
+        ];
+
+        foreach ($fields as $field) {
+            $section = (string) $field['section'];
+            $key = (string) $field['key'];
+            $type = (string) ($field['type'] ?? 'textarea');
+
+            $rule = match ($type) {
+                'url' => 'nullable|url|max:2048',
+                'number' => 'nullable|numeric|min:0',
+                'image' => 'nullable|string|max:2048',
+                'text' => 'nullable|string|max:255',
+                default => 'nullable|string|max:65535',
+            };
+
+            $rules["contents.{$section}.{$key}"] = $rule;
+        }
+
+        if ($withPricingRules) {
+            $pricingCards = ['silver', 'gold', 'premium'];
+            foreach ($pricingCards as $card) {
+                $activeKey = "{$card}_active";
+                $currencyKey = "{$card}_currency";
+
+                $rules["contents.pricing.{$activeKey}"] = 'nullable|in:0,1';
+                $rules["contents.pricing.{$currencyKey}"] = "nullable|in:USD,IDR,EUR|required_if:contents.pricing.{$activeKey},1";
+                $rules["contents.pricing.{$card}_title"] = "nullable|string|max:150|required_if:contents.pricing.{$activeKey},1";
+                $rules["contents.pricing.{$card}_subtitle"] = "nullable|string|max:255|required_if:contents.pricing.{$activeKey},1";
+                $rules["contents.pricing.{$card}_price"] = "nullable|numeric|min:0|required_if:contents.pricing.{$activeKey},1";
+                $rules["contents.pricing.{$card}_features"] = "nullable|string|max:65535|required_if:contents.pricing.{$activeKey},1";
+                $rules["contents.pricing.{$card}_button_text"] = "nullable|string|max:80|required_if:contents.pricing.{$activeKey},1";
+                $rules["contents.pricing.{$card}_button_url"] = "nullable|url|max:2048|required_if:contents.pricing.{$activeKey},1";
+            }
+
+            $rules['contents.pricing.gold_badge'] = 'nullable|string|max:60';
+        }
+
+        $data = $request->validate($rules);
+
+        DB::transaction(function () use ($data, $fields, $page) {
+            foreach ($fields as $field) {
+                $section = (string) $field['section'];
+                $key = (string) $field['key'];
+                $value = (string) ($data['contents'][$section][$key] ?? '');
+
+                PageContent::query()->updateOrCreate(
+                    [
+                        'page' => $page,
+                        'section' => $section,
+                        'key' => $key,
+                    ],
+                    [
+                        'value' => $value,
+                    ]
+                );
+            }
+        });
+
+        return back()->with('success', 'Konten berhasil disimpan.');
     }
 
     private function homeFields(): array
@@ -653,6 +669,249 @@ class KontenHalamanController extends Controller
                 'label' => 'FAQ - Jawaban 5',
                 'type' => 'textarea',
                 'rows' => 4,
+            ],
+        ];
+    }
+
+    private function aboutFields(): array
+    {
+        return [
+            [
+                'section' => 'banner',
+                'key' => 'title',
+                'label' => 'Banner - Judul',
+                'type' => 'text',
+            ],
+            [
+                'section' => 'banner',
+                'key' => 'description',
+                'label' => 'Banner - Deskripsi',
+                'type' => 'textarea',
+                'rows' => 3,
+            ],
+            [
+                'section' => 'about',
+                'key' => 'small_text',
+                'label' => 'About - Teks Kecil',
+                'type' => 'text',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'title',
+                'label' => 'About - Judul',
+                'type' => 'text',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'paragraph_1',
+                'label' => 'About - Paragraf 1',
+                'type' => 'textarea',
+                'rows' => 3,
+            ],
+            [
+                'section' => 'about',
+                'key' => 'paragraph_2',
+                'label' => 'About - Paragraf 2',
+                'type' => 'textarea',
+                'rows' => 3,
+            ],
+            [
+                'section' => 'about',
+                'key' => 'button_text',
+                'label' => 'About - Teks Tombol',
+                'type' => 'text',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'button_url',
+                'label' => 'About - URL Tombol',
+                'type' => 'url',
+                'placeholder' => 'https://',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'investment_value',
+                'label' => 'About - Investment (angka)',
+                'type' => 'text',
+                'placeholder' => 'Contoh: 1B+',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'investment_label',
+                'label' => 'About - Investment (label)',
+                'type' => 'text',
+                'placeholder' => 'Contoh: Investment Funds',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'co_image',
+                'label' => 'About - Gambar CO',
+                'type' => 'image',
+                'help' => 'JPEG/PNG, maks 2MB. Disimpan ke assetsAdmin/uploads/konten-halaman.',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'co_name',
+                'label' => 'About - Nama CO',
+                'type' => 'text',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'co_role',
+                'label' => 'About - Role CO',
+                'type' => 'text',
+                'placeholder' => 'Contoh: CO',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'ceo_image',
+                'label' => 'About - Gambar CEO',
+                'type' => 'image',
+                'help' => 'JPEG/PNG, maks 2MB. Disimpan ke assetsAdmin/uploads/konten-halaman.',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'ceo_name',
+                'label' => 'About - Nama CEO',
+                'type' => 'text',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'ceo_role',
+                'label' => 'About - Role CEO',
+                'type' => 'text',
+                'placeholder' => 'Contoh: CEO',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'attendees_value',
+                'label' => 'About - Attendees (angka)',
+                'type' => 'text',
+                'placeholder' => 'Contoh: 2K+',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'attendees_label',
+                'label' => 'About - Attendees (label)',
+                'type' => 'text',
+                'placeholder' => 'Contoh: Attendees',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'counter_1_value',
+                'label' => 'About - Counter 1 (angka)',
+                'type' => 'number',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'counter_1_label',
+                'label' => 'About - Counter 1 (label)',
+                'type' => 'text',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'counter_2_value',
+                'label' => 'About - Counter 2 (angka)',
+                'type' => 'number',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'counter_2_label',
+                'label' => 'About - Counter 2 (label)',
+                'type' => 'text',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'counter_3_value',
+                'label' => 'About - Counter 3 (angka)',
+                'type' => 'number',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'counter_3_label',
+                'label' => 'About - Counter 3 (label)',
+                'type' => 'text',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'counter_4_value',
+                'label' => 'About - Counter 4 (angka)',
+                'type' => 'number',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'counter_4_suffix',
+                'label' => 'About - Counter 4 (suffix)',
+                'type' => 'text',
+                'placeholder' => 'Contoh: X',
+            ],
+            [
+                'section' => 'about',
+                'key' => 'counter_4_label',
+                'label' => 'About - Counter 4 (label)',
+                'type' => 'text',
+            ],
+
+            [
+                'section' => 'sponsors',
+                'key' => 'logo_1',
+                'label' => 'Sponsors - Logo 1',
+                'type' => 'image',
+                'help' => 'JPEG/PNG, maks 2MB. Disimpan ke assetsAdmin/uploads/konten-halaman.',
+            ],
+            [
+                'section' => 'sponsors',
+                'key' => 'logo_2',
+                'label' => 'Sponsors - Logo 2',
+                'type' => 'image',
+                'help' => 'JPEG/PNG, maks 2MB. Disimpan ke assetsAdmin/uploads/konten-halaman.',
+            ],
+            [
+                'section' => 'sponsors',
+                'key' => 'logo_3',
+                'label' => 'Sponsors - Logo 3',
+                'type' => 'image',
+                'help' => 'JPEG/PNG, maks 2MB. Disimpan ke assetsAdmin/uploads/konten-halaman.',
+            ],
+            [
+                'section' => 'sponsors',
+                'key' => 'logo_4',
+                'label' => 'Sponsors - Logo 4',
+                'type' => 'image',
+                'help' => 'JPEG/PNG, maks 2MB. Disimpan ke assetsAdmin/uploads/konten-halaman.',
+            ],
+            [
+                'section' => 'sponsors',
+                'key' => 'logo_5',
+                'label' => 'Sponsors - Logo 5',
+                'type' => 'image',
+                'help' => 'JPEG/PNG, maks 2MB. Disimpan ke assetsAdmin/uploads/konten-halaman.',
+            ],
+
+            [
+                'section' => 'registration',
+                'key' => 'small_text',
+                'label' => 'Registration - Teks Kecil',
+                'type' => 'text',
+            ],
+            [
+                'section' => 'registration',
+                'key' => 'title',
+                'label' => 'Registration - Judul',
+                'type' => 'text',
+            ],
+            [
+                'section' => 'registration',
+                'key' => 'button_text',
+                'label' => 'Registration - Teks Tombol',
+                'type' => 'text',
+            ],
+            [
+                'section' => 'registration',
+                'key' => 'button_url',
+                'label' => 'Registration - URL Tombol',
+                'type' => 'url',
+                'placeholder' => 'https://',
             ],
         ];
     }

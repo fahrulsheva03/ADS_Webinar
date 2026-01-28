@@ -1,7 +1,7 @@
 <div class="header-main-con w-100 float-left">
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light p-0 text-uppercase text-center">
-            <a class="navbar-brand" href="index.html">
+            <a class="navbar-brand" href="{{ route('peserta.index') }}">
                 <figure class="mb-0">
                     <img src="{{ asset('assets/images/logo.png') }}" alt="logo">
                 </figure>

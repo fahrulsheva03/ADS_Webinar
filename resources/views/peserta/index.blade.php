@@ -134,45 +134,7 @@
     <!-- JOURNEY SECTION END -->
 
 
-    <!-- SPEAKERS SECTION START -->
-    <section class="speakers-main-section w-100 float-left padding-top padding-bottom">
-        <div class="container-fluid">
-            <div class="generic-title text-center">
-                <span class="small-text" data-aos="fade-up" data-aos-duration="700">WORLD BEST SPEAKERS</span>
-                <h2 data-aos="fade-up" data-aos-duration="700">Meet Our Amazing Speakers</h2>
-                <p data-aos="fade-up" data-aos-duration="700">8+ Inspiring Talks, Meet the Best Product People Around the
-                    World, and <br> Party Together After the
-                    Event!</p>
-            </div>
-            <div class="speakers-inner-sec" data-aos="fade-up" data-aos-duration="700">
-                @forelse (($speakers ?? collect()) as $speaker)
-                    <div class="speaker-box position-relative">
-                        <a href="{{ $speaker->linkedin_url ?: '#' }}"
-                            @if ($speaker->linkedin_url) target="_blank" rel="noopener" @endif>
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <figure class="mb-0">
-                            <img src="{{ $speaker->foto_url ?: asset('assets/images/speakers-img1.jpg') }}"
-                                alt="{{ $speaker->nama }}">
-                        </figure>
-                        <div class="speaker-status">
-                            <button class="showBtn{{ $loop->iteration }}">{{ $speaker->nama }} <i
-                                    class="fas fa-angle-up"></i></button>
-                            <div class="staus-con data{{ $loop->iteration }}">
-                                <span>{{ $speaker->jabatan }} - {{ $speaker->perusahaan }}</span>
-                            </div>
-                        </div>
-                    </div>
-                @empty
-                    <p class="text-center mb-0">Belum ada speaker.</p>
-                @endforelse
-            </div>
-            {{-- <div class="generic-btn text-center" data-aos="fade-up" data-aos-duration="700">
-                <a href="speaker.html">VIEW ALL SPEAKERS <i class="fas fa-arrow-right"></i></a>
-            </div> --}}
-        </div>
-    </section>
-    <!-- SPEAKERS SECTION END -->
+    @include('peserta.partials.speakers', ['speakers' => $speakers ?? collect()])
 
     <!--  PRICING PLANS SECTION START -->
     @php
@@ -349,113 +311,7 @@
     </section>
     <!--  REGISTRATION SECTION END -->
 
-    <!-- FAQ SECTION START -->
-    @php
-        $faqQ1 = konten('home', 'faq', 'q1') ?: 'What is the design process for branding?';
-        $faqA1 =
-            konten('home', 'faq', 'a1') ?:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
-        $faqQ2 = konten('home', 'faq', 'q2') ?: 'How much does logo design services cost?';
-        $faqA2 =
-            konten('home', 'faq', 'a2') ?:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
-        $faqQ3 = konten('home', 'faq', 'q3') ?: 'What is the process for a website redesign?';
-        $faqA3 =
-            konten('home', 'faq', 'a3') ?:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
-        $faqQ4 = konten('home', 'faq', 'q4') ?: 'What is a content strategy?';
-        $faqA4 =
-            konten('home', 'faq', 'a4') ?:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
-        $faqQ5 = konten('home', 'faq', 'q5') ?: 'How much does website design cost?';
-        $faqA5 =
-            konten('home', 'faq', 'a5') ?:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
-    @endphp
-    <section id="faq"
-        class="faq-main-section w-100 float-left padding-top padding-bottom position-relative light-bg">
-        <div class="container">
-            <div class="generic-title text-center">
-                <span class="small-text" data-aos="fade-up"
-                    data-aos-duration="700">{{ konten('home', 'faq', 'small_text') ?: 'FAQ' }}</span>
-                <h2 data-aos="fade-up" data-aos-duration="700">
-                    {{ konten('home', 'faq', 'title') ?: 'Frequently Asked Questions' }}</h2>
-            </div>
-            <div class="faq-inner-section">
-                <div id="accordion">
-                    <div class="card" data-aos="fade-up" data-aos-duration="700">
-                        <div class="card-header" id="headingOne">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
-                                    aria-expanded="true" aria-controls="collapseOne">
-                                    {{ $faqQ1 }}
-                                </button>
-                            </h5>
-                        </div>
-
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                            data-parent="#accordion">
-                            <div class="card-body">{!! nl2br(e($faqA1)) !!}</div>
-                        </div>
-                    </div>
-                    <div class="card" data-aos="fade-up" data-aos-duration="700">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo"
-                                    aria-expanded="false" aria-controls="collapseTwo">
-                                    {{ $faqQ2 }}
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                            <div class="card-body">{!! nl2br(e($faqA2)) !!}</div>
-                        </div>
-                    </div>
-                    <div class="card" data-aos="fade-up" data-aos-duration="700">
-                        <div class="card-header" id="headingThree">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse"
-                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    {{ $faqQ3 }}
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                            data-parent="#accordion">
-                            <div class="card-body">{!! nl2br(e($faqA3)) !!}</div>
-                        </div>
-                    </div>
-                    <div class="card" data-aos="fade-up" data-aos-duration="700">
-                        <div class="card-header" id="headingfour">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefour"
-                                    aria-expanded="false" aria-controls="collapsefour">
-                                    {{ $faqQ4 }}
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordion">
-                            <div class="card-body">{!! nl2br(e($faqA4)) !!}</div>
-                        </div>
-                    </div>
-                    <div class="card" data-aos="fade-up" data-aos-duration="700">
-                        <div class="card-header" id="headingfive">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefive"
-                                    aria-expanded="false" aria-controls="collapsefive">
-                                    {{ $faqQ5 }}
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordion">
-                            <div class="card-body">{!! nl2br(e($faqA5)) !!}</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- FAQ SECTION END -->
+    @include('peserta.partials.faq', ['page' => 'home'])
 
     <!--  BLOG SECTION START -->
     <section class="blog-main-section index3-blog-section w-100 float-left padding-top position-relative">
@@ -509,39 +365,8 @@
     </section>
     <!--  BLOG SECTION END -->
 
-    <!-- SPONSERS SECTION START -->
-    <div class="index3-sponsers-main-section sponsers-main-section w-100 float-left">
-        <div class="container">
-            <div class="sponsers-companies">
-                <ul class="list-unstyled mb-0" data-aos="fade-up" data-aos-duration="700">
-                    <li>
-                        <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo1.png" alt="sponsers-logo1">
-                        </figure>
-                    </li>
-                    <li>
-                        <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo2.png" alt="sponsers-logo2">
-                        </figure>
-                    </li>
-                    <li>
-                        <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo3.png" alt="sponsers-logo3">
-                        </figure>
-                    </li>
-                    <li>
-                        <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo4.png" alt="sponsers-logo4">
-                        </figure>
-                    </li>
-                    <li>
-                        <figure class="mb-0">
-                            <img src="assets/images/sponsers-logo5.png" alt="sponsers-logo5">
-                        </figure>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- SPONSERS SECTION END -->
+    @include('peserta.partials.sponsors', [
+        'page' => 'home',
+        'wrapperClass' => 'index3-sponsers-main-section sponsers-main-section w-100 float-left',
+    ])
 @endsection

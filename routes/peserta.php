@@ -41,20 +41,7 @@ Route::get('/', function () {
 Route::get('/speakers/{speaker}/image', [AdminSpeakerController::class, 'image'])->name('speakers.image');
 
 Route::get('/about', function () {
-    $speakers = collect();
-
-    if (Schema::hasTable('speakers')) {
-        $speakers = Speaker::query()
-            ->where('is_active', true)
-            ->orderBy('urutan')
-            ->orderByDesc('id')
-            ->limit(8)
-            ->get();
-    }
-
-    return view('peserta.about', [
-        'speakers' => $speakers,
-    ]);
+    return view('peserta.about');
 })->name('peserta.about');
 
 Route::get('/contact', function () {

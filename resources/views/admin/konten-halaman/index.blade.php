@@ -38,6 +38,22 @@
                 <h1 class="h3 mb-1">Konten Halaman</h1>
                 <div class="text-muted">Kelola konten dinamis untuk halaman peserta ({{ $page ?? '-' }}).</div>
             </div>
+            <div class="d-flex align-items-center">
+                <div class="btn-group" role="group" aria-label="Pilih halaman">
+                    <a
+                        href="{{ route('admin.konten-halaman.home') }}"
+                        class="btn btn-sm {{ ($page ?? 'home') === 'home' ? 'btn-primary' : 'btn-outline-primary' }}"
+                    >
+                        Home
+                    </a>
+                    <a
+                        href="{{ route('admin.konten-halaman.about') }}"
+                        class="btn btn-sm {{ ($page ?? '') === 'about' ? 'btn-primary' : 'btn-outline-primary' }}"
+                    >
+                        About
+                    </a>
+                </div>
+            </div>
         </div>
 
         <div id="notify-area"></div>
@@ -63,9 +79,14 @@
 
         @php
             $sections = ($fieldsBySection ?? collect())->keys()->values();
+            $pageKey = (string) ($page ?? 'home');
+            $formAction =
+                $pageKey === 'about'
+                    ? route('admin.konten-halaman.about.update')
+                    : route('admin.konten-halaman.home.update');
         @endphp
 
-        <form method="POST" action="{{ route('admin.konten-halaman.home.update') }}" id="content-form">
+        <form method="POST" action="{{ $formAction }}" id="content-form">
             @csrf
 
             <div class="card mb-4">

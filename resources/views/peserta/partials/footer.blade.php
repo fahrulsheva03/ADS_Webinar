@@ -2,7 +2,7 @@
         <div class="container">
             <div class="footer-inner-con">
                 <div class="footer-box">
-                    <a href="index.html">
+                    <a href="{{ route('peserta.index') }}">
                         <figure>
                             <img src="{{ asset('assets/images/footer-logo.png') }}" alt="footer-logo">
                         </figure>
@@ -41,22 +41,22 @@
                     <h6>Navigation</h6>
                     <ul class="list-unstyled mb-0">
                         <li class="position-relative">
-                            <a href="index.html">Home</a>
+                            <a href="{{ route('peserta.index') }}">Home</a>
                         </li>
                         <li class="position-relative">
-                            <a href="about.html">About Us</a>
+                            <a href="{{ route('peserta.about') }}">About Us</a>
                         </li>
                         <li class="position-relative">
-                            <a href="speaker.html">Speakers</a>
+                            <a href="{{ route('peserta.index') }}#speakers">Speakers</a>
                         </li>
                         <li class="position-relative">
-                            <a href="single-blog.html">Blogs</a>
+                            <a href="{{ route('peserta.blog') }}">Blogs</a>
                         </li>
                         <li class="position-relative">
-                            <a href="contact.html">Reservation</a>
+                            <a href="{{ route('peserta.contact') }}">Reservation</a>
                         </li>
                         <li class="position-relative">
-                            <a href="contact.html">Contact</a>
+                            <a href="{{ route('peserta.contact') }}">Contact</a>
                         </li>
                     </ul>
                 </div>
