@@ -1,9 +1,12 @@
 <?php
 
+use App\Models\Ebook;
 use App\Models\Pesanan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Storage;
 
 Route::post('/payments/midtrans-notification', function (Request $request) {
     $serverKey = (string) config('services.midtrans.server_key', '');
@@ -87,4 +90,60 @@ Route::post('/payments/midtrans-notification', function (Request $request) {
     });
 
     return response()->json(['status' => 'OK'], 200);
+});
+
+Route::get('/ebooks', function (Request $request) {
+    if (! Schema::hasTable('ebooks')) {
+        return response()->json([
+            'data' => [],
+            'meta' => [
+                'current_page' => 1,
+                'last_page' => 1,
+                'per_page' => 12,
+                'total' => 0,
+            ],
+        ]);
+    }
+
+    $q = trim((string) $request->query('q', ''));
+
+    $query = Ebook::query()->where('is_active', true);
+
+    if ($q !== '') {
+        $query->where(function ($sub) use ($q) {
+            $sub->where('title', 'like', "%{$q}%")
+                ->orWhere('author', 'like', "%{$q}%");
+        });
+    }
+
+    $ebooks = $query
+        ->orderByDesc('created_at')
+        ->paginate(12)
+        ->withQueryString();
+
+    return response()->json([
+        'data' => $ebooks->getCollection()->map(function (Ebook $ebook) {
+            return [
+                'id' => $ebook->id,
+                'title' => $ebook->title,
+                'author' => $ebook->author,
+                'description' => $ebook->description,
+                'price' => $ebook->price,
+                'stock' => $ebook->stock,
+                'cover_url' => $ebook->cover_image ? Storage::disk('public')->url($ebook->cover_image) : null,
+            ];
+        })->values(),
+        'meta' => [
+            'current_page' => $ebooks->currentPage(),
+            'last_page' => $ebooks->lastPage(),
+            'per_page' => $ebooks->perPage(),
+            'total' => $ebooks->total(),
+        ],
+        'links' => [
+            'first' => $ebooks->url(1),
+            'last' => $ebooks->url($ebooks->lastPage()),
+            'prev' => $ebooks->previousPageUrl(),
+            'next' => $ebooks->nextPageUrl(),
+        ],
+    ]);
 });

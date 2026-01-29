@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\EbookController;
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Admin\EventSesiController as AdminEventSesiController;
 use App\Http\Controllers\Admin\KontenHalamanController;
@@ -100,5 +101,11 @@ Route::prefix('admin')->group(function () {
             Route::delete('/{news}', [NewsController::class, 'destroy'])->name('admin.news.destroy');
         });
         Route::resource('speakers', SpeakerController::class)->names('speakers');
+
+        Route::name('admin.')->group(function () {
+            Route::resource('ebooks', EbookController::class);
+            Route::get('/ebooks/{ebook}/cover', [EbookController::class, 'cover'])->name('ebooks.cover');
+            Route::get('/ebooks/{ebook}/pdf', [EbookController::class, 'pdf'])->name('ebooks.pdf');
+        });
     });
 });

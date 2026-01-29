@@ -51,6 +51,12 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('admin.ebooks.index') }}" class="ai-icon" aria-expanded="false">
+                    <i class="flaticon-381-book" aria-hidden="true"></i>
+                    <span class="nav-text">E-book</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('admin.peserta.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-user" aria-hidden="true"></i>
                     <span class="nav-text">Peserta</span>
