@@ -528,6 +528,7 @@
 @section('content')
     @php
         $pesanan = $pesanan ?? collect();
+        $ebookOrders = $ebookOrders ?? collect();
         $pesananTerbaru = $pesananTerbaru ?? null;
         $riwayatPembayaran = $riwayatPembayaran ?? collect();
     @endphp
@@ -653,6 +654,8 @@
                         $orderStep = $orderIsPaid ? 4 : ($orderIsPending ? ($orderHasMetode ? 3 : 2) : 2);
                     }
 
+                    $orderIsEbook = (bool) ($orderTerbaru?->ebook_id ?? false);
+                    $orderEbook = $orderTerbaru?->ebook;
                     $orderEvent = $orderTerbaru?->paket?->event;
                     $orderPaket = $orderTerbaru?->paket;
                     $orderJumlahSesi = is_object($orderPaket?->sesi) ? $orderPaket->sesi->count() : 0;
@@ -671,7 +674,7 @@
                                 </span>
                                 <div>
                                     <div class="dashboard-panel__title">Paket &amp; Pembayaran</div>
-                                    <div class="dashboard-panel__subtitle">Pilih paket, bayar, konfirmasi, lalu akses event.</div>
+                                    <div class="dashboard-panel__subtitle">Pilih paket/e-book, bayar, konfirmasi, lalu akses konten.</div>
                                 </div>
                             </div>
                             @if ($orderTerbaru)
@@ -719,22 +722,22 @@
                             <div class="row" style="row-gap: 14px;">
                                 <div class="col-12 col-lg-7">
                                     <div class="border rounded p-3 h-100" style="background: #ffffff;">
-                                        <div class="fw-semibold text-black">Detail paket yang dipilih</div>
-                                        <div class="text-muted small mt-1">Pastikan nama paket dan total sudah sesuai.</div>
+                                        <div class="fw-semibold text-black">{{ $orderIsEbook ? 'Detail e-book yang dipilih' : 'Detail paket yang dipilih' }}</div>
+                                        <div class="text-muted small mt-1">Pastikan detail dan total sudah sesuai.</div>
 
                                         <div class="mt-3">
                                             <div style="font-weight: 950; letter-spacing: -0.02em; font-size: 16px; line-height: 1.25;">
-                                                {{ $orderPaket?->nama_paket ?? '-' }}
+                                                {{ $orderIsEbook ? ($orderEbook?->title ?? '-') : ($orderPaket?->nama_paket ?? '-') }}
                                             </div>
                                             <div class="text-muted mt-1">
-                                                {{ $orderEvent?->judul ?? 'Event' }}
+                                                {{ $orderIsEbook ? ('Penulis: '.($orderEbook?->author ?? '-')) : ($orderEvent?->judul ?? 'Event') }}
                                             </div>
                                         </div>
 
                                         <div class="mt-3">
                                             <div class="d-flex align-items-center justify-content-between py-2 border-top">
                                                 <div class="text-muted fw-semibold">Harga</div>
-                                                <div class="fw-bold text-black">{{ $fmtRp($orderPaket?->harga ?? 0) }}</div>
+                                                <div class="fw-bold text-black">{{ $fmtRp($orderIsEbook ? ($orderEbook?->price ?? 0) : ($orderPaket?->harga ?? 0)) }}</div>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between py-2 border-top">
                                                 <div class="text-muted fw-semibold">Total</div>
@@ -742,17 +745,19 @@
                                             </div>
                                         </div>
 
-                                        <div class="mt-3">
-                                            <div class="fw-semibold text-black">Fitur paket</div>
-                                            <ul class="text-muted small mb-0 mt-2" style="padding-left: 18px;">
-                                                <li>Akses Live: {{ (bool) ($orderPaket?->akses_live ?? false) ? 'Ya' : 'Tidak' }}</li>
-                                                <li>Akses Rekaman: {{ (bool) ($orderPaket?->akses_rekaman ?? false) ? 'Ya' : 'Tidak' }}</li>
-                                                <li>Jumlah sesi: {{ $orderJumlahSesi }}</li>
-                                                @if (! is_null($orderPaket?->kuota))
-                                                    <li>Kuota: {{ (int) $orderPaket->kuota }}</li>
-                                                @endif
-                                            </ul>
-                                        </div>
+                                        @if (! $orderIsEbook)
+                                            <div class="mt-3">
+                                                <div class="fw-semibold text-black">Fitur paket</div>
+                                                <ul class="text-muted small mb-0 mt-2" style="padding-left: 18px;">
+                                                    <li>Akses Live: {{ (bool) ($orderPaket?->akses_live ?? false) ? 'Ya' : 'Tidak' }}</li>
+                                                    <li>Akses Rekaman: {{ (bool) ($orderPaket?->akses_rekaman ?? false) ? 'Ya' : 'Tidak' }}</li>
+                                                    <li>Jumlah sesi: {{ $orderJumlahSesi }}</li>
+                                                    @if (! is_null($orderPaket?->kuota))
+                                                        <li>Kuota: {{ (int) $orderPaket->kuota }}</li>
+                                                    @endif
+                                                </ul>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -763,7 +768,7 @@
 
                                         @if ($orderIsPending && ! $orderHasMetode && ! $orderIsExpired && ! $orderIsFailed)
                                             <div class="alert alert-warning mt-3 mb-0" role="alert">
-                                                Silakan selesaikan pembayaran untuk mengaktifkan paket Anda.
+                                                Silakan selesaikan pembayaran untuk mengaktifkan {{ $orderIsEbook ? 'e-book' : 'paket' }} Anda.
                                             </div>
                                         @elseif ($orderIsPending && $orderHasMetode)
                                             <div class="alert alert-info mt-3 mb-0" role="alert">
@@ -771,7 +776,7 @@
                                             </div>
                                         @elseif ($orderIsPaid)
                                             <div class="alert alert-success mt-3 mb-0" role="alert">
-                                                Pembayaran berhasil. Paket Anda sudah aktif.
+                                                Pembayaran berhasil. {{ $orderIsEbook ? 'E-book' : 'Paket' }} Anda sudah aktif.
                                             </div>
                                         @elseif ($orderIsExpired || $orderIsFailed)
                                             <div class="alert alert-secondary mt-3 mb-0" role="alert">
@@ -805,8 +810,8 @@
                                                     Lihat Status <i class="fas fa-arrow-right ml-1" aria-hidden="true"></i>
                                                 </a>
                                             @elseif ($orderIsPaid)
-                                                <a href="#riwayatEvent" class="btn btn-primary-soft" aria-label="Lihat event">
-                                                    Lihat Event <i class="fas fa-arrow-down ml-1" aria-hidden="true"></i>
+                                                <a href="#riwayatEvent" class="btn btn-primary-soft" aria-label="Lihat {{ $orderIsEbook ? 'e-book' : 'event' }}">
+                                                    Lihat {{ $orderIsEbook ? 'E-book' : 'Event' }} <i class="fas fa-arrow-down ml-1" aria-hidden="true"></i>
                                                 </a>
                                             @else
                                                 <a href="{{ route('peserta.cart') }}" class="btn btn-primary-soft" aria-label="Buat pesanan baru">
@@ -853,15 +858,21 @@
                                         $txt = $s === 'paid' ? 'Lunas' : ($s === 'expired' ? 'Expired' : ($s === 'failed' ? 'Gagal' : ($hasM ? 'Sedang Diproses' : 'Pending')));
                                         $cls = $s === 'paid' ? 'is-success' : ($s === 'expired' || $s === 'failed' ? 'is-muted' : ($hasM ? 'is-info' : 'is-warning'));
                                         $evt = $trx->paket?->event;
+                                        $trxIsEbook = (bool) ($trx->ebook_id ?? false);
+                                        $trxEbook = $trx->ebook;
                                     @endphp
                                     <div class="list-group-item dashboard-history-item">
                                         <div class="d-flex align-items-start justify-content-between" style="gap: 12px;">
                                             <div style="min-width: 0;">
                                                 <div style="font-weight: 950; letter-spacing: -0.02em; font-size: 16px; line-height: 1.25;">
-                                                    {{ $evt?->judul ?? 'Event' }}
+                                                    {{ $trxIsEbook ? ($trxEbook?->title ?? 'E-book') : ($evt?->judul ?? 'Event') }}
                                                 </div>
                                                 <div class="text-muted" style="font-weight: 600; font-size: 14px;">
-                                                    Paket: {{ $trx->paket?->nama_paket ?? '-' }}
+                                                    @if ($trxIsEbook)
+                                                        E-book
+                                                    @else
+                                                        Paket: {{ $trx->paket?->nama_paket ?? '-' }}
+                                                    @endif
                                                 </div>
                                                 <div class="text-muted small mt-1">
                                                     Kode: {{ $trx->kode_pesanan }} • {{ optional($trx->created_at)->format('d-m-Y H:i') }}
@@ -897,7 +908,7 @@
                     </section>
                 @endif
 
-                @if ($pesanan->isEmpty())
+                @if ($pesanan->isEmpty() && (! is_object($ebookOrders) || $ebookOrders->isEmpty()))
                     <div class="row">
                         <div class="col-12 col-lg-7 mb-4 mb-lg-0" data-aos="fade-up" data-aos-duration="700">
                             <section class="dashboard-panel" aria-label="Ringkasan dashboard peserta">
@@ -1263,6 +1274,42 @@
                                                 </span>
                                             </div>
                                         </a>
+                                    @endforeach
+                                </div>
+                            @endif
+
+                            @if (is_object($ebookOrders) && $ebookOrders->isNotEmpty())
+                                <div style="font-weight: 900; margin-top: 18px; margin-bottom: 10px;">E-book</div>
+                                <div class="list-group">
+                                    @foreach ($ebookOrders as $order)
+                                        @php
+                                            $ebook = $order->ebook;
+                                        @endphp
+                                        <div class="list-group-item dashboard-history-item">
+                                            <div class="d-flex align-items-start justify-content-between" style="gap: 12px;">
+                                                <div style="min-width: 0;">
+                                                    <div style="font-weight: 950; letter-spacing: -0.02em; font-size: 16px; line-height: 1.25;">
+                                                        {{ $ebook?->title ?? 'E-book' }}
+                                                    </div>
+                                                    <div style="color: #4b5563; font-weight: 600; font-size: 14px;">
+                                                        Penulis: {{ $ebook?->author ?? '-' }}
+                                                    </div>
+                                                    <div class="text-muted small mt-1">
+                                                        Kode: {{ $order->kode_pesanan }} • {{ optional($order->waktu_bayar)->format('d-m-Y H:i') }}
+                                                    </div>
+                                                </div>
+                                                <div class="text-end">
+                                                    <div class="fw-bold text-black">{{ $fmtRp($order->total_bayar ?? 0) }}</div>
+                                                </div>
+                                            </div>
+                                            @if ($ebook && ! empty($ebook->pdf_file))
+                                                <div class="d-flex flex-wrap mt-3" style="gap: 10px;">
+                                                    <a href="{{ route('peserta.ebooks.download', $ebook) }}" class="btn btn-primary-soft" aria-label="Download e-book {{ $ebook->title }}">
+                                                        Download <i class="fas fa-file-download ml-1" aria-hidden="true"></i>
+                                                    </a>
+                                                </div>
+                                            @endif
+                                        </div>
                                     @endforeach
                                 </div>
                             @endif

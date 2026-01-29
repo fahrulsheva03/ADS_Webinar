@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ebook;
+use App\Models\Pesanan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 
@@ -12,6 +14,14 @@ class PesertaEbookController extends Controller
     {
         abort_if(! Schema::hasTable('ebooks'), 404);
         abort_if(! $ebook->is_active, 404);
+
+        $userId = (int) Auth::id();
+        $hasPaid = Pesanan::query()
+            ->where('user_id', $userId)
+            ->where('status_pembayaran', 'paid')
+            ->where('ebook_id', (int) $ebook->id)
+            ->exists();
+        abort_unless($hasPaid, 403);
 
         $raw = trim((string) ($ebook->pdf_file ?? ''));
         abort_if($raw === '', 404);

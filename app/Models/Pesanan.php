@@ -14,6 +14,7 @@ class Pesanan extends Model
     protected $fillable = [
         'user_id',
         'paket_id',
+        'ebook_id',
         'kode_pesanan',
         'status_pembayaran',
         'total_bayar',
@@ -33,5 +34,10 @@ class Pesanan extends Model
     public function paket()
     {
         return $this->belongsTo(Paket::class);
+    }
+
+    public function ebook()
+    {
+        return $this->belongsTo(Ebook::class);
     }
 }

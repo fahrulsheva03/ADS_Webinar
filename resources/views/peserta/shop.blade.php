@@ -482,14 +482,13 @@
                                                     Login untuk beli <i class="fas fa-arrow-right" aria-hidden="true"></i>
                                                 </a>
                                             @else
-                                                <a href="{{ route('peserta.contact', ['ebook' => $ebook->id]) }}" class="text-decoration-none">
-                                                    Purchase <i class="fas fa-shopping-bag" aria-hidden="true"></i>
-                                                </a>
-                                                @if (! empty($ebook->pdf_file))
-                                                    <a href="{{ route('peserta.ebooks.download', $ebook) }}" class="text-decoration-none">
-                                                        Download <i class="fas fa-file-download" aria-hidden="true"></i>
-                                                    </a>
-                                                @endif
+                                                <form method="POST" action="{{ route('peserta.checkout.start') }}" class="mb-0">
+                                                    @csrf
+                                                    <input type="hidden" name="ebook_id" value="{{ $ebook->id }}">
+                                                    <button type="submit" class="text-decoration-none p-0 border-0 bg-transparent" style="color: inherit;">
+                                                        Purchase <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+                                                    </button>
+                                                </form>
                                             @endguest
                                         </div>
                                     </div>

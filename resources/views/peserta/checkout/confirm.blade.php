@@ -21,6 +21,8 @@
         $uiStatusText = $isPaid ? 'Lunas' : ($isExpired ? 'Expired' : ($isFailed ? 'Gagal' : ($hasMetode ? 'Sedang Diproses' : 'Pending')));
         $uiStatusCls = $isPaid ? 'success' : ($isExpired || $isFailed ? 'secondary' : ($hasMetode ? 'info' : 'warning'));
 
+        $isEbookOrder = (bool) ($pesanan?->ebook_id ?? false);
+        $ebook = $pesanan?->ebook;
         $event = $pesanan?->paket?->event;
         $paket = $pesanan?->paket;
         $jumlahSesi = is_object($paket?->sesi) ? $paket->sesi->count() : 0;
@@ -173,20 +175,28 @@
                                 @endif
 
                                 <div class="border rounded p-3 bg-light">
-                                    <div class="fw-semibold text-black">{{ $event?->judul ?? 'Event' }}</div>
-                                    <div class="text-muted small mt-1">Paket: {{ $paket?->nama_paket ?? '-' }}</div>
+                                    <div class="fw-semibold text-black">
+                                        {{ $isEbookOrder ? ($ebook?->title ?? 'E-book') : ($event?->judul ?? 'Event') }}
+                                    </div>
+                                    @if ($isEbookOrder)
+                                        <div class="text-muted small mt-1">Penulis: {{ $ebook?->author ?? '-' }}</div>
+                                    @else
+                                        <div class="text-muted small mt-1">Paket: {{ $paket?->nama_paket ?? '-' }}</div>
+                                    @endif
                                     <div class="text-muted small mt-1">Kode Pesanan: {{ $pesanan->kode_pesanan }}</div>
                                 </div>
 
-                                <div class="mt-3">
-                                    <div class="fw-semibold text-black">Ringkasan paket</div>
-                                    <div class="text-muted small mt-1">Jumlah sesi: {{ $jumlahSesi }}</div>
-                                    <div class="text-muted small mt-1">Akses Live: {{ (bool) ($paket?->akses_live ?? false) ? 'Ya' : 'Tidak' }}</div>
-                                    <div class="text-muted small mt-1">Akses Rekaman: {{ (bool) ($paket?->akses_rekaman ?? false) ? 'Ya' : 'Tidak' }}</div>
-                                    @if (! is_null($paket?->kuota))
-                                        <div class="text-muted small mt-1">Kuota: {{ (int) $paket->kuota }}</div>
-                                    @endif
-                                </div>
+                                @if (! $isEbookOrder)
+                                    <div class="mt-3">
+                                        <div class="fw-semibold text-black">Ringkasan paket</div>
+                                        <div class="text-muted small mt-1">Jumlah sesi: {{ $jumlahSesi }}</div>
+                                        <div class="text-muted small mt-1">Akses Live: {{ (bool) ($paket?->akses_live ?? false) ? 'Ya' : 'Tidak' }}</div>
+                                        <div class="text-muted small mt-1">Akses Rekaman: {{ (bool) ($paket?->akses_rekaman ?? false) ? 'Ya' : 'Tidak' }}</div>
+                                        @if (! is_null($paket?->kuota))
+                                            <div class="text-muted small mt-1">Kuota: {{ (int) $paket->kuota }}</div>
+                                        @endif
+                                    </div>
+                                @endif
 
                                 <div class="mt-3">
                                     <div class="fw-semibold text-black">Metode pembayaran</div>
@@ -239,7 +249,7 @@
                             @if ($pesanan)
                                 <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
                                     <div class="text-muted fw-semibold">Harga</div>
-                                    <div class="text-black fw-bold">{{ $fmtRp($paket?->harga ?? 0) }}</div>
+                                    <div class="text-black fw-bold">{{ $fmtRp($isEbookOrder ? ($ebook?->price ?? 0) : ($paket?->harga ?? 0)) }}</div>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
                                     <div class="text-muted fw-semibold">Diskon</div>

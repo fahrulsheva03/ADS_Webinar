@@ -22,6 +22,8 @@
         $uiStatusText = $isPaid ? 'Lunas' : ($isExpired ? 'Expired' : ($isFailed ? 'Gagal' : ($hasMetode ? 'Sedang Diproses' : 'Pending')));
         $uiStatusCls = $isPaid ? 'success' : ($isExpired || $isFailed ? 'secondary' : ($hasMetode ? 'info' : 'warning'));
 
+        $isEbookOrder = (bool) ($pesanan?->ebook_id ?? false);
+        $ebook = $pesanan?->ebook;
         $event = $pesanan?->paket?->event;
         $paket = $pesanan?->paket;
         $jumlahSesi = is_object($paket?->sesi) ? $paket->sesi->count() : 0;
@@ -156,7 +158,9 @@
                             @elseif ($isPaid)
                                 <div class="border rounded p-3 bg-light">
                                     <div class="fw-semibold text-black">Pembayaran sudah lunas</div>
-                                    <div class="text-muted mt-1">Akses paket sudah aktif. Kamu bisa kembali ke dashboard.</div>
+                                    <div class="text-muted mt-1">
+                                        {{ $isEbookOrder ? 'E-book sudah aktif. Kamu bisa kembali ke dashboard untuk mengunduh.' : 'Akses paket sudah aktif. Kamu bisa kembali ke dashboard.' }}
+                                    </div>
                                     <div class="mt-3 d-flex flex-wrap" style="gap: 10px;">
                                         <a href="{{ route('peserta.dashboard') }}#dashboardTop" class="btn btn-primary" style="border-radius: 12px; font-weight: 900;">
                                             Kembali ke Dashboard
@@ -212,33 +216,41 @@
                     <div class="pay-card">
                         <div class="pay-card__header">
                             <div class="fw-semibold text-black">Ringkasan</div>
-                            <div class="text-muted small">Ringkasan paket yang dipilih.</div>
+                            <div class="text-muted small">{{ $isEbookOrder ? 'Ringkasan e-book yang dipilih.' : 'Ringkasan paket yang dipilih.' }}</div>
                         </div>
                         <div class="p-3 p-md-4">
                             @if ($pesanan)
                                 <div class="border rounded p-3 bg-light">
-                                    <div class="fw-semibold text-black">{{ $event?->judul ?? 'Event' }}</div>
-                                    <div class="text-muted small mt-1">Paket: {{ $paket?->nama_paket ?? '-' }}</div>
+                                    <div class="fw-semibold text-black">
+                                        {{ $isEbookOrder ? ($ebook?->title ?? 'E-book') : ($event?->judul ?? 'Event') }}
+                                    </div>
+                                    @if ($isEbookOrder)
+                                        <div class="text-muted small mt-1">Penulis: {{ $ebook?->author ?? '-' }}</div>
+                                    @else
+                                        <div class="text-muted small mt-1">Paket: {{ $paket?->nama_paket ?? '-' }}</div>
+                                    @endif
                                     <div class="text-muted small mt-1">Kode Pesanan: {{ $pesanan->kode_pesanan }}</div>
                                 </div>
 
-                                <div class="mt-3">
-                                    <div class="fw-semibold text-black">Fitur paket</div>
-                                    <ul class="text-muted small mb-0 mt-2" style="padding-left: 18px;">
-                                        @foreach ($fiturRows as $f)
-                                            <li>{{ $f['label'] }}: {{ $f['value'] ? 'Ya' : 'Tidak' }}</li>
-                                        @endforeach
-                                        <li>Jumlah sesi: {{ $jumlahSesi }}</li>
-                                        @if (! is_null($paket?->kuota))
-                                            <li>Kuota: {{ (int) $paket->kuota }}</li>
-                                        @endif
-                                    </ul>
-                                </div>
+                                @if (! $isEbookOrder)
+                                    <div class="mt-3">
+                                        <div class="fw-semibold text-black">Fitur paket</div>
+                                        <ul class="text-muted small mb-0 mt-2" style="padding-left: 18px;">
+                                            @foreach ($fiturRows as $f)
+                                                <li>{{ $f['label'] }}: {{ $f['value'] ? 'Ya' : 'Tidak' }}</li>
+                                            @endforeach
+                                            <li>Jumlah sesi: {{ $jumlahSesi }}</li>
+                                            @if (! is_null($paket?->kuota))
+                                                <li>Kuota: {{ (int) $paket->kuota }}</li>
+                                            @endif
+                                        </ul>
+                                    </div>
+                                @endif
 
                                 <div class="mt-3">
                                     <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
                                         <div class="text-muted fw-semibold">Harga</div>
-                                        <div class="text-black fw-bold">{{ $fmtRp($paket?->harga ?? 0) }}</div>
+                                        <div class="text-black fw-bold">{{ $fmtRp($isEbookOrder ? ($ebook?->price ?? 0) : ($paket?->harga ?? 0)) }}</div>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-between py-2 border-bottom">
                                         <div class="text-muted fw-semibold">Diskon</div>

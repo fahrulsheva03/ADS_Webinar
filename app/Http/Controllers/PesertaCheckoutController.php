@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ebook;
 use App\Models\Paket;
 use App\Models\Pesanan;
 use Illuminate\Http\JsonResponse;
@@ -16,15 +17,29 @@ class PesertaCheckoutController extends Controller
     public function start(Request $request): RedirectResponse
     {
         $data = $request->validate([
-            'paket_id' => 'required|integer|exists:paket,id',
+            'paket_id' => 'nullable|integer|exists:paket,id|required_without:ebook_id',
+            'ebook_id' => 'nullable|integer|exists:ebooks,id|required_without:paket_id',
             'qty' => 'nullable|integer|min:1|max:99',
         ]);
 
+        $paketId = (int) ($data['paket_id'] ?? 0);
+        $ebookId = (int) ($data['ebook_id'] ?? 0);
         $qty = (int) ($data['qty'] ?? 1);
         $qty = max(1, $qty);
 
-        $paket = Paket::query()->findOrFail((int) $data['paket_id']);
-        $harga = (float) ($paket->harga ?? 0);
+        $paket = null;
+        $ebook = null;
+        $harga = 0.0;
+
+        if ($ebookId > 0) {
+            $ebook = Ebook::query()->findOrFail($ebookId);
+            abort_if(! $ebook->is_active, 404);
+            $harga = (float) ($ebook->price ?? 0);
+            $qty = 1;
+        } else {
+            $paket = Paket::query()->findOrFail($paketId);
+            $harga = (float) ($paket->harga ?? 0);
+        }
 
         $deadlineCutoff = now()->subHours(24);
         Pesanan::query()
@@ -35,7 +50,11 @@ class PesertaCheckoutController extends Controller
 
         $existing = Pesanan::query()
             ->where('user_id', (int) $request->user()->id)
-            ->where('paket_id', (int) $paket->id)
+            ->when($ebookId > 0, function ($q) use ($ebookId) {
+                $q->where('ebook_id', $ebookId);
+            }, function ($q) use ($paketId) {
+                $q->where('paket_id', $paketId);
+            })
             ->where('status_pembayaran', 'pending')
             ->whereNull('metode_pembayaran')
             ->where('created_at', '>', $deadlineCutoff)
@@ -62,7 +81,8 @@ class PesertaCheckoutController extends Controller
 
         $pesanan = Pesanan::query()->create([
             'user_id' => (int) $request->user()->id,
-            'paket_id' => (int) $paket->id,
+            'paket_id' => $paketId > 0 ? $paketId : null,
+            'ebook_id' => $ebookId > 0 ? $ebookId : null,
             'kode_pesanan' => $kode,
             'status_pembayaran' => 'pending',
             'total_bayar' => $harga * $qty,
@@ -97,7 +117,7 @@ class PesertaCheckoutController extends Controller
             $pesanan->update(['status_pembayaran' => 'expired']);
         }
 
-        $pesanan->loadMissing(['paket.event', 'paket.sesi']);
+        $pesanan->loadMissing(['paket.event', 'paket.sesi', 'ebook']);
 
         $metodeOptions = [
             'midtrans' => 'Midtrans (Snap)',
@@ -143,12 +163,19 @@ class PesertaCheckoutController extends Controller
             ], 500);
         }
 
-        $pesanan->loadMissing(['paket.event', 'user']);
+        $pesanan->loadMissing(['paket.event', 'user', 'ebook']);
 
         $grossAmount = (int) round((float) ($pesanan->total_bayar ?? 0));
         $grossAmount = max(1, $grossAmount);
 
         $finishUrl = route('peserta.checkout.confirm', ['pesanan' => $pesanan->id], true);
+
+        $itemId = (string) ($pesanan->paket?->id ?? $pesanan->paket_id);
+        $itemName = (string) ($pesanan->paket?->nama_paket ?? 'Paket');
+        if ($pesanan->ebook_id) {
+            $itemId = (string) ($pesanan->ebook?->id ?? $pesanan->ebook_id);
+            $itemName = (string) ($pesanan->ebook?->title ?? 'E-book');
+        }
 
         $payload = [
             'transaction_details' => [
@@ -161,10 +188,10 @@ class PesertaCheckoutController extends Controller
             ],
             'item_details' => [
                 [
-                    'id' => (string) ($pesanan->paket?->id ?? $pesanan->paket_id),
+                    'id' => $itemId,
                     'price' => $grossAmount,
                     'quantity' => 1,
-                    'name' => (string) ($pesanan->paket?->nama_paket ?? 'Paket'),
+                    'name' => $itemName,
                 ],
             ],
             'callbacks' => [
@@ -262,7 +289,7 @@ class PesertaCheckoutController extends Controller
             $pesanan->update(['status_pembayaran' => 'expired']);
         }
 
-        $pesanan->loadMissing(['paket.event', 'paket.sesi']);
+        $pesanan->loadMissing(['paket.event', 'paket.sesi', 'ebook']);
 
         $metodeOptions = [
             'midtrans' => 'Midtrans (Snap)',

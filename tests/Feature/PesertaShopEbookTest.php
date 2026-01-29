@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Ebook;
+use App\Models\Pesanan;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Http\UploadedFile;
@@ -96,6 +97,17 @@ class PesertaShopEbookTest extends TestCase
         $user = User::factory()->create([
             'role' => 'user',
             'status_akun' => 'aktif',
+        ]);
+
+        Pesanan::query()->create([
+            'user_id' => (int) $user->id,
+            'paket_id' => null,
+            'ebook_id' => (int) $ebook->id,
+            'kode_pesanan' => 'TRX-TEST-EBOOK-1',
+            'status_pembayaran' => 'paid',
+            'total_bayar' => (float) ($ebook->price ?? 0),
+            'metode_pembayaran' => 'midtrans',
+            'waktu_bayar' => now(),
         ]);
 
         $response = $this->actingAs($user, 'web')->get(route('peserta.ebooks.download', $ebook));

@@ -25,28 +25,34 @@ class PesertaDashboardController extends Controller
             ->update(['status_pembayaran' => 'expired']);
 
         $pesananTerbaru = Pesanan::query()
-            ->with(['paket.event', 'paket.sesi'])
+            ->with(['paket.event', 'paket.sesi', 'ebook'])
             ->where('user_id', $userId)
             ->whereIn('status_pembayaran', ['pending', 'paid'])
             ->orderByDesc('id')
             ->first();
 
         $riwayatPembayaran = Pesanan::query()
-            ->with(['paket.event'])
+            ->with(['paket.event', 'ebook'])
             ->where('user_id', $userId)
             ->orderByDesc('id')
             ->limit(10)
             ->get();
 
-        $pesanan = Pesanan::with([
-            'paket.event.sesi.video',
-        ])
+        $pesanan = Pesanan::with(['paket.event.sesi.video'])
             ->where('user_id', $userId)
             ->where('status_pembayaran', 'paid')
+            ->whereNotNull('paket_id')
+            ->get();
+
+        $ebookOrders = Pesanan::with(['ebook'])
+            ->where('user_id', $userId)
+            ->where('status_pembayaran', 'paid')
+            ->whereNotNull('ebook_id')
             ->get();
 
         return view('peserta.dashboard.index', [
             'pesanan' => $pesanan,
+            'ebookOrders' => $ebookOrders,
             'pesananTerbaru' => $pesananTerbaru,
             'riwayatPembayaran' => $riwayatPembayaran,
         ]);
