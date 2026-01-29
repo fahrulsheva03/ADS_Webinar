@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\SpeakerController as AdminSpeakerController;
 use App\Http\Controllers\PesertaAuthController;
 use App\Http\Controllers\PesertaCheckoutController;
 use App\Http\Controllers\PesertaDashboardController;
+use App\Http\Controllers\PesertaEbookController;
 use App\Models\News;
 use App\Models\Speaker;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +56,10 @@ Route::get('/event', function () {
 Route::get('/shop', function () {
     return view('peserta.shop');
 })->name('peserta.shop');
+
+Route::get('/ebooks/{ebook}/download', [PesertaEbookController::class, 'download'])
+    ->middleware('auth')
+    ->name('peserta.ebooks.download');
 
 Route::get('/cart', function () {
     return view('peserta.cart');

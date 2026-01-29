@@ -23,6 +23,7 @@
         <div class="container">
             @php
                 use App\Models\Paket;
+                use App\Models\Ebook;
                 use Illuminate\Support\Facades\Schema;
 
                 $paketRows = collect();
@@ -50,6 +51,43 @@
 
                 $selectedPaketId = (int) request()->query('paket', 0);
                 $selectedPaket = $selectedPaketId > 0 ? $paketRows->firstWhere('id', $selectedPaketId) : null;
+
+                $ebookFilters = [
+                    'q' => trim((string) request()->query('ebook_q', '')),
+                    'author' => trim((string) request()->query('ebook_author', '')),
+                    'sort' => trim((string) request()->query('ebook_sort', 'newest')),
+                ];
+
+                $ebooks = null;
+                if (Schema::hasTable('ebooks')) {
+                    $ebookQuery = Ebook::query()->where('is_active', true);
+
+                    if ($ebookFilters['q'] !== '') {
+                        $ebookQuery->where(function ($sub) use ($ebookFilters) {
+                            $q = $ebookFilters['q'];
+                            $sub->where('title', 'like', "%{$q}%")
+                                ->orWhere('description', 'like', "%{$q}%");
+                        });
+                    }
+
+                    if ($ebookFilters['author'] !== '') {
+                        $author = $ebookFilters['author'];
+                        $ebookQuery->where('author', 'like', "%{$author}%");
+                    }
+
+                    if ($ebookFilters['sort'] === 'price_asc') {
+                        $ebookQuery->orderBy('price')->orderByDesc('id');
+                    } elseif ($ebookFilters['sort'] === 'price_desc') {
+                        $ebookQuery->orderByDesc('price')->orderByDesc('id');
+                    } else {
+                        $ebookQuery->orderByDesc('created_at')->orderByDesc('id');
+                    }
+
+                    $ebooks = $ebookQuery
+                        ->paginate(9, ['*'], 'ebook_page')
+                        ->withQueryString()
+                        ->fragment('ebooks_section');
+                }
             @endphp
 
             @if ($selectedPaket)
@@ -321,6 +359,149 @@
                         </div>
                     @endforeach
                 </div>
+            </div>
+
+            <div id="ebooks_section" class="mt-5">
+                <div class="d-flex flex-wrap align-items-center justify-content-between mb-3" style="gap: 12px;">
+                    <div>
+                        <h2 class="mb-1">E-book</h2>
+                        <div class="text-muted">Baca materi pilihan dalam format PDF.</div>
+                    </div>
+                </div>
+
+                <div class="border rounded p-3 p-md-4 bg-light mb-4">
+                    <form method="GET" action="{{ route('peserta.shop') }}#ebooks_section" class="row align-items-end" style="row-gap: 12px;">
+                        <div class="col-12 col-lg-5">
+                            <label class="form-label fw-semibold text-black" for="ebook_q">Cari</label>
+                            <input
+                                id="ebook_q"
+                                name="ebook_q"
+                                type="search"
+                                class="form-control"
+                                placeholder="Judul atau deskripsi…"
+                                value="{{ $ebookFilters['q'] }}"
+                                autocomplete="off"
+                            >
+                        </div>
+                        <div class="col-12 col-lg-4">
+                            <label class="form-label fw-semibold text-black" for="ebook_author">Penulis</label>
+                            <input
+                                id="ebook_author"
+                                name="ebook_author"
+                                type="search"
+                                class="form-control"
+                                placeholder="Nama penulis…"
+                                value="{{ $ebookFilters['author'] }}"
+                                autocomplete="off"
+                            >
+                        </div>
+                        <div class="col-12 col-lg-3">
+                            <label class="form-label fw-semibold text-black" for="ebook_sort">Urutkan</label>
+                            <select id="ebook_sort" name="ebook_sort" class="form-control">
+                                <option value="newest" @selected($ebookFilters['sort'] === 'newest')>Terbaru</option>
+                                <option value="price_asc" @selected($ebookFilters['sort'] === 'price_asc')>Harga termurah</option>
+                                <option value="price_desc" @selected($ebookFilters['sort'] === 'price_desc')>Harga termahal</option>
+                            </select>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-2">
+                            <button type="submit" class="btn btn-primary w-100" style="border-radius: 12px; font-weight: 800;">Cari</button>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-2">
+                            <a href="{{ route('peserta.shop') }}#ebooks_section" class="btn btn-outline-secondary w-100" style="border-radius: 12px; font-weight: 800;">Reset</a>
+                        </div>
+
+                        @php
+                            $preserve = request()->except(['ebook_q', 'ebook_author', 'ebook_sort', 'ebook_page']);
+                        @endphp
+                        @foreach ($preserve as $k => $v)
+                            @if (is_array($v))
+                                @foreach ($v as $vv)
+                                    <input type="hidden" name="{{ $k }}[]" value="{{ $vv }}">
+                                @endforeach
+                            @else
+                                <input type="hidden" name="{{ $k }}" value="{{ $v }}">
+                            @endif
+                        @endforeach
+                    </form>
+                </div>
+
+                @if (! Schema::hasTable('ebooks'))
+                    <div class="border rounded p-4 bg-light">
+                        <div class="fw-semibold text-black">E-book belum tersedia</div>
+                        <div class="text-muted">Database e-book belum tersedia.</div>
+                    </div>
+                @elseif (! $ebooks || $ebooks->isEmpty())
+                    <div class="border rounded p-4 bg-light">
+                        <div class="fw-semibold text-black">Tidak ada e-book ditemukan</div>
+                        <div class="text-muted">Coba ubah kata kunci pencarian atau filter.</div>
+                    </div>
+                @else
+                    <div class="row" data-aos="fade-up">
+                        @foreach ($ebooks as $ebook)
+                            @php
+                                $coverPath = trim((string) ($ebook->cover_image ?? ''));
+                                $coverPath = str_replace('\\', '/', ltrim($coverPath, '/'));
+                                if (str_starts_with($coverPath, 'storage/')) {
+                                    $coverPath = substr($coverPath, strlen('storage/'));
+                                }
+                                if (str_starts_with($coverPath, 'public/')) {
+                                    $coverPath = substr($coverPath, strlen('public/'));
+                                }
+                                $coverUrl = $coverPath !== '' ? asset('storage/'.$coverPath) : asset('assets/images/business-conference.jpg');
+                                $price = (float) ($ebook->price ?? 0);
+                            @endphp
+
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                <div class="shop_box">
+                                    <div class="shop_image_box">
+                                        <figure class="mb-0">
+                                            <img src="{{ $coverUrl }}" alt="{{ $ebook->title }}" class="img-fluid hover-effect">
+                                        </figure>
+                                    </div>
+                                    <div class="shop_box_content">
+                                        <ul class="list-unstyled">
+                                            <li class="text-size-16">
+                                                <i class="fas fa-user"></i>
+                                                {{ $ebook->author }}
+                                            </li>
+                                            <li class="text-size-16">
+                                                <i class="fas fa-check-circle"></i>
+                                                Stok: {{ (int) ($ebook->stock ?? 0) }}
+                                            </li>
+                                        </ul>
+                                        <h5>{{ $ebook->title }}</h5>
+                                        <p class="text-size-16">{{ $ebook->description }}</p>
+                                        <div class="price_wrapper">
+                                            <span>Rp</span>
+                                            <span>{{ number_format($price, 0, ',', '.') }}</span>
+                                        </div>
+                                        <div class="btn_wrapper d-flex flex-wrap align-items-center" style="gap: 10px;">
+                                            @guest
+                                                <a href="{{ route('login', ['redirect' => '/shop#ebooks_section']) }}" class="text-decoration-none">
+                                                    Login untuk beli <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                                </a>
+                                            @else
+                                                <a href="{{ route('peserta.contact', ['ebook' => $ebook->id]) }}" class="text-decoration-none">
+                                                    Purchase <i class="fas fa-shopping-bag" aria-hidden="true"></i>
+                                                </a>
+                                                @if (! empty($ebook->pdf_file))
+                                                    <a href="{{ route('peserta.ebooks.download', $ebook) }}" class="text-decoration-none">
+                                                        Download <i class="fas fa-file-download" aria-hidden="true"></i>
+                                                    </a>
+                                                @endif
+                                            @endguest
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="mt-4 d-flex justify-content-center">
+                        {{ $ebooks->links() }}
+                    </div>
+                @endif
             </div>
         </div>
     </section>
