@@ -182,6 +182,100 @@
                 : ['Full Access the Conference', 'Music, Launch and Snack', 'Meet Event Speaker'];
 
         $goldBadge = trim(konten('home', 'pricing', 'gold_badge'));
+
+        $cards = [];
+
+        if ($silverIsActive) {
+            $cards[] = [
+                'wrapClass' => 'silver-ticket-details',
+                'title' => konten('home', 'pricing', 'silver_title') ?: 'Silver',
+                'subtitle' => konten('home', 'pricing', 'silver_subtitle') ?: 'For individuals',
+                'currency' => $silverCurrencySymbol,
+                'price' => konten('home', 'pricing', 'silver_price') ?: '29',
+                'features' => $silverFeatures,
+                'button_text' => konten('home', 'pricing', 'silver_button_text') ?: 'BUY TICKET',
+                'button_url' => konten('home', 'pricing', 'silver_button_url') ?: 'shop.html',
+                'badge' => '',
+            ];
+        }
+
+        if ($goldIsActive) {
+            $cards[] = [
+                'wrapClass' => 'gold-ticket-details',
+                'title' => konten('home', 'pricing', 'gold_title') ?: 'Gold',
+                'subtitle' => konten('home', 'pricing', 'gold_subtitle') ?: 'For individuals',
+                'currency' => $goldCurrencySymbol,
+                'price' => konten('home', 'pricing', 'gold_price') ?: '45',
+                'features' => $goldFeatures,
+                'button_text' => konten('home', 'pricing', 'gold_button_text') ?: 'BUY TICKET',
+                'button_url' => konten('home', 'pricing', 'gold_button_url') ?: 'shop.html',
+                'badge' => $goldBadge,
+            ];
+        }
+
+        if ($premiumIsActive) {
+            $cards[] = [
+                'wrapClass' => 'premium-ticket-details',
+                'title' => konten('home', 'pricing', 'premium_title') ?: 'Premium',
+                'subtitle' => konten('home', 'pricing', 'premium_subtitle') ?: 'For individuals',
+                'currency' => $premiumCurrencySymbol,
+                'price' => konten('home', 'pricing', 'premium_price') ?: '59',
+                'features' => $premiumFeatures,
+                'button_text' => konten('home', 'pricing', 'premium_button_text') ?: 'BUY TICKET',
+                'button_url' => konten('home', 'pricing', 'premium_button_url') ?: 'shop.html',
+                'badge' => '',
+            ];
+        }
+
+        $extraCardsRaw = trim((string) konten('home', 'pricing', 'extra_cards'));
+        $extraCardsDecoded = $extraCardsRaw !== '' ? json_decode($extraCardsRaw, true) : null;
+        $extraCardsDecoded = is_array($extraCardsDecoded) ? $extraCardsDecoded : [];
+
+        $wrapCycle = ['silver-ticket-details', 'gold-ticket-details', 'premium-ticket-details'];
+        $extraCardsNormalized = collect($extraCardsDecoded)
+            ->filter(fn($v) => is_array($v) && (string)($v['id'] ?? '') !== '')
+            ->values()
+            ->map(function (array $v) use ($currencySymbolByCode, $wrapCycle) {
+                $active = (string) ($v['active'] ?? '0') !== '0';
+                $features = isset($v['features']) && is_array($v['features']) ? $v['features'] : [];
+                $features = collect($features)->map(fn($x) => trim((string) $x))->filter()->values()->all();
+                $currencyCode = trim((string) ($v['currency'] ?? 'USD'));
+                if ($currencyCode === '') {
+                    $currencyCode = 'USD';
+                }
+
+                return [
+                    'active' => $active,
+                    'title' => trim((string) ($v['title'] ?? '')),
+                    'subtitle' => trim((string) ($v['subtitle'] ?? '')),
+                    'currency' => $currencySymbolByCode[$currencyCode] ?? '$',
+                    'price' => (string) ($v['price'] ?? ''),
+                    'features' => $features,
+                    'button_text' => trim((string) ($v['button_text'] ?? '')),
+                    'button_url' => trim((string) ($v['button_url'] ?? '#')),
+                    'badge' => trim((string) ($v['badge'] ?? '')),
+                ];
+            })
+            ->filter(fn($c) => (bool) $c['active'])
+            ->values();
+
+        $baseCount = count($cards);
+        foreach ($extraCardsNormalized as $i => $c) {
+            $wrapClass = $wrapCycle[($baseCount + $i) % count($wrapCycle)] ?? 'silver-ticket-details';
+            $cards[] = [
+                'wrapClass' => $wrapClass,
+                'title' => $c['title'] !== '' ? $c['title'] : 'Ticket',
+                'subtitle' => $c['subtitle'] !== '' ? $c['subtitle'] : 'For individuals',
+                'currency' => $c['currency'],
+                'price' => $c['price'] !== '' ? $c['price'] : '0',
+                'features' => $c['features'],
+                'button_text' => $c['button_text'] !== '' ? $c['button_text'] : 'BUY TICKET',
+                'button_url' => $c['button_url'] !== '' ? $c['button_url'] : '#',
+                'badge' => $c['badge'],
+            ];
+        }
+
+        $useCarousel = count($cards) > 3;
     @endphp
     <section id="pricing" class="index3-pricing-plans-section w-100 float-left padding-top padding-bottom">
         <div class="container">
@@ -191,75 +285,70 @@
                 <h2 data-aos="fade-up" data-aos-duration="700">{!! nl2br(e($pricingTitle)) !!}</h2>
             </div>
             <div class="index3-plan-inner-con">
-                @if ($silverIsActive)
-                    <div class="ticket-details silver-ticket-details" data-aos="fade-up" data-aos-duration="700">
-                        <h3>{{ konten('home', 'pricing', 'silver_title') ?: 'Silver' }}</h3>
-                        <p>{{ konten('home', 'pricing', 'silver_subtitle') ?: 'For individuals' }}</p>
-                        <span>Starting at:</span>
-                        <div class="price">
-                            <small>{{ $silverCurrencySymbol }}</small>{{ konten('home', 'pricing', 'silver_price') ?: '29' }}
-                        </div>
-                        <ul class="list-unstyled">
-                            @foreach ($silverFeatures as $feature)
-                                @if (trim((string) $feature) !== '')
-                                    <li class="position-relative">{{ $feature }}</li>
-                                @endif
+                @if ($useCarousel)
+                    <div class="position-relative">
+                        <div id="pricing-carousel" class="owl-carousel owl-theme pricing-carousel" data-total="{{ count($cards) }}">
+                            @foreach ($cards as $card)
+                                <div class="item">
+                                    <div class="ticket-details {{ $card['wrapClass'] }}" data-aos="fade-up" data-aos-duration="700">
+                                        <h3>{{ $card['title'] }}</h3>
+                                        <p>{{ $card['subtitle'] }}</p>
+                                        <span>Starting at:</span>
+                                        <div class="price">
+                                            <small>{{ $card['currency'] }}</small>{{ $card['price'] }}
+                                        </div>
+                                        <ul class="list-unstyled">
+                                            @foreach ($card['features'] as $feature)
+                                                @if (trim((string) $feature) !== '')
+                                                    <li class="position-relative">{{ $feature }}</li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                        <div class="generic-btn">
+                                            <a href="{{ $card['button_url'] }}">{{ $card['button_text'] }}
+                                                <i class="fas fa-arrow-right"></i></a>
+                                        </div>
+                                        @if (trim((string) $card['badge']) !== '')
+                                            <div class="recomended-box">
+                                                {{ $card['badge'] }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
                             @endforeach
-                        </ul>
-                        <div class="generic-btn">
-                            <a href="{{ konten('home', 'pricing', 'silver_button_url') ?: 'shop.html' }}">{{ konten('home', 'pricing', 'silver_button_text') ?: 'BUY TICKET' }}
-                                <i class="fas fa-arrow-right"></i></a>
+                        </div>
+
+                        <div class="d-flex justify-content-center mt-3">
+                            <div class="pricing-carousel-indicator small" data-pricing-indicator aria-live="polite"></div>
                         </div>
                     </div>
-                @endif
-
-                @if ($goldIsActive)
-                    <div class="ticket-details gold-ticket-details" data-aos="fade-up" data-aos-duration="700">
-                        <h3>{{ konten('home', 'pricing', 'gold_title') ?: 'Gold' }}</h3>
-                        <p>{{ konten('home', 'pricing', 'gold_subtitle') ?: 'For individuals' }}</p>
-                        <span>Starting at:</span>
-                        <div class="price">
-                            <small>{{ $goldCurrencySymbol }}</small>{{ konten('home', 'pricing', 'gold_price') ?: '45' }}
-                        </div>
-                        <ul class="list-unstyled">
-                            @foreach ($goldFeatures as $feature)
-                                @if (trim((string) $feature) !== '')
-                                    <li class="position-relative">{{ $feature }}</li>
-                                @endif
-                            @endforeach
-                        </ul>
-                        <div class="generic-btn">
-                            <a href="{{ konten('home', 'pricing', 'gold_button_url') ?: 'shop.html' }}">{{ konten('home', 'pricing', 'gold_button_text') ?: 'BUY TICKET' }}
-                                <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        @if ($goldBadge !== '')
-                            <div class="recomended-box">
-                                {{ $goldBadge }}
+                @else
+                    @foreach ($cards as $card)
+                        <div class="ticket-details {{ $card['wrapClass'] }}" data-aos="fade-up" data-aos-duration="700">
+                            <h3>{{ $card['title'] }}</h3>
+                            <p>{{ $card['subtitle'] }}</p>
+                            <span>Starting at:</span>
+                            <div class="price">
+                                <small>{{ $card['currency'] }}</small>{{ $card['price'] }}
                             </div>
-                        @endif
-                    </div>
-                @endif
-
-                @if ($premiumIsActive)
-                    <div class="ticket-details premium-ticket-details" data-aos="fade-up" data-aos-duration="700">
-                        <h3>{{ konten('home', 'pricing', 'premium_title') ?: 'Premium' }}</h3>
-                        <p>{{ konten('home', 'pricing', 'premium_subtitle') ?: 'For individuals' }}</p>
-                        <span>Starting at:</span>
-                        <div class="price">
-                            <small>{{ $premiumCurrencySymbol }}</small>{{ konten('home', 'pricing', 'premium_price') ?: '59' }}
+                            <ul class="list-unstyled">
+                                @foreach ($card['features'] as $feature)
+                                    @if (trim((string) $feature) !== '')
+                                        <li class="position-relative">{{ $feature }}</li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                            <div class="generic-btn">
+                                <a href="{{ $card['button_url'] }}">{{ $card['button_text'] }}
+                                    <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                            @if (trim((string) $card['badge']) !== '')
+                                <div class="recomended-box">
+                                    {{ $card['badge'] }}
+                                </div>
+                            @endif
                         </div>
-                        <ul class="list-unstyled">
-                            @foreach ($premiumFeatures as $feature)
-                                @if (trim((string) $feature) !== '')
-                                    <li class="position-relative">{{ $feature }}</li>
-                                @endif
-                            @endforeach
-                        </ul>
-                        <div class="generic-btn">
-                            <a href="{{ konten('home', 'pricing', 'premium_button_url') ?: 'shop.html' }}">{{ konten('home', 'pricing', 'premium_button_text') ?: 'BUY TICKET' }}
-                                <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
+                    @endforeach
                 @endif
             </div>
             <div class="index3-plan-btn text-center">
@@ -274,6 +363,111 @@
         </div>
     </section>
     <!--  PRICING PLANS SECTION END -->
+
+    @if ($useCarousel)
+        @push('styles')
+            <style>
+                #pricing .pricing-carousel .owl-item .item {
+                    height: 100%;
+                }
+                #pricing .pricing-carousel .ticket-details {
+                    height: 100%;
+                }
+                #pricing .pricing-carousel .owl-nav button {
+                    width: 42px;
+                    height: 42px;
+                    border-radius: 999px;
+                    background: rgba(0, 0, 0, 0.55) !important;
+                    color: #fff !important;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                #pricing .pricing-carousel .owl-nav button:hover {
+                    background: rgba(0, 0, 0, 0.75) !important;
+                }
+                #pricing .pricing-carousel .owl-nav {
+                    display: flex;
+                    justify-content: center;
+                    gap: 10px;
+                    margin-top: 14px;
+                }
+                #pricing .pricing-carousel .owl-item.center .ticket-details {
+                    background: #000;
+                }
+                #pricing .pricing-carousel .owl-item.center .ticket-details h3,
+                #pricing .pricing-carousel .owl-item.center .ticket-details p,
+                #pricing .pricing-carousel .owl-item.center .ticket-details span,
+                #pricing .pricing-carousel .owl-item.center .ticket-details li,
+                #pricing .pricing-carousel .owl-item.center .ticket-details .price,
+                #pricing .pricing-carousel .owl-item.center .ticket-details .price small {
+                    color: #fff;
+                }
+                #pricing .pricing-carousel-indicator {
+                    color: rgba(0, 0, 0, 0.6);
+                }
+            </style>
+        @endpush
+
+        @push('scripts')
+            <script>
+                (function () {
+                    const section = document.getElementById('pricing');
+                    const carouselEl = document.getElementById('pricing-carousel');
+                    const indicator = document.querySelector('[data-pricing-indicator]');
+                    if (!section || !carouselEl) return;
+
+                    function updateIndicator(e) {
+                        if (!indicator || !e || !e.relatedTarget || !e.item) return;
+                        const current = e.relatedTarget.relative(e.item.index) + 1;
+                        const total = e.item.count || 0;
+                        indicator.textContent = total > 0 ? `Slide ${current} dari ${total}` : '';
+                    }
+
+                    function init() {
+                        if (typeof jQuery === 'undefined') return;
+                        const $ = jQuery;
+                        if (typeof $(carouselEl).owlCarousel !== 'function') return;
+                        if ($(carouselEl).hasClass('owl-loaded')) return;
+
+                        $(carouselEl).owlCarousel({
+                            loop: true,
+                            margin: 30,
+                            nav: true,
+                            dots: true,
+                            autoplay: true,
+                            autoplayTimeout: 3500,
+                            autoplayHoverPause: true,
+                            smartSpeed: 450,
+                            responsive: {
+                                0: { items: 1, center: false },
+                                768: { items: 2, center: false },
+                                1200: { items: 3, center: true }
+                            },
+                            onInitialized: updateIndicator,
+                            onChanged: updateIndicator
+                        });
+                    }
+
+                    if ('IntersectionObserver' in window) {
+                        const observer = new IntersectionObserver(
+                            (entries) => {
+                                const hit = entries.some((x) => x.isIntersecting);
+                                if (!hit) return;
+                                observer.disconnect();
+                                init();
+                            },
+                            { root: null, threshold: 0.2 }
+                        );
+                        observer.observe(section);
+                        return;
+                    }
+
+                    init();
+                })();
+            </script>
+        @endpush
+    @endif
 
     <!--  REGISTRATION SECTION START -->
     @php

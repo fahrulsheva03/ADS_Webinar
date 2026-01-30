@@ -90,6 +90,9 @@ Route::prefix('admin')->group(function () {
             Route::post('/', [KontenHalamanController::class, 'updateHome'])->name('admin.konten-halaman.home.update');
             Route::get('/about', [KontenHalamanController::class, 'about'])->name('admin.konten-halaman.about');
             Route::post('/about', [KontenHalamanController::class, 'updateAbout'])->name('admin.konten-halaman.about.update');
+            Route::post('/pricing-cards', [KontenHalamanController::class, 'pricingCardsStore'])->name('admin.konten-halaman.pricing-cards.store');
+            Route::put('/pricing-cards/{cardId}', [KontenHalamanController::class, 'pricingCardsUpdate'])->name('admin.konten-halaman.pricing-cards.update');
+            Route::delete('/pricing-cards/{cardId}', [KontenHalamanController::class, 'pricingCardsDestroy'])->name('admin.konten-halaman.pricing-cards.destroy');
             Route::post('/upload-image', [KontenHalamanController::class, 'uploadImage'])->name('admin.konten-halaman.upload-image');
         });
         Route::prefix('news')->group(function () {

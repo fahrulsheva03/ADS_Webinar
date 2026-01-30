@@ -162,6 +162,19 @@
                                         $pricingBottomButtonText = old('contents.pricing.bottom_button_text', $pricing['bottom_button_text'] ?? '');
                                         $pricingBottomButtonUrl = old('contents.pricing.bottom_button_url', $pricing['bottom_button_url'] ?? '');
 
+                                        $extraCardsJson = old('contents.pricing.extra_cards', $pricing['extra_cards'] ?? '[]');
+                                        $extraCards = [];
+                                        if (is_string($extraCardsJson) && trim($extraCardsJson) !== '') {
+                                            $decoded = json_decode($extraCardsJson, true);
+                                            if (is_array($decoded)) {
+                                                $extraCards = $decoded;
+                                            }
+                                        }
+
+                                        $extraCardsStoreUrl = route('admin.konten-halaman.pricing-cards.store');
+                                        $extraCardsUpdateTpl = route('admin.konten-halaman.pricing-cards.update', ['cardId' => '__ID__']);
+                                        $extraCardsDestroyTpl = route('admin.konten-halaman.pricing-cards.destroy', ['cardId' => '__ID__']);
+
                                         $cards = [
                                             [
                                                 'plan' => 'silver',
@@ -577,6 +590,111 @@
                                             @error('contents.pricing.bottom_button_url')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="border rounded p-3 mt-4" data-extra-cards>
+                                        <div class="d-flex flex-wrap align-items-start justify-content-between gap-2">
+                                            <div>
+                                                <div class="fw-semibold text-black">Card Tambahan</div>
+                                                <div class="text-muted small">Ditampilkan setelah 3 card utama di halaman peserta.</div>
+                                            </div>
+                                            <button type="button" class="btn btn-outline-primary btn-sm" data-extra-card-add>
+                                                <i class="la la-plus" aria-hidden="true"></i>
+                                                Tambah Card
+                                            </button>
+                                        </div>
+
+                                        <textarea class="d-none" name="contents[pricing][extra_cards]" data-extra-cards-storage>{{ $extraCardsJson }}</textarea>
+
+                                        <div
+                                            class="d-flex flex-column gap-3 mt-3"
+                                            data-extra-cards-list
+                                            data-store-url="{{ $extraCardsStoreUrl }}"
+                                            data-update-url-template="{{ $extraCardsUpdateTpl }}"
+                                            data-destroy-url-template="{{ $extraCardsDestroyTpl }}"
+                                        >
+                                            @foreach ($extraCards as $card)
+                                                @php
+                                                    $cardId = (string) ($card['id'] ?? '');
+                                                    $cardActive = (string) ($card['active'] ?? '0') !== '0';
+                                                    $cardTitle = (string) ($card['title'] ?? '');
+                                                    $cardSubtitle = (string) ($card['subtitle'] ?? '');
+                                                    $cardCurrency = (string) ($card['currency'] ?? 'USD');
+                                                    $cardPrice = (string) ($card['price'] ?? '');
+                                                    $cardFeatures = $card['features'] ?? [];
+                                                    $cardFeatures = is_array($cardFeatures) ? $cardFeatures : [];
+                                                    $cardFeaturesText = collect($cardFeatures)->map(fn ($v) => trim((string) $v))->filter()->implode("\n");
+                                                    $cardButtonText = (string) ($card['button_text'] ?? '');
+                                                    $cardButtonUrl = (string) ($card['button_url'] ?? '');
+                                                    $cardBadge = (string) ($card['badge'] ?? '');
+                                                @endphp
+
+                                                @if ($cardId !== '')
+                                                    <div class="border rounded p-3 bg-white" data-extra-card data-card-id="{{ $cardId }}">
+                                                        <div class="d-flex flex-wrap align-items-start justify-content-between gap-2">
+                                                            <div class="fw-semibold text-black">Card</div>
+                                                            <div class="d-flex flex-wrap align-items-center gap-2">
+                                                                <div class="form-check form-switch m-0">
+                                                                    <input class="form-check-input" type="checkbox" role="switch" @if ($cardActive) checked @endif data-card-field="active">
+                                                                    <label class="form-check-label text-muted small">Aktif</label>
+                                                                </div>
+                                                                <button type="button" class="btn btn-outline-danger btn-xxs" data-extra-card-delete>
+                                                                    <i class="la la-trash" aria-hidden="true"></i>
+                                                                    Hapus
+                                                                </button>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="text-muted small mt-1" data-card-status></div>
+
+                                                        <div class="row g-3 mt-2">
+                                                            <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan judul title">
+                                                                <label class="form-label text-black">Judul</label>
+                                                                <input type="text" class="form-control" value="{{ $cardTitle }}" data-card-field="title">
+                                                            </div>
+                                                            <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan subjudul subtitle">
+                                                                <label class="form-label text-black">Subjudul</label>
+                                                                <input type="text" class="form-control" value="{{ $cardSubtitle }}" data-card-field="subtitle">
+                                                            </div>
+                                                            <div class="col-12 col-md-4" data-field-item data-hay="pricing card tambahan currency mata uang">
+                                                                <label class="form-label text-black">Mata uang</label>
+                                                                <select class="form-select" data-card-field="currency">
+                                                                    <option value="USD" @if ($cardCurrency === 'USD') selected @endif>USD ($)</option>
+                                                                    <option value="IDR" @if ($cardCurrency === 'IDR') selected @endif>IDR (Rp)</option>
+                                                                    <option value="EUR" @if ($cardCurrency === 'EUR') selected @endif>EUR (€)</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-12 col-md-8" data-field-item data-hay="pricing card tambahan harga price">
+                                                                <label class="form-label text-black">Harga</label>
+                                                                <input type="number" step="0.01" min="0" inputmode="decimal" class="form-control" value="{{ $cardPrice }}" data-card-field="price">
+                                                            </div>
+                                                            <div class="col-12" data-field-item data-hay="pricing card tambahan fitur features">
+                                                                <label class="form-label text-black">Fitur (per baris)</label>
+                                                                <textarea class="form-control" rows="4" data-card-field="features">{{ $cardFeaturesText }}</textarea>
+                                                            </div>
+                                                            <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta text">
+                                                                <label class="form-label text-black">Teks tombol</label>
+                                                                <input type="text" class="form-control" value="{{ $cardButtonText }}" data-card-field="button_text">
+                                                            </div>
+                                                            <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta url">
+                                                                <label class="form-label text-black">URL tombol</label>
+                                                                <input type="url" class="form-control" placeholder="https://" value="{{ $cardButtonUrl }}" data-card-field="button_url">
+                                                            </div>
+                                                            <div class="col-12" data-field-item data-hay="pricing card tambahan badge">
+                                                                <label class="form-label text-black">Badge (opsional)</label>
+                                                                <input type="text" class="form-control" value="{{ $cardBadge }}" data-card-field="badge">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="alert alert-danger d-none mt-3 mb-0" role="alert" data-card-error></div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+
+                                        <div class="alert alert-light border mt-3 mb-0 @if (count($extraCards) > 0) d-none @endif" data-extra-cards-empty>
+                                            Belum ada card tambahan.
                                         </div>
                                     </div>
                                 @else
@@ -1185,6 +1303,343 @@
                         renumberFeatures(plan);
                         updatePlanPreview(plan);
                     });
+                })();
+
+                (function wireExtraPricingCards() {
+                    const root = document.querySelector('[data-extra-cards]');
+                    if (!root) return;
+
+                    const addBtn = root.querySelector('[data-extra-card-add]');
+                    const list = root.querySelector('[data-extra-cards-list]');
+                    const storage = root.querySelector('[data-extra-cards-storage]');
+                    const empty = root.querySelector('[data-extra-cards-empty]');
+
+                    if (!addBtn || !list || !storage) return;
+
+                    const storeUrl = String(list.dataset.storeUrl || '');
+                    const updateTpl = String(list.dataset.updateUrlTemplate || '');
+                    const destroyTpl = String(list.dataset.destroyUrlTemplate || '');
+
+                    function parseJson(raw, fallback) {
+                        try {
+                            const v = JSON.parse(String(raw || ''));
+                            return Array.isArray(v) ? v : fallback;
+                        } catch (_) {
+                            return fallback;
+                        }
+                    }
+
+                    let cards = parseJson(storage.value, []);
+
+                    function syncStorage() {
+                        storage.value = JSON.stringify(cards);
+                        if (empty) empty.classList.toggle('d-none', cards.length > 0);
+                    }
+
+                    function urlFromTemplate(tpl, id) {
+                        return tpl.replace('__ID__', encodeURIComponent(String(id || '')));
+                    }
+
+                    function setStatus(cardEl, text, isError) {
+                        const el = cardEl.querySelector('[data-card-status]');
+                        if (!el) return;
+                        el.textContent = String(text || '');
+                        el.classList.toggle('text-danger', !!isError);
+                    }
+
+                    function setError(cardEl, payload) {
+                        const box = cardEl.querySelector('[data-card-error]');
+                        if (!box) return;
+
+                        const errors = payload && payload.errors ? payload.errors : null;
+                        if (!errors || typeof errors !== 'object') {
+                            box.classList.add('d-none');
+                            box.textContent = '';
+                            return;
+                        }
+
+                        const lines = [];
+                        Object.values(errors).forEach((arr) => {
+                            if (Array.isArray(arr)) {
+                                arr.forEach((m) => lines.push(String(m)));
+                            } else if (arr) {
+                                lines.push(String(arr));
+                            }
+                        });
+
+                        if (lines.length === 0) {
+                            box.classList.add('d-none');
+                            box.textContent = '';
+                            return;
+                        }
+
+                        box.classList.remove('d-none');
+                        box.innerHTML = `<div class="fw-semibold mb-1">Gagal menyimpan</div><ul class="mb-0 ps-3">${lines
+                            .map((v) => `<li>${escapeHtml(v)}</li>`)
+                            .join('')}</ul>`;
+                    }
+
+                    function getField(cardEl, name) {
+                        return cardEl.querySelector(`[data-card-field="${name}"]`);
+                    }
+
+                    function normalizeFeaturesText(raw) {
+                        return String(raw || '')
+                            .split(/\r\n|\r|\n/g)
+                            .map((v) => String(v).trim())
+                            .filter((v) => v !== '');
+                    }
+
+                    function readCardFromDom(cardEl) {
+                        const id = String(cardEl.dataset.cardId || '');
+                        const activeEl = getField(cardEl, 'active');
+                        const active = activeEl && activeEl.type === 'checkbox' && activeEl.checked ? '1' : '0';
+
+                        return {
+                            id,
+                            active,
+                            title: String(getField(cardEl, 'title')?.value || ''),
+                            subtitle: String(getField(cardEl, 'subtitle')?.value || ''),
+                            currency: String(getField(cardEl, 'currency')?.value || 'USD'),
+                            price: String(getField(cardEl, 'price')?.value || ''),
+                            features: normalizeFeaturesText(getField(cardEl, 'features')?.value || ''),
+                            button_text: String(getField(cardEl, 'button_text')?.value || ''),
+                            button_url: String(getField(cardEl, 'button_url')?.value || ''),
+                            badge: String(getField(cardEl, 'badge')?.value || ''),
+                        };
+                    }
+
+                    function upsertCard(card) {
+                        const id = String(card.id || '');
+                        if (!id) return;
+                        const idx = cards.findIndex((c) => String(c.id || '') === id);
+                        if (idx === -1) cards.push(card);
+                        else cards[idx] = { ...cards[idx], ...card };
+                        syncStorage();
+                    }
+
+                    function removeCard(id) {
+                        const key = String(id || '');
+                        cards = cards.filter((c) => String(c.id || '') !== key);
+                        syncStorage();
+                    }
+
+                    function renderCard(card) {
+                        const id = String(card.id || '');
+                        const cardEl = document.createElement('div');
+                        cardEl.className = 'border rounded p-3 bg-white';
+                        cardEl.setAttribute('data-extra-card', '');
+                        cardEl.setAttribute('data-card-id', id);
+                        cardEl.dataset.cardId = id;
+
+                        const checked = String(card.active || '0') !== '0' ? 'checked' : '';
+                        const featuresText = Array.isArray(card.features) ? card.features.join('\n') : '';
+
+                        cardEl.innerHTML = `
+                            <div class="d-flex flex-wrap align-items-start justify-content-between gap-2">
+                                <div class="fw-semibold text-black">Card</div>
+                                <div class="d-flex flex-wrap align-items-center gap-2">
+                                    <div class="form-check form-switch m-0">
+                                        <input class="form-check-input" type="checkbox" role="switch" ${checked} data-card-field="active">
+                                        <label class="form-check-label text-muted small">Aktif</label>
+                                    </div>
+                                    <button type="button" class="btn btn-outline-danger btn-xxs" data-extra-card-delete>
+                                        <i class="la la-trash" aria-hidden="true"></i>
+                                        Hapus
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="text-muted small mt-1" data-card-status></div>
+                            <div class="row g-3 mt-2">
+                                <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan judul title">
+                                    <label class="form-label text-black">Judul</label>
+                                    <input type="text" class="form-control" value="${escapeHtml(card.title || '')}" data-card-field="title">
+                                </div>
+                                <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan subjudul subtitle">
+                                    <label class="form-label text-black">Subjudul</label>
+                                    <input type="text" class="form-control" value="${escapeHtml(card.subtitle || '')}" data-card-field="subtitle">
+                                </div>
+                                <div class="col-12 col-md-4" data-field-item data-hay="pricing card tambahan currency mata uang">
+                                    <label class="form-label text-black">Mata uang</label>
+                                    <select class="form-select" data-card-field="currency">
+                                        <option value="USD" ${String(card.currency || 'USD') === 'USD' ? 'selected' : ''}>USD ($)</option>
+                                        <option value="IDR" ${String(card.currency || '') === 'IDR' ? 'selected' : ''}>IDR (Rp)</option>
+                                        <option value="EUR" ${String(card.currency || '') === 'EUR' ? 'selected' : ''}>EUR (€)</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-md-8" data-field-item data-hay="pricing card tambahan harga price">
+                                    <label class="form-label text-black">Harga</label>
+                                    <input type="number" step="0.01" min="0" inputmode="decimal" class="form-control" value="${escapeHtml(
+                                        card.price || ''
+                                    )}" data-card-field="price">
+                                </div>
+                                <div class="col-12" data-field-item data-hay="pricing card tambahan fitur features">
+                                    <label class="form-label text-black">Fitur (per baris)</label>
+                                    <textarea class="form-control" rows="4" data-card-field="features">${escapeHtml(featuresText)}</textarea>
+                                </div>
+                                <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta text">
+                                    <label class="form-label text-black">Teks tombol</label>
+                                    <input type="text" class="form-control" value="${escapeHtml(card.button_text || '')}" data-card-field="button_text">
+                                </div>
+                                <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta url">
+                                    <label class="form-label text-black">URL tombol</label>
+                                    <input type="url" class="form-control" placeholder="https://" value="${escapeHtml(
+                                        card.button_url || ''
+                                    )}" data-card-field="button_url">
+                                </div>
+                                <div class="col-12" data-field-item data-hay="pricing card tambahan badge">
+                                    <label class="form-label text-black">Badge (opsional)</label>
+                                    <input type="text" class="form-control" value="${escapeHtml(card.badge || '')}" data-card-field="badge">
+                                </div>
+                            </div>
+                            <div class="alert alert-danger d-none mt-3 mb-0" role="alert" data-card-error></div>
+                        `;
+
+                        return cardEl;
+                    }
+
+                    const saveTimers = new Map();
+
+                    async function saveCard(cardEl) {
+                        const id = String(cardEl.dataset.cardId || '');
+                        if (!id) return;
+
+                        setError(cardEl, null);
+                        setStatus(cardEl, 'Menyimpan…', false);
+
+                        const payload = readCardFromDom(cardEl);
+                        upsertCard(payload);
+
+                        const url = urlFromTemplate(updateTpl, id);
+                        try {
+                            const res = await fetch(url, {
+                                method: 'PUT',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    Accept: 'application/json',
+                                    'X-CSRF-TOKEN': csrfToken,
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                },
+                                body: JSON.stringify(payload),
+                            });
+
+                            const json = await res.json().catch(() => ({}));
+                            if (!res.ok) {
+                                setStatus(cardEl, 'Gagal menyimpan', true);
+                                setError(cardEl, json);
+                                return;
+                            }
+
+                            if (json && json.data) {
+                                upsertCard(json.data);
+                            }
+                            setStatus(cardEl, 'Tersimpan', false);
+                        } catch (_) {
+                            setStatus(cardEl, 'Gagal menyimpan', true);
+                        }
+                    }
+
+                    function scheduleSave(cardEl) {
+                        const id = String(cardEl.dataset.cardId || '');
+                        if (!id) return;
+
+                        const old = saveTimers.get(id);
+                        if (old) clearTimeout(old);
+                        saveTimers.set(
+                            id,
+                            setTimeout(() => {
+                                saveTimers.delete(id);
+                                saveCard(cardEl);
+                            }, 450)
+                        );
+                    }
+
+                    addBtn.addEventListener('click', async () => {
+                        if (!storeUrl) return;
+                        addBtn.disabled = true;
+                        try {
+                            const res = await fetch(storeUrl, {
+                                method: 'POST',
+                                headers: {
+                                    Accept: 'application/json',
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': csrfToken,
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                },
+                                body: JSON.stringify({}),
+                            });
+
+                            const json = await res.json().catch(() => ({}));
+                            if (!res.ok || !json || !json.data) {
+                                pushNotice('danger', 'Gagal', 'Card tidak berhasil ditambahkan.');
+                                return;
+                            }
+
+                            const card = json.data;
+                            const el = renderCard(card);
+                            list.appendChild(el);
+                            upsertCard(card);
+                            setStatus(el, 'Tersimpan', false);
+                            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        } catch (_) {
+                            pushNotice('danger', 'Gagal', 'Card tidak berhasil ditambahkan.');
+                        } finally {
+                            addBtn.disabled = false;
+                        }
+                    });
+
+                    list.addEventListener('input', (e) => {
+                        const cardEl = e.target?.closest?.('[data-extra-card]');
+                        if (!cardEl) return;
+                        scheduleSave(cardEl);
+                    });
+
+                    list.addEventListener('change', (e) => {
+                        const cardEl = e.target?.closest?.('[data-extra-card]');
+                        if (!cardEl) return;
+                        scheduleSave(cardEl);
+                    });
+
+                    list.addEventListener('click', async (e) => {
+                        const btn = e.target?.closest?.('[data-extra-card-delete]');
+                        if (!btn) return;
+
+                        const cardEl = btn.closest('[data-extra-card]');
+                        if (!cardEl) return;
+
+                        const id = String(cardEl.dataset.cardId || '');
+                        if (!id) return;
+
+                        if (!confirm('Hapus card ini?')) return;
+
+                        const url = urlFromTemplate(destroyTpl, id);
+                        btn.disabled = true;
+                        try {
+                            const res = await fetch(url, {
+                                method: 'DELETE',
+                                headers: {
+                                    Accept: 'application/json',
+                                    'X-CSRF-TOKEN': csrfToken,
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                },
+                            });
+
+                            if (!res.ok) {
+                                pushNotice('danger', 'Gagal', 'Card tidak berhasil dihapus.');
+                                btn.disabled = false;
+                                return;
+                            }
+
+                            removeCard(id);
+                            cardEl.remove();
+                            pushNotice('success', 'Berhasil', 'Card berhasil dihapus.');
+                        } catch (_) {
+                            pushNotice('danger', 'Gagal', 'Card tidak berhasil dihapus.');
+                            btn.disabled = false;
+                        }
+                    });
+
+                    syncStorage();
                 })();
 
                 if (fieldSearch) {

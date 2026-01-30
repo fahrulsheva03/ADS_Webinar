@@ -75,6 +75,133 @@ class KontenHalamanController extends Controller
         ]);
     }
 
+    public function pricingCardsStore(Request $request): JsonResponse
+    {
+        $cards = $this->getExtraPricingCards();
+
+        $card = [
+            'id' => (string) Str::uuid(),
+            'active' => '0',
+            'title' => '',
+            'subtitle' => '',
+            'currency' => 'USD',
+            'price' => '',
+            'features' => [],
+            'button_text' => '',
+            'button_url' => '',
+            'badge' => '',
+        ];
+
+        $cards[] = $card;
+        $this->saveExtraPricingCards($cards);
+
+        return response()->json([
+            'message' => 'Card berhasil ditambahkan.',
+            'data' => $card,
+        ]);
+    }
+
+    public function pricingCardsUpdate(Request $request, string $cardId): JsonResponse
+    {
+        $cards = $this->getExtraPricingCards();
+
+        $idx = collect($cards)->search(fn (array $c) => (string) ($c['id'] ?? '') === $cardId);
+        abort_if($idx === false, 404);
+
+        $data = $request->validate([
+            'active' => 'nullable|in:0,1',
+            'title' => 'nullable|string|max:150',
+            'subtitle' => 'nullable|string|max:255',
+            'currency' => 'nullable|in:USD,IDR,EUR',
+            'price' => 'nullable|numeric|min:0',
+            'features' => 'nullable|array',
+            'features.*' => 'nullable|string|max:255',
+            'button_text' => 'nullable|string|max:80',
+            'button_url' => 'nullable|url|max:2048',
+            'badge' => 'nullable|string|max:60',
+        ]);
+
+        $card = (array) $cards[$idx];
+
+        $next = array_merge($card, $data);
+        $next['active'] = isset($next['active']) ? (string) $next['active'] : '0';
+        $next['title'] = trim((string) ($next['title'] ?? ''));
+        $next['subtitle'] = trim((string) ($next['subtitle'] ?? ''));
+        $next['currency'] = trim((string) ($next['currency'] ?? 'USD')) ?: 'USD';
+        $next['price'] = isset($next['price']) && $next['price'] !== '' ? (string) $next['price'] : '';
+        $next['button_text'] = trim((string) ($next['button_text'] ?? ''));
+        $next['button_url'] = trim((string) ($next['button_url'] ?? ''));
+        $next['badge'] = trim((string) ($next['badge'] ?? ''));
+
+        $features = $next['features'] ?? [];
+        if (! is_array($features)) {
+            $features = [];
+        }
+        $features = collect($features)
+            ->map(fn ($v) => trim((string) $v))
+            ->filter(fn ($v) => $v !== '')
+            ->values()
+            ->all();
+        $next['features'] = $features;
+
+        if ($next['active'] === '1') {
+            $errors = [];
+
+            if ($next['currency'] === '') {
+                $errors['currency'] = ['Mata uang wajib diisi saat card aktif.'];
+            }
+            if ($next['title'] === '') {
+                $errors['title'] = ['Judul wajib diisi saat card aktif.'];
+            }
+            if ($next['subtitle'] === '') {
+                $errors['subtitle'] = ['Deskripsi wajib diisi saat card aktif.'];
+            }
+            if ($next['price'] === '') {
+                $errors['price'] = ['Harga wajib diisi saat card aktif.'];
+            }
+            if (count($features) === 0) {
+                $errors['features'] = ['Minimal 1 fitur wajib diisi saat card aktif.'];
+            }
+            if ($next['button_text'] === '') {
+                $errors['button_text'] = ['Teks tombol wajib diisi saat card aktif.'];
+            }
+            if ($next['button_url'] === '') {
+                $errors['button_url'] = ['URL tombol wajib diisi saat card aktif.'];
+            }
+
+            if (count($errors) > 0) {
+                return response()->json([
+                    'message' => 'Validasi gagal.',
+                    'errors' => $errors,
+                ], 422);
+            }
+        }
+
+        $cards[$idx] = $next;
+        $this->saveExtraPricingCards($cards);
+
+        return response()->json([
+            'message' => 'Card berhasil diperbarui.',
+            'data' => $next,
+        ]);
+    }
+
+    public function pricingCardsDestroy(string $cardId): JsonResponse
+    {
+        $cards = $this->getExtraPricingCards();
+        $filtered = collect($cards)->reject(fn (array $c) => (string) ($c['id'] ?? '') === $cardId)->values()->all();
+
+        if (count($filtered) === count($cards)) {
+            abort(404);
+        }
+
+        $this->saveExtraPricingCards($filtered);
+
+        return response()->json([
+            'message' => 'Card berhasil dihapus.',
+        ]);
+    }
+
     private function renderPage(string $page, array $fields): View
     {
         $existing = PageContent::query()
@@ -161,6 +288,62 @@ class KontenHalamanController extends Controller
         });
 
         return back()->with('success', 'Konten berhasil disimpan.');
+    }
+
+    private function getExtraPricingCards(): array
+    {
+        $row = PageContent::query()
+            ->where('page', 'home')
+            ->where('section', 'pricing')
+            ->where('key', 'extra_cards')
+            ->first();
+
+        $raw = (string) optional($row)->value;
+        $raw = trim($raw);
+        if ($raw === '') {
+            return [];
+        }
+
+        $decoded = json_decode($raw, true);
+        if (! is_array($decoded)) {
+            return [];
+        }
+
+        return collect($decoded)
+            ->filter(fn ($v) => is_array($v) && isset($v['id']))
+            ->map(function (array $v) {
+                $v['id'] = (string) ($v['id'] ?? '');
+                $v['active'] = (string) ($v['active'] ?? '0');
+                $v['title'] = (string) ($v['title'] ?? '');
+                $v['subtitle'] = (string) ($v['subtitle'] ?? '');
+                $v['currency'] = (string) ($v['currency'] ?? 'USD');
+                $v['price'] = isset($v['price']) ? (string) $v['price'] : '';
+                $v['features'] = isset($v['features']) && is_array($v['features']) ? $v['features'] : [];
+                $v['button_text'] = (string) ($v['button_text'] ?? '');
+                $v['button_url'] = (string) ($v['button_url'] ?? '');
+                $v['badge'] = (string) ($v['badge'] ?? '');
+
+                return $v;
+            })
+            ->values()
+            ->all();
+    }
+
+    private function saveExtraPricingCards(array $cards): void
+    {
+        $value = json_encode(array_values($cards), JSON_UNESCAPED_UNICODE);
+        $value = $value !== false ? $value : '[]';
+
+        PageContent::query()->updateOrCreate(
+            [
+                'page' => 'home',
+                'section' => 'pricing',
+                'key' => 'extra_cards',
+            ],
+            [
+                'value' => $value,
+            ]
+        );
     }
 
     private function homeFields(): array
@@ -365,6 +548,13 @@ class KontenHalamanController extends Controller
                 'type' => 'textarea',
                 'rows' => 3,
                 'placeholder' => "Contoh:\nWe Have Several Options\nfor Tickets",
+            ],
+            [
+                'section' => 'pricing',
+                'key' => 'extra_cards',
+                'label' => 'Ticket Pricing - Extra Cards (JSON)',
+                'type' => 'textarea',
+                'rows' => 1,
             ],
 
             [
