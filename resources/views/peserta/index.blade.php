@@ -386,6 +386,34 @@
                     margin-top: 0 !important;
                     padding: 50px 45px 45px !important;
                 }
+                #pricing .pricing-carousel .owl-item:not(.center) .gold-ticket-details {
+                    background: var(--primary-color) !important;
+                }
+                #pricing .pricing-carousel .owl-item:not(.center) .gold-ticket-details h3 {
+                    color: var(--dark-blue) !important;
+                }
+                #pricing .pricing-carousel .owl-item:not(.center) .gold-ticket-details p,
+                #pricing .pricing-carousel .owl-item:not(.center) .gold-ticket-details span,
+                #pricing .pricing-carousel .owl-item:not(.center) .gold-ticket-details ul li {
+                    color: var(--text-color) !important;
+                }
+                #pricing .pricing-carousel .owl-item:not(.center) .gold-ticket-details .price,
+                #pricing .pricing-carousel .owl-item:not(.center) .gold-ticket-details .price small {
+                    color: var(--pink-color) !important;
+                }
+                #pricing .pricing-carousel .owl-item:not(.center) .gold-ticket-details ul li::before {
+                    color: var(--pink-color) !important;
+                }
+                #pricing .pricing-carousel .owl-item:not(.center) .gold-ticket-details .generic-btn a {
+                    border-color: var(--pink-color) !important;
+                    background: transparent !important;
+                    color: var(--pink-color) !important;
+                }
+                #pricing .pricing-carousel .owl-item:not(.center) .gold-ticket-details .generic-btn a:hover {
+                    color: var(--primary-color) !important;
+                    background: var(--pink-color) !important;
+                    border-color: var(--pink-color) !important;
+                }
                 #pricing .pricing-carousel .owl-nav button {
                     width: 42px;
                     height: 42px;
@@ -407,6 +435,16 @@
                 }
                 #pricing .pricing-carousel .owl-item.center .ticket-details {
                     background: #000;
+                }
+                #pricing .pricing-carousel .owl-item.center .ticket-details .generic-btn a {
+                    background: #fff !important;
+                    border-color: #fff !important;
+                    color: var(--dark-blue) !important;
+                }
+                #pricing .pricing-carousel .owl-item.center .ticket-details .generic-btn a:hover {
+                    background: transparent !important;
+                    border-color: #fff !important;
+                    color: #fff !important;
                 }
                 #pricing .pricing-carousel .owl-item.center .ticket-details h3,
                 #pricing .pricing-carousel .owl-item.center .ticket-details p,
