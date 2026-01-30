@@ -367,11 +367,24 @@
     @if ($useCarousel)
         @push('styles')
             <style>
+                #pricing .index3-plan-inner-con {
+                    display: block;
+                }
                 #pricing .pricing-carousel .owl-item .item {
                     height: 100%;
                 }
                 #pricing .pricing-carousel .ticket-details {
-                    height: 100%;
+                    width: 100%;
+                    height: auto;
+                    min-height: 481px;
+                    margin-top: 0 !important;
+                    border-radius: 10px !important;
+                }
+                #pricing .pricing-carousel .gold-ticket-details {
+                    height: auto !important;
+                    min-height: 481px;
+                    margin-top: 0 !important;
+                    padding: 50px 45px 45px !important;
                 }
                 #pricing .pricing-carousel .owl-nav button {
                     width: 42px;
