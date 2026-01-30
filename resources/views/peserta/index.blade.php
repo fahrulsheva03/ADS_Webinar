@@ -184,6 +184,41 @@
         $goldBadge = trim(konten('home', 'pricing', 'gold_badge'));
 
         $cards = [];
+        $formatPrice = function (string $raw): string {
+            $raw = trim($raw);
+            if ($raw === '') {
+                return $raw;
+            }
+
+            if (preg_match('/^-?\d+$/', $raw) === 1) {
+                return number_format((int) $raw, 0, ',', '.');
+            }
+
+            if (preg_match('/^-?\d+(?:[.,]\d+)?$/', $raw) !== 1) {
+                return $raw;
+            }
+
+            $lastDot = strrpos($raw, '.');
+            $lastComma = strrpos($raw, ',');
+            $sepPos = $lastDot === false ? $lastComma : ($lastComma === false ? $lastDot : max($lastDot, $lastComma));
+            if ($sepPos === false) {
+                $intPart = preg_replace('/\D+/', '', $raw);
+                return $intPart === '' ? $raw : number_format((int) $intPart, 0, ',', '.');
+            }
+
+            $sep = $raw[$sepPos];
+            $intPart = substr($raw, 0, $sepPos);
+            $decPart = substr($raw, $sepPos + 1);
+            $intDigits = preg_replace('/\D+/', '', $intPart);
+            $decDigits = preg_replace('/\D+/', '', $decPart);
+
+            if ($intDigits === '') {
+                return $raw;
+            }
+
+            $formattedInt = number_format((int) $intDigits, 0, ',', '.');
+            return $decDigits === '' ? $formattedInt : ($formattedInt . $sep . $decDigits);
+        };
 
         if ($silverIsActive) {
             $cards[] = [
@@ -192,6 +227,7 @@
                 'subtitle' => konten('home', 'pricing', 'silver_subtitle') ?: 'For individuals',
                 'currency' => $silverCurrencySymbol,
                 'price' => konten('home', 'pricing', 'silver_price') ?: '29',
+                'price_display' => $formatPrice((string) (konten('home', 'pricing', 'silver_price') ?: '29')),
                 'features' => $silverFeatures,
                 'button_text' => konten('home', 'pricing', 'silver_button_text') ?: 'BUY TICKET',
                 'button_url' => konten('home', 'pricing', 'silver_button_url') ?: 'shop.html',
@@ -206,6 +242,7 @@
                 'subtitle' => konten('home', 'pricing', 'gold_subtitle') ?: 'For individuals',
                 'currency' => $goldCurrencySymbol,
                 'price' => konten('home', 'pricing', 'gold_price') ?: '45',
+                'price_display' => $formatPrice((string) (konten('home', 'pricing', 'gold_price') ?: '45')),
                 'features' => $goldFeatures,
                 'button_text' => konten('home', 'pricing', 'gold_button_text') ?: 'BUY TICKET',
                 'button_url' => konten('home', 'pricing', 'gold_button_url') ?: 'shop.html',
@@ -220,6 +257,7 @@
                 'subtitle' => konten('home', 'pricing', 'premium_subtitle') ?: 'For individuals',
                 'currency' => $premiumCurrencySymbol,
                 'price' => konten('home', 'pricing', 'premium_price') ?: '59',
+                'price_display' => $formatPrice((string) (konten('home', 'pricing', 'premium_price') ?: '59')),
                 'features' => $premiumFeatures,
                 'button_text' => konten('home', 'pricing', 'premium_button_text') ?: 'BUY TICKET',
                 'button_url' => konten('home', 'pricing', 'premium_button_url') ?: 'shop.html',
@@ -235,7 +273,7 @@
         $extraCardsNormalized = collect($extraCardsDecoded)
             ->filter(fn($v) => is_array($v) && (string)($v['id'] ?? '') !== '')
             ->values()
-            ->map(function (array $v) use ($currencySymbolByCode, $wrapCycle) {
+            ->map(function (array $v) use ($currencySymbolByCode, $wrapCycle, $formatPrice) {
                 $active = (string) ($v['active'] ?? '0') !== '0';
                 $features = isset($v['features']) && is_array($v['features']) ? $v['features'] : [];
                 $features = collect($features)->map(fn($x) => trim((string) $x))->filter()->values()->all();
@@ -250,6 +288,7 @@
                     'subtitle' => trim((string) ($v['subtitle'] ?? '')),
                     'currency' => $currencySymbolByCode[$currencyCode] ?? '$',
                     'price' => (string) ($v['price'] ?? ''),
+                    'price_display' => $formatPrice((string) ($v['price'] ?? '')),
                     'features' => $features,
                     'button_text' => trim((string) ($v['button_text'] ?? '')),
                     'button_url' => trim((string) ($v['button_url'] ?? '#')),
@@ -268,6 +307,7 @@
                 'subtitle' => $c['subtitle'] !== '' ? $c['subtitle'] : 'For individuals',
                 'currency' => $c['currency'],
                 'price' => $c['price'] !== '' ? $c['price'] : '0',
+                'price_display' => $c['price'] !== '' ? $c['price_display'] : $formatPrice('0'),
                 'features' => $c['features'],
                 'button_text' => $c['button_text'] !== '' ? $c['button_text'] : 'BUY TICKET',
                 'button_url' => $c['button_url'] !== '' ? $c['button_url'] : '#',
@@ -295,7 +335,7 @@
                                         <p>{{ $card['subtitle'] }}</p>
                                         <span>Starting at:</span>
                                         <div class="price">
-                                            <small>{{ $card['currency'] }}</small>{{ $card['price'] }}
+                                            <small>{{ $card['currency'] }}</small>{{ $card['price_display'] ?? $card['price'] }}
                                         </div>
                                         <ul class="list-unstyled">
                                             @foreach ($card['features'] as $feature)
@@ -329,7 +369,7 @@
                             <p>{{ $card['subtitle'] }}</p>
                             <span>Starting at:</span>
                             <div class="price">
-                                <small>{{ $card['currency'] }}</small>{{ $card['price'] }}
+                                <small>{{ $card['currency'] }}</small>{{ $card['price_display'] ?? $card['price'] }}
                             </div>
                             <ul class="list-unstyled">
                                 @foreach ($card['features'] as $feature)
@@ -369,6 +409,9 @@
             <style>
                 #pricing .index3-plan-inner-con {
                     display: block;
+                }
+                #pricing .pricing-carousel {
+                    position: relative;
                 }
                 #pricing .pricing-carousel .owl-item .item {
                     height: 100%;
@@ -432,6 +475,23 @@
                     justify-content: center;
                     gap: 10px;
                     margin-top: 14px;
+                }
+                @media (min-width: 768px) {
+                    #pricing .pricing-carousel .owl-nav {
+                        position: absolute;
+                        top: 50%;
+                        left: -54px;
+                        right: -54px;
+                        transform: translateY(-50%);
+                        justify-content: space-between;
+                        gap: 0;
+                        margin-top: 0;
+                        z-index: 2;
+                        pointer-events: none;
+                    }
+                    #pricing .pricing-carousel .owl-nav button {
+                        pointer-events: auto;
+                    }
                 }
                 #pricing .pricing-carousel .owl-item.center .ticket-details {
                     background: #000;
