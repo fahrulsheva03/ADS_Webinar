@@ -360,43 +360,47 @@
                                                                         @enderror
                                                                     </div>
 
-                                                                    <div class="col-12 col-md-4" data-field-item data-hay="pricing {{ $plan }} currency mata uang">
-                                                                        <label class="form-label text-black" for="pricing-{{ $plan }}-currency">Mata uang</label>
-                                                                        <select
-                                                                            id="pricing-{{ $plan }}-currency"
-                                                                            name="contents[pricing][{{ $plan }}_currency]"
-                                                                            class="form-select @error($currencyKey) is-invalid @enderror"
-                                                                            data-pricing-input
-                                                                            data-plan="{{ $plan }}"
-                                                                            data-field="currency"
-                                                                        >
-                                                                            <option value="USD" @if ($currencyVal === 'USD') selected @endif>USD ($)</option>
-                                                                            <option value="IDR" @if ($currencyVal === 'IDR') selected @endif>IDR (Rp)</option>
-                                                                            <option value="EUR" @if ($currencyVal === 'EUR') selected @endif>EUR (€)</option>
-                                                                        </select>
-                                                                        @error($currencyKey)
-                                                                            <div class="invalid-feedback">{{ $message }}</div>
-                                                                        @enderror
-                                                                    </div>
+                                                                    <div class="col-12" data-field-item data-hay="pricing {{ $plan }} currency mata uang harga price">
+                                                                        <div class="d-flex flex-column flex-md-row align-items-md-end gap-3">
+                                                                            <div class="w-100 flex-md-shrink-0" style="max-width: 260px;">
+                                                                                <label class="form-label text-black" for="pricing-{{ $plan }}-currency">Mata uang</label>
+                                                                                <select
+                                                                                    id="pricing-{{ $plan }}-currency"
+                                                                                    name="contents[pricing][{{ $plan }}_currency]"
+                                                                                    class="form-select @error($currencyKey) is-invalid @enderror"
+                                                                                    data-pricing-input
+                                                                                    data-plan="{{ $plan }}"
+                                                                                    data-field="currency"
+                                                                                >
+                                                                                    <option value="USD" @if ($currencyVal === 'USD') selected @endif>USD ($)</option>
+                                                                                    <option value="IDR" @if ($currencyVal === 'IDR') selected @endif>IDR (Rp)</option>
+                                                                                    <option value="EUR" @if ($currencyVal === 'EUR') selected @endif>EUR (€)</option>
+                                                                                </select>
+                                                                                @error($currencyKey)
+                                                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                                                @enderror
+                                                                            </div>
 
-                                                                    <div class="col-12 col-md-8" data-field-item data-hay="pricing {{ $plan }} harga price">
-                                                                        <label class="form-label text-black" for="pricing-{{ $plan }}-price">Harga</label>
-                                                                        <input
-                                                                            id="pricing-{{ $plan }}-price"
-                                                                            name="contents[pricing][{{ $plan }}_price]"
-                                                                            type="number"
-                                                                            step="0.01"
-                                                                            min="0"
-                                                                            inputmode="decimal"
-                                                                            class="form-control @error($priceKey) is-invalid @enderror"
-                                                                            value="{{ $priceVal }}"
-                                                                            data-pricing-input
-                                                                            data-plan="{{ $plan }}"
-                                                                            data-field="price"
-                                                                        >
-                                                                        @error($priceKey)
-                                                                            <div class="invalid-feedback">{{ $message }}</div>
-                                                                        @enderror
+                                                                            <div class="w-100 flex-grow-1">
+                                                                                <label class="form-label text-black" for="pricing-{{ $plan }}-price">Harga</label>
+                                                                                <input
+                                                                                    id="pricing-{{ $plan }}-price"
+                                                                                    name="contents[pricing][{{ $plan }}_price]"
+                                                                                    type="number"
+                                                                                    step="0.01"
+                                                                                    min="0"
+                                                                                    inputmode="decimal"
+                                                                                    class="form-control @error($priceKey) is-invalid @enderror"
+                                                                                    value="{{ $priceVal }}"
+                                                                                    data-pricing-input
+                                                                                    data-plan="{{ $plan }}"
+                                                                                    data-field="price"
+                                                                                >
+                                                                                @error($priceKey)
+                                                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                                                @enderror
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
 
                                                                     <div class="col-12" data-field-item data-hay="pricing {{ $plan }} fitur features list tambah hapus">
@@ -622,17 +626,21 @@
                                                                         <input type="text" class="form-control" value="{{ $cardSubtitle }}" data-card-field="subtitle">
                                                                     </div>
 
-                                                                    <div class="col-12 col-md-4" data-field-item data-hay="pricing card tambahan currency mata uang">
-                                                                        <label class="form-label text-black">Mata uang</label>
-                                                                        <select class="form-select" data-card-field="currency">
-                                                                            <option value="USD" @if ($cardCurrency === 'USD') selected @endif>USD ($)</option>
-                                                                            <option value="IDR" @if ($cardCurrency === 'IDR') selected @endif>IDR (Rp)</option>
-                                                                            <option value="EUR" @if ($cardCurrency === 'EUR') selected @endif>EUR (€)</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-12 col-md-8" data-field-item data-hay="pricing card tambahan harga price">
-                                                                        <label class="form-label text-black">Harga</label>
-                                                                        <input type="number" step="0.01" min="0" inputmode="decimal" class="form-control" value="{{ $cardPrice }}" data-card-field="price">
+                                                                    <div class="col-12" data-field-item data-hay="pricing card tambahan currency mata uang harga price">
+                                                                        <div class="d-flex flex-column flex-md-row align-items-md-end gap-3">
+                                                                            <div class="w-100 flex-md-shrink-0" style="max-width: 260px;">
+                                                                                <label class="form-label text-black">Mata uang</label>
+                                                                                <select class="form-select" data-card-field="currency">
+                                                                                    <option value="USD" @if ($cardCurrency === 'USD') selected @endif>USD ($)</option>
+                                                                                    <option value="IDR" @if ($cardCurrency === 'IDR') selected @endif>IDR (Rp)</option>
+                                                                                    <option value="EUR" @if ($cardCurrency === 'EUR') selected @endif>EUR (€)</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="w-100 flex-grow-1">
+                                                                                <label class="form-label text-black">Harga</label>
+                                                                                <input type="number" step="0.01" min="0" inputmode="decimal" class="form-control" value="{{ $cardPrice }}" data-card-field="price">
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
 
                                                                     <div class="col-12" data-field-item data-hay="pricing card tambahan fitur features list tambah hapus">
@@ -1653,19 +1661,23 @@
                                             <input type="text" class="form-control" value="${escapeHtml(card.subtitle || '')}" data-card-field="subtitle">
                                         </div>
 
-                                        <div class="col-12 col-md-4" data-field-item data-hay="pricing card tambahan currency mata uang">
-                                            <label class="form-label text-black">Mata uang</label>
-                                            <select class="form-select" data-card-field="currency">
-                                                <option value="USD" ${String(card.currency || 'USD') === 'USD' ? 'selected' : ''}>USD ($)</option>
-                                                <option value="IDR" ${String(card.currency || '') === 'IDR' ? 'selected' : ''}>IDR (Rp)</option>
-                                                <option value="EUR" ${String(card.currency || '') === 'EUR' ? 'selected' : ''}>EUR (€)</option>
-                                            </select>
-                                        </div>
-                                        <div class="col-12 col-md-8" data-field-item data-hay="pricing card tambahan harga price">
-                                            <label class="form-label text-black">Harga</label>
-                                            <input type="number" step="0.01" min="0" inputmode="decimal" class="form-control" value="${escapeHtml(
-                                                card.price || ''
-                                            )}" data-card-field="price">
+                                        <div class="col-12" data-field-item data-hay="pricing card tambahan currency mata uang harga price">
+                                            <div class="d-flex flex-column flex-md-row align-items-md-end gap-3">
+                                                <div class="w-100 flex-md-shrink-0" style="max-width: 260px;">
+                                                    <label class="form-label text-black">Mata uang</label>
+                                                    <select class="form-select" data-card-field="currency">
+                                                        <option value="USD" ${String(card.currency || 'USD') === 'USD' ? 'selected' : ''}>USD ($)</option>
+                                                        <option value="IDR" ${String(card.currency || '') === 'IDR' ? 'selected' : ''}>IDR (Rp)</option>
+                                                        <option value="EUR" ${String(card.currency || '') === 'EUR' ? 'selected' : ''}>EUR (€)</option>
+                                                    </select>
+                                                </div>
+                                                <div class="w-100 flex-grow-1">
+                                                    <label class="form-label text-black">Harga</label>
+                                                    <input type="number" step="0.01" min="0" inputmode="decimal" class="form-control" value="${escapeHtml(
+                                                        card.price || ''
+                                                    )}" data-card-field="price">
+                                                </div>
+                                            </div>
                                         </div>
 
                                         <div class="col-12" data-field-item data-hay="pricing card tambahan fitur features list tambah hapus">
