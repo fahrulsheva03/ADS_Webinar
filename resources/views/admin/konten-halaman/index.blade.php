@@ -546,6 +546,182 @@
                                         @endforeach
                                     </div>
 
+                                    <div class="border rounded p-3 mt-4" data-extra-cards>
+                                        <div class="d-flex flex-wrap align-items-start justify-content-between gap-2">
+                                            <div>
+                                                <div class="fw-semibold text-black">Card Tambahan</div>
+                                                <div class="text-muted small">Ditampilkan setelah 3 card utama di halaman peserta.</div>
+                                            </div>
+                                        </div>
+
+                                        <textarea class="d-none" name="contents[pricing][extra_cards]" data-extra-cards-storage>{{ $extraCardsJson }}</textarea>
+
+                                        <div
+                                            class="d-flex flex-column gap-3 mt-3"
+                                            data-extra-cards-list
+                                            data-store-url="{{ $extraCardsStoreUrl }}"
+                                            data-update-url-template="{{ $extraCardsUpdateTpl }}"
+                                            data-destroy-url-template="{{ $extraCardsDestroyTpl }}"
+                                        >
+                                            @foreach ($extraCards as $card)
+                                                @php
+                                                    $cardId = (string) ($card['id'] ?? '');
+                                                    $cardActive = (string) ($card['active'] ?? '0') !== '0';
+                                                    $cardTitle = (string) ($card['title'] ?? '');
+                                                    $cardSubtitle = (string) ($card['subtitle'] ?? '');
+                                                    $cardCurrency = (string) ($card['currency'] ?? 'USD');
+                                                    $cardPrice = (string) ($card['price'] ?? '');
+                                                    $cardFeatures = $card['features'] ?? [];
+                                                    $cardFeatures = is_array($cardFeatures) ? $cardFeatures : [];
+                                                    $cardFeatures = collect($cardFeatures)->map(fn($v) => trim((string) $v))->filter()->values()->all();
+                                                    if (count($cardFeatures) === 0) {
+                                                        $cardFeatures = [''];
+                                                    }
+                                                    $cardFeaturesText = collect($cardFeatures)->map(fn($v) => trim((string) $v))->filter()->implode("\n");
+                                                    $cardButtonText = (string) ($card['button_text'] ?? '');
+                                                    $cardButtonUrl = (string) ($card['button_url'] ?? '');
+                                                    $cardBadge = (string) ($card['badge'] ?? '');
+
+                                                    $extraWrapCycle = ['silver-ticket-details', 'gold-ticket-details', 'premium-ticket-details'];
+                                                    $wrapClass = $extraWrapCycle[(3 + $loop->index) % count($extraWrapCycle)] ?? 'silver-ticket-details';
+                                                    $currencySymbol = $currencySymbolByCode[$cardCurrency] ?? '$';
+                                                @endphp
+
+                                                @if ($cardId !== '')
+                                                    <div class="border rounded p-3 bg-white" data-extra-card data-card-id="{{ $cardId }}" data-wrap-class="{{ $wrapClass }}">
+                                                        <div class="row g-4">
+                                                            <div class="col-12 col-lg-7">
+                                                                <div class="row g-3">
+                                                                    <div class="col-12">
+                                                                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                                            <div class="fw-semibold text-black">Card</div>
+                                                                            <button type="button" class="btn btn-outline-danger btn-xxs" data-extra-card-delete>
+                                                                                <i class="la la-trash" aria-hidden="true"></i>
+                                                                                Hapus
+                                                                            </button>
+                                                                        </div>
+                                                                        <div class="text-muted small mt-1" data-card-status></div>
+                                                                    </div>
+
+                                                                    <div class="col-12" data-field-item data-hay="pricing card tambahan aktif status aktif nonaktif">
+                                                                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                                            <div class="fw-semibold text-black">Status Card</div>
+                                                                            <div class="form-check form-switch m-0">
+                                                                                <input class="form-check-input" type="checkbox" role="switch" @if ($cardActive) checked @endif data-card-field="active">
+                                                                                <label class="form-check-label">Aktif</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-12" data-field-item data-hay="pricing card tambahan judul nama paket title">
+                                                                        <label class="form-label text-black">Judul / Nama paket</label>
+                                                                        <input type="text" class="form-control" value="{{ $cardTitle }}" data-card-field="title">
+                                                                    </div>
+                                                                    <div class="col-12" data-field-item data-hay="pricing card tambahan deskripsi singkat subtitle">
+                                                                        <label class="form-label text-black">Deskripsi singkat</label>
+                                                                        <input type="text" class="form-control" value="{{ $cardSubtitle }}" data-card-field="subtitle">
+                                                                    </div>
+
+                                                                    <div class="col-12 col-md-4" data-field-item data-hay="pricing card tambahan currency mata uang">
+                                                                        <label class="form-label text-black">Mata uang</label>
+                                                                        <select class="form-select" data-card-field="currency">
+                                                                            <option value="USD" @if ($cardCurrency === 'USD') selected @endif>USD ($)</option>
+                                                                            <option value="IDR" @if ($cardCurrency === 'IDR') selected @endif>IDR (Rp)</option>
+                                                                            <option value="EUR" @if ($cardCurrency === 'EUR') selected @endif>EUR (€)</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-8" data-field-item data-hay="pricing card tambahan harga price">
+                                                                        <label class="form-label text-black">Harga</label>
+                                                                        <input type="number" step="0.01" min="0" inputmode="decimal" class="form-control" value="{{ $cardPrice }}" data-card-field="price">
+                                                                    </div>
+
+                                                                    <div class="col-12" data-field-item data-hay="pricing card tambahan fitur features list tambah hapus">
+                                                                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                                            <div class="form-label text-black mb-0">Fitur-fitur</div>
+                                                                            <button type="button" class="btn btn-outline-primary btn-xxs" data-extra-features-add>
+                                                                                <i class="la la-plus" aria-hidden="true"></i>
+                                                                                Tambah fitur
+                                                                            </button>
+                                                                        </div>
+
+                                                                        <div class="d-flex flex-column gap-2 mt-2" data-extra-features-list>
+                                                                            @foreach ($cardFeatures as $fIndex => $feature)
+                                                                                <div class="input-group" data-extra-feature-row>
+                                                                                    <span class="input-group-text" data-extra-feature-index>{{ $fIndex + 1 }}</span>
+                                                                                    <input type="text" class="form-control" value="{{ $feature }}" data-extra-features-input>
+                                                                                    <button type="button" class="btn btn-outline-danger" data-extra-features-remove>
+                                                                                        <i class="la la-trash" aria-hidden="true"></i>
+                                                                                    </button>
+                                                                                </div>
+                                                                            @endforeach
+                                                                        </div>
+
+                                                                        <textarea class="d-none" data-card-field="features">{{ $cardFeaturesText }}</textarea>
+                                                                    </div>
+
+                                                                    <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta text">
+                                                                        <label class="form-label text-black">Tombol CTA (teks)</label>
+                                                                        <input type="text" class="form-control" value="{{ $cardButtonText }}" data-card-field="button_text">
+                                                                    </div>
+                                                                    <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta url">
+                                                                        <label class="form-label text-black">Tombol CTA (link)</label>
+                                                                        <input type="url" class="form-control" placeholder="https://" value="{{ $cardButtonUrl }}" data-card-field="button_url">
+                                                                    </div>
+                                                                    <div class="col-12" data-field-item data-hay="pricing card tambahan badge">
+                                                                        <label class="form-label text-black">Badge (opsional)</label>
+                                                                        <input type="text" class="form-control" value="{{ $cardBadge }}" data-card-field="badge">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="alert alert-danger d-none mt-3 mb-0" role="alert" data-card-error></div>
+                                                            </div>
+
+                                                            <div class="col-12 col-lg-5">
+                                                                <div class="fw-semibold text-black mb-2">Preview</div>
+                                                                <div class="ticket-details {{ $wrapClass }} position-relative" data-extra-card-preview>
+                                                                    <div class="d-flex align-items-center justify-content-between gap-2">
+                                                                        <h3 class="mb-0" data-preview-title>{{ $cardTitle !== '' ? $cardTitle : 'Nama Paket' }}</h3>
+                                                                        <span class="badge bg-secondary @if ($cardActive) d-none @endif" data-preview-inactive>Nonaktif</span>
+                                                                    </div>
+                                                                    <p class="mb-1" data-preview-subtitle>{{ $cardSubtitle !== '' ? $cardSubtitle : 'Deskripsi singkat' }}</p>
+                                                                    <span>Starting at:</span>
+                                                                    <div class="price">
+                                                                        <small data-preview-currency>{{ $currencySymbol }}</small><span data-preview-price>{{ $cardPrice !== '' ? $cardPrice : '0' }}</span>
+                                                                    </div>
+                                                                    <ul class="list-unstyled" data-preview-features>
+                                                                        @foreach ($cardFeatures as $feature)
+                                                                            @if (trim((string) $feature) !== '')
+                                                                                <li class="position-relative">{{ $feature }}</li>
+                                                                            @endif
+                                                                        @endforeach
+                                                                    </ul>
+                                                                    <div class="generic-btn">
+                                                                        <a href="{{ $cardButtonUrl !== '' ? $cardButtonUrl : '#' }}" data-preview-cta-link>
+                                                                            <span data-preview-cta-text>{{ $cardButtonText !== '' ? $cardButtonText : 'BUY TICKET' }}</span>
+                                                                            <i class="fas fa-arrow-right"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="recomended-box @if ($cardBadge === '') d-none @endif" data-preview-badge>{{ $cardBadge }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
+                                        </div>
+
+                                        <div class="alert alert-light border mt-3 mb-0 @if (count($extraCards) > 0) d-none @endif" data-extra-cards-empty>
+                                            Belum ada card tambahan.
+                                        </div>
+
+                                        <div class="d-flex justify-content-end mt-3">
+                                            <button type="button" class="btn btn-outline-primary btn-sm" data-extra-card-add>
+                                                <i class="la la-plus" aria-hidden="true"></i>
+                                                Tambah Card
+                                            </button>
+                                        </div>
+                                    </div>
+
                                     <div class="row g-3 mt-3">
                                         <div class="col-12" data-field-item data-hay="ticket pricing teks bawah bottom_text">
                                             <label class="form-label text-black" for="pricing-bottom-text">Teks bawah</label>
@@ -590,111 +766,6 @@
                                             @error('contents.pricing.bottom_button_url')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="border rounded p-3 mt-4" data-extra-cards>
-                                        <div class="d-flex flex-wrap align-items-start justify-content-between gap-2">
-                                            <div>
-                                                <div class="fw-semibold text-black">Card Tambahan</div>
-                                                <div class="text-muted small">Ditampilkan setelah 3 card utama di halaman peserta.</div>
-                                            </div>
-                                            <button type="button" class="btn btn-outline-primary btn-sm" data-extra-card-add>
-                                                <i class="la la-plus" aria-hidden="true"></i>
-                                                Tambah Card
-                                            </button>
-                                        </div>
-
-                                        <textarea class="d-none" name="contents[pricing][extra_cards]" data-extra-cards-storage>{{ $extraCardsJson }}</textarea>
-
-                                        <div
-                                            class="d-flex flex-column gap-3 mt-3"
-                                            data-extra-cards-list
-                                            data-store-url="{{ $extraCardsStoreUrl }}"
-                                            data-update-url-template="{{ $extraCardsUpdateTpl }}"
-                                            data-destroy-url-template="{{ $extraCardsDestroyTpl }}"
-                                        >
-                                            @foreach ($extraCards as $card)
-                                                @php
-                                                    $cardId = (string) ($card['id'] ?? '');
-                                                    $cardActive = (string) ($card['active'] ?? '0') !== '0';
-                                                    $cardTitle = (string) ($card['title'] ?? '');
-                                                    $cardSubtitle = (string) ($card['subtitle'] ?? '');
-                                                    $cardCurrency = (string) ($card['currency'] ?? 'USD');
-                                                    $cardPrice = (string) ($card['price'] ?? '');
-                                                    $cardFeatures = $card['features'] ?? [];
-                                                    $cardFeatures = is_array($cardFeatures) ? $cardFeatures : [];
-                                                    $cardFeaturesText = collect($cardFeatures)->map(fn ($v) => trim((string) $v))->filter()->implode("\n");
-                                                    $cardButtonText = (string) ($card['button_text'] ?? '');
-                                                    $cardButtonUrl = (string) ($card['button_url'] ?? '');
-                                                    $cardBadge = (string) ($card['badge'] ?? '');
-                                                @endphp
-
-                                                @if ($cardId !== '')
-                                                    <div class="border rounded p-3 bg-white" data-extra-card data-card-id="{{ $cardId }}">
-                                                        <div class="d-flex flex-wrap align-items-start justify-content-between gap-2">
-                                                            <div class="fw-semibold text-black">Card</div>
-                                                            <div class="d-flex flex-wrap align-items-center gap-2">
-                                                                <div class="form-check form-switch m-0">
-                                                                    <input class="form-check-input" type="checkbox" role="switch" @if ($cardActive) checked @endif data-card-field="active">
-                                                                    <label class="form-check-label text-muted small">Aktif</label>
-                                                                </div>
-                                                                <button type="button" class="btn btn-outline-danger btn-xxs" data-extra-card-delete>
-                                                                    <i class="la la-trash" aria-hidden="true"></i>
-                                                                    Hapus
-                                                                </button>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="text-muted small mt-1" data-card-status></div>
-
-                                                        <div class="row g-3 mt-2">
-                                                            <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan judul title">
-                                                                <label class="form-label text-black">Judul</label>
-                                                                <input type="text" class="form-control" value="{{ $cardTitle }}" data-card-field="title">
-                                                            </div>
-                                                            <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan subjudul subtitle">
-                                                                <label class="form-label text-black">Subjudul</label>
-                                                                <input type="text" class="form-control" value="{{ $cardSubtitle }}" data-card-field="subtitle">
-                                                            </div>
-                                                            <div class="col-12 col-md-4" data-field-item data-hay="pricing card tambahan currency mata uang">
-                                                                <label class="form-label text-black">Mata uang</label>
-                                                                <select class="form-select" data-card-field="currency">
-                                                                    <option value="USD" @if ($cardCurrency === 'USD') selected @endif>USD ($)</option>
-                                                                    <option value="IDR" @if ($cardCurrency === 'IDR') selected @endif>IDR (Rp)</option>
-                                                                    <option value="EUR" @if ($cardCurrency === 'EUR') selected @endif>EUR (€)</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="col-12 col-md-8" data-field-item data-hay="pricing card tambahan harga price">
-                                                                <label class="form-label text-black">Harga</label>
-                                                                <input type="number" step="0.01" min="0" inputmode="decimal" class="form-control" value="{{ $cardPrice }}" data-card-field="price">
-                                                            </div>
-                                                            <div class="col-12" data-field-item data-hay="pricing card tambahan fitur features">
-                                                                <label class="form-label text-black">Fitur (per baris)</label>
-                                                                <textarea class="form-control" rows="4" data-card-field="features">{{ $cardFeaturesText }}</textarea>
-                                                            </div>
-                                                            <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta text">
-                                                                <label class="form-label text-black">Teks tombol</label>
-                                                                <input type="text" class="form-control" value="{{ $cardButtonText }}" data-card-field="button_text">
-                                                            </div>
-                                                            <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta url">
-                                                                <label class="form-label text-black">URL tombol</label>
-                                                                <input type="url" class="form-control" placeholder="https://" value="{{ $cardButtonUrl }}" data-card-field="button_url">
-                                                            </div>
-                                                            <div class="col-12" data-field-item data-hay="pricing card tambahan badge">
-                                                                <label class="form-label text-black">Badge (opsional)</label>
-                                                                <input type="text" class="form-control" value="{{ $cardBadge }}" data-card-field="badge">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="alert alert-danger d-none mt-3 mb-0" role="alert" data-card-error></div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-
-                                        <div class="alert alert-light border mt-3 mb-0 @if (count($extraCards) > 0) d-none @endif" data-extra-cards-empty>
-                                            Belum ada card tambahan.
                                         </div>
                                     </div>
                                 @else
@@ -1319,6 +1390,12 @@
                     const storeUrl = String(list.dataset.storeUrl || '');
                     const updateTpl = String(list.dataset.updateUrlTemplate || '');
                     const destroyTpl = String(list.dataset.destroyUrlTemplate || '');
+                    const currencySymbolByCode = {
+                        USD: '$',
+                        IDR: 'Rp',
+                        EUR: '€',
+                    };
+                    const wrapCycle = ['silver-ticket-details', 'gold-ticket-details', 'premium-ticket-details'];
 
                     function parseJson(raw, fallback) {
                         try {
@@ -1390,10 +1467,110 @@
                             .filter((v) => v !== '');
                     }
 
+                    function syncExtraFeaturesStorage(cardEl) {
+                        const storageEl = getField(cardEl, 'features');
+                        const inputs = Array.from(cardEl.querySelectorAll('[data-extra-features-input]'));
+                        if (!storageEl) return [];
+
+                        const values = inputs
+                            .map((el) => String(el.value || '').trim())
+                            .filter((v) => v !== '');
+
+                        storageEl.value = values.join('\n');
+                        return values;
+                    }
+
+                    function renumberExtraFeatures(cardEl) {
+                        const rows = Array.from(cardEl.querySelectorAll('[data-extra-feature-row]'));
+                        rows.forEach((row, i) => {
+                            const indexEl = row.querySelector('[data-extra-feature-index]');
+                            if (indexEl) indexEl.textContent = String(i + 1);
+                        });
+                    }
+
+                    function addExtraFeatureRow(cardEl, value) {
+                        const listEl = cardEl.querySelector('[data-extra-features-list]');
+                        if (!listEl) return;
+
+                        const row = document.createElement('div');
+                        row.className = 'input-group';
+                        row.setAttribute('data-extra-feature-row', '');
+                        row.innerHTML = `
+                            <span class="input-group-text" data-extra-feature-index>0</span>
+                            <input type="text" class="form-control" value="${escapeHtml(value ?? '')}" data-extra-features-input>
+                            <button type="button" class="btn btn-outline-danger" data-extra-features-remove>
+                                <i class="la la-trash" aria-hidden="true"></i>
+                            </button>
+                        `;
+                        listEl.appendChild(row);
+                        renumberExtraFeatures(cardEl);
+                    }
+
+                    function getWrapClass(cardEl) {
+                        const raw = String(cardEl.dataset.wrapClass || cardEl.getAttribute('data-wrap-class') || '').trim();
+                        if (raw) return raw;
+                        const idx = Array.from(list.querySelectorAll('[data-extra-card]')).indexOf(cardEl);
+                        const normalized = idx < 0 ? 0 : idx;
+                        return wrapCycle[(normalized + 3) % wrapCycle.length] || wrapCycle[0];
+                    }
+
+                    function updateExtraPreview(cardEl) {
+                        const previewWrap = cardEl.querySelector('[data-extra-card-preview]');
+                        if (!previewWrap) return;
+
+                        const activeEl = getField(cardEl, 'active');
+                        const isActive = activeEl && activeEl.type === 'checkbox' && activeEl.checked;
+                        const title = String(getField(cardEl, 'title')?.value || '').trim() || 'Nama Paket';
+                        const subtitle = String(getField(cardEl, 'subtitle')?.value || '').trim() || 'Deskripsi singkat';
+                        const price = String(getField(cardEl, 'price')?.value || '').trim() || '0';
+                        const currencyCode = String(getField(cardEl, 'currency')?.value || 'USD').trim() || 'USD';
+                        const currencySymbol = currencySymbolByCode[currencyCode] || '$';
+                        const ctaText = String(getField(cardEl, 'button_text')?.value || '').trim() || 'BUY TICKET';
+                        const ctaUrl = String(getField(cardEl, 'button_url')?.value || '').trim() || '#';
+                        const badge = String(getField(cardEl, 'badge')?.value || '').trim();
+
+                        const labelEl = activeEl?.closest?.('.form-check')?.querySelector?.('.form-check-label');
+                        if (labelEl) setText(labelEl, isActive ? 'Aktif' : 'Nonaktif');
+
+                        setText(previewWrap.querySelector('[data-preview-title]'), title);
+                        setText(previewWrap.querySelector('[data-preview-subtitle]'), subtitle);
+                        setText(previewWrap.querySelector('[data-preview-price]'), price);
+                        setText(previewWrap.querySelector('[data-preview-currency]'), currencySymbol);
+                        setText(previewWrap.querySelector('[data-preview-cta-text]'), ctaText);
+
+                        const ctaLink = previewWrap.querySelector('[data-preview-cta-link]');
+                        if (ctaLink) ctaLink.setAttribute('href', ctaUrl || '#');
+
+                        const inactiveBadge = previewWrap.querySelector('[data-preview-inactive]');
+                        if (inactiveBadge) inactiveBadge.classList.toggle('d-none', isActive);
+
+                        const badgeEl = previewWrap.querySelector('[data-preview-badge]');
+                        if (badgeEl) {
+                            setText(badgeEl, badge);
+                            badgeEl.classList.toggle('d-none', badge === '');
+                        }
+
+                        const features = syncExtraFeaturesStorage(cardEl);
+                        const listEl = previewWrap.querySelector('[data-preview-features]');
+                        if (listEl) {
+                            listEl.innerHTML = features.map((v) => `<li class="position-relative">${escapeHtml(v)}</li>`).join('');
+                        }
+
+                        const wrapClass = getWrapClass(cardEl);
+                        cardEl.dataset.wrapClass = wrapClass;
+                        const ticketEl = previewWrap.classList.contains('ticket-details') ? previewWrap : null;
+                        if (ticketEl) {
+                            wrapCycle.forEach((c) => ticketEl.classList.remove(c));
+                            ticketEl.classList.add(wrapClass);
+                        }
+                    }
+
                     function readCardFromDom(cardEl) {
                         const id = String(cardEl.dataset.cardId || '');
                         const activeEl = getField(cardEl, 'active');
                         const active = activeEl && activeEl.type === 'checkbox' && activeEl.checked ? '1' : '0';
+
+                        syncExtraFeaturesStorage(cardEl);
 
                         return {
                             id,
@@ -1433,67 +1610,140 @@
                         cardEl.dataset.cardId = id;
 
                         const checked = String(card.active || '0') !== '0' ? 'checked' : '';
-                        const featuresText = Array.isArray(card.features) ? card.features.join('\n') : '';
+                        const features = Array.isArray(card.features) ? card.features : [];
+                        const featureRows = features.length > 0 ? features : [''];
+                        const featuresText = featureRows.map((v) => String(v ?? '')).join('\n');
+                        const wrapClass =
+                            wrapCycle[(Array.from(list.querySelectorAll('[data-extra-card]')).length + 3) % wrapCycle.length] || wrapCycle[0];
+                        const currencyCode = String(card.currency || 'USD');
+                        const currencySymbol = currencySymbolByCode[currencyCode] || '$';
+                        const isActive = String(card.active || '0') !== '0';
 
                         cardEl.innerHTML = `
-                            <div class="d-flex flex-wrap align-items-start justify-content-between gap-2">
-                                <div class="fw-semibold text-black">Card</div>
-                                <div class="d-flex flex-wrap align-items-center gap-2">
-                                    <div class="form-check form-switch m-0">
-                                        <input class="form-check-input" type="checkbox" role="switch" ${checked} data-card-field="active">
-                                        <label class="form-check-label text-muted small">Aktif</label>
+                            <div class="row g-4">
+                                <div class="col-12 col-lg-7">
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                <div class="fw-semibold text-black">Card</div>
+                                                <button type="button" class="btn btn-outline-danger btn-xxs" data-extra-card-delete>
+                                                    <i class="la la-trash" aria-hidden="true"></i>
+                                                    Hapus
+                                                </button>
+                                            </div>
+                                            <div class="text-muted small mt-1" data-card-status></div>
+                                        </div>
+
+                                        <div class="col-12" data-field-item data-hay="pricing card tambahan aktif status aktif nonaktif">
+                                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                <div class="fw-semibold text-black">Status Card</div>
+                                                <div class="form-check form-switch m-0">
+                                                    <input class="form-check-input" type="checkbox" role="switch" ${checked} data-card-field="active">
+                                                    <label class="form-check-label">${isActive ? 'Aktif' : 'Nonaktif'}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12" data-field-item data-hay="pricing card tambahan judul nama paket title">
+                                            <label class="form-label text-black">Judul / Nama paket</label>
+                                            <input type="text" class="form-control" value="${escapeHtml(card.title || '')}" data-card-field="title">
+                                        </div>
+                                        <div class="col-12" data-field-item data-hay="pricing card tambahan deskripsi singkat subtitle">
+                                            <label class="form-label text-black">Deskripsi singkat</label>
+                                            <input type="text" class="form-control" value="${escapeHtml(card.subtitle || '')}" data-card-field="subtitle">
+                                        </div>
+
+                                        <div class="col-12 col-md-4" data-field-item data-hay="pricing card tambahan currency mata uang">
+                                            <label class="form-label text-black">Mata uang</label>
+                                            <select class="form-select" data-card-field="currency">
+                                                <option value="USD" ${String(card.currency || 'USD') === 'USD' ? 'selected' : ''}>USD ($)</option>
+                                                <option value="IDR" ${String(card.currency || '') === 'IDR' ? 'selected' : ''}>IDR (Rp)</option>
+                                                <option value="EUR" ${String(card.currency || '') === 'EUR' ? 'selected' : ''}>EUR (€)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-md-8" data-field-item data-hay="pricing card tambahan harga price">
+                                            <label class="form-label text-black">Harga</label>
+                                            <input type="number" step="0.01" min="0" inputmode="decimal" class="form-control" value="${escapeHtml(
+                                                card.price || ''
+                                            )}" data-card-field="price">
+                                        </div>
+
+                                        <div class="col-12" data-field-item data-hay="pricing card tambahan fitur features list tambah hapus">
+                                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                <div class="form-label text-black mb-0">Fitur-fitur</div>
+                                                <button type="button" class="btn btn-outline-primary btn-xxs" data-extra-features-add>
+                                                    <i class="la la-plus" aria-hidden="true"></i>
+                                                    Tambah fitur
+                                                </button>
+                                            </div>
+                                            <div class="d-flex flex-column gap-2 mt-2" data-extra-features-list>
+                                                ${featureRows
+                                                    .map(
+                                                        (v) => `
+                                                    <div class="input-group" data-extra-feature-row>
+                                                        <span class="input-group-text" data-extra-feature-index>0</span>
+                                                        <input type="text" class="form-control" value="${escapeHtml(v ?? '')}" data-extra-features-input>
+                                                        <button type="button" class="btn btn-outline-danger" data-extra-features-remove>
+                                                            <i class="la la-trash" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>
+                                                `
+                                                    )
+                                                    .join('')}
+                                            </div>
+                                            <textarea class="d-none" data-card-field="features">${escapeHtml(featuresText)}</textarea>
+                                        </div>
+
+                                        <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta text">
+                                            <label class="form-label text-black">Tombol CTA (teks)</label>
+                                            <input type="text" class="form-control" value="${escapeHtml(card.button_text || '')}" data-card-field="button_text">
+                                        </div>
+                                        <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta url">
+                                            <label class="form-label text-black">Tombol CTA (link)</label>
+                                            <input type="url" class="form-control" placeholder="https://" value="${escapeHtml(
+                                                card.button_url || ''
+                                            )}" data-card-field="button_url">
+                                        </div>
+                                        <div class="col-12" data-field-item data-hay="pricing card tambahan badge">
+                                            <label class="form-label text-black">Badge (opsional)</label>
+                                            <input type="text" class="form-control" value="${escapeHtml(card.badge || '')}" data-card-field="badge">
+                                        </div>
                                     </div>
-                                    <button type="button" class="btn btn-outline-danger btn-xxs" data-extra-card-delete>
-                                        <i class="la la-trash" aria-hidden="true"></i>
-                                        Hapus
-                                    </button>
+
+                                    <div class="alert alert-danger d-none mt-3 mb-0" role="alert" data-card-error></div>
+                                </div>
+
+                                <div class="col-12 col-lg-5">
+                                    <div class="fw-semibold text-black mb-2">Preview</div>
+                                    <div class="ticket-details ${wrapClass} position-relative" data-extra-card-preview>
+                                        <div class="d-flex align-items-center justify-content-between gap-2">
+                                            <h3 class="mb-0" data-preview-title>${escapeHtml(String(card.title || '').trim() || 'Nama Paket')}</h3>
+                                            <span class="badge bg-secondary ${isActive ? 'd-none' : ''}" data-preview-inactive>Nonaktif</span>
+                                        </div>
+                                        <p class="mb-1" data-preview-subtitle>${escapeHtml(String(card.subtitle || '').trim() || 'Deskripsi singkat')}</p>
+                                        <span>Starting at:</span>
+                                        <div class="price">
+                                            <small data-preview-currency>${escapeHtml(currencySymbol)}</small><span data-preview-price>${escapeHtml(
+                                                String(card.price || '').trim() || '0'
+                                            )}</span>
+                                        </div>
+                                        <ul class="list-unstyled" data-preview-features></ul>
+                                        <div class="generic-btn">
+                                            <a href="${escapeHtml(String(card.button_url || '').trim() || '#')}" data-preview-cta-link>
+                                                <span data-preview-cta-text>${escapeHtml(String(card.button_text || '').trim() || 'BUY TICKET')}</span>
+                                                <i class="fas fa-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                        <div class="recomended-box ${String(card.badge || '').trim() ? '' : 'd-none'}" data-preview-badge>${escapeHtml(
+                                            String(card.badge || '')
+                                        )}</div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="text-muted small mt-1" data-card-status></div>
-                            <div class="row g-3 mt-2">
-                                <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan judul title">
-                                    <label class="form-label text-black">Judul</label>
-                                    <input type="text" class="form-control" value="${escapeHtml(card.title || '')}" data-card-field="title">
-                                </div>
-                                <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan subjudul subtitle">
-                                    <label class="form-label text-black">Subjudul</label>
-                                    <input type="text" class="form-control" value="${escapeHtml(card.subtitle || '')}" data-card-field="subtitle">
-                                </div>
-                                <div class="col-12 col-md-4" data-field-item data-hay="pricing card tambahan currency mata uang">
-                                    <label class="form-label text-black">Mata uang</label>
-                                    <select class="form-select" data-card-field="currency">
-                                        <option value="USD" ${String(card.currency || 'USD') === 'USD' ? 'selected' : ''}>USD ($)</option>
-                                        <option value="IDR" ${String(card.currency || '') === 'IDR' ? 'selected' : ''}>IDR (Rp)</option>
-                                        <option value="EUR" ${String(card.currency || '') === 'EUR' ? 'selected' : ''}>EUR (€)</option>
-                                    </select>
-                                </div>
-                                <div class="col-12 col-md-8" data-field-item data-hay="pricing card tambahan harga price">
-                                    <label class="form-label text-black">Harga</label>
-                                    <input type="number" step="0.01" min="0" inputmode="decimal" class="form-control" value="${escapeHtml(
-                                        card.price || ''
-                                    )}" data-card-field="price">
-                                </div>
-                                <div class="col-12" data-field-item data-hay="pricing card tambahan fitur features">
-                                    <label class="form-label text-black">Fitur (per baris)</label>
-                                    <textarea class="form-control" rows="4" data-card-field="features">${escapeHtml(featuresText)}</textarea>
-                                </div>
-                                <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta text">
-                                    <label class="form-label text-black">Teks tombol</label>
-                                    <input type="text" class="form-control" value="${escapeHtml(card.button_text || '')}" data-card-field="button_text">
-                                </div>
-                                <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta url">
-                                    <label class="form-label text-black">URL tombol</label>
-                                    <input type="url" class="form-control" placeholder="https://" value="${escapeHtml(
-                                        card.button_url || ''
-                                    )}" data-card-field="button_url">
-                                </div>
-                                <div class="col-12" data-field-item data-hay="pricing card tambahan badge">
-                                    <label class="form-label text-black">Badge (opsional)</label>
-                                    <input type="text" class="form-control" value="${escapeHtml(card.badge || '')}" data-card-field="badge">
-                                </div>
-                            </div>
-                            <div class="alert alert-danger d-none mt-3 mb-0" role="alert" data-card-error></div>
                         `;
+
+                        cardEl.dataset.wrapClass = wrapClass;
+                        cardEl.setAttribute('data-wrap-class', wrapClass);
 
                         return cardEl;
                     }
@@ -1507,6 +1757,7 @@
                         setError(cardEl, null);
                         setStatus(cardEl, 'Menyimpan…', false);
 
+                        updateExtraPreview(cardEl);
                         const payload = readCardFromDom(cardEl);
                         upsertCard(payload);
 
@@ -1578,6 +1829,9 @@
                             const card = json.data;
                             const el = renderCard(card);
                             list.appendChild(el);
+                            renumberExtraFeatures(el);
+                            syncExtraFeaturesStorage(el);
+                            updateExtraPreview(el);
                             upsertCard(card);
                             setStatus(el, 'Tersimpan', false);
                             el.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1591,13 +1845,45 @@
                     list.addEventListener('input', (e) => {
                         const cardEl = e.target?.closest?.('[data-extra-card]');
                         if (!cardEl) return;
+                        if (e.target?.matches?.('[data-extra-features-input]')) {
+                            syncExtraFeaturesStorage(cardEl);
+                        }
+                        updateExtraPreview(cardEl);
                         scheduleSave(cardEl);
                     });
 
                     list.addEventListener('change', (e) => {
                         const cardEl = e.target?.closest?.('[data-extra-card]');
                         if (!cardEl) return;
+                        updateExtraPreview(cardEl);
                         scheduleSave(cardEl);
+                    });
+
+                    list.addEventListener('click', (e) => {
+                        const addFeaturesBtn = e.target?.closest?.('[data-extra-features-add]');
+                        if (addFeaturesBtn) {
+                            const cardEl = addFeaturesBtn.closest('[data-extra-card]');
+                            if (!cardEl) return;
+                            addExtraFeatureRow(cardEl, '');
+                            syncExtraFeaturesStorage(cardEl);
+                            updateExtraPreview(cardEl);
+                            scheduleSave(cardEl);
+                            return;
+                        }
+
+                        const removeFeaturesBtn = e.target?.closest?.('[data-extra-features-remove]');
+                        if (removeFeaturesBtn) {
+                            const cardEl = removeFeaturesBtn.closest('[data-extra-card]');
+                            if (!cardEl) return;
+                            const row = removeFeaturesBtn.closest('[data-extra-feature-row]');
+                            if (row) row.remove();
+                            const remaining = cardEl.querySelectorAll('[data-extra-feature-row]');
+                            if (remaining.length === 0) addExtraFeatureRow(cardEl, '');
+                            renumberExtraFeatures(cardEl);
+                            syncExtraFeaturesStorage(cardEl);
+                            updateExtraPreview(cardEl);
+                            scheduleSave(cardEl);
+                        }
                     });
 
                     list.addEventListener('click', async (e) => {
@@ -1640,6 +1926,11 @@
                     });
 
                     syncStorage();
+                    Array.from(list.querySelectorAll('[data-extra-card]')).forEach((cardEl) => {
+                        renumberExtraFeatures(cardEl);
+                        syncExtraFeaturesStorage(cardEl);
+                        updateExtraPreview(cardEl);
+                    });
                 })();
 
                 if (fieldSearch) {
