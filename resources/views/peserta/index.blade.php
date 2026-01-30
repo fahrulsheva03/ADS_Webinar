@@ -458,8 +458,8 @@
                     border-color: var(--pink-color) !important;
                 }
                 #pricing .pricing-carousel .owl-nav button {
-                    width: 42px;
-                    height: 42px;
+                    width: 36px;
+                    height: 36px;
                     border-radius: 999px;
                     background: rgba(0, 0, 0, 0.55) !important;
                     color: #fff !important;
@@ -471,26 +471,84 @@
                     background: rgba(0, 0, 0, 0.75) !important;
                 }
                 #pricing .pricing-carousel .owl-nav {
+                    position: absolute;
+                    top: 50%;
+                    left: -12px;
+                    right: -12px;
+                    transform: translateY(-50%);
                     display: flex;
-                    justify-content: center;
-                    gap: 10px;
-                    margin-top: 14px;
+                    justify-content: space-between;
+                    gap: 0;
+                    margin-top: 0;
+                    z-index: 2;
+                    pointer-events: none;
+                }
+                #pricing .pricing-carousel .owl-nav button {
+                    pointer-events: auto;
                 }
                 @media (min-width: 768px) {
                     #pricing .pricing-carousel .owl-nav {
-                        position: absolute;
-                        top: 50%;
                         left: -54px;
                         right: -54px;
-                        transform: translateY(-50%);
-                        justify-content: space-between;
-                        gap: 0;
-                        margin-top: 0;
-                        z-index: 2;
-                        pointer-events: none;
                     }
                     #pricing .pricing-carousel .owl-nav button {
-                        pointer-events: auto;
+                        width: 42px;
+                        height: 42px;
+                    }
+                }
+                @media (max-width: 767.98px) {
+                    #pricing .pricing-carousel .ticket-details {
+                        text-align: center;
+                        min-height: 0;
+                        padding: 32px 22px 28px !important;
+                    }
+                    #pricing .pricing-carousel .gold-ticket-details {
+                        min-height: 0 !important;
+                        padding: 32px 22px 28px !important;
+                    }
+                    #pricing .pricing-carousel .ticket-details h3 {
+                        font-size: 24px;
+                        line-height: 28px;
+                        margin-bottom: 6px;
+                    }
+                    #pricing .pricing-carousel .ticket-details p {
+                        margin-bottom: 10px;
+                    }
+                    #pricing .pricing-carousel .ticket-details span {
+                        display: block;
+                        margin-bottom: 6px;
+                    }
+                    #pricing .pricing-carousel .ticket-details .price {
+                        margin-bottom: 14px;
+                    }
+                    #pricing .pricing-carousel .ticket-details .price small {
+                        margin-right: 6px;
+                    }
+                    #pricing .pricing-carousel .ticket-details ul {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: stretch;
+                        gap: 8px;
+                        max-width: 280px;
+                        margin-left: auto;
+                        margin-right: auto;
+                        margin-bottom: 18px;
+                    }
+                    #pricing .pricing-carousel .ticket-details ul li {
+                        width: 100%;
+                        text-align: left;
+                        padding-left: 26px;
+                    }
+                    #pricing .pricing-carousel .ticket-details .generic-btn {
+                        display: flex;
+                        justify-content: center;
+                    }
+                    #pricing .pricing-carousel .ticket-details .generic-btn a {
+                        padding: 14px 26px;
+                    }
+                    #pricing .pricing-carousel .recomended-box {
+                        right: 14px;
+                        top: 14px;
                     }
                 }
                 #pricing .pricing-carousel .owl-item.center .ticket-details {
