@@ -916,8 +916,14 @@
                                             ->sortBy('order')
                                             ->values()
                                             ->all();
+
+                                        $faqLegacyCount = collect($fields)
+                                            ->filter(fn(array $f) => ($f['section'] ?? '') === 'faq')
+                                            ->map(fn(array $f) => (string) ($f['key'] ?? ''))
+                                            ->filter(fn(string $k) => preg_match('/^q\d+$/', $k) === 1)
+                                            ->count();
                                     @endphp
-                                    <div data-faq-items data-field-item data-hay="faq items pertanyaan jawaban tambah hapus urutan status aktif">
+                                    <div data-faq-items data-faq-index-offset="{{ $faqLegacyCount }}" data-field-item data-hay="faq items pertanyaan jawaban tambah hapus urutan status aktif">
                                         <textarea class="d-none" name="contents[faq][items]" data-faq-items-storage>{{ $faqItemsJson }}</textarea>
 
                                         <div
@@ -1293,6 +1299,26 @@
             </div>
         </form>
 
+        <div class="modal fade" id="faqDeleteModal" tabindex="-1" aria-labelledby="faqDeleteModalTitle" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title h5" id="faqDeleteModalTitle">Hapus FAQ</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-muted">FAQ ini akan dihapus.</div>
+                        <div class="mt-2 fw-semibold text-black" id="faqDeleteModalInfo"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"
+                            id="faqDeleteCancel">Batal</button>
+                        <button type="button" class="btn btn-danger" id="faqDeleteConfirm">Hapus</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <script>
             window.addEventListener('DOMContentLoaded', () => {
                 const csrfToken = @json(csrf_token());
@@ -1326,6 +1352,49 @@
                     `;
                     notifyArea.prepend(wrapper);
                 }
+
+                const faqDeleteModalEl = document.getElementById('faqDeleteModal');
+                const faqDeleteInfoEl = document.getElementById('faqDeleteModalInfo');
+                const faqDeleteConfirmBtn = document.getElementById('faqDeleteConfirm');
+
+                let faqDeleteResolver = null;
+
+                function confirmFaqDelete(info) {
+                    if (!faqDeleteModalEl || !window.bootstrap || !bootstrap.Modal) {
+                        return Promise.resolve(confirm('Hapus FAQ ini?'));
+                    }
+
+                    if (faqDeleteInfoEl) faqDeleteInfoEl.textContent = String(info || '');
+
+                    const modal = bootstrap.Modal.getOrCreateInstance(faqDeleteModalEl);
+                    modal.show();
+
+                    return new Promise((resolve) => {
+                        faqDeleteResolver = resolve;
+                    });
+                }
+
+                if (faqDeleteModalEl) {
+                    faqDeleteModalEl.addEventListener('hidden.bs.modal', () => {
+                        if (!faqDeleteResolver) return;
+                        const resolve = faqDeleteResolver;
+                        faqDeleteResolver = null;
+                        resolve(false);
+                    });
+                }
+
+                if (faqDeleteConfirmBtn) {
+                    faqDeleteConfirmBtn.addEventListener('click', () => {
+                        if (!faqDeleteResolver) return;
+                        const resolve = faqDeleteResolver;
+                        faqDeleteResolver = null;
+                        const modal = faqDeleteModalEl ? bootstrap.Modal.getInstance(faqDeleteModalEl) : null;
+                        if (modal) modal.hide();
+                        resolve(true);
+                    });
+                }
+
+                window.__kontenHalamanConfirmFaqDelete = confirmFaqDelete;
 
                 function setSaving(on) {
                     if (saveBtn) saveBtn.disabled = !!on;
@@ -2325,6 +2394,7 @@
 
                     const storeUrl = String(list.dataset.storeUrl || '');
                     const destroyTpl = String(list.dataset.destroyUrlTemplate || '');
+                    const indexOffset = Number(root.dataset.faqIndexOffset || 0) || 0;
 
                     function parseJson(raw, fallback) {
                         try {
@@ -2381,7 +2451,7 @@
                         el.setAttribute('data-faq-id', String(item.id || ''));
                         el.innerHTML = `
                             <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-                                <div class="fw-semibold text-black">FAQ <span data-faq-index>${escapeHtml(String(index + 1))}</span></div>
+                                <div class="fw-semibold text-black">FAQ <span data-faq-index>${escapeHtml(String(indexOffset + index + 1))}</span></div>
                                 <button type="button" class="btn btn-outline-danger btn-xxs" data-faq-delete>
                                     <span class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true" data-faq-delete-spinner></span>
                                     <i class="la la-trash" aria-hidden="true"></i>
@@ -2556,7 +2626,10 @@
                         const id = String(itemEl?.getAttribute('data-faq-id') || '');
                         if (!itemEl || !id) return;
 
-                        if (!confirm('Hapus FAQ ini?')) return;
+                        const idx = String(itemEl.querySelector('[data-faq-index]')?.textContent || '').trim();
+                        const info = idx ? `FAQ ${idx}` : 'FAQ ini';
+                        const ok = await window.__kontenHalamanConfirmFaqDelete?.(info);
+                        if (!ok) return;
 
                         if (id.startsWith('local_')) {
                             items = items.filter((v) => v.id !== id);
@@ -2691,6 +2764,7 @@
                 if (!root) return;
                 if (root.dataset.faqWired === '1') return;
                 root.dataset.faqWired = '1';
+                const indexOffset = Number(root.dataset.faqIndexOffset || 0) || 0;
 
                 const storage = root.querySelector('[data-faq-items-storage]');
                 const list = root.querySelector('[data-faq-items-list]');
@@ -2758,7 +2832,7 @@
                     el.setAttribute('data-faq-id', String(item.id || ''));
                     el.innerHTML = `
                         <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-                            <div class="fw-semibold text-black">FAQ <span data-faq-index>${escapeHtml(String(index + 1))}</span></div>
+                            <div class="fw-semibold text-black">FAQ <span data-faq-index>${escapeHtml(String(indexOffset + index + 1))}</span></div>
                             <button type="button" class="btn btn-outline-danger btn-xxs" data-faq-delete>
                                 <span class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true" data-faq-delete-spinner></span>
                                 <i class="la la-trash" aria-hidden="true"></i>
@@ -2866,9 +2940,15 @@
                     const itemEl = del.closest('[data-faq-item]');
                     const id = String(itemEl?.getAttribute('data-faq-id') || '');
                     if (!itemEl || !id) return;
-                    if (!confirm('Hapus FAQ ini?')) return;
-                    items = items.filter((v) => v.id !== id);
-                    rerender();
+
+                    (async () => {
+                        const idx = String(itemEl.querySelector('[data-faq-index]')?.textContent || '').trim();
+                        const info = idx ? `FAQ ${idx}` : 'FAQ ini';
+                        const ok = await window.__kontenHalamanConfirmFaqDelete?.(info);
+                        if (!ok) return;
+                        items = items.filter((v) => v.id !== id);
+                        rerender();
+                    })();
                 });
 
                 list.addEventListener('input', (e) => {
