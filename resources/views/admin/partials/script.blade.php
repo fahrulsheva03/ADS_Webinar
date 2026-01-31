@@ -12,7 +12,7 @@
  <script src="{{ asset('assetsAdmin/vendor/apexchart/apexchart.js') }}"></script>
 
  <!-- Dashboard 1 -->
- <script src="{{ asset('assetsAdmin/js/dashboard/dashboard-1.js') }}"></script>
+ <script src="{{ asset('assetsAdmin/js/dashboard/dashboard-1.js') }}?v={{ filemtime(public_path('assetsAdmin/js/dashboard/dashboard-1.js')) }}"></script>
 
  <!-- localizationTool -->
  <script src="{{ asset('assetsAdmin/js/jquery.localizationTool.js') }}"></script>

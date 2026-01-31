@@ -4,6 +4,8 @@
  var dzChartlist = function(){
 	var screenWidth = $(window).width();	
 	var widgetChart1 = function(){
+		var target = document.querySelector("#widgetChart1");
+		if(!target){ return; }
 		var options = {
 		  series: [
 			{
@@ -124,12 +126,14 @@
 		}
 		};
 
-		var chartBar1 = new ApexCharts(document.querySelector("#widgetChart1"), options);
+		var chartBar1 = new ApexCharts(target, options);
 		chartBar1.render();
 	 
 	}
 	
 	var widgetChart2 = function(){
+		var target = document.querySelector("#widgetChart2");
+		if(!target){ return; }
 		var options = {
 		  series: [
 			{
@@ -250,7 +254,7 @@
 		}
 		};
 
-		var chartBar1 = new ApexCharts(document.querySelector("#widgetChart2"), options);
+		var chartBar1 = new ApexCharts(target, options);
 		chartBar1.render();
 	 
 	}
@@ -331,6 +335,8 @@
 	}
 		
 	var donutChart2 = function(){
+		var target = document.querySelector("#donutChart2");
+		if(!target){ return; }
 		var options = {
           series: [45, 25, 30],
           chart: {
@@ -397,10 +403,12 @@
         }] 
         };
 
-        var chart = new ApexCharts(document.querySelector("#donutChart2"), options);
+        var chart = new ApexCharts(target, options);
         chart.render();
 	}
 	var donutChart3 = function(){
+		var target = document.querySelector("#donutChart3");
+		if(!target){ return; }
 		var options = {
           series: [45, 25, 30],
           chart: {
@@ -467,10 +475,12 @@
         }] 
         };
 
-        var chart = new ApexCharts(document.querySelector("#donutChart3"), options);
+        var chart = new ApexCharts(target, options);
         chart.render();
 	}
 	var donutChart4 = function(){
+		var target = document.querySelector("#donutChart4");
+		if(!target){ return; }
 		var options = {
           series: [45, 25, 30],
           chart: {
@@ -537,10 +547,12 @@
         }] 
         };
 
-        var chart = new ApexCharts(document.querySelector("#donutChart4"), options);
+        var chart = new ApexCharts(target, options);
         chart.render();
 	}
 	var salesChart = function(){
+		var target = document.querySelector("#salesChart");
+		if(!target){ return; }
 		var options = {
 		  series: [
 			{
@@ -675,11 +687,13 @@
 		}]
 		};
 
-		var chartBar1 = new ApexCharts(document.querySelector("#salesChart"), options);
+		var chartBar1 = new ApexCharts(target, options);
 		chartBar1.render();
 	 
 	}
 	var salesChart1 = function(){
+		var target = document.querySelector("#salesChart1");
+		if(!target){ return; }
 		var options = {
 		  series: [
 			{
@@ -813,11 +827,13 @@
 		}]
 		};
 
-		var chartBar1 = new ApexCharts(document.querySelector("#salesChart1"), options);
+		var chartBar1 = new ApexCharts(target, options);
 		chartBar1.render();
 	 
 	}
 	var salesChart2 = function(){
+		var target = document.querySelector("#salesChart2");
+		if(!target){ return; }
 		var options = {
 		  series: [
 			{
@@ -951,7 +967,7 @@
 		}]
 		};
 
-		var chartBar1 = new ApexCharts(document.querySelector("#salesChart2"), options);
+		var chartBar1 = new ApexCharts(target, options);
 		chartBar1.render();
 	 
 	}

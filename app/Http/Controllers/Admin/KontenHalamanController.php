@@ -202,6 +202,94 @@ class KontenHalamanController extends Controller
         ]);
     }
 
+    public function faqItemsStore(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'question' => 'nullable|string|max:255',
+            'answer' => 'nullable|string|max:65535',
+            'order' => 'nullable|integer|min:0',
+            'active' => 'nullable|in:0,1',
+        ]);
+
+        $items = $this->getFaqItems();
+        $nextOrder = 1;
+        if (count($items) > 0) {
+            $maxOrder = collect($items)->map(fn (array $v) => (int) ($v['order'] ?? 0))->max();
+            $nextOrder = ((int) ($maxOrder ?? 0)) + 1;
+            if ($nextOrder < 1) {
+                $nextOrder = 1;
+            }
+        }
+
+        $itemId = (string) Str::uuid();
+        $item = [
+            'id' => $itemId,
+            'question' => trim((string) ($data['question'] ?? '')),
+            'answer' => trim((string) ($data['answer'] ?? '')),
+            'order' => isset($data['order']) ? (int) $data['order'] : $nextOrder,
+            'active' => isset($data['active']) ? (string) $data['active'] : '1',
+        ];
+
+        $items[] = $item;
+        $items = $this->normalizeFaqItemsOrder($items);
+        $this->saveFaqItems($items);
+
+        $stored = collect($items)->firstWhere('id', $itemId);
+
+        return response()->json([
+            'message' => 'FAQ berhasil ditambahkan.',
+            'data' => $stored ?? $item,
+        ]);
+    }
+
+    public function faqItemsDestroy(string $faqId): JsonResponse
+    {
+        $items = $this->getFaqItems();
+        $filtered = collect($items)->reject(fn (array $c) => (string) ($c['id'] ?? '') === $faqId)->values()->all();
+
+        if (count($filtered) === count($items)) {
+            abort(404);
+        }
+
+        $filtered = $this->normalizeFaqItemsOrder($filtered);
+        $this->saveFaqItems($filtered);
+
+        return response()->json([
+            'message' => 'FAQ berhasil dihapus.',
+        ]);
+    }
+
+    private function normalizeFaqItemsOrder(array $items): array
+    {
+        $indexed = [];
+        foreach (array_values($items) as $idx => $item) {
+            if (! is_array($item)) {
+                continue;
+            }
+            $indexed[] = ['__idx' => $idx] + $item;
+        }
+
+        usort($indexed, function (array $a, array $b) {
+            $ao = (int) ($a['order'] ?? 0);
+            $bo = (int) ($b['order'] ?? 0);
+
+            if ($ao === $bo) {
+                return ((int) ($a['__idx'] ?? 0)) <=> ((int) ($b['__idx'] ?? 0));
+            }
+
+            return $ao <=> $bo;
+        });
+
+        $out = [];
+        foreach (array_values($indexed) as $i => $item) {
+            unset($item['__idx']);
+            $item['order'] = $i + 1;
+            $out[] = $item;
+        }
+
+        return $out;
+    }
+
     private function renderPage(string $page, array $fields): View
     {
         $existing = PageContent::query()
@@ -339,6 +427,57 @@ class KontenHalamanController extends Controller
                 'page' => 'home',
                 'section' => 'pricing',
                 'key' => 'extra_cards',
+            ],
+            [
+                'value' => $value,
+            ]
+        );
+    }
+
+    private function getFaqItems(): array
+    {
+        $row = PageContent::query()
+            ->where('page', 'home')
+            ->where('section', 'faq')
+            ->where('key', 'items')
+            ->first();
+
+        $raw = (string) optional($row)->value;
+        $raw = trim($raw);
+        if ($raw === '') {
+            return [];
+        }
+
+        $decoded = json_decode($raw, true);
+        if (! is_array($decoded)) {
+            return [];
+        }
+
+        return collect($decoded)
+            ->filter(fn ($v) => is_array($v) && isset($v['id']))
+            ->map(function (array $v) {
+                $v['id'] = (string) ($v['id'] ?? '');
+                $v['question'] = (string) ($v['question'] ?? '');
+                $v['answer'] = (string) ($v['answer'] ?? '');
+                $v['order'] = (int) ($v['order'] ?? 0);
+                $v['active'] = (string) ($v['active'] ?? '1');
+
+                return $v;
+            })
+            ->values()
+            ->all();
+    }
+
+    private function saveFaqItems(array $items): void
+    {
+        $value = json_encode(array_values($items), JSON_UNESCAPED_UNICODE);
+        $value = $value !== false ? $value : '[]';
+
+        PageContent::query()->updateOrCreate(
+            [
+                'page' => 'home',
+                'section' => 'faq',
+                'key' => 'items',
             ],
             [
                 'value' => $value,
@@ -794,6 +933,13 @@ class KontenHalamanController extends Controller
                 'key' => 'title',
                 'label' => 'FAQ - Judul',
                 'type' => 'text',
+            ],
+            [
+                'section' => 'faq',
+                'key' => 'items',
+                'label' => 'FAQ - Items (JSON)',
+                'type' => 'textarea',
+                'rows' => 1,
             ],
             [
                 'section' => 'faq',

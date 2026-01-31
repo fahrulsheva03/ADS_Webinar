@@ -1,14 +1,8 @@
 @extends('admin.partials.app')
 
 @section('content')
-    <main
-        id="main-content"
-        tabindex="-1"
-        class="pb-4 p-3 p-lg-4 rounded-3"
-        style="background-color: #f5f6f8;"
-        role="main"
-        aria-label="Konten halaman {{ $page ?? '' }}"
-    >
+    <main id="main-content" tabindex="-1" class="pb-4 p-3 p-lg-4 rounded-3" style="background-color: #f5f6f8;" role="main"
+        aria-label="Konten halaman {{ $page ?? '' }}">
         <style>
             #main-content .form-control,
             #main-content .form-select {
@@ -40,16 +34,12 @@
             </div>
             <div class="d-flex align-items-center">
                 <div class="btn-group" role="group" aria-label="Pilih halaman">
-                    <a
-                        href="{{ route('admin.konten-halaman.home') }}"
-                        class="btn btn-sm {{ ($page ?? 'home') === 'home' ? 'btn-primary' : 'btn-outline-primary' }}"
-                    >
+                    <a href="{{ route('admin.konten-halaman.home') }}"
+                        class="btn btn-sm {{ ($page ?? 'home') === 'home' ? 'btn-primary' : 'btn-outline-primary' }}">
                         Home
                     </a>
-                    <a
-                        href="{{ route('admin.konten-halaman.about') }}"
-                        class="btn btn-sm {{ ($page ?? '') === 'about' ? 'btn-primary' : 'btn-outline-primary' }}"
-                    >
+                    <a href="{{ route('admin.konten-halaman.about') }}"
+                        class="btn btn-sm {{ ($page ?? '') === 'about' ? 'btn-primary' : 'btn-outline-primary' }}">
                         About
                     </a>
                 </div>
@@ -98,14 +88,8 @@
                         </div>
                         <div class="d-flex flex-wrap align-items-center gap-2">
                             <label class="visually-hidden" for="field-search">Cari</label>
-                            <input
-                                id="field-search"
-                                type="search"
-                                class="form-control"
-                                style="width: min(360px, 100%);"
-                                placeholder="Cari label atau key…"
-                                autocomplete="off"
-                            >
+                            <input id="field-search" type="search" class="form-control" style="width: min(360px, 100%);"
+                                placeholder="Cari label atau key…" autocomplete="off">
                         </div>
                     </div>
                 </div>
@@ -118,20 +102,14 @@
                                 $count = count($fieldsBySection[$section] ?? []);
                             @endphp
                             <li class="nav-item" role="presentation">
-                                <button
-                                    class="nav-link @if ($i === 0) active @endif"
-                                    id="tab-{{ $section }}"
-                                    type="button"
-                                    role="tab"
-                                    data-bs-toggle="tab"
-                                    data-bs-target="#pane-{{ $section }}"
-                                    aria-controls="pane-{{ $section }}"
-                                    aria-selected="{{ $i === 0 ? 'true' : 'false' }}"
-                                    data-tab-btn
-                                    data-section="{{ $section }}"
-                                >
+                                <button class="nav-link @if ($i === 0) active @endif"
+                                    id="tab-{{ $section }}" type="button" role="tab" data-bs-toggle="tab"
+                                    data-bs-target="#pane-{{ $section }}" aria-controls="pane-{{ $section }}"
+                                    aria-selected="{{ $i === 0 ? 'true' : 'false' }}" data-tab-btn
+                                    data-section="{{ $section }}">
                                     <span class="text-capitalize">{{ $label }}</span>
-                                    <span class="badge bg-light text-dark ms-2" data-tab-badge data-initial="{{ $count }}">{{ $count }}</span>
+                                    <span class="badge bg-light text-dark ms-2" data-tab-badge
+                                        data-initial="{{ $count }}">{{ $count }}</span>
                                 </button>
                             </li>
                         @endforeach
@@ -142,27 +120,36 @@
                             @php
                                 $fields = $fieldsBySection[$section] ?? collect();
                             @endphp
-                            <div
-                                class="tab-pane fade @if ($i === 0) show active @endif"
-                                id="pane-{{ $section }}"
-                                role="tabpanel"
-                                aria-labelledby="tab-{{ $section }}"
-                                tabindex="0"
-                                data-tab-pane
-                                data-tab-section="{{ $section }}"
-                            >
+                            <div class="tab-pane fade @if ($i === 0) show active @endif"
+                                id="pane-{{ $section }}" role="tabpanel" aria-labelledby="tab-{{ $section }}"
+                                tabindex="0" data-tab-pane data-tab-section="{{ $section }}">
                                 @if ($section === 'pricing')
                                     @php
                                         $pricing = $values['pricing'] ?? [];
 
-                                        $pricingSmallText = old('contents.pricing.small_text', $pricing['small_text'] ?? '');
+                                        $pricingSmallText = old(
+                                            'contents.pricing.small_text',
+                                            $pricing['small_text'] ?? '',
+                                        );
                                         $pricingTitle = old('contents.pricing.title', $pricing['title'] ?? '');
 
-                                        $pricingBottomText = old('contents.pricing.bottom_text', $pricing['bottom_text'] ?? '');
-                                        $pricingBottomButtonText = old('contents.pricing.bottom_button_text', $pricing['bottom_button_text'] ?? '');
-                                        $pricingBottomButtonUrl = old('contents.pricing.bottom_button_url', $pricing['bottom_button_url'] ?? '');
+                                        $pricingBottomText = old(
+                                            'contents.pricing.bottom_text',
+                                            $pricing['bottom_text'] ?? '',
+                                        );
+                                        $pricingBottomButtonText = old(
+                                            'contents.pricing.bottom_button_text',
+                                            $pricing['bottom_button_text'] ?? '',
+                                        );
+                                        $pricingBottomButtonUrl = old(
+                                            'contents.pricing.bottom_button_url',
+                                            $pricing['bottom_button_url'] ?? '',
+                                        );
 
-                                        $extraCardsJson = old('contents.pricing.extra_cards', $pricing['extra_cards'] ?? '[]');
+                                        $extraCardsJson = old(
+                                            'contents.pricing.extra_cards',
+                                            $pricing['extra_cards'] ?? '[]',
+                                        );
                                         $extraCards = [];
                                         if (is_string($extraCardsJson) && trim($extraCardsJson) !== '') {
                                             $decoded = json_decode($extraCardsJson, true);
@@ -172,8 +159,12 @@
                                         }
 
                                         $extraCardsStoreUrl = route('admin.konten-halaman.pricing-cards.store');
-                                        $extraCardsUpdateTpl = route('admin.konten-halaman.pricing-cards.update', ['cardId' => '__ID__']);
-                                        $extraCardsDestroyTpl = route('admin.konten-halaman.pricing-cards.destroy', ['cardId' => '__ID__']);
+                                        $extraCardsUpdateTpl = route('admin.konten-halaman.pricing-cards.update', [
+                                            'cardId' => '__ID__',
+                                        ]);
+                                        $extraCardsDestroyTpl = route('admin.konten-halaman.pricing-cards.destroy', [
+                                            'cardId' => '__ID__',
+                                        ]);
 
                                         $cards = [
                                             [
@@ -204,36 +195,26 @@
                                     @endphp
 
                                     <div class="row g-3">
-                                        <div class="col-12 col-xl-6" data-field-item data-hay="ticket pricing teks kecil pricing small_text">
+                                        <div class="col-12 col-xl-6" data-field-item
+                                            data-hay="ticket pricing teks kecil pricing small_text">
                                             <label class="form-label text-black" for="pricing-small-text">Teks kecil</label>
-                                            <input
-                                                id="pricing-small-text"
-                                                name="contents[pricing][small_text]"
+                                            <input id="pricing-small-text" name="contents[pricing][small_text]"
                                                 type="text"
                                                 class="form-control @error('contents.pricing.small_text') is-invalid @enderror"
-                                                value="{{ $pricingSmallText }}"
-                                                placeholder="Contoh: TICKET PRICING"
-                                                data-pricing-input
-                                                data-plan="section"
-                                                data-field="small_text"
-                                            >
+                                                value="{{ $pricingSmallText }}" placeholder="Contoh: TICKET PRICING"
+                                                data-pricing-input data-plan="section" data-field="small_text">
                                             @error('contents.pricing.small_text')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
 
-                                        <div class="col-12 col-xl-6" data-field-item data-hay="ticket pricing judul pricing title">
+                                        <div class="col-12 col-xl-6" data-field-item
+                                            data-hay="ticket pricing judul pricing title">
                                             <label class="form-label text-black" for="pricing-title">Judul</label>
-                                            <textarea
-                                                id="pricing-title"
-                                                name="contents[pricing][title]"
-                                                class="form-control @error('contents.pricing.title') is-invalid @enderror"
-                                                rows="3"
-                                                placeholder="Contoh: We Have Several Options&#10;for Tickets"
-                                                data-pricing-input
-                                                data-plan="section"
-                                                data-field="title"
-                                            >{{ $pricingTitle }}</textarea>
+                                            <textarea id="pricing-title" name="contents[pricing][title]"
+                                                class="form-control @error('contents.pricing.title') is-invalid @enderror" rows="3"
+                                                placeholder="Contoh: We Have Several Options&#10;for Tickets" data-pricing-input data-plan="section"
+                                                data-field="title">{{ $pricingTitle }}</textarea>
                                             @error('contents.pricing.title')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -263,7 +244,12 @@
                                                 $activeVal = old($activeKey, $pricing["{$plan}_active"] ?? '1');
                                                 $activeVal = $activeVal === '' ? '1' : (string) $activeVal;
 
-                                                $features = array_values(array_filter(preg_split("/\r\n|\r|\n/", (string) $featuresVal), fn ($v) => trim((string) $v) !== ''));
+                                                $features = array_values(
+                                                    array_filter(
+                                                        preg_split("/\r\n|\r|\n/", (string) $featuresVal),
+                                                        fn($v) => trim((string) $v) !== '',
+                                                    ),
+                                                );
                                                 if (count($features) === 0) {
                                                     $features = [''];
                                                 }
@@ -278,230 +264,255 @@
                                                 <h2 class="accordion-header" id="pricing-heading-{{ $plan }}">
                                                     <button
                                                         class="accordion-button @if (!$show) collapsed @endif"
-                                                        type="button"
-                                                        data-bs-toggle="collapse"
+                                                        type="button" data-bs-toggle="collapse"
                                                         data-bs-target="#pricing-collapse-{{ $plan }}"
                                                         aria-expanded="{{ $show ? 'true' : 'false' }}"
-                                                        aria-controls="pricing-collapse-{{ $plan }}"
-                                                    >
-                                                        <span class="badge {{ $card['badgeClass'] }} me-2">{{ $card['label'] }}</span>
-                                                        <span class="text-muted small" data-pricing-quick-title data-plan="{{ $plan }}">{{ $titleVal }}</span>
-                                                        <span class="ms-auto badge bg-light text-dark" data-pricing-quick-status data-plan="{{ $plan }}">{{ $isActive ? 'Aktif' : 'Nonaktif' }}</span>
+                                                        aria-controls="pricing-collapse-{{ $plan }}">
+                                                        <span
+                                                            class="badge {{ $card['badgeClass'] }} me-2">{{ $card['label'] }}</span>
+                                                        <span class="text-muted small" data-pricing-quick-title
+                                                            data-plan="{{ $plan }}">{{ $titleVal }}</span>
+                                                        <span class="ms-auto badge bg-light text-dark"
+                                                            data-pricing-quick-status
+                                                            data-plan="{{ $plan }}">{{ $isActive ? 'Aktif' : 'Nonaktif' }}</span>
                                                     </button>
                                                 </h2>
-                                                <div
-                                                    id="pricing-collapse-{{ $plan }}"
+                                                <div id="pricing-collapse-{{ $plan }}"
                                                     class="accordion-collapse collapse @if ($show) show @endif"
                                                     aria-labelledby="pricing-heading-{{ $plan }}"
-                                                    data-bs-parent="#pricing-cards-accordion"
-                                                >
+                                                    data-bs-parent="#pricing-cards-accordion">
                                                     <div class="accordion-body">
                                                         <div class="row g-4">
                                                             <div class="col-12 col-lg-7">
                                                                 <div class="row g-3">
-                                                                    <div class="col-12" data-field-item data-hay="pricing {{ $plan }} aktif status aktif nonaktif">
-                                                                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-                                                                            <div class="fw-semibold text-black">Status Card</div>
+                                                                    <div class="col-12" data-field-item
+                                                                        data-hay="pricing {{ $plan }} aktif status aktif nonaktif">
+                                                                        <div
+                                                                            class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                                            <div class="fw-semibold text-black">Status Card
+                                                                            </div>
                                                                             <div class="form-check form-switch m-0">
-                                                                                <input type="hidden" name="contents[pricing][{{ $plan }}_active]" value="0">
-                                                                                <input
-                                                                                    class="form-check-input"
-                                                                                    type="checkbox"
-                                                                                    role="switch"
+                                                                                <input type="hidden"
+                                                                                    name="contents[pricing][{{ $plan }}_active]"
+                                                                                    value="0">
+                                                                                <input class="form-check-input"
+                                                                                    type="checkbox" role="switch"
                                                                                     id="pricing-{{ $plan }}-active"
                                                                                     name="contents[pricing][{{ $plan }}_active]"
                                                                                     value="1"
                                                                                     @if ($isActive) checked @endif
                                                                                     data-pricing-input
                                                                                     data-plan="{{ $plan }}"
-                                                                                    data-field="active"
-                                                                                >
-                                                                                <label class="form-check-label" for="pricing-{{ $plan }}-active">
+                                                                                    data-field="active">
+                                                                                <label class="form-check-label"
+                                                                                    for="pricing-{{ $plan }}-active">
                                                                                     {{ $isActive ? 'Aktif' : 'Nonaktif' }}
                                                                                 </label>
                                                                             </div>
                                                                         </div>
                                                                         @error($activeKey)
-                                                                            <div class="text-danger small mt-1">{{ $message }}</div>
+                                                                            <div class="text-danger small mt-1">
+                                                                                {{ $message }}</div>
                                                                         @enderror
                                                                     </div>
 
-                                                                    <div class="col-12" data-field-item data-hay="pricing {{ $plan }} judul nama paket title">
-                                                                        <label class="form-label text-black" for="pricing-{{ $plan }}-title">Judul / Nama paket</label>
-                                                                        <input
-                                                                            id="pricing-{{ $plan }}-title"
+                                                                    <div class="col-12" data-field-item
+                                                                        data-hay="pricing {{ $plan }} judul nama paket title">
+                                                                        <label class="form-label text-black"
+                                                                            for="pricing-{{ $plan }}-title">Judul
+                                                                            / Nama paket</label>
+                                                                        <input id="pricing-{{ $plan }}-title"
                                                                             name="contents[pricing][{{ $plan }}_title]"
                                                                             type="text"
                                                                             class="form-control @error($titleKey) is-invalid @enderror"
-                                                                            value="{{ $titleVal }}"
-                                                                            data-pricing-input
+                                                                            value="{{ $titleVal }}" data-pricing-input
                                                                             data-plan="{{ $plan }}"
-                                                                            data-field="title"
-                                                                        >
+                                                                            data-field="title">
                                                                         @error($titleKey)
-                                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                                            <div class="invalid-feedback">{{ $message }}
+                                                                            </div>
                                                                         @enderror
                                                                     </div>
 
-                                                                    <div class="col-12" data-field-item data-hay="pricing {{ $plan }} deskripsi singkat subtitle">
-                                                                        <label class="form-label text-black" for="pricing-{{ $plan }}-subtitle">Deskripsi singkat</label>
-                                                                        <input
-                                                                            id="pricing-{{ $plan }}-subtitle"
+                                                                    <div class="col-12" data-field-item
+                                                                        data-hay="pricing {{ $plan }} deskripsi singkat subtitle">
+                                                                        <label class="form-label text-black"
+                                                                            for="pricing-{{ $plan }}-subtitle">Deskripsi
+                                                                            singkat</label>
+                                                                        <input id="pricing-{{ $plan }}-subtitle"
                                                                             name="contents[pricing][{{ $plan }}_subtitle]"
                                                                             type="text"
                                                                             class="form-control @error($subtitleKey) is-invalid @enderror"
-                                                                            value="{{ $subtitleVal }}"
-                                                                            data-pricing-input
+                                                                            value="{{ $subtitleVal }}" data-pricing-input
                                                                             data-plan="{{ $plan }}"
-                                                                            data-field="subtitle"
-                                                                        >
+                                                                            data-field="subtitle">
                                                                         @error($subtitleKey)
-                                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                                            <div class="invalid-feedback">{{ $message }}
+                                                                            </div>
                                                                         @enderror
                                                                     </div>
 
-                                                                    <div class="col-12" data-field-item data-hay="pricing {{ $plan }} currency mata uang harga price">
-                                                                        <div class="d-flex flex-column flex-md-row align-items-md-end gap-3">
-                                                                            <div class="w-100 flex-md-shrink-0" style="max-width: 260px;">
-                                                                                <label class="form-label text-black" for="pricing-{{ $plan }}-currency">Mata uang</label>
+                                                                    <div class="col-12" data-field-item
+                                                                        data-hay="pricing {{ $plan }} currency mata uang harga price">
+                                                                        <div
+                                                                            class="d-flex flex-column flex-md-row align-items-md-end gap-3">
+                                                                            <div class="w-100 flex-md-shrink-0"
+                                                                                style="max-width: 260px;">
+                                                                                <label class="form-label text-black"
+                                                                                    for="pricing-{{ $plan }}-currency">Mata
+                                                                                    uang</label>
                                                                                 <select
                                                                                     id="pricing-{{ $plan }}-currency"
                                                                                     name="contents[pricing][{{ $plan }}_currency]"
                                                                                     class="form-select @error($currencyKey) is-invalid @enderror"
                                                                                     data-pricing-input
                                                                                     data-plan="{{ $plan }}"
-                                                                                    data-field="currency"
-                                                                                >
-                                                                                    <option value="USD" @if ($currencyVal === 'USD') selected @endif>USD ($)</option>
-                                                                                    <option value="IDR" @if ($currencyVal === 'IDR') selected @endif>IDR (Rp)</option>
-                                                                                    <option value="EUR" @if ($currencyVal === 'EUR') selected @endif>EUR (€)</option>
+                                                                                    data-field="currency">
+                                                                                    <option value="USD"
+                                                                                        @if ($currencyVal === 'USD') selected @endif>
+                                                                                        USD ($)</option>
+                                                                                    <option value="IDR"
+                                                                                        @if ($currencyVal === 'IDR') selected @endif>
+                                                                                        IDR (Rp)</option>
+                                                                                    <option value="EUR"
+                                                                                        @if ($currencyVal === 'EUR') selected @endif>
+                                                                                        EUR (€)</option>
                                                                                 </select>
                                                                                 @error($currencyKey)
-                                                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                                                    <div class="invalid-feedback">
+                                                                                        {{ $message }}</div>
                                                                                 @enderror
                                                                             </div>
 
                                                                             <div class="w-100 flex-grow-1">
-                                                                                <label class="form-label text-black" for="pricing-{{ $plan }}-price">Harga</label>
+                                                                                <label class="form-label text-black"
+                                                                                    for="pricing-{{ $plan }}-price">Harga</label>
                                                                                 <input
                                                                                     id="pricing-{{ $plan }}-price"
                                                                                     name="contents[pricing][{{ $plan }}_price]"
-                                                                                    type="number"
-                                                                                    step="0.01"
-                                                                                    min="0"
-                                                                                    inputmode="decimal"
+                                                                                    type="number" step="0.01"
+                                                                                    min="0" inputmode="decimal"
                                                                                     class="form-control @error($priceKey) is-invalid @enderror"
                                                                                     value="{{ $priceVal }}"
                                                                                     data-pricing-input
                                                                                     data-plan="{{ $plan }}"
-                                                                                    data-field="price"
-                                                                                >
+                                                                                    data-field="price">
                                                                                 @error($priceKey)
-                                                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                                                    <div class="invalid-feedback">
+                                                                                        {{ $message }}</div>
                                                                                 @enderror
                                                                             </div>
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="col-12" data-field-item data-hay="pricing {{ $plan }} fitur features list tambah hapus">
-                                                                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-                                                                            <div class="form-label text-black mb-0">Fitur-fitur</div>
-                                                                            <button
-                                                                                type="button"
+                                                                    <div class="col-12" data-field-item
+                                                                        data-hay="pricing {{ $plan }} fitur features list tambah hapus">
+                                                                        <div
+                                                                            class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                                            <div class="form-label text-black mb-0">
+                                                                                Fitur-fitur</div>
+                                                                            <button type="button"
                                                                                 class="btn btn-outline-primary btn-xxs"
                                                                                 data-features-add
-                                                                                data-plan="{{ $plan }}"
-                                                                            >
-                                                                                <i class="la la-plus" aria-hidden="true"></i>
+                                                                                data-plan="{{ $plan }}">
+                                                                                <i class="la la-plus"
+                                                                                    aria-hidden="true"></i>
                                                                                 Tambah fitur
                                                                             </button>
                                                                         </div>
 
-                                                                        <div class="d-flex flex-column gap-2 mt-2" data-features-list data-plan="{{ $plan }}">
+                                                                        <div class="d-flex flex-column gap-2 mt-2"
+                                                                            data-features-list
+                                                                            data-plan="{{ $plan }}">
                                                                             @foreach ($features as $fIndex => $feature)
                                                                                 <div class="input-group" data-feature-row>
-                                                                                    <span class="input-group-text" data-feature-index>{{ $fIndex + 1 }}</span>
-                                                                                    <input
-                                                                                        type="text"
+                                                                                    <span class="input-group-text"
+                                                                                        data-feature-index>{{ $fIndex + 1 }}</span>
+                                                                                    <input type="text"
                                                                                         class="form-control"
                                                                                         value="{{ $feature }}"
                                                                                         data-features-input
-                                                                                        data-plan="{{ $plan }}"
-                                                                                    >
-                                                                                    <button type="button" class="btn btn-outline-danger" data-features-remove>
-                                                                                        <i class="la la-trash" aria-hidden="true"></i>
+                                                                                        data-plan="{{ $plan }}">
+                                                                                    <button type="button"
+                                                                                        class="btn btn-outline-danger"
+                                                                                        data-features-remove>
+                                                                                        <i class="la la-trash"
+                                                                                            aria-hidden="true"></i>
                                                                                     </button>
                                                                                 </div>
                                                                             @endforeach
                                                                         </div>
 
-                                                                        <textarea
-                                                                            class="d-none"
-                                                                            name="contents[pricing][{{ $plan }}_features]"
-                                                                            data-features-storage
-                                                                            data-plan="{{ $plan }}"
-                                                                        >{{ $featuresVal }}</textarea>
+                                                                        <textarea class="d-none" name="contents[pricing][{{ $plan }}_features]" data-features-storage
+                                                                            data-plan="{{ $plan }}">{{ $featuresVal }}</textarea>
 
                                                                         @error($featuresKey)
-                                                                            <div class="text-danger small mt-1">{{ $message }}</div>
+                                                                            <div class="text-danger small mt-1">
+                                                                                {{ $message }}</div>
                                                                         @enderror
                                                                     </div>
 
-                                                                    <div class="col-12 col-md-6" data-field-item data-hay="pricing {{ $plan }} tombol cta text">
-                                                                        <label class="form-label text-black" for="pricing-{{ $plan }}-cta-text">Tombol CTA (teks)</label>
-                                                                        <input
-                                                                            id="pricing-{{ $plan }}-cta-text"
+                                                                    <div class="col-12 col-md-6" data-field-item
+                                                                        data-hay="pricing {{ $plan }} tombol cta text">
+                                                                        <label class="form-label text-black"
+                                                                            for="pricing-{{ $plan }}-cta-text">Tombol
+                                                                            CTA (teks)</label>
+                                                                        <input id="pricing-{{ $plan }}-cta-text"
                                                                             name="contents[pricing][{{ $plan }}_button_text]"
                                                                             type="text"
                                                                             class="form-control @error($ctaTextKey) is-invalid @enderror"
-                                                                            value="{{ $ctaTextVal }}"
-                                                                            data-pricing-input
+                                                                            value="{{ $ctaTextVal }}" data-pricing-input
                                                                             data-plan="{{ $plan }}"
-                                                                            data-field="cta_text"
-                                                                        >
+                                                                            data-field="cta_text">
                                                                         @error($ctaTextKey)
-                                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                                            <div class="invalid-feedback">{{ $message }}
+                                                                            </div>
                                                                         @enderror
                                                                     </div>
 
-                                                                    <div class="col-12 col-md-6" data-field-item data-hay="pricing {{ $plan }} tombol cta link url">
-                                                                        <label class="form-label text-black" for="pricing-{{ $plan }}-cta-url">Tombol CTA (link)</label>
-                                                                        <input
-                                                                            id="pricing-{{ $plan }}-cta-url"
+                                                                    <div class="col-12 col-md-6" data-field-item
+                                                                        data-hay="pricing {{ $plan }} tombol cta link url">
+                                                                        <label class="form-label text-black"
+                                                                            for="pricing-{{ $plan }}-cta-url">Tombol
+                                                                            CTA (link)</label>
+                                                                        <input id="pricing-{{ $plan }}-cta-url"
                                                                             name="contents[pricing][{{ $plan }}_button_url]"
                                                                             type="url"
                                                                             class="form-control @error($ctaUrlKey) is-invalid @enderror"
                                                                             value="{{ $ctaUrlVal }}"
-                                                                            placeholder="https://"
-                                                                            data-pricing-input
+                                                                            placeholder="https://" data-pricing-input
                                                                             data-plan="{{ $plan }}"
-                                                                            data-field="cta_url"
-                                                                        >
+                                                                            data-field="cta_url">
                                                                         @error($ctaUrlKey)
-                                                                            <div class="invalid-feedback">{{ $message }}</div>
+                                                                            <div class="invalid-feedback">{{ $message }}
+                                                                            </div>
                                                                         @enderror
                                                                     </div>
 
                                                                     @if ($plan === 'gold')
                                                                         @php
                                                                             $badgeKey = 'contents.pricing.gold_badge';
-                                                                            $badgeVal = old($badgeKey, $pricing['gold_badge'] ?? '');
+                                                                            $badgeVal = old(
+                                                                                $badgeKey,
+                                                                                $pricing['gold_badge'] ?? '',
+                                                                            );
                                                                         @endphp
-                                                                        <div class="col-12" data-field-item data-hay="pricing gold badge recommended">
-                                                                            <label class="form-label text-black" for="pricing-gold-badge">Badge (opsional)</label>
-                                                                            <input
-                                                                                id="pricing-gold-badge"
+                                                                        <div class="col-12" data-field-item
+                                                                            data-hay="pricing gold badge recommended">
+                                                                            <label class="form-label text-black"
+                                                                                for="pricing-gold-badge">Badge
+                                                                                (opsional)</label>
+                                                                            <input id="pricing-gold-badge"
                                                                                 name="contents[pricing][gold_badge]"
                                                                                 type="text"
                                                                                 class="form-control @error($badgeKey) is-invalid @enderror"
                                                                                 value="{{ $badgeVal }}"
                                                                                 placeholder="Contoh: RECOMMENDED"
-                                                                                data-pricing-input
-                                                                                data-plan="gold"
-                                                                                data-field="badge"
-                                                                            >
+                                                                                data-pricing-input data-plan="gold"
+                                                                                data-field="badge">
                                                                             @error($badgeKey)
-                                                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                                                <div class="invalid-feedback">
+                                                                                    {{ $message }}</div>
                                                                             @enderror
                                                                         </div>
                                                                     @endif
@@ -510,36 +521,46 @@
 
                                                             <div class="col-12 col-lg-5">
                                                                 <div class="fw-semibold text-black mb-2">Preview</div>
-                                                                <div
-                                                                    class="ticket-details {{ $card['wrapClass'] }} position-relative"
-                                                                    data-pricing-preview
-                                                                    data-plan="{{ $plan }}"
-                                                                >
-                                                                    <div class="d-flex align-items-center justify-content-between gap-2">
-                                                                        <h3 class="mb-0" data-preview-title>{{ $titleVal !== '' ? $titleVal : 'Nama Paket' }}</h3>
-                                                                        <span class="badge bg-secondary @if ($isActive) d-none @endif" data-preview-inactive>Nonaktif</span>
+                                                                <div class="ticket-details {{ $card['wrapClass'] }} position-relative"
+                                                                    data-pricing-preview data-plan="{{ $plan }}">
+                                                                    <div
+                                                                        class="d-flex align-items-center justify-content-between gap-2">
+                                                                        <h3 class="mb-0" data-preview-title>
+                                                                            {{ $titleVal !== '' ? $titleVal : 'Nama Paket' }}
+                                                                        </h3>
+                                                                        <span
+                                                                            class="badge bg-secondary @if ($isActive) d-none @endif"
+                                                                            data-preview-inactive>Nonaktif</span>
                                                                     </div>
-                                                                    <p class="mb-1" data-preview-subtitle>{{ $subtitleVal !== '' ? $subtitleVal : 'Deskripsi singkat' }}</p>
+                                                                    <p class="mb-1" data-preview-subtitle>
+                                                                        {{ $subtitleVal !== '' ? $subtitleVal : 'Deskripsi singkat' }}
+                                                                    </p>
                                                                     <span>Starting at:</span>
                                                                     <div class="price">
-                                                                        <small data-preview-currency>{{ $currencySymbol }}</small><span data-preview-price>{{ $priceVal !== '' ? $priceVal : '0' }}</span>
+                                                                        <small
+                                                                            data-preview-currency>{{ $currencySymbol }}</small><span
+                                                                            data-preview-price>{{ $priceVal !== '' ? $priceVal : '0' }}</span>
                                                                     </div>
                                                                     <ul class="list-unstyled" data-preview-features>
                                                                         @foreach ($features as $feature)
                                                                             @if (trim((string) $feature) !== '')
-                                                                                <li class="position-relative">{{ $feature }}</li>
+                                                                                <li class="position-relative">
+                                                                                    {{ $feature }}</li>
                                                                             @endif
                                                                         @endforeach
                                                                     </ul>
                                                                     <div class="generic-btn">
-                                                                        <a href="{{ $ctaUrlVal !== '' ? $ctaUrlVal : '#' }}" data-preview-cta-link>
-                                                                            <span data-preview-cta-text>{{ $ctaTextVal !== '' ? $ctaTextVal : 'BUY TICKET' }}</span>
+                                                                        <a href="{{ $ctaUrlVal !== '' ? $ctaUrlVal : '#' }}"
+                                                                            data-preview-cta-link>
+                                                                            <span
+                                                                                data-preview-cta-text>{{ $ctaTextVal !== '' ? $ctaTextVal : 'BUY TICKET' }}</span>
                                                                             <i class="fas fa-arrow-right"></i>
                                                                         </a>
                                                                     </div>
 
                                                                     @if ($plan === 'gold')
-                                                                        <div class="recomended-box @if ($badgeVal === '') d-none @endif" data-preview-badge>{{ $badgeVal }}</div>
+                                                                        <div class="recomended-box @if ($badgeVal === '') d-none @endif"
+                                                                            data-preview-badge>{{ $badgeVal }}</div>
                                                                     @endif
                                                                 </div>
                                                             </div>
@@ -554,19 +575,17 @@
                                         <div class="d-flex flex-wrap align-items-start justify-content-between gap-2">
                                             <div>
                                                 <div class="fw-semibold text-black">Card Tambahan</div>
-                                                <div class="text-muted small">Ditampilkan setelah 3 card utama di halaman peserta.</div>
+                                                <div class="text-muted small">Ditampilkan setelah 3 card utama di halaman
+                                                    peserta.</div>
                                             </div>
                                         </div>
 
                                         <textarea class="d-none" name="contents[pricing][extra_cards]" data-extra-cards-storage>{{ $extraCardsJson }}</textarea>
 
-                                        <div
-                                            class="d-flex flex-column gap-3 mt-3"
-                                            data-extra-cards-list
+                                        <div class="d-flex flex-column gap-3 mt-3" data-extra-cards-list
                                             data-store-url="{{ $extraCardsStoreUrl }}"
                                             data-update-url-template="{{ $extraCardsUpdateTpl }}"
-                                            data-destroy-url-template="{{ $extraCardsDestroyTpl }}"
-                                        >
+                                            data-destroy-url-template="{{ $extraCardsDestroyTpl }}">
                                             @foreach ($extraCards as $card)
                                                 @php
                                                     $cardId = (string) ($card['id'] ?? '');
@@ -577,88 +596,154 @@
                                                     $cardPrice = (string) ($card['price'] ?? '');
                                                     $cardFeatures = $card['features'] ?? [];
                                                     $cardFeatures = is_array($cardFeatures) ? $cardFeatures : [];
-                                                    $cardFeatures = collect($cardFeatures)->map(fn($v) => trim((string) $v))->filter()->values()->all();
+                                                    $cardFeatures = collect($cardFeatures)
+                                                        ->map(fn($v) => trim((string) $v))
+                                                        ->filter()
+                                                        ->values()
+                                                        ->all();
                                                     if (count($cardFeatures) === 0) {
                                                         $cardFeatures = [''];
                                                     }
-                                                    $cardFeaturesText = collect($cardFeatures)->map(fn($v) => trim((string) $v))->filter()->implode("\n");
+                                                    $cardFeaturesText = collect($cardFeatures)
+                                                        ->map(fn($v) => trim((string) $v))
+                                                        ->filter()
+                                                        ->implode("\n");
                                                     $cardButtonText = (string) ($card['button_text'] ?? '');
                                                     $cardButtonUrl = (string) ($card['button_url'] ?? '');
                                                     $cardBadge = (string) ($card['badge'] ?? '');
 
-                                                    $extraWrapCycle = ['silver-ticket-details', 'gold-ticket-details', 'premium-ticket-details'];
-                                                    $wrapClass = $extraWrapCycle[(3 + $loop->index) % count($extraWrapCycle)] ?? 'silver-ticket-details';
+                                                    $extraWrapCycle = [
+                                                        'silver-ticket-details',
+                                                        'gold-ticket-details',
+                                                        'premium-ticket-details',
+                                                    ];
+                                                    $wrapClass =
+                                                        $extraWrapCycle[(3 + $loop->index) % count($extraWrapCycle)] ??
+                                                        'silver-ticket-details';
                                                     $currencySymbol = $currencySymbolByCode[$cardCurrency] ?? '$';
                                                 @endphp
 
                                                 @if ($cardId !== '')
-                                                    <div class="border rounded p-3 bg-white" data-extra-card data-card-id="{{ $cardId }}" data-wrap-class="{{ $wrapClass }}">
+                                                    <div class="border rounded p-3 bg-white" data-extra-card
+                                                        data-card-id="{{ $cardId }}"
+                                                        data-wrap-class="{{ $wrapClass }}">
                                                         <div class="row g-4">
                                                             <div class="col-12 col-lg-7">
                                                                 <div class="row g-3">
                                                                     <div class="col-12">
-                                                                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                                        <div
+                                                                            class="d-flex flex-wrap align-items-center justify-content-between gap-2">
                                                                             <div class="fw-semibold text-black">Card</div>
-                                                                            <button type="button" class="btn btn-outline-danger btn-xxs" data-extra-card-delete>
-                                                                                <i class="la la-trash" aria-hidden="true"></i>
+                                                                            <button type="button"
+                                                                                class="btn btn-outline-danger btn-xxs"
+                                                                                data-extra-card-delete>
+                                                                                <i class="la la-trash"
+                                                                                    aria-hidden="true"></i>
                                                                                 Hapus
                                                                             </button>
                                                                         </div>
-                                                                        <div class="text-muted small mt-1" data-card-status></div>
+                                                                        <div class="text-muted small mt-1"
+                                                                            data-card-status></div>
                                                                     </div>
 
-                                                                    <div class="col-12" data-field-item data-hay="pricing card tambahan aktif status aktif nonaktif">
-                                                                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-                                                                            <div class="fw-semibold text-black">Status Card</div>
+                                                                    <div class="col-12" data-field-item
+                                                                        data-hay="pricing card tambahan aktif status aktif nonaktif">
+                                                                        <div
+                                                                            class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                                            <div class="fw-semibold text-black">Status Card
+                                                                            </div>
                                                                             <div class="form-check form-switch m-0">
-                                                                                <input class="form-check-input" type="checkbox" role="switch" @if ($cardActive) checked @endif data-card-field="active">
-                                                                                <label class="form-check-label">Aktif</label>
+                                                                                <input class="form-check-input"
+                                                                                    type="checkbox" role="switch"
+                                                                                    @if ($cardActive) checked @endif
+                                                                                    data-card-field="active">
+                                                                                <label
+                                                                                    class="form-check-label">Aktif</label>
                                                                             </div>
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="col-12" data-field-item data-hay="pricing card tambahan judul nama paket title">
-                                                                        <label class="form-label text-black">Judul / Nama paket</label>
-                                                                        <input type="text" class="form-control" value="{{ $cardTitle }}" data-card-field="title">
+                                                                    <div class="col-12" data-field-item
+                                                                        data-hay="pricing card tambahan judul nama paket title">
+                                                                        <label class="form-label text-black">Judul / Nama
+                                                                            paket</label>
+                                                                        <input type="text" class="form-control"
+                                                                            value="{{ $cardTitle }}"
+                                                                            data-card-field="title">
                                                                     </div>
-                                                                    <div class="col-12" data-field-item data-hay="pricing card tambahan deskripsi singkat subtitle">
-                                                                        <label class="form-label text-black">Deskripsi singkat</label>
-                                                                        <input type="text" class="form-control" value="{{ $cardSubtitle }}" data-card-field="subtitle">
+                                                                    <div class="col-12" data-field-item
+                                                                        data-hay="pricing card tambahan deskripsi singkat subtitle">
+                                                                        <label class="form-label text-black">Deskripsi
+                                                                            singkat</label>
+                                                                        <input type="text" class="form-control"
+                                                                            value="{{ $cardSubtitle }}"
+                                                                            data-card-field="subtitle">
                                                                     </div>
 
-                                                                    <div class="col-12" data-field-item data-hay="pricing card tambahan currency mata uang harga price">
-                                                                        <div class="d-flex flex-column flex-md-row align-items-md-end gap-3">
-                                                                            <div class="w-100 flex-md-shrink-0" style="max-width: 260px;">
-                                                                                <label class="form-label text-black">Mata uang</label>
-                                                                                <select class="form-select" data-card-field="currency">
-                                                                                    <option value="USD" @if ($cardCurrency === 'USD') selected @endif>USD ($)</option>
-                                                                                    <option value="IDR" @if ($cardCurrency === 'IDR') selected @endif>IDR (Rp)</option>
-                                                                                    <option value="EUR" @if ($cardCurrency === 'EUR') selected @endif>EUR (€)</option>
+                                                                    <div class="col-12" data-field-item
+                                                                        data-hay="pricing card tambahan currency mata uang harga price">
+                                                                        <div
+                                                                            class="d-flex flex-column flex-md-row align-items-md-end gap-3">
+                                                                            <div class="w-100 flex-md-shrink-0"
+                                                                                style="max-width: 260px;">
+                                                                                <label class="form-label text-black">Mata
+                                                                                    uang</label>
+                                                                                <select class="form-select"
+                                                                                    data-card-field="currency">
+                                                                                    <option value="USD"
+                                                                                        @if ($cardCurrency === 'USD') selected @endif>
+                                                                                        USD ($)</option>
+                                                                                    <option value="IDR"
+                                                                                        @if ($cardCurrency === 'IDR') selected @endif>
+                                                                                        IDR (Rp)</option>
+                                                                                    <option value="EUR"
+                                                                                        @if ($cardCurrency === 'EUR') selected @endif>
+                                                                                        EUR (€)</option>
                                                                                 </select>
                                                                             </div>
                                                                             <div class="w-100 flex-grow-1">
-                                                                                <label class="form-label text-black">Harga</label>
-                                                                                <input type="number" step="0.01" min="0" inputmode="decimal" class="form-control" value="{{ $cardPrice }}" data-card-field="price">
+                                                                                <label
+                                                                                    class="form-label text-black">Harga</label>
+                                                                                <input type="number" step="0.01"
+                                                                                    min="0" inputmode="decimal"
+                                                                                    class="form-control"
+                                                                                    value="{{ $cardPrice }}"
+                                                                                    data-card-field="price">
                                                                             </div>
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="col-12" data-field-item data-hay="pricing card tambahan fitur features list tambah hapus">
-                                                                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
-                                                                            <div class="form-label text-black mb-0">Fitur-fitur</div>
-                                                                            <button type="button" class="btn btn-outline-primary btn-xxs" data-extra-features-add>
-                                                                                <i class="la la-plus" aria-hidden="true"></i>
+                                                                    <div class="col-12" data-field-item
+                                                                        data-hay="pricing card tambahan fitur features list tambah hapus">
+                                                                        <div
+                                                                            class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                                            <div class="form-label text-black mb-0">
+                                                                                Fitur-fitur</div>
+                                                                            <button type="button"
+                                                                                class="btn btn-outline-primary btn-xxs"
+                                                                                data-extra-features-add>
+                                                                                <i class="la la-plus"
+                                                                                    aria-hidden="true"></i>
                                                                                 Tambah fitur
                                                                             </button>
                                                                         </div>
 
-                                                                        <div class="d-flex flex-column gap-2 mt-2" data-extra-features-list>
+                                                                        <div class="d-flex flex-column gap-2 mt-2"
+                                                                            data-extra-features-list>
                                                                             @foreach ($cardFeatures as $fIndex => $feature)
-                                                                                <div class="input-group" data-extra-feature-row>
-                                                                                    <span class="input-group-text" data-extra-feature-index>{{ $fIndex + 1 }}</span>
-                                                                                    <input type="text" class="form-control" value="{{ $feature }}" data-extra-features-input>
-                                                                                    <button type="button" class="btn btn-outline-danger" data-extra-features-remove>
-                                                                                        <i class="la la-trash" aria-hidden="true"></i>
+                                                                                <div class="input-group"
+                                                                                    data-extra-feature-row>
+                                                                                    <span class="input-group-text"
+                                                                                        data-extra-feature-index>{{ $fIndex + 1 }}</span>
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        value="{{ $feature }}"
+                                                                                        data-extra-features-input>
+                                                                                    <button type="button"
+                                                                                        class="btn btn-outline-danger"
+                                                                                        data-extra-features-remove>
+                                                                                        <i class="la la-trash"
+                                                                                            aria-hidden="true"></i>
                                                                                     </button>
                                                                                 </div>
                                                                             @endforeach
@@ -667,49 +752,77 @@
                                                                         <textarea class="d-none" data-card-field="features">{{ $cardFeaturesText }}</textarea>
                                                                     </div>
 
-                                                                    <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta text">
-                                                                        <label class="form-label text-black">Tombol CTA (teks)</label>
-                                                                        <input type="text" class="form-control" value="{{ $cardButtonText }}" data-card-field="button_text">
+                                                                    <div class="col-12 col-md-6" data-field-item
+                                                                        data-hay="pricing card tambahan tombol cta text">
+                                                                        <label class="form-label text-black">Tombol CTA
+                                                                            (teks)</label>
+                                                                        <input type="text" class="form-control"
+                                                                            value="{{ $cardButtonText }}"
+                                                                            data-card-field="button_text">
                                                                     </div>
-                                                                    <div class="col-12 col-md-6" data-field-item data-hay="pricing card tambahan tombol cta url">
-                                                                        <label class="form-label text-black">Tombol CTA (link)</label>
-                                                                        <input type="url" class="form-control" placeholder="https://" value="{{ $cardButtonUrl }}" data-card-field="button_url">
+                                                                    <div class="col-12 col-md-6" data-field-item
+                                                                        data-hay="pricing card tambahan tombol cta url">
+                                                                        <label class="form-label text-black">Tombol CTA
+                                                                            (link)</label>
+                                                                        <input type="url" class="form-control"
+                                                                            placeholder="https://"
+                                                                            value="{{ $cardButtonUrl }}"
+                                                                            data-card-field="button_url">
                                                                     </div>
-                                                                    <div class="col-12" data-field-item data-hay="pricing card tambahan badge">
-                                                                        <label class="form-label text-black">Badge (opsional)</label>
-                                                                        <input type="text" class="form-control" value="{{ $cardBadge }}" data-card-field="badge">
+                                                                    <div class="col-12" data-field-item
+                                                                        data-hay="pricing card tambahan badge">
+                                                                        <label class="form-label text-black">Badge
+                                                                            (opsional)</label>
+                                                                        <input type="text" class="form-control"
+                                                                            value="{{ $cardBadge }}"
+                                                                            data-card-field="badge">
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="alert alert-danger d-none mt-3 mb-0" role="alert" data-card-error></div>
+                                                                <div class="alert alert-danger d-none mt-3 mb-0"
+                                                                    role="alert" data-card-error></div>
                                                             </div>
 
                                                             <div class="col-12 col-lg-5">
                                                                 <div class="fw-semibold text-black mb-2">Preview</div>
-                                                                <div class="ticket-details {{ $wrapClass }} position-relative" data-extra-card-preview>
-                                                                    <div class="d-flex align-items-center justify-content-between gap-2">
-                                                                        <h3 class="mb-0" data-preview-title>{{ $cardTitle !== '' ? $cardTitle : 'Nama Paket' }}</h3>
-                                                                        <span class="badge bg-secondary @if ($cardActive) d-none @endif" data-preview-inactive>Nonaktif</span>
+                                                                <div class="ticket-details {{ $wrapClass }} position-relative"
+                                                                    data-extra-card-preview>
+                                                                    <div
+                                                                        class="d-flex align-items-center justify-content-between gap-2">
+                                                                        <h3 class="mb-0" data-preview-title>
+                                                                            {{ $cardTitle !== '' ? $cardTitle : 'Nama Paket' }}
+                                                                        </h3>
+                                                                        <span
+                                                                            class="badge bg-secondary @if ($cardActive) d-none @endif"
+                                                                            data-preview-inactive>Nonaktif</span>
                                                                     </div>
-                                                                    <p class="mb-1" data-preview-subtitle>{{ $cardSubtitle !== '' ? $cardSubtitle : 'Deskripsi singkat' }}</p>
+                                                                    <p class="mb-1" data-preview-subtitle>
+                                                                        {{ $cardSubtitle !== '' ? $cardSubtitle : 'Deskripsi singkat' }}
+                                                                    </p>
                                                                     <span>Starting at:</span>
                                                                     <div class="price">
-                                                                        <small data-preview-currency>{{ $currencySymbol }}</small><span data-preview-price>{{ $cardPrice !== '' ? $cardPrice : '0' }}</span>
+                                                                        <small
+                                                                            data-preview-currency>{{ $currencySymbol }}</small><span
+                                                                            data-preview-price>{{ $cardPrice !== '' ? $cardPrice : '0' }}</span>
                                                                     </div>
                                                                     <ul class="list-unstyled" data-preview-features>
                                                                         @foreach ($cardFeatures as $feature)
                                                                             @if (trim((string) $feature) !== '')
-                                                                                <li class="position-relative">{{ $feature }}</li>
+                                                                                <li class="position-relative">
+                                                                                    {{ $feature }}</li>
                                                                             @endif
                                                                         @endforeach
                                                                     </ul>
                                                                     <div class="generic-btn">
-                                                                        <a href="{{ $cardButtonUrl !== '' ? $cardButtonUrl : '#' }}" data-preview-cta-link>
-                                                                            <span data-preview-cta-text>{{ $cardButtonText !== '' ? $cardButtonText : 'BUY TICKET' }}</span>
+                                                                        <a href="{{ $cardButtonUrl !== '' ? $cardButtonUrl : '#' }}"
+                                                                            data-preview-cta-link>
+                                                                            <span
+                                                                                data-preview-cta-text>{{ $cardButtonText !== '' ? $cardButtonText : 'BUY TICKET' }}</span>
                                                                             <i class="fas fa-arrow-right"></i>
                                                                         </a>
                                                                     </div>
-                                                                    <div class="recomended-box @if ($cardBadge === '') d-none @endif" data-preview-badge>{{ $cardBadge }}</div>
+                                                                    <div class="recomended-box @if ($cardBadge === '') d-none @endif"
+                                                                        data-preview-badge>{{ $cardBadge }}</div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -718,12 +831,14 @@
                                             @endforeach
                                         </div>
 
-                                        <div class="alert alert-light border mt-3 mb-0 @if (count($extraCards) > 0) d-none @endif" data-extra-cards-empty>
+                                        <div class="alert alert-light border mt-3 mb-0 @if (count($extraCards) > 0) d-none @endif"
+                                            data-extra-cards-empty>
                                             Belum ada card tambahan.
                                         </div>
 
                                         <div class="d-flex justify-content-end mt-3">
-                                            <button type="button" class="btn btn-outline-primary btn-sm" data-extra-card-add>
+                                            <button type="button" class="btn btn-outline-primary btn-sm"
+                                                data-extra-card-add>
                                                 <i class="la la-plus" aria-hidden="true"></i>
                                                 Tambah Card
                                             </button>
@@ -731,50 +846,284 @@
                                     </div>
 
                                     <div class="row g-3 mt-3">
-                                        <div class="col-12" data-field-item data-hay="ticket pricing teks bawah bottom_text">
-                                            <label class="form-label text-black" for="pricing-bottom-text">Teks bawah</label>
-                                            <textarea
-                                                id="pricing-bottom-text"
-                                                name="contents[pricing][bottom_text]"
-                                                class="form-control @error('contents.pricing.bottom_text') is-invalid @enderror"
-                                                rows="3"
-                                                data-pricing-input
-                                                data-plan="section"
-                                                data-field="bottom_text"
-                                            >{{ $pricingBottomText }}</textarea>
+                                        <div class="col-12" data-field-item
+                                            data-hay="ticket pricing teks bawah bottom_text">
+                                            <label class="form-label text-black" for="pricing-bottom-text">Teks
+                                                bawah</label>
+                                            <textarea id="pricing-bottom-text" name="contents[pricing][bottom_text]"
+                                                class="form-control @error('contents.pricing.bottom_text') is-invalid @enderror" rows="3"
+                                                data-pricing-input data-plan="section" data-field="bottom_text">{{ $pricingBottomText }}</textarea>
                                             @error('contents.pricing.bottom_text')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
 
-                                        <div class="col-12 col-md-6" data-field-item data-hay="ticket pricing tombol bawah text bottom_button_text">
-                                            <label class="form-label text-black" for="pricing-bottom-button-text">Teks tombol bawah</label>
-                                            <input
-                                                id="pricing-bottom-button-text"
-                                                name="contents[pricing][bottom_button_text]"
-                                                type="text"
+                                        <div class="col-12 col-md-6" data-field-item
+                                            data-hay="ticket pricing tombol bawah text bottom_button_text">
+                                            <label class="form-label text-black" for="pricing-bottom-button-text">Teks
+                                                tombol bawah</label>
+                                            <input id="pricing-bottom-button-text"
+                                                name="contents[pricing][bottom_button_text]" type="text"
                                                 class="form-control @error('contents.pricing.bottom_button_text') is-invalid @enderror"
-                                                value="{{ $pricingBottomButtonText }}"
-                                            >
+                                                value="{{ $pricingBottomButtonText }}">
                                             @error('contents.pricing.bottom_button_text')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
 
-                                        <div class="col-12 col-md-6" data-field-item data-hay="ticket pricing tombol bawah url bottom_button_url">
-                                            <label class="form-label text-black" for="pricing-bottom-button-url">Link tombol bawah</label>
-                                            <input
-                                                id="pricing-bottom-button-url"
-                                                name="contents[pricing][bottom_button_url]"
-                                                type="url"
+                                        <div class="col-12 col-md-6" data-field-item
+                                            data-hay="ticket pricing tombol bawah url bottom_button_url">
+                                            <label class="form-label text-black" for="pricing-bottom-button-url">Link
+                                                tombol bawah</label>
+                                            <input id="pricing-bottom-button-url"
+                                                name="contents[pricing][bottom_button_url]" type="url"
                                                 class="form-control @error('contents.pricing.bottom_button_url') is-invalid @enderror"
-                                                value="{{ $pricingBottomButtonUrl }}"
-                                                placeholder="https://"
-                                            >
+                                                value="{{ $pricingBottomButtonUrl }}" placeholder="https://">
                                             @error('contents.pricing.bottom_button_url')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
+                                    </div>
+                                @elseif ($section === 'faq')
+                                    @php
+                                        $faq = $values['faq'] ?? [];
+
+                                        $faqItemsJson = old('contents.faq.items', $faq['items'] ?? '[]');
+                                        $faqItems = [];
+                                        if (is_string($faqItemsJson) && trim($faqItemsJson) !== '') {
+                                            $decoded = json_decode($faqItemsJson, true);
+                                            if (is_array($decoded)) {
+                                                $faqItems = $decoded;
+                                            }
+                                        }
+
+                                        $faqItemsStoreUrl = route('admin.konten-halaman.faq-items.store');
+                                        $faqItemsDestroyTpl = route('admin.konten-halaman.faq-items.destroy', [
+                                            'faqId' => '__ID__',
+                                        ]);
+
+                                        $faqItemsSorted = collect($faqItems)
+                                            ->filter(fn($v) => is_array($v) && isset($v['id']))
+                                            ->map(function (array $v) {
+                                                $v['id'] = (string) ($v['id'] ?? '');
+                                                $v['question'] = (string) ($v['question'] ?? '');
+                                                $v['answer'] = (string) ($v['answer'] ?? '');
+                                                $v['order'] = (int) ($v['order'] ?? 0);
+                                                $v['active'] = (string) ($v['active'] ?? '1');
+
+                                                return $v;
+                                            })
+                                            ->sortBy('order')
+                                            ->values()
+                                            ->all();
+                                    @endphp
+                                    <div data-faq-items data-field-item data-hay="faq items pertanyaan jawaban tambah hapus urutan status aktif">
+                                        <textarea class="d-none" name="contents[faq][items]" data-faq-items-storage>{{ $faqItemsJson }}</textarea>
+
+                                        <div
+                                            class="d-flex flex-column gap-3"
+                                            data-faq-items-list
+                                            data-store-url="{{ $faqItemsStoreUrl }}"
+                                            data-destroy-url-template="{{ $faqItemsDestroyTpl }}"
+                                        >
+                                            @foreach ($faqItemsSorted as $item)
+                                                <div class="pb-3 border-bottom" data-faq-item data-faq-id="{{ $item['id'] }}">
+                                                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                        <div class="fw-semibold text-black">FAQ <span data-faq-index>0</span></div>
+                                                        <button type="button" class="btn btn-outline-danger btn-xxs" data-faq-delete>
+                                                            <span class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true" data-faq-delete-spinner></span>
+                                                            <i class="la la-trash" aria-hidden="true"></i>
+                                                            Hapus
+                                                        </button>
+                                                    </div>
+
+                                                    <div class="row g-3 mt-1">
+                                                        <div class="col-12">
+                                                            <label class="form-label text-black">Pertanyaan</label>
+                                                            <input type="text" class="form-control" value="{{ $item['question'] }}" data-faq-field="question">
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <label class="form-label text-black">Jawaban</label>
+                                                            <textarea class="form-control" rows="4" data-faq-field="answer">{{ $item['answer'] }}</textarea>
+                                                        </div>
+                                                        <div class="col-12 col-md-6">
+                                                            <div class="fw-semibold text-black mb-2">Status</div>
+                                                            <div class="form-check form-switch m-0">
+                                                                <input
+                                                                    class="form-check-input"
+                                                                    type="checkbox"
+                                                                    role="switch"
+                                                                    @if ($item['active'] !== '0') checked @endif
+                                                                    data-faq-field="active"
+                                                                >
+                                                                <label class="form-check-label" data-faq-active-label>{{ $item['active'] !== '0' ? 'Aktif' : 'Nonaktif' }}</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <button type="button" class="btn btn-outline-primary btn-sm" data-faq-add>
+                                                <span class="spinner-border spinner-border-sm d-none me-2" role="status" aria-hidden="true" data-faq-add-spinner></span>
+                                                <i class="la la-plus" aria-hidden="true"></i>
+                                                Tambah FAQ
+                                            </button>
+                                        </div>
+
+                                        <div class="alert alert-light border mt-3 mb-0 @if (count($faqItemsSorted) > 0) d-none @endif" data-faq-items-empty>
+                                            Belum ada FAQ.
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row g-3 mt-3">
+                                        @foreach ($fields as $field)
+                                            @php
+                                                $key = $field['key'];
+                                            @endphp
+                                            @continue($key === 'items')
+                                            @php
+                                                $name = "contents[{$section}][{$key}]";
+                                                $oldKey = "contents.{$section}.{$key}";
+                                                $val = old($oldKey, $values[$section][$key] ?? '');
+                                                $type = $field['type'] ?? 'textarea';
+                                                $rows = (int) ($field['rows'] ?? 4);
+                                                $placeholder = $field['placeholder'] ?? null;
+                                                $help = $field['help'] ?? null;
+
+                                                $rawVal = (string) $val;
+                                                $previewUrl = '';
+                                                if ($rawVal !== '') {
+                                                    $previewUrl = preg_match('/^https?:\\/\\//i', $rawVal)
+                                                        ? $rawVal
+                                                        : asset(ltrim($rawVal, '/'));
+                                                }
+
+                                                $colClass = match ($type) {
+                                                    'textarea' => 'col-12',
+                                                    'image' => 'col-12 col-xxl-6',
+                                                    'number' => 'col-12 col-md-6 col-xxl-4',
+                                                    default => 'col-12 col-md-6',
+                                                };
+                                            @endphp
+                                            <div class="{{ $colClass }}" data-field-item
+                                                data-hay="{{ strtolower($field['label'] . ' ' . $section . ' ' . $key) }}">
+                                                @if ($type === 'image')
+                                                    <div class="border rounded p-3 h-100" data-image-field
+                                                        data-page="{{ $page ?? 'home' }}"
+                                                        data-section="{{ $section }}"
+                                                        data-key="{{ $key }}">
+                                                        <div
+                                                            class="d-flex flex-wrap align-items-start justify-content-between gap-2 mb-2">
+                                                            <div>
+                                                                <div class="form-label text-black mb-0">
+                                                                    {{ $field['label'] }}</div>
+                                                                @if ($help)
+                                                                    <div class="text-muted small">{{ $help }}
+                                                                    </div>
+                                                                @endif
+                                                            </div>
+                                                            <button type="button" class="btn btn-outline-danger btn-xxs"
+                                                                data-image-clear>
+                                                                <i class="la la-trash" aria-hidden="true"></i>
+                                                                Hapus
+                                                            </button>
+                                                        </div>
+
+                                                        <input type="hidden" name="{{ $name }}"
+                                                            value="{{ $rawVal }}" data-image-value>
+
+                                                        <div class="row g-3">
+                                                            <div class="col-12 col-md-7">
+                                                                <div class="border rounded p-3 text-center bg-light h-100 d-flex flex-column justify-content-center"
+                                                                    role="button" tabindex="0" data-image-dropzone>
+                                                                    <div class="fw-semibold text-black">Upload gambar</div>
+                                                                    <div class="text-muted small">Klik atau drag & drop
+                                                                    </div>
+                                                                    <div class="mt-2 small text-muted" data-image-status>
+                                                                    </div>
+                                                                </div>
+                                                                <input type="file" class="d-none"
+                                                                    accept="image/jpeg,image/png" data-image-file>
+                                                                <div class="progress mt-3 d-none" style="height: 8px;"
+                                                                    data-image-progress>
+                                                                    <div class="progress-bar" role="progressbar"
+                                                                        style="width: 0%" aria-valuemin="0"
+                                                                        aria-valuemax="100" aria-valuenow="0"
+                                                                        data-image-progress-bar></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-md-5">
+                                                                <div
+                                                                    class="ratio ratio-16x9 bg-light border rounded overflow-hidden">
+                                                                    <img src="{{ $previewUrl }}"
+                                                                        alt="Preview {{ $field['label'] }}"
+                                                                        class="w-100 h-100 object-fit-cover @if (!$previewUrl) d-none @endif"
+                                                                        data-image-preview>
+                                                                    <div class="d-flex align-items-center justify-content-center text-muted small @if ($previewUrl) d-none @endif"
+                                                                        data-image-empty>
+                                                                        Belum ada gambar
+                                                                    </div>
+                                                                </div>
+                                                                <div class="d-flex flex-wrap gap-2 mt-2">
+                                                                    <a class="btn btn-outline-secondary btn-xxs @if (!$previewUrl) disabled @endif"
+                                                                        href="{{ $previewUrl ?: '#' }}" target="_blank"
+                                                                        rel="noopener" data-image-open>
+                                                                        <i class="la la-external-link"
+                                                                            aria-hidden="true"></i>
+                                                                        Buka
+                                                                    </a>
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-secondary btn-xxs"
+                                                                        data-image-copy>
+                                                                        <i class="la la-copy" aria-hidden="true"></i>
+                                                                        Copy path
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <label class="form-label text-black"
+                                                                    for="{{ $section }}-{{ $key }}-path">Path</label>
+                                                                <input
+                                                                    id="{{ $section }}-{{ $key }}-path"
+                                                                    type="text" class="form-control"
+                                                                    value="{{ $rawVal }}"
+                                                                    placeholder="Contoh: assetsAdmin/uploads/konten-halaman/…"
+                                                                    data-image-path>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @else
+                                                    <label class="form-label text-black"
+                                                        for="{{ $section }}-{{ $key }}">
+                                                        {{ $field['label'] }}
+                                                    </label>
+                                                    @if ($type === 'textarea')
+                                                        <textarea id="{{ $section }}-{{ $key }}" name="{{ $name }}"
+                                                            class="form-control @error($oldKey) is-invalid @enderror" rows="{{ $rows }}"
+                                                            @if ($placeholder) placeholder="{{ $placeholder }}" @endif>{{ $val }}</textarea>
+                                                    @else
+                                                        <input id="{{ $section }}-{{ $key }}"
+                                                            name="{{ $name }}"
+                                                            type="{{ $type === 'url' ? 'url' : ($type === 'number' ? 'number' : 'text') }}"
+                                                            class="form-control @error($oldKey) is-invalid @enderror"
+                                                            value="{{ $rawVal }}"
+                                                            @if ($placeholder) placeholder="{{ $placeholder }}" @endif
+                                                            @if ($type === 'number') inputmode="numeric" @endif>
+                                                    @endif
+
+                                                    @if ($help)
+                                                        <div class="text-muted small">{{ $help }}</div>
+                                                    @endif
+
+                                                    @error($oldKey)
+                                                        <div class="invalid-feedback">{{ $message }}</div>
+                                                    @enderror
+                                                @endif
+                                            </div>
+                                        @endforeach
                                     </div>
                                 @else
                                     <div class="row g-3">
@@ -792,7 +1141,9 @@
                                                 $rawVal = (string) $val;
                                                 $previewUrl = '';
                                                 if ($rawVal !== '') {
-                                                    $previewUrl = preg_match('/^https?:\\/\\//i', $rawVal) ? $rawVal : asset(ltrim($rawVal, '/'));
+                                                    $previewUrl = preg_match('/^https?:\\/\\//i', $rawVal)
+                                                        ? $rawVal
+                                                        : asset(ltrim($rawVal, '/'));
                                                 }
 
                                                 $colClass = match ($type) {
@@ -802,126 +1153,110 @@
                                                     default => 'col-12 col-md-6',
                                                 };
                                             @endphp
-                                            <div
-                                                class="{{ $colClass }}"
-                                                data-field-item
-                                                data-hay="{{ strtolower($field['label'] . ' ' . $section . ' ' . $key) }}"
-                                            >
+                                            <div class="{{ $colClass }}" data-field-item
+                                                data-hay="{{ strtolower($field['label'] . ' ' . $section . ' ' . $key) }}">
                                                 @if ($type === 'image')
-                                                    <div
-                                                        class="border rounded p-3 h-100"
-                                                        data-image-field
+                                                    <div class="border rounded p-3 h-100" data-image-field
                                                         data-page="{{ $page ?? 'home' }}"
                                                         data-section="{{ $section }}"
-                                                        data-key="{{ $key }}"
-                                                    >
-                                                        <div class="d-flex flex-wrap align-items-start justify-content-between gap-2 mb-2">
+                                                        data-key="{{ $key }}">
+                                                        <div
+                                                            class="d-flex flex-wrap align-items-start justify-content-between gap-2 mb-2">
                                                             <div>
-                                                                <div class="form-label text-black mb-0">{{ $field['label'] }}</div>
+                                                                <div class="form-label text-black mb-0">
+                                                                    {{ $field['label'] }}</div>
                                                                 @if ($help)
-                                                                    <div class="text-muted small">{{ $help }}</div>
+                                                                    <div class="text-muted small">{{ $help }}
+                                                                    </div>
                                                                 @endif
                                                             </div>
-                                                            <button type="button" class="btn btn-outline-danger btn-xxs" data-image-clear>
+                                                            <button type="button" class="btn btn-outline-danger btn-xxs"
+                                                                data-image-clear>
                                                                 <i class="la la-trash" aria-hidden="true"></i>
                                                                 Hapus
                                                             </button>
                                                         </div>
 
-                                                        <input type="hidden" name="{{ $name }}" value="{{ $rawVal }}" data-image-value>
+                                                        <input type="hidden" name="{{ $name }}"
+                                                            value="{{ $rawVal }}" data-image-value>
 
                                                         <div class="row g-3">
                                                             <div class="col-12 col-md-7">
-                                                                <div
-                                                                    class="border rounded p-3 text-center bg-light h-100 d-flex flex-column justify-content-center"
-                                                                    role="button"
-                                                                    tabindex="0"
-                                                                    data-image-dropzone
-                                                                >
+                                                                <div class="border rounded p-3 text-center bg-light h-100 d-flex flex-column justify-content-center"
+                                                                    role="button" tabindex="0" data-image-dropzone>
                                                                     <div class="fw-semibold text-black">Upload gambar</div>
-                                                                    <div class="text-muted small">Klik atau drag & drop</div>
-                                                                    <div class="mt-2 small text-muted" data-image-status></div>
+                                                                    <div class="text-muted small">Klik atau drag & drop
+                                                                    </div>
+                                                                    <div class="mt-2 small text-muted" data-image-status>
+                                                                    </div>
                                                                 </div>
-                                                                <input type="file" class="d-none" accept="image/jpeg,image/png" data-image-file>
-                                                                <div class="progress mt-3 d-none" style="height: 8px;" data-image-progress>
-                                                                    <div
-                                                                        class="progress-bar"
-                                                                        role="progressbar"
-                                                                        style="width: 0%"
-                                                                        aria-valuemin="0"
-                                                                        aria-valuemax="100"
-                                                                        aria-valuenow="0"
-                                                                        data-image-progress-bar
-                                                                    ></div>
+                                                                <input type="file" class="d-none"
+                                                                    accept="image/jpeg,image/png" data-image-file>
+                                                                <div class="progress mt-3 d-none" style="height: 8px;"
+                                                                    data-image-progress>
+                                                                    <div class="progress-bar" role="progressbar"
+                                                                        style="width: 0%" aria-valuemin="0"
+                                                                        aria-valuemax="100" aria-valuenow="0"
+                                                                        data-image-progress-bar></div>
                                                                 </div>
                                                             </div>
                                                             <div class="col-12 col-md-5">
-                                                                <div class="ratio ratio-16x9 bg-light border rounded overflow-hidden">
-                                                                    <img
-                                                                        src="{{ $previewUrl }}"
+                                                                <div
+                                                                    class="ratio ratio-16x9 bg-light border rounded overflow-hidden">
+                                                                    <img src="{{ $previewUrl }}"
                                                                         alt="Preview {{ $field['label'] }}"
                                                                         class="w-100 h-100 object-fit-cover @if (!$previewUrl) d-none @endif"
-                                                                        data-image-preview
-                                                                    >
-                                                                    <div
-                                                                        class="d-flex align-items-center justify-content-center text-muted small @if ($previewUrl) d-none @endif"
-                                                                        data-image-empty
-                                                                    >
+                                                                        data-image-preview>
+                                                                    <div class="d-flex align-items-center justify-content-center text-muted small @if ($previewUrl) d-none @endif"
+                                                                        data-image-empty>
                                                                         Belum ada gambar
                                                                     </div>
                                                                 </div>
                                                                 <div class="d-flex flex-wrap gap-2 mt-2">
-                                                                    <a
-                                                                        class="btn btn-outline-secondary btn-xxs @if (!$previewUrl) disabled @endif"
-                                                                        href="{{ $previewUrl ?: '#' }}"
-                                                                        target="_blank"
-                                                                        rel="noopener"
-                                                                        data-image-open
-                                                                    >
-                                                                        <i class="la la-external-link" aria-hidden="true"></i>
+                                                                    <a class="btn btn-outline-secondary btn-xxs @if (!$previewUrl) disabled @endif"
+                                                                        href="{{ $previewUrl ?: '#' }}" target="_blank"
+                                                                        rel="noopener" data-image-open>
+                                                                        <i class="la la-external-link"
+                                                                            aria-hidden="true"></i>
                                                                         Buka
                                                                     </a>
-                                                                    <button type="button" class="btn btn-outline-secondary btn-xxs" data-image-copy>
+                                                                    <button type="button"
+                                                                        class="btn btn-outline-secondary btn-xxs"
+                                                                        data-image-copy>
                                                                         <i class="la la-copy" aria-hidden="true"></i>
                                                                         Copy path
                                                                     </button>
                                                                 </div>
                                                             </div>
                                                             <div class="col-12">
-                                                                <label class="form-label text-black" for="{{ $section }}-{{ $key }}-path">Path</label>
+                                                                <label class="form-label text-black"
+                                                                    for="{{ $section }}-{{ $key }}-path">Path</label>
                                                                 <input
                                                                     id="{{ $section }}-{{ $key }}-path"
-                                                                    type="text"
-                                                                    class="form-control"
+                                                                    type="text" class="form-control"
                                                                     value="{{ $rawVal }}"
                                                                     placeholder="Contoh: assetsAdmin/uploads/konten-halaman/…"
-                                                                    data-image-path
-                                                                >
+                                                                    data-image-path>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 @else
-                                                    <label class="form-label text-black" for="{{ $section }}-{{ $key }}">
+                                                    <label class="form-label text-black"
+                                                        for="{{ $section }}-{{ $key }}">
                                                         {{ $field['label'] }}
                                                     </label>
                                                     @if ($type === 'textarea')
-                                                        <textarea
-                                                            id="{{ $section }}-{{ $key }}"
-                                                            name="{{ $name }}"
-                                                            class="form-control @error($oldKey) is-invalid @enderror"
-                                                            rows="{{ $rows }}"
-                                                            @if ($placeholder) placeholder="{{ $placeholder }}" @endif
-                                                        >{{ $val }}</textarea>
+                                                        <textarea id="{{ $section }}-{{ $key }}" name="{{ $name }}"
+                                                            class="form-control @error($oldKey) is-invalid @enderror" rows="{{ $rows }}"
+                                                            @if ($placeholder) placeholder="{{ $placeholder }}" @endif>{{ $val }}</textarea>
                                                     @else
-                                                        <input
-                                                            id="{{ $section }}-{{ $key }}"
+                                                        <input id="{{ $section }}-{{ $key }}"
                                                             name="{{ $name }}"
                                                             type="{{ $type === 'url' ? 'url' : ($type === 'number' ? 'number' : 'text') }}"
                                                             class="form-control @error($oldKey) is-invalid @enderror"
                                                             value="{{ $rawVal }}"
                                                             @if ($placeholder) placeholder="{{ $placeholder }}" @endif
-                                                            @if ($type === 'number') inputmode="numeric" @endif
-                                                        >
+                                                            @if ($type === 'number') inputmode="numeric" @endif>
                                                     @endif
 
                                                     @if ($help)
@@ -950,12 +1285,8 @@
                 <div class="card-body d-flex flex-wrap align-items-center justify-content-between gap-2">
                     <div class="text-muted small">Perubahan tersimpan ke database saat menekan Simpan.</div>
                     <button type="submit" class="btn btn-primary" id="save-btn">
-                        <span
-                            class="spinner-border spinner-border-sm d-none me-2"
-                            role="status"
-                            aria-hidden="true"
-                            id="save-spinner"
-                        ></span>
+                        <span class="spinner-border spinner-border-sm d-none me-2" role="status" aria-hidden="true"
+                            id="save-spinner"></span>
                         Simpan
                     </button>
                 </div>
@@ -963,7 +1294,7 @@
         </form>
 
         <script>
-            (function () {
+            window.addEventListener('DOMContentLoaded', () => {
                 const csrfToken = @json(csrf_token());
                 const page = @json($page ?? 'home');
                 const uploadUrl = @json(route('admin.konten-halaman.upload-image'));
@@ -1008,9 +1339,18 @@
                 function isImageFile(file) {
                     const okType = ['image/jpeg', 'image/png'].includes(file.type);
                     const okSize = file.size <= 2 * 1024 * 1024;
-                    if (!okType) return { ok: false, message: 'Format harus JPEG atau PNG.' };
-                    if (!okSize) return { ok: false, message: 'Ukuran maksimal 2MB.' };
-                    return { ok: true, message: '' };
+                    if (!okType) return {
+                        ok: false,
+                        message: 'Format harus JPEG atau PNG.'
+                    };
+                    if (!okSize) return {
+                        ok: false,
+                        message: 'Ukuran maksimal 2MB.'
+                    };
+                    return {
+                        ok: true,
+                        message: ''
+                    };
                 }
 
                 function buildAssetUrl(path) {
@@ -1034,7 +1374,9 @@
                     area.style.left = '-9999px';
                     document.body.appendChild(area);
                     area.select();
-                    try { document.execCommand('copy'); } catch (_) {}
+                    try {
+                        document.execCommand('copy');
+                    } catch (_) {}
                     area.remove();
                 }
 
@@ -1124,7 +1466,9 @@
 
                         xhr.onload = () => {
                             let payload = null;
-                            try { payload = JSON.parse(xhr.responseText || '{}'); } catch (_) {}
+                            try {
+                                payload = JSON.parse(xhr.responseText || '{}');
+                            } catch (_) {}
 
                             if (xhr.status >= 200 && xhr.status < 300 && payload && payload.data) {
                                 if (progressBar) progressBar.classList.add('bg-success');
@@ -1142,7 +1486,9 @@
                                 resetProgress();
                                 if (statusEl) statusEl.textContent = '';
                             }, 900);
-                            try { URL.revokeObjectURL(objectUrl); } catch (_) {}
+                            try {
+                                URL.revokeObjectURL(objectUrl);
+                            } catch (_) {}
                         };
 
                         xhr.onerror = () => {
@@ -1220,7 +1566,8 @@
                     };
 
                     function getInput(plan, field) {
-                        return document.querySelector(`[data-pricing-input][data-plan="${plan}"][data-field="${field}"]`);
+                        return document.querySelector(
+                            `[data-pricing-input][data-plan="${plan}"][data-field="${field}"]`);
                     }
 
                     function getInputValue(plan, field) {
@@ -1244,7 +1591,8 @@
 
                     function syncFeaturesStorage(plan) {
                         const storage = document.querySelector(`[data-features-storage][data-plan="${plan}"]`);
-                        const inputs = Array.from(document.querySelectorAll(`[data-features-input][data-plan="${plan}"]`));
+                        const inputs = Array.from(document.querySelectorAll(
+                            `[data-features-input][data-plan="${plan}"]`));
                         if (!storage) return [];
 
                         const values = inputs
@@ -1256,7 +1604,8 @@
                     }
 
                     function renumberFeatures(plan) {
-                        const rows = Array.from(document.querySelectorAll(`[data-features-list][data-plan="${plan}"] [data-feature-row]`));
+                        const rows = Array.from(document.querySelectorAll(
+                            `[data-features-list][data-plan="${plan}"] [data-feature-row]`));
                         rows.forEach((row, i) => {
                             const indexEl = row.querySelector('[data-feature-index]');
                             if (indexEl) indexEl.textContent = String(i + 1);
@@ -1301,16 +1650,20 @@
                         const quickStatus = document.querySelector(`[data-pricing-quick-status][data-plan="${plan}"]`);
                         if (quickStatus) setText(quickStatus, isActive ? 'Aktif' : 'Nonaktif');
 
-                        const activeLabel = document.querySelector(`label.form-check-label[for="pricing-${plan}-active"]`);
+                        const activeLabel = document.querySelector(
+                            `label.form-check-label[for="pricing-${plan}-active"]`);
                         if (activeLabel) setText(activeLabel, isActive ? 'Aktif' : 'Nonaktif');
 
                         const features = syncFeaturesStorage(plan);
                         const list = previewWrap.querySelector('[data-preview-features]');
                         if (list) {
-                            list.innerHTML = features.map((v) => `<li class="position-relative">${escapeHtml(v)}</li>`).join('');
+                            list.innerHTML = features.map((v) => `<li class="position-relative">${escapeHtml(v)}</li>`)
+                                .join('');
                         }
 
-                        return { isActive };
+                        return {
+                            isActive
+                        };
                     }
 
                     function addFeatureRow(plan, value) {
@@ -1344,11 +1697,13 @@
                         const removeBtn = e.target?.closest?.('[data-features-remove]');
                         if (!removeBtn) return;
                         const row = removeBtn.closest('[data-feature-row]');
-                        const plan = row?.querySelector?.('[data-features-input]')?.getAttribute?.('data-plan') || '';
+                        const plan = row?.querySelector?.('[data-features-input]')?.getAttribute?.(
+                            'data-plan') || '';
                         if (row) row.remove();
 
                         if (plan) {
-                            const remaining = document.querySelectorAll(`[data-features-list][data-plan="${plan}"] [data-feature-row]`);
+                            const remaining = document.querySelectorAll(
+                                `[data-features-list][data-plan="${plan}"] [data-feature-row]`);
                             if (remaining.length === 0) addFeatureRow(plan, '');
                             renumberFeatures(plan);
                             updatePlanPreview(plan);
@@ -1515,7 +1870,8 @@
                     }
 
                     function getWrapClass(cardEl) {
-                        const raw = String(cardEl.dataset.wrapClass || cardEl.getAttribute('data-wrap-class') || '').trim();
+                        const raw = String(cardEl.dataset.wrapClass || cardEl.getAttribute('data-wrap-class') || '')
+                            .trim();
                         if (raw) return raw;
                         const idx = Array.from(list.querySelectorAll('[data-extra-card]')).indexOf(cardEl);
                         const normalized = idx < 0 ? 0 : idx;
@@ -1529,7 +1885,8 @@
                         const activeEl = getField(cardEl, 'active');
                         const isActive = activeEl && activeEl.type === 'checkbox' && activeEl.checked;
                         const title = String(getField(cardEl, 'title')?.value || '').trim() || 'Nama Paket';
-                        const subtitle = String(getField(cardEl, 'subtitle')?.value || '').trim() || 'Deskripsi singkat';
+                        const subtitle = String(getField(cardEl, 'subtitle')?.value || '').trim() ||
+                        'Deskripsi singkat';
                         const price = String(getField(cardEl, 'price')?.value || '').trim() || '0';
                         const currencyCode = String(getField(cardEl, 'currency')?.value || 'USD').trim() || 'USD';
                         const currencySymbol = currencySymbolByCode[currencyCode] || '$';
@@ -1561,7 +1918,8 @@
                         const features = syncExtraFeaturesStorage(cardEl);
                         const listEl = previewWrap.querySelector('[data-preview-features]');
                         if (listEl) {
-                            listEl.innerHTML = features.map((v) => `<li class="position-relative">${escapeHtml(v)}</li>`).join('');
+                            listEl.innerHTML = features.map((v) =>
+                                `<li class="position-relative">${escapeHtml(v)}</li>`).join('');
                         }
 
                         const wrapClass = getWrapClass(cardEl);
@@ -1599,7 +1957,10 @@
                         if (!id) return;
                         const idx = cards.findIndex((c) => String(c.id || '') === id);
                         if (idx === -1) cards.push(card);
-                        else cards[idx] = { ...cards[idx], ...card };
+                        else cards[idx] = {
+                            ...cards[idx],
+                            ...card
+                        };
                         syncStorage();
                     }
 
@@ -1622,7 +1983,8 @@
                         const featureRows = features.length > 0 ? features : [''];
                         const featuresText = featureRows.map((v) => String(v ?? '')).join('\n');
                         const wrapClass =
-                            wrapCycle[(Array.from(list.querySelectorAll('[data-extra-card]')).length + 3) % wrapCycle.length] || wrapCycle[0];
+                            wrapCycle[(Array.from(list.querySelectorAll('[data-extra-card]')).length + 3) % wrapCycle
+                                .length] || wrapCycle[0];
                         const currencyCode = String(card.currency || 'USD');
                         const currencySymbol = currencySymbolByCode[currencyCode] || '$';
                         const isActive = String(card.active || '0') !== '0';
@@ -1692,14 +2054,14 @@
                                                 ${featureRows
                                                     .map(
                                                         (v) => `
-                                                    <div class="input-group" data-extra-feature-row>
-                                                        <span class="input-group-text" data-extra-feature-index>0</span>
-                                                        <input type="text" class="form-control" value="${escapeHtml(v ?? '')}" data-extra-features-input>
-                                                        <button type="button" class="btn btn-outline-danger" data-extra-features-remove>
-                                                            <i class="la la-trash" aria-hidden="true"></i>
-                                                        </button>
-                                                    </div>
-                                                `
+                                                            <div class="input-group" data-extra-feature-row>
+                                                                <span class="input-group-text" data-extra-feature-index>0</span>
+                                                                <input type="text" class="form-control" value="${escapeHtml(v ?? '')}" data-extra-features-input>
+                                                                <button type="button" class="btn btn-outline-danger" data-extra-features-remove>
+                                                                    <i class="la la-trash" aria-hidden="true"></i>
+                                                                </button>
+                                                            </div>
+                                                        `
                                                     )
                                                     .join('')}
                                             </div>
@@ -1846,7 +2208,10 @@
                             updateExtraPreview(el);
                             upsertCard(card);
                             setStatus(el, 'Tersimpan', false);
-                            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            el.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center'
+                            });
                         } catch (_) {
                             pushNotice('danger', 'Gagal', 'Card tidak berhasil ditambahkan.');
                         } finally {
@@ -1945,6 +2310,303 @@
                     });
                 })();
 
+                (function wireFaqItems() {
+                    const root = document.querySelector('[data-faq-items]');
+                    if (!root) return;
+                    root.dataset.faqWired = '1';
+
+                    const storage = root.querySelector('[data-faq-items-storage]');
+                    const list = root.querySelector('[data-faq-items-list]');
+                    const empty = root.querySelector('[data-faq-items-empty]');
+                    const addBtn = root.querySelector('[data-faq-add]');
+                    const addSpinner = root.querySelector('[data-faq-add-spinner]');
+
+                    if (!storage || !list) return;
+
+                    const storeUrl = String(list.dataset.storeUrl || '');
+                    const destroyTpl = String(list.dataset.destroyUrlTemplate || '');
+
+                    function parseJson(raw, fallback) {
+                        try {
+                            const v = JSON.parse(String(raw || ''));
+                            return Array.isArray(v) ? v : fallback;
+                        } catch (_) {
+                            return fallback;
+                        }
+                    }
+
+                    function normalizeItem(v) {
+                        const obj = v && typeof v === 'object' ? v : {};
+                        const id = String(obj.id || '');
+                        return {
+                            id,
+                            question: String(obj.question || ''),
+                            answer: String(obj.answer || ''),
+                            order: Number.isFinite(Number(obj.order)) ? Number(obj.order) : 0,
+                            active: String(obj.active ?? '1') === '0' ? '0' : '1',
+                        };
+                    }
+
+                    let items = parseJson(storage.value, []).map(normalizeItem).filter((v) => v.id);
+
+                    function sortItems() {
+                        items.sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0));
+                    }
+
+                    function syncStorage() {
+                        storage.value = JSON.stringify(items);
+                        if (empty) empty.classList.toggle('d-none', items.length > 0);
+                    }
+
+                    function urlFromTemplate(tpl, id) {
+                        return tpl.replace('__ID__', encodeURIComponent(String(id || '')));
+                    }
+
+                    function setAdding(on) {
+                        if (addBtn) addBtn.disabled = !!on;
+                        if (addSpinner) addSpinner.classList.toggle('d-none', !on);
+                    }
+
+                    function setItemActiveLabel(itemEl) {
+                        const input = itemEl.querySelector('[data-faq-field="active"]');
+                        const label = itemEl.querySelector('[data-faq-active-label]');
+                        if (!input || !label) return;
+                        label.textContent = input.checked ? 'Aktif' : 'Nonaktif';
+                    }
+
+                    function renderItem(item, index) {
+                        const el = document.createElement('div');
+                        el.className = 'pb-3 border-bottom';
+                        el.setAttribute('data-faq-item', '');
+                        el.setAttribute('data-faq-id', String(item.id || ''));
+                        el.innerHTML = `
+                            <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                <div class="fw-semibold text-black">FAQ <span data-faq-index>${escapeHtml(String(index + 1))}</span></div>
+                                <button type="button" class="btn btn-outline-danger btn-xxs" data-faq-delete>
+                                    <span class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true" data-faq-delete-spinner></span>
+                                    <i class="la la-trash" aria-hidden="true"></i>
+                                    Hapus
+                                </button>
+                            </div>
+
+                            <div class="row g-3 mt-1">
+                                <div class="col-12">
+                                    <label class="form-label text-black">Pertanyaan</label>
+                                    <input type="text" class="form-control" value="${escapeHtml(item.question || '')}" data-faq-field="question">
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label text-black">Jawaban</label>
+                                    <textarea class="form-control" rows="4" data-faq-field="answer">${escapeHtml(item.answer || '')}</textarea>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="fw-semibold text-black mb-2">Status</div>
+                                    <div class="form-check form-switch m-0">
+                                        <input class="form-check-input" type="checkbox" role="switch" ${String(item.active || '1') === '0' ? '' : 'checked'} data-faq-field="active">
+                                        <label class="form-check-label" data-faq-active-label>${String(item.active || '1') === '0' ? 'Nonaktif' : 'Aktif'}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        setItemActiveLabel(el);
+                        return el;
+                    }
+
+                    function rerender() {
+                        sortItems();
+                        items = items.map((v, idx) => ({
+                            ...v,
+                            order: idx + 1
+                        }));
+                        list.innerHTML = '';
+                        items.forEach((item, idx) => list.appendChild(renderItem(item, idx)));
+                        syncStorage();
+                    }
+
+                    function upsertFromDom(itemEl) {
+                        const id = String(itemEl?.getAttribute?.('data-faq-id') || '');
+                        if (!id) return;
+                        const q = String(itemEl.querySelector('[data-faq-field="question"]')?.value || '');
+                        const a = String(itemEl.querySelector('[data-faq-field="answer"]')?.value || '');
+                        const activeEl = itemEl.querySelector('[data-faq-field="active"]');
+                        const active = activeEl && activeEl.type === 'checkbox' && activeEl.checked ? '1' : '0';
+                        const idx = items.findIndex((v) => v.id === id);
+                        if (idx === -1) return;
+                        items[idx] = {
+                            ...items[idx],
+                            question: q,
+                            answer: a,
+                            active
+                        };
+                        setItemActiveLabel(itemEl);
+                        syncStorage();
+                    }
+
+                    async function addNewItem() {
+                        setAdding(true);
+                        const nextOrder = items.length + 1;
+                        try {
+                            if (!storeUrl) {
+                                throw new Error('FAQ_STORE_URL_MISSING');
+                            }
+
+                            const res = await fetch(storeUrl, {
+                                method: 'POST',
+                                credentials: 'same-origin',
+                                headers: {
+                                    Accept: 'application/json',
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': csrfToken,
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                },
+                                body: JSON.stringify({
+                                    question: '',
+                                    answer: '',
+                                    order: nextOrder,
+                                    active: '1',
+                                }),
+                            });
+
+                            const contentType = String(res.headers.get('content-type') || '');
+                            const json = await res.json().catch(() => ({}));
+                            if (!res.ok || !contentType.includes('application/json') || !json || !json.data) {
+                                if (contentType.includes('text/html')) {
+                                    throw new Error('FAQ_SESSION_EXPIRED');
+                                }
+                                throw new Error('FAQ_STORE_FAILED');
+                            }
+
+                            const item = normalizeItem(json.data);
+                            if (!item.id) {
+                                throw new Error('FAQ_STORE_INVALID');
+                            }
+
+                            items = items.filter((v) => v.id !== item.id);
+                            items.push({
+                                ...item,
+                                order: nextOrder
+                            });
+                            rerender();
+
+                            const newEl = list.querySelector('[data-faq-item]:last-child');
+                            if (newEl) {
+                                newEl.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'center'
+                                });
+                                const input = newEl.querySelector('[data-faq-field="question"]');
+                                if (input && input.focus) input.focus();
+                            }
+                        } catch (_) {
+                            const id = (function () {
+                                if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+                                    return `local_${window.crypto.randomUUID()}`;
+                                }
+                                return `local_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+                            })();
+
+                            items.push({
+                                id,
+                                question: '',
+                                answer: '',
+                                order: nextOrder,
+                                active: '1',
+                            });
+                            rerender();
+
+                            const newEl = list.querySelector('[data-faq-item]:last-child');
+                            if (newEl) {
+                                newEl.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'center'
+                                });
+                                const input = newEl.querySelector('[data-faq-field="question"]');
+                                if (input && input.focus) input.focus();
+                            }
+
+                            pushNotice('warning', 'Perhatian', 'FAQ ditambahkan sementara. Tekan Simpan untuk menyimpan ke database.');
+                        } finally {
+                            setAdding(false);
+                        }
+                    }
+
+                    root.addEventListener('click', (e) => {
+                        const btn = e.target?.closest?.('[data-faq-add]');
+                        if (!btn) return;
+                        e.preventDefault?.();
+                        addNewItem();
+                    });
+
+                    list.addEventListener('input', (e) => {
+                        const itemEl = e.target?.closest?.('[data-faq-item]');
+                        if (!itemEl) return;
+                        upsertFromDom(itemEl);
+                    });
+
+                    list.addEventListener('change', (e) => {
+                        const itemEl = e.target?.closest?.('[data-faq-item]');
+                        if (!itemEl) return;
+                        upsertFromDom(itemEl);
+                    });
+
+                    list.addEventListener('click', async (e) => {
+                        const btn = e.target?.closest?.('[data-faq-delete]');
+                        if (!btn) return;
+
+                        const itemEl = btn.closest('[data-faq-item]');
+                        const id = String(itemEl?.getAttribute('data-faq-id') || '');
+                        if (!itemEl || !id) return;
+
+                        if (!confirm('Hapus FAQ ini?')) return;
+
+                        if (id.startsWith('local_')) {
+                            items = items.filter((v) => v.id !== id);
+                            rerender();
+                            pushNotice('success', 'Berhasil', 'FAQ berhasil dihapus.');
+                            return;
+                        }
+
+                        const url = urlFromTemplate(destroyTpl, id);
+                        if (!url) {
+                            pushNotice('danger', 'Gagal', 'Endpoint hapus FAQ tidak ditemukan.');
+                            return;
+                        }
+
+                        const spinner = btn.querySelector('[data-faq-delete-spinner]');
+                        btn.disabled = true;
+                        if (spinner) spinner.classList.remove('d-none');
+
+                        try {
+                            const res = await fetch(url, {
+                                method: 'DELETE',
+                                credentials: 'same-origin',
+                                headers: {
+                                    Accept: 'application/json',
+                                    'X-CSRF-TOKEN': csrfToken,
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                },
+                            });
+
+                            const contentType = String(res.headers.get('content-type') || '');
+                            if (!res.ok || !contentType.includes('application/json')) {
+                                pushNotice('danger', 'Gagal', 'FAQ tidak berhasil dihapus.');
+                                btn.disabled = false;
+                                if (spinner) spinner.classList.add('d-none');
+                                return;
+                            }
+
+                            items = items.filter((v) => v.id !== id);
+                            rerender();
+                            pushNotice('success', 'Berhasil', 'FAQ berhasil dihapus.');
+                        } catch (_) {
+                            pushNotice('danger', 'Gagal', 'FAQ tidak berhasil dihapus.');
+                            btn.disabled = false;
+                            if (spinner) spinner.classList.add('d-none');
+                        }
+                    });
+
+                    rerender();
+                })();
+
                 if (fieldSearch) {
                     const items = Array.from(document.querySelectorAll('[data-field-item]'));
                     const tabPanes = Array.from(document.querySelectorAll('[data-tab-pane]'));
@@ -2010,7 +2672,8 @@
                         const activeSection = getActiveSection();
                         const activeVisible = !q || (matchedBySection.get(activeSection) || 0) > 0;
                         if (!activeVisible) {
-                            const firstVisible = tabButtons.find((btn) => !(btn.closest('li')?.classList.contains('d-none')));
+                            const firstVisible = tabButtons.find((btn) => !(btn.closest('li')?.classList.contains(
+                                'd-none')));
                             if (firstVisible) {
                                 const section = firstVisible.getAttribute('data-section') || '';
                                 showTabBySection(section);
@@ -2021,7 +2684,205 @@
                     fieldSearch.addEventListener('input', applyFilter);
                     applyFilter();
                 }
-            })();
+            });
+
+            window.addEventListener('DOMContentLoaded', () => {
+                const root = document.querySelector('[data-faq-items]');
+                if (!root) return;
+                if (root.dataset.faqWired === '1') return;
+                root.dataset.faqWired = '1';
+
+                const storage = root.querySelector('[data-faq-items-storage]');
+                const list = root.querySelector('[data-faq-items-list]');
+                const empty = root.querySelector('[data-faq-items-empty]');
+                const addBtn = root.querySelector('[data-faq-add]');
+                const addSpinner = root.querySelector('[data-faq-add-spinner]');
+
+                if (!storage || !list) return;
+
+                function escapeHtml(value) {
+                    return String(value ?? '')
+                        .replaceAll('&', '&amp;')
+                        .replaceAll('<', '&lt;')
+                        .replaceAll('>', '&gt;')
+                        .replaceAll('"', '&quot;')
+                        .replaceAll("'", '&#039;');
+                }
+
+                function parseJson(raw, fallback) {
+                    try {
+                        const v = JSON.parse(String(raw || ''));
+                        return Array.isArray(v) ? v : fallback;
+                    } catch (_) {
+                        return fallback;
+                    }
+                }
+
+                function normalizeItem(v) {
+                    const obj = v && typeof v === 'object' ? v : {};
+                    const id = String(obj.id || '');
+                    return {
+                        id,
+                        question: String(obj.question || ''),
+                        answer: String(obj.answer || ''),
+                        order: Number.isFinite(Number(obj.order)) ? Number(obj.order) : 0,
+                        active: String(obj.active ?? '1') === '0' ? '0' : '1',
+                    };
+                }
+
+                function syncStorage() {
+                    storage.value = JSON.stringify(items);
+                    if (empty) empty.classList.toggle('d-none', items.length > 0);
+                }
+
+                function sortItems() {
+                    items.sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0));
+                }
+
+                function setAdding(on) {
+                    if (addBtn) addBtn.disabled = !!on;
+                    if (addSpinner) addSpinner.classList.toggle('d-none', !on);
+                }
+
+                function setItemActiveLabel(itemEl) {
+                    const input = itemEl.querySelector('[data-faq-field="active"]');
+                    const label = itemEl.querySelector('[data-faq-active-label]');
+                    if (!input || !label) return;
+                    label.textContent = input.checked ? 'Aktif' : 'Nonaktif';
+                }
+
+                function renderItem(item, index) {
+                    const el = document.createElement('div');
+                    el.className = 'pb-3 border-bottom';
+                    el.setAttribute('data-faq-item', '');
+                    el.setAttribute('data-faq-id', String(item.id || ''));
+                    el.innerHTML = `
+                        <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                            <div class="fw-semibold text-black">FAQ <span data-faq-index>${escapeHtml(String(index + 1))}</span></div>
+                            <button type="button" class="btn btn-outline-danger btn-xxs" data-faq-delete>
+                                <span class="spinner-border spinner-border-sm d-none me-1" role="status" aria-hidden="true" data-faq-delete-spinner></span>
+                                <i class="la la-trash" aria-hidden="true"></i>
+                                Hapus
+                            </button>
+                        </div>
+
+                        <div class="row g-3 mt-1">
+                            <div class="col-12">
+                                <label class="form-label text-black">Pertanyaan</label>
+                                <input type="text" class="form-control" value="${escapeHtml(item.question || '')}" data-faq-field="question">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-black">Jawaban</label>
+                                <textarea class="form-control" rows="4" data-faq-field="answer">${escapeHtml(item.answer || '')}</textarea>
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <div class="fw-semibold text-black mb-2">Status</div>
+                                <div class="form-check form-switch m-0">
+                                    <input class="form-check-input" type="checkbox" role="switch" ${String(item.active || '1') === '0' ? '' : 'checked'} data-faq-field="active">
+                                    <label class="form-check-label" data-faq-active-label>${String(item.active || '1') === '0' ? 'Nonaktif' : 'Aktif'}</label>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    setItemActiveLabel(el);
+                    return el;
+                }
+
+                function rerender() {
+                    sortItems();
+                    items = items.map((v, idx) => ({
+                        ...v,
+                        order: idx + 1
+                    }));
+                    list.innerHTML = '';
+                    items.forEach((item, idx) => list.appendChild(renderItem(item, idx)));
+                    syncStorage();
+                }
+
+                function upsertFromDom(itemEl) {
+                    const id = String(itemEl?.getAttribute?.('data-faq-id') || '');
+                    if (!id) return;
+                    const q = String(itemEl.querySelector('[data-faq-field="question"]')?.value || '');
+                    const a = String(itemEl.querySelector('[data-faq-field="answer"]')?.value || '');
+                    const activeEl = itemEl.querySelector('[data-faq-field="active"]');
+                    const active = activeEl && activeEl.type === 'checkbox' && activeEl.checked ? '1' : '0';
+                    const idx = items.findIndex((v) => v.id === id);
+                    if (idx === -1) return;
+                    items[idx] = {
+                        ...items[idx],
+                        question: q,
+                        answer: a,
+                        active
+                    };
+                    setItemActiveLabel(itemEl);
+                    syncStorage();
+                }
+
+                function makeLocalId() {
+                    if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+                        return `local_${window.crypto.randomUUID()}`;
+                    }
+                    return `local_${Date.now()}_${Math.random().toString(16).slice(2)}`;
+                }
+
+                function addNewLocalItem() {
+                    setAdding(true);
+                    const nextOrder = items.length + 1;
+                    const id = makeLocalId();
+                    items.push({
+                        id,
+                        question: '',
+                        answer: '',
+                        order: nextOrder,
+                        active: '1',
+                    });
+                    rerender();
+                    const newEl = list.querySelector('[data-faq-item]:last-child');
+                    if (newEl) {
+                        newEl.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'center'
+                        });
+                        const input = newEl.querySelector('[data-faq-field="question"]');
+                        if (input && input.focus) input.focus();
+                    }
+                    setAdding(false);
+                }
+
+                let items = parseJson(storage.value, []).map(normalizeItem).filter((v) => v.id);
+                rerender();
+
+                root.addEventListener('click', (e) => {
+                    const add = e.target?.closest?.('[data-faq-add]');
+                    if (add) {
+                        e.preventDefault?.();
+                        e.stopImmediatePropagation?.();
+                        addNewLocalItem();
+                        return;
+                    }
+
+                    const del = e.target?.closest?.('[data-faq-delete]');
+                    if (!del) return;
+                    const itemEl = del.closest('[data-faq-item]');
+                    const id = String(itemEl?.getAttribute('data-faq-id') || '');
+                    if (!itemEl || !id) return;
+                    if (!confirm('Hapus FAQ ini?')) return;
+                    items = items.filter((v) => v.id !== id);
+                    rerender();
+                });
+
+                list.addEventListener('input', (e) => {
+                    const itemEl = e.target?.closest?.('[data-faq-item]');
+                    if (!itemEl) return;
+                    upsertFromDom(itemEl);
+                });
+
+                list.addEventListener('change', (e) => {
+                    const itemEl = e.target?.closest?.('[data-faq-item]');
+                    if (!itemEl) return;
+                    upsertFromDom(itemEl);
+                });
+            });
         </script>
     </main>
 @endsection
