@@ -892,12 +892,14 @@
                                         $faqItems = [];
                                         if (is_string($faqItemsJson) && trim($faqItemsJson) !== '') {
                                             $decoded = json_decode($faqItemsJson, true);
-                                            if (is_array($decoded)) {
-                                                $faqItems = $decoded;
+                                            if (! is_array($decoded)) {
+                                                $decoded = json_decode(html_entity_decode($faqItemsJson, ENT_QUOTES | ENT_HTML5), true);
                                             }
+                                            $faqItems = is_array($decoded) ? $decoded : [];
                                         }
 
                                         $faqItemsStoreUrl = route('admin.konten-halaman.faq-items.store');
+                                        $faqItemsSyncUrl = route('admin.konten-halaman.faq-items.sync');
                                         $faqItemsDestroyTpl = route('admin.konten-halaman.faq-items.destroy', [
                                             'faqId' => '__ID__',
                                         ]);
@@ -923,8 +925,8 @@
                                             ->filter(fn(string $k) => preg_match('/^q\d+$/', $k) === 1)
                                             ->count();
                                     @endphp
-                                    <div data-faq-items data-faq-index-offset="{{ $faqLegacyCount }}" data-field-item data-hay="faq items pertanyaan jawaban tambah hapus urutan status aktif">
-                                        <textarea class="d-none" name="contents[faq][items]" data-faq-items-storage>{{ $faqItemsJson }}</textarea>
+                                    <div data-faq-items data-faq-index-offset="{{ $faqLegacyCount }}" data-sync-url="{{ $faqItemsSyncUrl }}" data-field-item data-hay="faq items pertanyaan jawaban tambah hapus urutan status aktif">
+                                        <textarea class="d-none" name="contents[faq][items]" data-faq-items-storage>@json($faqItemsSorted)</textarea>
 
                                         <div
                                             class="d-flex flex-column gap-3"
@@ -2394,6 +2396,7 @@
 
                     const storeUrl = String(list.dataset.storeUrl || '');
                     const destroyTpl = String(list.dataset.destroyUrlTemplate || '');
+                    const syncUrl = String(root.dataset.syncUrl || '');
                     const indexOffset = Number(root.dataset.faqIndexOffset || 0) || 0;
 
                     function parseJson(raw, fallback) {
@@ -2426,6 +2429,34 @@
                     function syncStorage() {
                         storage.value = JSON.stringify(items);
                         if (empty) empty.classList.toggle('d-none', items.length > 0);
+                    }
+
+                    let syncTimer = null;
+                    async function syncNow() {
+                        if (!syncUrl) return;
+                        try {
+                            await fetch(syncUrl, {
+                                method: 'PUT',
+                                credentials: 'same-origin',
+                                headers: {
+                                    Accept: 'application/json',
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': csrfToken,
+                                    'X-Requested-With': 'XMLHttpRequest',
+                                },
+                                body: JSON.stringify({
+                                    items
+                                }),
+                            });
+                        } catch (_) {}
+                    }
+
+                    function scheduleSync() {
+                        if (!syncUrl) return;
+                        if (syncTimer) clearTimeout(syncTimer);
+                        syncTimer = setTimeout(() => {
+                            syncNow();
+                        }, 800);
                     }
 
                     function urlFromTemplate(tpl, id) {
@@ -2509,6 +2540,7 @@
                         };
                         setItemActiveLabel(itemEl);
                         syncStorage();
+                        scheduleSync();
                     }
 
                     async function addNewItem() {
@@ -2556,6 +2588,7 @@
                                 order: nextOrder
                             });
                             rerender();
+                            scheduleSync();
 
                             const newEl = list.querySelector('[data-faq-item]:last-child');
                             if (newEl) {
@@ -2582,6 +2615,7 @@
                                 active: '1',
                             });
                             rerender();
+                            scheduleSync();
 
                             const newEl = list.querySelector('[data-faq-item]:last-child');
                             if (newEl) {
@@ -2634,6 +2668,7 @@
                         if (id.startsWith('local_')) {
                             items = items.filter((v) => v.id !== id);
                             rerender();
+                            scheduleSync();
                             pushNotice('success', 'Berhasil', 'FAQ berhasil dihapus.');
                             return;
                         }
@@ -2669,6 +2704,7 @@
 
                             items = items.filter((v) => v.id !== id);
                             rerender();
+                            scheduleSync();
                             pushNotice('success', 'Berhasil', 'FAQ berhasil dihapus.');
                         } catch (_) {
                             pushNotice('danger', 'Gagal', 'FAQ tidak berhasil dihapus.');
@@ -2774,6 +2810,11 @@
 
                 if (!storage || !list) return;
 
+                const csrfToken = @json(csrf_token());
+                const storeUrl = String(list.dataset.storeUrl || '');
+                const destroyTpl = String(list.dataset.destroyUrlTemplate || '');
+                const syncUrl = String(root.dataset.syncUrl || '');
+
                 function escapeHtml(value) {
                     return String(value ?? '')
                         .replaceAll('&', '&amp;')
@@ -2804,6 +2845,10 @@
                     };
                 }
 
+                function urlFromTemplate(tpl, id) {
+                    return tpl.replace('__ID__', encodeURIComponent(String(id || '')));
+                }
+
                 function syncStorage() {
                     storage.value = JSON.stringify(items);
                     if (empty) empty.classList.toggle('d-none', items.length > 0);
@@ -2811,6 +2856,34 @@
 
                 function sortItems() {
                     items.sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0));
+                }
+
+                let syncTimer = null;
+                async function syncNow() {
+                    if (!syncUrl) return;
+                    try {
+                        await fetch(syncUrl, {
+                            method: 'PUT',
+                            credentials: 'same-origin',
+                            headers: {
+                                Accept: 'application/json',
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': csrfToken,
+                                'X-Requested-With': 'XMLHttpRequest',
+                            },
+                            body: JSON.stringify({
+                                items,
+                            }),
+                        });
+                    } catch (_) {}
+                }
+
+                function scheduleSync() {
+                    if (!syncUrl) return;
+                    if (syncTimer) clearTimeout(syncTimer);
+                    syncTimer = setTimeout(() => {
+                        syncNow();
+                    }, 800);
                 }
 
                 function setAdding(on) {
@@ -2899,28 +2972,69 @@
                     return `local_${Date.now()}_${Math.random().toString(16).slice(2)}`;
                 }
 
-                function addNewLocalItem() {
+                async function addNewItem() {
                     setAdding(true);
                     const nextOrder = items.length + 1;
-                    const id = makeLocalId();
-                    items.push({
-                        id,
-                        question: '',
-                        answer: '',
-                        order: nextOrder,
-                        active: '1',
-                    });
-                    rerender();
-                    const newEl = list.querySelector('[data-faq-item]:last-child');
-                    if (newEl) {
-                        newEl.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'center'
+                    try {
+                        if (!storeUrl) {
+                            throw new Error('FAQ_STORE_URL_MISSING');
+                        }
+
+                        const res = await fetch(storeUrl, {
+                            method: 'POST',
+                            credentials: 'same-origin',
+                            headers: {
+                                Accept: 'application/json',
+                                'Content-Type': 'application/json',
+                                'X-CSRF-TOKEN': csrfToken,
+                                'X-Requested-With': 'XMLHttpRequest',
+                            },
+                            body: JSON.stringify({
+                                question: '',
+                                answer: '',
+                                order: nextOrder,
+                                active: '1',
+                            }),
                         });
-                        const input = newEl.querySelector('[data-faq-field="question"]');
-                        if (input && input.focus) input.focus();
+
+                        const contentType = String(res.headers.get('content-type') || '');
+                        const json = await res.json().catch(() => ({}));
+                        if (!res.ok || !contentType.includes('application/json') || !json || !json.data) {
+                            throw new Error('FAQ_STORE_FAILED');
+                        }
+
+                        const item = normalizeItem(json.data);
+                        if (!item.id) {
+                            throw new Error('FAQ_STORE_INVALID');
+                        }
+
+                        items = items.filter((v) => v.id !== item.id);
+                        items.push({
+                            ...item,
+                            order: nextOrder,
+                        });
+                    } catch (_) {
+                        items.push({
+                            id: makeLocalId(),
+                            question: '',
+                            answer: '',
+                            order: nextOrder,
+                            active: '1',
+                        });
+                    } finally {
+                        rerender();
+                        scheduleSync();
+                        const newEl = list.querySelector('[data-faq-item]:last-child');
+                        if (newEl) {
+                            newEl.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'center',
+                            });
+                            const input = newEl.querySelector('[data-faq-field="question"]');
+                            if (input && input.focus) input.focus();
+                        }
+                        setAdding(false);
                     }
-                    setAdding(false);
                 }
 
                 let items = parseJson(storage.value, []).map(normalizeItem).filter((v) => v.id);
@@ -2931,7 +3045,7 @@
                     if (add) {
                         e.preventDefault?.();
                         e.stopImmediatePropagation?.();
-                        addNewLocalItem();
+                        addNewItem();
                         return;
                     }
 
@@ -2944,10 +3058,35 @@
                     (async () => {
                         const idx = String(itemEl.querySelector('[data-faq-index]')?.textContent || '').trim();
                         const info = idx ? `FAQ ${idx}` : 'FAQ ini';
-                        const ok = await window.__kontenHalamanConfirmFaqDelete?.(info);
+                        let ok = true;
+                        const confirmFn = window.__kontenHalamanConfirmFaqDelete;
+                        if (typeof confirmFn === 'function') {
+                            ok = await confirmFn(info);
+                        } else {
+                            ok = confirm(`Hapus ${info}?`);
+                        }
                         if (!ok) return;
+
+                        if (!id.startsWith('local_')) {
+                            const url = urlFromTemplate(destroyTpl, id);
+                            if (url) {
+                                try {
+                                    await fetch(url, {
+                                        method: 'DELETE',
+                                        credentials: 'same-origin',
+                                        headers: {
+                                            Accept: 'application/json',
+                                            'X-CSRF-TOKEN': csrfToken,
+                                            'X-Requested-With': 'XMLHttpRequest',
+                                        },
+                                    });
+                                } catch (_) {}
+                            }
+                        }
+
                         items = items.filter((v) => v.id !== id);
                         rerender();
+                        scheduleSync();
                     })();
                 });
 
@@ -2955,12 +3094,14 @@
                     const itemEl = e.target?.closest?.('[data-faq-item]');
                     if (!itemEl) return;
                     upsertFromDom(itemEl);
+                    scheduleSync();
                 });
 
                 list.addEventListener('change', (e) => {
                     const itemEl = e.target?.closest?.('[data-faq-item]');
                     if (!itemEl) return;
                     upsertFromDom(itemEl);
+                    scheduleSync();
                 });
             });
         </script>

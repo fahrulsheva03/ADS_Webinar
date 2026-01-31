@@ -259,6 +259,41 @@ class KontenHalamanController extends Controller
         ]);
     }
 
+    public function faqItemsSync(Request $request): JsonResponse
+    {
+        $data = $request->validate([
+            'items' => 'required|array',
+            'items.*.id' => 'required|string|max:100',
+            'items.*.question' => 'nullable|string|max:255',
+            'items.*.answer' => 'nullable|string|max:65535',
+            'items.*.order' => 'nullable|integer|min:0',
+            'items.*.active' => 'nullable|in:0,1',
+        ]);
+
+        $items = collect($data['items'] ?? [])
+            ->filter(fn ($v) => is_array($v) && isset($v['id']))
+            ->map(function (array $v) {
+                return [
+                    'id' => trim((string) ($v['id'] ?? '')),
+                    'question' => trim((string) ($v['question'] ?? '')),
+                    'answer' => trim((string) ($v['answer'] ?? '')),
+                    'order' => isset($v['order']) ? (int) $v['order'] : 0,
+                    'active' => isset($v['active']) ? (string) $v['active'] : '1',
+                ];
+            })
+            ->filter(fn (array $v) => $v['id'] !== '')
+            ->values()
+            ->all();
+
+        $items = $this->normalizeFaqItemsOrder($items);
+        $this->saveFaqItems($items);
+
+        return response()->json([
+            'message' => 'FAQ berhasil disimpan.',
+            'data' => $items,
+        ]);
+    }
+
     private function normalizeFaqItemsOrder(array $items): array
     {
         $indexed = [];

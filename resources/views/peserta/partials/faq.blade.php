@@ -5,9 +5,10 @@
     $faqItems = [];
     if (is_string($faqItemsRaw) && trim($faqItemsRaw) !== '') {
         $decoded = json_decode($faqItemsRaw, true);
-        if (is_array($decoded)) {
-            $faqItems = $decoded;
+        if (! is_array($decoded)) {
+            $decoded = json_decode(html_entity_decode($faqItemsRaw, ENT_QUOTES | ENT_HTML5), true);
         }
+        $faqItems = is_array($decoded) ? $decoded : [];
     }
 
     $faqItems = collect($faqItems)
@@ -45,6 +46,29 @@
     $faqA5 =
         konten($page, 'faq', 'a5') ?:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+
+    $legacy = collect([
+        ['id' => 'legacy_1', 'question' => $faqQ1, 'answer' => $faqA1, 'order' => 1, 'active' => '1'],
+        ['id' => 'legacy_2', 'question' => $faqQ2, 'answer' => $faqA2, 'order' => 2, 'active' => '1'],
+        ['id' => 'legacy_3', 'question' => $faqQ3, 'answer' => $faqA3, 'order' => 3, 'active' => '1'],
+        ['id' => 'legacy_4', 'question' => $faqQ4, 'answer' => $faqA4, 'order' => 4, 'active' => '1'],
+        ['id' => 'legacy_5', 'question' => $faqQ5, 'answer' => $faqA5, 'order' => 5, 'active' => '1'],
+    ])
+        ->filter(fn (array $v) => trim((string) ($v['question'] ?? '')) !== '' && trim((string) ($v['answer'] ?? '')) !== '')
+        ->values()
+        ->all();
+
+    $offset = count($legacy);
+    $dynamic = collect($faqItems)
+        ->map(fn (array $v) => $v + ['order' => $offset + (int) ($v['order'] ?? 0)])
+        ->values()
+        ->all();
+
+    $allFaqItems = collect($legacy)
+        ->concat($dynamic)
+        ->sortBy('order')
+        ->values()
+        ->all();
 @endphp
 
 <section id="faq" class="faq-main-section w-100 float-left padding-top padding-bottom position-relative light-bg">
@@ -55,105 +79,28 @@
         </div>
         <div class="faq-inner-section">
             <div id="accordion">
-                @if (count($faqItems) > 0)
-                    @foreach ($faqItems as $i => $item)
-                        @php
-                            $headingId = "headingFaq{$i}";
-                            $collapseId = "collapseFaq{$i}";
-                            $isFirst = $i === 0;
-                        @endphp
-                        <div class="card" data-aos="fade-up" data-aos-duration="700">
-                            <div class="card-header" id="{{ $headingId }}">
-                                <h5 class="mb-0">
-                                    <button
-                                        class="btn btn-link @if (!$isFirst) collapsed @endif"
-                                        data-toggle="collapse"
-                                        data-target="#{{ $collapseId }}"
-                                        aria-expanded="{{ $isFirst ? 'true' : 'false' }}"
-                                        aria-controls="{{ $collapseId }}"
-                                    >
-                                        {{ $item['question'] }}
-                                    </button>
-                                </h5>
-                            </div>
-                            <div
-                                id="{{ $collapseId }}"
-                                class="collapse @if ($isFirst) show @endif"
-                                aria-labelledby="{{ $headingId }}"
-                                data-parent="#accordion"
-                            >
-                                <div class="card-body">{!! nl2br(e($item['answer'])) !!}</div>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
+                @foreach ($allFaqItems as $i => $item)
+                    @php
+                        $headingId = "headingFaq{$i}";
+                        $collapseId = "collapseFaq{$i}";
+                        $isFirst = $i === 0;
+                    @endphp
                     <div class="card" data-aos="fade-up" data-aos-duration="700">
-                        <div class="card-header" id="headingOne">
+                        <div class="card-header" id="{{ $headingId }}">
                             <h5 class="mb-0">
-                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
-                                    aria-controls="collapseOne">
-                                    {{ $faqQ1 }}
+                                <button class="btn btn-link @if (!$isFirst) collapsed @endif" data-toggle="collapse"
+                                    data-target="#{{ $collapseId }}" aria-expanded="{{ $isFirst ? 'true' : 'false' }}"
+                                    aria-controls="{{ $collapseId }}">
+                                    {{ $item['question'] }}
                                 </button>
                             </h5>
                         </div>
-
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">{!! nl2br(e($faqA1)) !!}</div>
+                        <div id="{{ $collapseId }}" class="collapse @if ($isFirst) show @endif"
+                            aria-labelledby="{{ $headingId }}" data-parent="#accordion">
+                            <div class="card-body">{!! nl2br(e($item['answer'])) !!}</div>
                         </div>
                     </div>
-                    <div class="card" data-aos="fade-up" data-aos-duration="700">
-                        <div class="card-header" id="headingTwo">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
-                                    aria-controls="collapseTwo">
-                                    {{ $faqQ2 }}
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                            <div class="card-body">{!! nl2br(e($faqA2)) !!}</div>
-                        </div>
-                    </div>
-                    <div class="card" data-aos="fade-up" data-aos-duration="700">
-                        <div class="card-header" id="headingThree">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
-                                    aria-controls="collapseThree">
-                                    {{ $faqQ3 }}
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                            <div class="card-body">{!! nl2br(e($faqA3)) !!}</div>
-                        </div>
-                    </div>
-                    <div class="card" data-aos="fade-up" data-aos-duration="700">
-                        <div class="card-header" id="headingfour">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefour" aria-expanded="false"
-                                    aria-controls="collapsefour">
-                                    {{ $faqQ4 }}
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapsefour" class="collapse" aria-labelledby="headingfour" data-parent="#accordion">
-                            <div class="card-body">{!! nl2br(e($faqA4)) !!}</div>
-                        </div>
-                    </div>
-                    <div class="card" data-aos="fade-up" data-aos-duration="700">
-                        <div class="card-header" id="headingfive">
-                            <h5 class="mb-0">
-                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsefive" aria-expanded="false"
-                                    aria-controls="collapsefive">
-                                    {{ $faqQ5 }}
-                                </button>
-                            </h5>
-                        </div>
-                        <div id="collapsefive" class="collapse" aria-labelledby="headingfive" data-parent="#accordion">
-                            <div class="card-body">{!! nl2br(e($faqA5)) !!}</div>
-                        </div>
-                    </div>
-                @endif
+                @endforeach
             </div>
         </div>
     </div>

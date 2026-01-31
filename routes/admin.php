@@ -94,6 +94,7 @@ Route::prefix('admin')->group(function () {
             Route::put('/pricing-cards/{cardId}', [KontenHalamanController::class, 'pricingCardsUpdate'])->name('admin.konten-halaman.pricing-cards.update');
             Route::delete('/pricing-cards/{cardId}', [KontenHalamanController::class, 'pricingCardsDestroy'])->name('admin.konten-halaman.pricing-cards.destroy');
             Route::post('/faq-items', [KontenHalamanController::class, 'faqItemsStore'])->name('admin.konten-halaman.faq-items.store');
+            Route::put('/faq-items', [KontenHalamanController::class, 'faqItemsSync'])->name('admin.konten-halaman.faq-items.sync');
             Route::delete('/faq-items/{faqId}', [KontenHalamanController::class, 'faqItemsDestroy'])->name('admin.konten-halaman.faq-items.destroy');
             Route::post('/upload-image', [KontenHalamanController::class, 'uploadImage'])->name('admin.konten-halaman.upload-image');
         });
