@@ -18,7 +18,7 @@
                     <span class="nav-text">Event </span>
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin.sesi-event.index') }}" class="ai-icon" aria-expanded="false">
                     <i class="flaticon-381-list" aria-hidden="true"></i>
                     <span class="nav-text">Sesi Event</span>
@@ -29,7 +29,7 @@
                     <i class="flaticon-381-box" aria-hidden="true"></i>
                     <span class="nav-text">Paket & Akses</span>
                 </a>
-            </li>
+            </li> --}}
             
             <li>
                 <a href="{{ route('admin.konten-halaman.home') }}" class="ai-icon" aria-expanded="false">
