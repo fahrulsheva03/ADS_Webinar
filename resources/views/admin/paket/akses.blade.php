@@ -1,4 +1,4 @@
-@extends('admin.partials.app')
+@extends(request()->boolean('embed') ? 'admin.partials.embed' : 'admin.partials.app')
 
 @section('content')
     @php
@@ -20,6 +20,18 @@
                 default => ['bg-light text-dark', $status ?: '-'],
             };
         };
+
+        $sesiData = $sesi->map(function ($s) {
+            return [
+                'id' => $s->id,
+                'event_id' => $s->event_id,
+                'judul_sesi' => $s->judul_sesi,
+                'waktu_mulai' => optional($s->waktu_mulai)->format('Y-m-d H:i'),
+                'waktu_selesai' => optional($s->waktu_selesai)->format('Y-m-d H:i'),
+                'status_sesi' => $s->status_sesi,
+                'event_judul' => $s->event ? $s->event->judul : null,
+            ];
+        });
     @endphp
 
     <main id="main-content" tabindex="-1" class="pb-4" role="main" aria-label="Assign paket dan sesi">
@@ -162,17 +174,7 @@
         <script>
             (function () {
                 const csrfToken = @json(csrf_token());
-                const sesiData = @json($sesi->map(function ($s) {
-                    return [
-                        'id' => $s->id,
-                        'event_id' => $s->event_id,
-                        'judul_sesi' => $s->judul_sesi,
-                        'waktu_mulai' => optional($s->waktu_mulai)->format('Y-m-d H:i'),
-                        'waktu_selesai' => optional($s->waktu_selesai)->format('Y-m-d H:i'),
-                        'status_sesi' => $s->status_sesi,
-                        'event_judul' => $s->event ? $s->event->judul : null,
-                    ];
-                }));
+                const sesiData = @json($sesiData);
 
                 const badgeMap = {
                     live: { className: 'bg-success', label: 'Live' },

@@ -335,6 +335,167 @@
             </div>
         </section>
 
+        @php
+            $activeEventTab = (string) request()->query('tab', 'sesi-event');
+            if (! in_array($activeEventTab, ['sesi-event', 'paket'], true)) {
+                $activeEventTab = 'sesi-event';
+            }
+
+            $activePaketTab = (string) request()->query('paket_tab', 'index');
+            if (! in_array($activePaketTab, ['index', 'akses'], true)) {
+                $activePaketTab = 'index';
+            }
+
+            $sesiEmbedUrl = route('admin.sesi-event.index', ['embed' => 1]);
+            $paketIndexEmbedUrl = route('admin.paket.index', ['embed' => 1]);
+            $paketAksesEmbedUrl = route('admin.paket.akses', ['embed' => 1]);
+        @endphp
+
+        <section class="mt-4" aria-label="Manajemen sesi event dan paket">
+            <div class="card">
+                <div class="card-header border-0 pb-0">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2">
+                        <div>
+                            <h2 class="h5 mb-0">Sesi Event & Paket</h2>
+                            <div class="text-muted">Kelola sesi dan paket tanpa meninggalkan halaman event.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-3">
+                    <ul class="nav nav-tabs flex-nowrap overflow-auto" id="event-management-tabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button
+                                class="nav-link {{ $activeEventTab === 'sesi-event' ? 'active' : '' }}"
+                                id="event-tab-sesi-button"
+                                type="button"
+                                role="tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#event-tab-sesi"
+                                aria-controls="event-tab-sesi"
+                                aria-selected="{{ $activeEventTab === 'sesi-event' ? 'true' : 'false' }}"
+                                data-tab-key="sesi-event"
+                            >
+                                Sesi Event
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button
+                                class="nav-link {{ $activeEventTab === 'paket' ? 'active' : '' }}"
+                                id="event-tab-paket-button"
+                                type="button"
+                                role="tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#event-tab-paket"
+                                aria-controls="event-tab-paket"
+                                aria-selected="{{ $activeEventTab === 'paket' ? 'true' : 'false' }}"
+                                data-tab-key="paket"
+                            >
+                                Paket
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content mt-3" id="event-management-tabs-content">
+                        <div
+                            class="tab-pane fade {{ $activeEventTab === 'sesi-event' ? 'show active' : '' }}"
+                            id="event-tab-sesi"
+                            role="tabpanel"
+                            aria-labelledby="event-tab-sesi-button"
+                            tabindex="0"
+                        >
+                            <iframe
+                                data-embed-frame
+                                title="Manajemen Sesi Event"
+                                class="w-100 border rounded"
+                                style="min-height: 70vh;"
+                                loading="lazy"
+                                data-src="{{ $sesiEmbedUrl }}"
+                                src="{{ $activeEventTab === 'sesi-event' ? $sesiEmbedUrl : '' }}"
+                            ></iframe>
+                        </div>
+
+                        <div
+                            class="tab-pane fade {{ $activeEventTab === 'paket' ? 'show active' : '' }}"
+                            id="event-tab-paket"
+                            role="tabpanel"
+                            aria-labelledby="event-tab-paket-button"
+                            tabindex="0"
+                        >
+                            <ul class="nav nav-pills flex-nowrap overflow-auto mb-3" id="paket-management-tabs" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link {{ $activePaketTab === 'index' ? 'active' : '' }}"
+                                        id="paket-tab-index-button"
+                                        type="button"
+                                        role="tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#paket-tab-index"
+                                        aria-controls="paket-tab-index"
+                                        aria-selected="{{ $activePaketTab === 'index' ? 'true' : 'false' }}"
+                                        data-paket-tab="index"
+                                    >
+                                        List Paket
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link {{ $activePaketTab === 'akses' ? 'active' : '' }}"
+                                        id="paket-tab-akses-button"
+                                        type="button"
+                                        role="tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#paket-tab-akses"
+                                        aria-controls="paket-tab-akses"
+                                        aria-selected="{{ $activePaketTab === 'akses' ? 'true' : 'false' }}"
+                                        data-paket-tab="akses"
+                                    >
+                                        Assign Akses
+                                    </button>
+                                </li>
+                            </ul>
+
+                            <div class="tab-content" id="paket-management-tabs-content">
+                                <div
+                                    class="tab-pane fade {{ $activePaketTab === 'index' ? 'show active' : '' }}"
+                                    id="paket-tab-index"
+                                    role="tabpanel"
+                                    aria-labelledby="paket-tab-index-button"
+                                    tabindex="0"
+                                >
+                                    <iframe
+                                        data-embed-frame
+                                        title="Manajemen Paket"
+                                        class="w-100 border rounded"
+                                        style="min-height: 70vh;"
+                                        loading="lazy"
+                                        data-src="{{ $paketIndexEmbedUrl }}"
+                                        src="{{ $activeEventTab === 'paket' && $activePaketTab === 'index' ? $paketIndexEmbedUrl : '' }}"
+                                    ></iframe>
+                                </div>
+                                <div
+                                    class="tab-pane fade {{ $activePaketTab === 'akses' ? 'show active' : '' }}"
+                                    id="paket-tab-akses"
+                                    role="tabpanel"
+                                    aria-labelledby="paket-tab-akses-button"
+                                    tabindex="0"
+                                >
+                                    <iframe
+                                        data-embed-frame
+                                        title="Assign Paket dan Sesi"
+                                        class="w-100 border rounded"
+                                        style="min-height: 70vh;"
+                                        loading="lazy"
+                                        data-src="{{ $paketAksesEmbedUrl }}"
+                                        src="{{ $activeEventTab === 'paket' && $activePaketTab === 'akses' ? $paketAksesEmbedUrl : '' }}"
+                                    ></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-scrollable">
                 <div class="modal-content">
@@ -595,6 +756,107 @@
                         deleteTitle.textContent = title;
                     });
                 }
+
+                const iframeByWindow = new Map();
+
+                function ensureIframesLoaded(container) {
+                    const frames = Array.from((container || document).querySelectorAll('iframe[data-embed-frame]'));
+                    frames.forEach((frame) => {
+                        if (frame.getAttribute('src')) return;
+                        const src = frame.getAttribute('data-src');
+                        if (src) frame.setAttribute('src', src);
+                    });
+                }
+
+                ensureIframesLoaded(document.querySelector('.tab-pane.show.active') || document);
+
+                window.addEventListener('message', (event) => {
+                    if (event.origin !== window.location.origin) return;
+                    const data = event.data;
+                    if (!data || data.type !== 'embed-resize') return;
+                    const height = Number(data.height || 0);
+                    if (!height || height < 100) return;
+
+                    let frame = iframeByWindow.get(event.source);
+                    if (!frame) {
+                        const all = Array.from(document.querySelectorAll('iframe[data-embed-frame]'));
+                        frame = all.find((f) => f.contentWindow === event.source);
+                        if (frame) iframeByWindow.set(event.source, frame);
+                    }
+                    if (!frame) return;
+                    frame.style.height = `${height}px`;
+                });
+
+                Array.from(document.querySelectorAll('iframe[data-embed-frame]')).forEach((frame) => {
+                    frame.addEventListener('load', () => {
+                        try {
+                            if (frame.contentWindow) iframeByWindow.set(frame.contentWindow, frame);
+                        } catch (e) {
+                        }
+                    });
+                });
+
+                function setQueryParam(key, value) {
+                    const url = new URL(window.location.href);
+                    if (value === null || value === undefined || value === '') {
+                        url.searchParams.delete(key);
+                    } else {
+                        url.searchParams.set(key, value);
+                    }
+                    window.history.replaceState({}, '', url);
+                }
+
+                const mainTabEls = Array.from(document.querySelectorAll('#event-management-tabs [data-bs-toggle="tab"]'));
+                mainTabEls.forEach((el) => {
+                    el.addEventListener('shown.bs.tab', (e) => {
+                        const target = e.target;
+                        const tabKey = target?.getAttribute('data-tab-key') || '';
+                        if (tabKey) setQueryParam('tab', tabKey);
+
+                        const targetSelector = target?.getAttribute('data-bs-target') || target?.getAttribute('href') || '';
+                        const pane = targetSelector ? document.querySelector(targetSelector) : null;
+                        ensureIframesLoaded(pane || document);
+                    });
+                });
+
+                const paketTabEls = Array.from(document.querySelectorAll('#paket-management-tabs [data-bs-toggle="tab"]'));
+                paketTabEls.forEach((el) => {
+                    el.addEventListener('shown.bs.tab', (e) => {
+                        const target = e.target;
+                        const tabKey = target?.getAttribute('data-paket-tab') || '';
+                        if (tabKey) {
+                            setQueryParam('tab', 'paket');
+                            setQueryParam('paket_tab', tabKey);
+                        }
+
+                        const targetSelector = target?.getAttribute('data-bs-target') || target?.getAttribute('href') || '';
+                        const pane = targetSelector ? document.querySelector(targetSelector) : null;
+                        ensureIframesLoaded(pane || document);
+                    });
+                });
+
+                (function initTabsFromUrl() {
+                    if (!window.bootstrap || !window.bootstrap.Tab) return;
+                    const params = new URLSearchParams(window.location.search);
+                    const tab = params.get('tab');
+                    const paketTab = params.get('paket_tab');
+
+                    const mainKey = tab === 'paket' ? 'paket' : 'sesi-event';
+                    const mainBtn = document.querySelector(`#event-management-tabs [data-tab-key="${mainKey}"]`);
+                    if (mainBtn) {
+                        window.bootstrap.Tab.getOrCreateInstance(mainBtn).show();
+                    }
+
+                    if (mainKey === 'paket') {
+                        const paketKey = paketTab === 'akses' ? 'akses' : 'index';
+                        const paketBtn = document.querySelector(`#paket-management-tabs [data-paket-tab="${paketKey}"]`);
+                        if (paketBtn) {
+                            window.bootstrap.Tab.getOrCreateInstance(paketBtn).show();
+                        }
+                    }
+
+                    ensureIframesLoaded(document.querySelector('.tab-pane.show.active') || document);
+                })();
             })();
         </script>
     </main>

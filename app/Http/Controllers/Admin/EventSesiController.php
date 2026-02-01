@@ -11,6 +11,28 @@ use Illuminate\Validation\ValidationException;
 
 class EventSesiController extends Controller
 {
+    private function isEmbedRequest(Request $request): bool
+    {
+        if ($request->boolean('embed')) {
+            return true;
+        }
+
+        $referer = (string) $request->headers->get('referer', '');
+        if ($referer === '') {
+            return false;
+        }
+
+        $parts = parse_url($referer);
+        if (! is_array($parts)) {
+            return false;
+        }
+
+        $query = [];
+        parse_str((string) ($parts['query'] ?? ''), $query);
+
+        return (bool) ($query['embed'] ?? false);
+    }
+
     public function index(Request $request)
     {
         $q = (string) $request->query('q', '');
@@ -85,8 +107,10 @@ class EventSesiController extends Controller
             'status_sesi' => ($data['aktif'] ?? false) ? 'live' : 'upcoming',
         ]);
 
+        $params = $this->isEmbedRequest($request) ? ['embed' => 1] : [];
+
         return redirect()
-            ->route('admin.sesi-event.index')
+            ->route('admin.sesi-event.index', $params)
             ->with('success', 'Sesi berhasil dibuat.');
     }
 
@@ -105,17 +129,21 @@ class EventSesiController extends Controller
             'status_sesi' => ($data['aktif'] ?? false) ? 'live' : 'upcoming',
         ]);
 
+        $params = $this->isEmbedRequest($request) ? ['embed' => 1] : [];
+
         return redirect()
-            ->route('admin.sesi-event.index')
+            ->route('admin.sesi-event.index', $params)
             ->with('success', 'Perubahan sesi berhasil disimpan.');
     }
 
-    public function destroy(EventSesi $sesi)
+    public function destroy(Request $request, EventSesi $sesi)
     {
         $sesi->delete();
 
+        $params = $this->isEmbedRequest($request) ? ['embed' => 1] : [];
+
         return redirect()
-            ->route('admin.sesi-event.index')
+            ->route('admin.sesi-event.index', $params)
             ->with('success', 'Sesi berhasil dihapus.');
     }
 

@@ -13,6 +13,28 @@ use Throwable;
 
 class PaketController extends Controller
 {
+    private function isEmbedRequest(Request $request): bool
+    {
+        if ($request->boolean('embed')) {
+            return true;
+        }
+
+        $referer = (string) $request->headers->get('referer', '');
+        if ($referer === '') {
+            return false;
+        }
+
+        $parts = parse_url($referer);
+        if (! is_array($parts)) {
+            return false;
+        }
+
+        $query = [];
+        parse_str((string) ($parts['query'] ?? ''), $query);
+
+        return (bool) ($query['embed'] ?? false);
+    }
+
     public function index(Request $request)
     {
         $q = (string) $request->query('q', '');
@@ -73,8 +95,10 @@ class PaketController extends Controller
             'kuota' => null,
         ]);
 
+        $params = $this->isEmbedRequest($request) ? ['embed' => 1] : [];
+
         return redirect()
-            ->route('admin.paket.index')
+            ->route('admin.paket.index', $params)
             ->with('success', 'Paket berhasil dibuat.');
     }
 
@@ -90,22 +114,26 @@ class PaketController extends Controller
             'status' => $data['status'],
         ]);
 
+        $params = $this->isEmbedRequest($request) ? ['embed' => 1] : [];
+
         return redirect()
-            ->route('admin.paket.index')
+            ->route('admin.paket.index', $params)
             ->with('success', 'Perubahan paket berhasil disimpan.');
     }
 
-    public function destroy(Paket $paket)
+    public function destroy(Request $request, Paket $paket)
     {
+        $params = $this->isEmbedRequest($request) ? ['embed' => 1] : [];
+
         try {
             $paket->delete();
 
             return redirect()
-                ->route('admin.paket.index')
+                ->route('admin.paket.index', $params)
                 ->with('success', 'Paket berhasil dihapus.');
         } catch (Throwable $e) {
             return redirect()
-                ->route('admin.paket.index')
+                ->route('admin.paket.index', $params)
                 ->with('error', 'Paket gagal dihapus. Pastikan tidak ada pesanan atau relasi aktif.');
         }
     }

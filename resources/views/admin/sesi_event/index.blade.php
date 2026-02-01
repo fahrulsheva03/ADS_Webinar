@@ -1,4 +1,4 @@
-@extends('admin.partials.app')
+@extends(request()->boolean('embed') ? 'admin.partials.embed' : 'admin.partials.app')
 
 @section('content')
     @php
