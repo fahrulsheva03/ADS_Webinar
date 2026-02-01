@@ -153,7 +153,6 @@
 
         <script src="/assetsAdmin/js/custom.min.js"></script>
         <script src="/assetsAdmin/js/demo.js"></script>
-        <script src="/assetsAdmin/js/styleSwitcher.js"></script>
         {{-- <script src="/assetsAdmin/js/script.js"></script> --}}
     </body>
 

@@ -21,7 +21,6 @@
  <script src="{{ asset('assetsAdmin/js/custom.min.js') }}"></script>
  <script src="{{ asset('assetsAdmin/js/deznav-init.js') }}"></script>
  <script src="{{ asset('assetsAdmin/js/demo.js') }}"></script>
- <script src="{{ asset('assetsAdmin/js/styleSwitcher.js') }}"></script>
 
 <script>
 	(function () {

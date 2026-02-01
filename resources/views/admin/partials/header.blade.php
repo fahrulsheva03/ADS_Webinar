@@ -50,6 +50,10 @@
 
 	<style>
 		.DZ-theme-btn { display: none !important; }
+		.sidebar-right,
+		.sidebar-right-trigger,
+		.dz-demo-panel,
+		.dz-demo-trigger { display: none !important; }
 	</style>
 
 </head>
