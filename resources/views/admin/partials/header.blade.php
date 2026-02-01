@@ -49,6 +49,149 @@
 	</script>
 
 	<style>
+		:root {
+			--primary: #F80000;
+			--secondary: #2A2A2A;
+			--primary-hover: #C50000;
+			--primary-light: #FF4D4D;
+			--primary-dark: #9A0000;
+			--rgba-primary-03: rgba(248, 0, 0, 0.03);
+			--rgba-primary-1: rgba(248, 0, 0, 0.10);
+			--rgba-primary-2: rgba(248, 0, 0, 0.20);
+			--rgba-primary-3: rgba(248, 0, 0, 0.30);
+			--rgba-primary-4: rgba(248, 0, 0, 0.40);
+			--rgba-primary-5: rgba(248, 0, 0, 0.50);
+			--rgba-primary-6: rgba(248, 0, 0, 0.60);
+			--rgba-primary-7: rgba(248, 0, 0, 0.70);
+			--rgba-primary-8: rgba(248, 0, 0, 0.80);
+			--rgba-primary-9: rgba(248, 0, 0, 0.90);
+			--admin-bg: #F4F5F7;
+			--admin-surface: #FFFFFF;
+			--admin-text: #1B1B1B;
+			--admin-text-muted: #5C5C5C;
+			--admin-border: #E5E7EB;
+		}
+
+		html, body {
+			background-color: var(--admin-bg);
+			color: var(--admin-text);
+		}
+
+		.content-body {
+			background-color: transparent;
+		}
+
+		.card,
+		.modal-content,
+		.dropdown-menu {
+			background: linear-gradient(180deg, var(--admin-surface) 0%, var(--admin-bg) 100%);
+			border-color: var(--admin-border);
+		}
+
+		.card-header,
+		.card-footer,
+		.modal-header,
+		.modal-footer {
+			background: linear-gradient(90deg, rgba(248, 0, 0, 0.08) 0%, rgba(42, 42, 42, 0.04) 100%);
+			border-color: var(--admin-border);
+		}
+
+		.nav-header,
+		.header {
+			background: linear-gradient(90deg, rgba(42, 42, 42, 0.98) 0%, rgba(248, 0, 0, 0.92) 55%, rgba(42, 42, 42, 0.98) 100%);
+		}
+
+		.nav-header .brand-logo .svg-logo-rect {
+			fill: rgba(248, 0, 0, 0.95);
+		}
+
+		.nav-header .brand-logo .svg-logo-text {
+			fill: #FFFFFF;
+		}
+
+		.header,
+		.header a,
+		.header .nav-link,
+		.nav-header a,
+		.nav-header .nav-control .hamburger .line {
+			color: #FFFFFF;
+		}
+
+		.header .nav-link svg path,
+		.header .nav-link svg circle,
+		.header .nav-link svg rect {
+			fill: rgba(255, 255, 255, 0.85);
+		}
+
+		.deznav {
+			background: linear-gradient(180deg, #2A2A2A 0%, #1F1F1F 100%);
+		}
+
+		.deznav .metismenu a,
+		.deznav .metismenu a i,
+		.deznav .metismenu a .nav-text {
+			color: rgba(244, 245, 247, 0.92);
+		}
+
+		.deznav .metismenu li > a:hover {
+			background-color: rgba(248, 0, 0, 0.12);
+		}
+
+		.deznav .metismenu li.mm-active > a,
+		.deznav .metismenu li.mm-active > a:focus,
+		.deznav .metismenu li.mm-active > a:hover {
+			background-color: rgba(248, 0, 0, 0.18);
+			color: #FFFFFF;
+		}
+
+		.deznav .metismenu li.mm-active > a i {
+			color: rgba(255, 255, 255, 0.95);
+		}
+
+		.btn-primary {
+			background: linear-gradient(135deg, #F80000 0%, #C50000 55%, #2A2A2A 140%);
+			border-color: rgba(248, 0, 0, 0.65);
+		}
+
+		.btn-primary:hover,
+		.btn-primary:focus {
+			background: linear-gradient(135deg, #FF1A1A 0%, #F80000 55%, #2A2A2A 140%);
+			border-color: rgba(248, 0, 0, 0.75);
+		}
+
+		.btn-outline-primary {
+			color: var(--primary);
+			border-color: rgba(248, 0, 0, 0.55);
+			background-color: transparent;
+		}
+
+		.btn-outline-primary:hover,
+		.btn-outline-primary:focus {
+			color: #FFFFFF;
+			background: linear-gradient(135deg, #F80000 0%, #C50000 70%);
+			border-color: rgba(248, 0, 0, 0.75);
+		}
+
+		.badge.bg-primary,
+		.bg-primary {
+			background-color: var(--primary) !important;
+		}
+
+		.text-primary {
+			color: var(--primary) !important;
+		}
+
+		.form-control:focus,
+		.form-select:focus,
+		.btn:focus {
+			border-color: rgba(248, 0, 0, 0.55);
+			box-shadow: 0 0 0 0.2rem rgba(248, 0, 0, 0.15);
+		}
+
+		::selection {
+			background: rgba(248, 0, 0, 0.25);
+		}
+
 		.DZ-theme-btn { display: none !important; }
 		.sidebar-right,
 		.sidebar-right-trigger,
