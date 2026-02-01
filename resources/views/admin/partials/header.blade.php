@@ -36,6 +36,18 @@
 	<!-- Style Css -->
 	<link class="main-css" href="{{ asset('assetsAdmin/css/style.css') }}" rel="stylesheet">
 
+	<script>
+		(function () {
+			try {
+				var d = new Date();
+				d.setTime(d.getTime() + 30 * 60 * 1000);
+				var expires = 'expires=' + d.toUTCString();
+				document.cookie = 'sidebarStyle=full;' + expires + ';path=/';
+				document.cookie = 'sidebarPosition=fixed;' + expires + ';path=/';
+			} catch (e) {}
+		})();
+	</script>
+
 	<style>
 		.DZ-theme-btn { display: none !important; }
 	</style>

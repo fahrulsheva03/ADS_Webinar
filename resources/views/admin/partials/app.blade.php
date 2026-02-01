@@ -3,7 +3,7 @@
 
 @include('admin.partials.header')
 
-<body>
+<body data-sidebar-style="full">
 
 		<!--*******************
         Preloader start

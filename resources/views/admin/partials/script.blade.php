@@ -25,6 +25,45 @@
 
 <script>
 	(function () {
+		function enforceSidebarFull() {
+			try {
+				if (typeof setCookie === 'function') {
+					setCookie('sidebarStyle', 'full');
+				} else {
+					var d = new Date();
+					d.setTime(d.getTime() + 30 * 60 * 1000);
+					document.cookie = 'sidebarStyle=full;expires=' + d.toUTCString() + ';path=/';
+				}
+			} catch (e) {}
+
+			try {
+				var body = document.body;
+				if (body) {
+					body.setAttribute('data-sidebar-style', 'full');
+				}
+				var main = document.getElementById('main-wrapper');
+				if (main) {
+					main.classList.remove('menu-toggle');
+					main.classList.remove('iconhover-toggle');
+				}
+			} catch (e) {}
+
+			try {
+				if (window.jQuery) {
+					window.jQuery('body').attr('data-sidebar-style', 'full');
+					window.jQuery('#main-wrapper').removeClass('menu-toggle iconhover-toggle');
+				}
+			} catch (e) {}
+		}
+
+		enforceSidebarFull();
+		document.addEventListener('DOMContentLoaded', enforceSidebarFull);
+		window.addEventListener('load', function () {
+			setTimeout(enforceSidebarFull, 50);
+			setTimeout(enforceSidebarFull, 300);
+			setTimeout(enforceSidebarFull, 1200);
+		});
+
 		try {
 			if (window.jQuery && window.jQuery.fn && window.jQuery.fn.append && !window.jQuery.fn.__dzAppendPatched) {
 				var oldAppend = window.jQuery.fn.append;
