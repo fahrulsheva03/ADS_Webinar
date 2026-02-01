@@ -22,3 +22,53 @@
  <script src="{{ asset('assetsAdmin/js/deznav-init.js') }}"></script>
  <script src="{{ asset('assetsAdmin/js/demo.js') }}"></script>
  <script src="{{ asset('assetsAdmin/js/styleSwitcher.js') }}"></script>
+
+<script>
+	(function () {
+		try {
+			if (window.jQuery && window.jQuery.fn && window.jQuery.fn.append && !window.jQuery.fn.__dzAppendPatched) {
+				var oldAppend = window.jQuery.fn.append;
+				window.jQuery.fn.append = function () {
+					if (arguments.length > 0) {
+						var html = arguments[0];
+						if (
+							typeof html === 'string' &&
+							(html.indexOf('id="DZScript"') !== -1 || html.indexOf('dzassets.s3.amazonaws.com/w3-global') !== -1 || html.indexOf('w3-global') !== -1)
+						) {
+							return this;
+						}
+					}
+					return oldAppend.apply(this, arguments);
+				};
+				window.jQuery.fn.__dzAppendPatched = true;
+			}
+		} catch (e) {}
+
+		function removePromoButtons() {
+			var selectors = [
+				'#DZScript',
+				'.DZ-theme-btn',
+				'.DZ-bt-support-now',
+				'.DZ-bt-buy-now'
+			];
+			try {
+				document.querySelectorAll(selectors.join(',')).forEach(function (el) {
+					el.remove();
+				});
+			} catch (e) {}
+		}
+
+		removePromoButtons();
+		document.addEventListener('DOMContentLoaded', removePromoButtons);
+
+		try {
+			var observer = new MutationObserver(function () {
+				removePromoButtons();
+			});
+			observer.observe(document.documentElement, { childList: true, subtree: true });
+			setTimeout(function () {
+				observer.disconnect();
+			}, 8000);
+		} catch (e) {}
+	})();
+</script>

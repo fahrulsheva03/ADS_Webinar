@@ -36,4 +36,8 @@
 	<!-- Style Css -->
 	<link class="main-css" href="{{ asset('assetsAdmin/css/style.css') }}" rel="stylesheet">
 
+	<style>
+		.DZ-theme-btn { display: none !important; }
+	</style>
+
 </head>
