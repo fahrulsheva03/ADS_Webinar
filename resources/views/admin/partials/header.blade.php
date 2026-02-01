@@ -98,7 +98,28 @@
 
 		.nav-header,
 		.header {
-			background: linear-gradient(90deg, rgba(42, 42, 42, 0.98) 0%, rgba(248, 0, 0, 0.92) 55%, rgba(42, 42, 42, 0.98) 100%);
+			position: relative;
+			isolation: isolate;
+			background: #292929;
+		}
+
+		.nav-header::before,
+		.header::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			z-index: 0;
+			background:
+				radial-gradient(900px 180px at 18% 35%, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.00) 60%),
+				linear-gradient(180deg, rgba(255, 255, 255, 0.06) 0%, rgba(0, 0, 0, 0.12) 70%, rgba(0, 0, 0, 0.20) 100%);
+			opacity: 0.95;
+			pointer-events: none;
+		}
+
+		.nav-header > *,
+		.header > * {
+			position: relative;
+			z-index: 1;
 		}
 
 		.nav-header .brand-logo .svg-logo-rect {
