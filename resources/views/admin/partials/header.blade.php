@@ -98,7 +98,6 @@
 
 		.nav-header,
 		.header {
-			position: relative;
 			isolation: isolate;
 			background: #292929;
 		}
@@ -116,9 +115,13 @@
 			pointer-events: none;
 		}
 
-		.nav-header > *,
-		.header > * {
+		.nav-header .brand-logo,
+		.header .header-content {
 			position: relative;
+			z-index: 1;
+		}
+
+		.nav-header .nav-control {
 			z-index: 1;
 		}
 
